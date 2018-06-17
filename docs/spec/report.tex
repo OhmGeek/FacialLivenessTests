@@ -1,0 +1,53 @@
+\documentclass{article}
+
+\begin{document}
+% Research into:
+% - Eigenfaces
+% - Sparse Low Rank Bilinear Discriminative Model
+% - What are liveness tests
+% - How can we test a system that we create?
+% - What test data is available? ROSE-Youtu Face liveness detection dataset
+% - Deep Learning based face liveness detection in videos
+% - Cameras used: mobile cameras (most methods use average resolution images from webcams or camera phone)
+% - "Deep learning based face liveness detection in videos" https://ieeexplore.ieee.org/document/8090202/
+% - Ideas: texture based - an image of a face will have the facial textures, while the texture of a piece of paper is very different.
+% - Video vs Photo. Wtih a video, you don't just use the subject image, but also factor in movement and changes.
+    \paragraph{Title}
+        Liveness Tests for Facial Recognition
+    \paragraph{Project Type}
+        Computer Vision, Image Processing and Security
+    \paragraph{Description}
+        - determining real faces from photos of faces (i.e. people showing a picture to a camera)
+
+    \paragraph{Preliminary Preparation}
+        \begin{itemize}
+          \item Raw processing using libraw and dcraw
+          \item An understanding of ReactJS and Redux
+          \item How can I store raw images and edit them appropriately?
+        \end{itemize}
+    \paragraph{Minimum Objectives}
+        \begin{itemize}
+          \item Load DNG RAW files by upload
+          \item Exposure adjustment
+          \item Noise reduction methods (Gaussian, mean, median)
+          \item Web Interface interacting with an image processing server
+          \item Non-destructive image adjustment (i.e. no reduction in quality over time)
+        \end{itemize}
+    \paragraph{Intermediate Objectives}
+        \begin{itemize}
+          \item Modern, user friendly User Experience
+          \item Spot healing implemented
+          \item Haze removal
+          \item cropping, rotating and exporting to other formats
+        \end{itemize}
+    \paragraph{Advanced Objectives}
+        \begin{itemize}
+          \item Addressing potential scalability issues
+          \item Implement basic previews using built in JPEG to improve QoS
+        \end{itemize}
+    \paragraph{References}
+        \begin{itemize}
+          \item Pics.io blog (http://blog.pics.io)
+          \item JavaScript Image Processing Library (http://github.com/oliver-moran/jimp)
+        \end{itemize}
+\end{document}

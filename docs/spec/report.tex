@@ -13,41 +13,37 @@
 % - Ideas: texture based - an image of a face will have the facial textures, while the texture of a piece of paper is very different.
 % - Video vs Photo. Wtih a video, you don't just use the subject image, but also factor in movement and changes.
     \paragraph{Title}
-        Liveness Tests for Facial Recognition
+        Facial Authentication System for the Web
     \paragraph{Project Type}
         Computer Vision, Image Processing and Security
     \paragraph{Description}
-        - determining real faces from photos of faces (i.e. people showing a picture to a camera)
-
+        - Traditional username and password focused approaches to authentication have drawbacks (such as password leaks)
+        - Applying a biometric based approach to web security could improve account security if done correctly.
     \paragraph{Preliminary Preparation}
         \begin{itemize}
-          \item Raw processing using libraw and dcraw
-          \item An understanding of ReactJS and Redux
-          \item How can I store raw images and edit them appropriately?
+            \item Existing biometric web-based authentication methods, how do they work, what are their benefits/drawbacks?
+            \item What spoofing methods could be undertaken, and how can we prevent these?
+            \item What are the privacy concerns regarding a facial recognition approach, and how can these be mitigated?
+            \item How can this be integrated into a web service?
+            \item OAuth Authentication - how could facial recognition play into an existing OAuth authentication method?
         \end{itemize}
     \paragraph{Minimum Objectives}
         \begin{itemize}
-          \item Load DNG RAW files by upload
-          \item Exposure adjustment
-          \item Noise reduction methods (Gaussian, mean, median)
-          \item Web Interface interacting with an image processing server
-          \item Non-destructive image adjustment (i.e. no reduction in quality over time)
+            \item Server that accepts an image as input via a Web Request, and returns a unique token based on that image.
+            \item Generating a token based on facial structure, resilient to background and lightness changes.
         \end{itemize}
     \paragraph{Intermediate Objectives}
         \begin{itemize}
-          \item Modern, user friendly User Experience
-          \item Spot healing implemented
-          \item Haze removal
-          \item cropping, rotating and exporting to other formats
+            \item Liveness tests - how can we ensure the user input image is of a person, and not a printout of someone's face?
+            \item Scalable system - providing a service layer which is usable by many other users for a variety of uses, and that can scale up if required.
         \end{itemize}
     \paragraph{Advanced Objectives}
         \begin{itemize}
-          \item Addressing potential scalability issues
-          \item Implement basic previews using built in JPEG to improve QoS
+            \item Preventing replay attacks - preventing someone from intercepting someone's facial image, and using it to gain access
         \end{itemize}
     \paragraph{References}
         \begin{itemize}
-          \item Pics.io blog (http://blog.pics.io)
-          \item JavaScript Image Processing Library (http://github.com/oliver-moran/jimp)
+            \item JSON Web Tokens, and their application
+            \item Keras (https://keras.io)
         \end{itemize}
 \end{document}

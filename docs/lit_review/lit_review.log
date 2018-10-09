@@ -1,11 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.2.12)  4 AUG 2018 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  9 OCT 2018 10:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/ryan/Documents/Programming/LivenessTests/docs/lit_review/lit_review.tex
-
-(/home/ryan/Documents/Programming/LivenessTests/docs/lit_review/lit_review.tex
+**/home/ryan/Documents/dev/LivenessTests/docs/lit_review/lit_review.tex
+(/home/ryan/Documents/dev/LivenessTests/docs/lit_review/lit_review.tex
 LaTeX2e <2017/01/01> patch level 3
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -682,32 +681,32 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 20.
 
 
-LaTeX Warning: Empty bibliography on input line 45.
+LaTeX Warning: Empty bibliography on input line 52.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./lit_review.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./lit_review.aux)
 Package logreq Info: Writing requests to 'lit_review.run.xml'.
 \openout1 = `lit_review.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
  8100 strings out of 493013
- 138692 string characters out of 6135682
- 574263 words of memory out of 5000000
+ 138668 string characters out of 6135682
+ 576265 words of memory out of 5000000
  11588 multiletter control sequences out of 15000+600000
  7588 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,6n,30p,929b,1467s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,6n,30p,921b,1467s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on lit_review.pdf (1 page, 58600 bytes).
+Output written on lit_review.pdf (2 pages, 70615 bytes).
 PDF statistics:
- 28 PDF objects out of 1000 (max. 8388607)
- 19 compressed objects within 1 object stream
+ 31 PDF objects out of 1000 (max. 8388607)
+ 21 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

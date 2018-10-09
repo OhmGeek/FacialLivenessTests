@@ -18,7 +18,8 @@
         Computer Vision, Image Processing and Security
     \paragraph{Description}
         - Traditional username and password focused approaches to authentication have drawbacks (such as password leaks)
-        - Applying a biometric based approach to web security could improve account security if done correctly.
+        - Existing biometric methods have their problems when applied to a web system, due to the transparency of web systems.
+        - Overcoming the transparency hurdle would produce a secure method of authentication for the web, using faces of users.
     \paragraph{Preliminary Preparation}
         \begin{itemize}
             \item Existing biometric web-based authentication methods, how do they work, what are their benefits/drawbacks?
@@ -29,8 +30,8 @@
         \end{itemize}
     \paragraph{Minimum Objectives}
         \begin{itemize}
-            \item Server that accepts an image as input via a Web Request, and returns a unique token based on that image.
-            \item Generating a token based on facial structure, resilient to background and lightness changes.
+            \item Server that recognises a user given their face (therefore carrying out authentication), generating a token for a user given their face. This token can be used for authorization.
+            \item 
         \end{itemize}
     \paragraph{Intermediate Objectives}
         \begin{itemize}
@@ -39,7 +40,7 @@
         \end{itemize}
     \paragraph{Advanced Objectives}
         \begin{itemize}
-            \item Preventing replay attacks - preventing someone from intercepting someone's facial image, and using it to gain access
+            \item Preventing replay attacks - preventing someone from intercepting someone's facial image, and using it to gain access.
         \end{itemize}
     \paragraph{References}
         \begin{itemize}

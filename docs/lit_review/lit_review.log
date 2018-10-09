@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  9 OCT 2018 10:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  9 OCT 2018 11:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -669,8 +669,9 @@ Package biblatex Info: Automatic encoding selection.
 \openout5 = `lit_review.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'lit_review.bbl' found.
- (./lit_review.bbl)
+Package biblatex Info: ... file 'lit_review.bbl' not found.
+
+No file lit_review.bbl.
 Package biblatex Info: Reference section=0 on input line 19.
 Package biblatex Info: Reference segment=0 on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -679,31 +680,64 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 20.
-
-
-LaTeX Warning: Empty bibliography on input line 52.
-
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./lit_review.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Citation 'SSOOverview' on page 2 undefined on input line 51.
+
+/home/ryan/Documents/dev/LivenessTests/docs/lit_review/lit_review.tex:53: You c
+an't use `macro parameter character #' in horizontal mode.
+l.53 ...//pages.nist.gov/800-63-3/sp800-63-3.html#
+                                                  approved
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+Overfull \hbox (36.63031pt too wide) in paragraph at lines 53--54
+[]\OT1/cmr/m/n/10 In terms of se-cu-rity stan-dards, what stan-dards are there?
+ https://pages.nist.gov/800-
+ []
+
+
+LaTeX Warning: Citation 'SAMLFingerPrint' on page 2 undefined on input line 59.
+
+
+
+LaTeX Warning: Empty bibliography on input line 77.
+
+[2] (./lit_review.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                lit_review
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'lit_review.run.xml'.
 \openout1 = `lit_review.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8100 strings out of 493013
- 138668 string characters out of 6135682
- 576265 words of memory out of 5000000
- 11588 multiletter control sequences out of 15000+600000
+ 8272 strings out of 493013
+ 142033 string characters out of 6135682
+ 577272 words of memory out of 5000000
+ 11762 multiletter control sequences out of 15000+600000
  7588 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,6n,30p,921b,1467s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,6n,30p,921b,1472s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on lit_review.pdf (2 pages, 70615 bytes).
+Output written on lit_review.pdf (2 pages, 76239 bytes).
 PDF statistics:
  31 PDF objects out of 1000 (max. 8388607)
  21 compressed objects within 1 object stream

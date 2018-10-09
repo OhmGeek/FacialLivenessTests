@@ -85,9 +85,6 @@ INPUT lit_review.aux
 INPUT lit_review.aux
 OUTPUT lit_review.aux
 OUTPUT lit_review.bcf
-INPUT lit_review.bbl
-INPUT lit_review.bbl
-INPUT lit_review.bbl
 INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm

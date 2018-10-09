@@ -15,7 +15,7 @@
   style=alphabetic,
   sorting=ynt
 ]{biblatex}
-\addbibresource{lit.bib}
+\addbibresource{lit_review.bib}
 \begin{document}
 \maketitle
 
@@ -32,6 +32,31 @@ detected, and several confirmation methods to ensure the user is indeed who they
 \paragraph{Areas of Research}
 
 
+
+
+%SAML2 for SSO cross origin (as effectively this is what our system will be using to tie into other sites)
+As part of our system, once we carry out the necessary authentication, the system itself needs to tie-in well to
+other existing web systems. SSO can be used, with the system acting as the single sign on manager. There are various
+different methods available to do this, such as SAML2, OpenID and OAuth which are the most popular used on the web. 
+The overall goal of SSO is to remove requiring separate IDs and passwords for many systems, instead relying on one single
+set of credentials. The five key focuses of Identity and Access Management (and the overall goal of SSO) are:
+
+\begin{enumerate}
+  \item Authentication services: check which user is trying to log in. However, IAM suggests multiple methods of auth (rather than just one).
+  \item Auth Management: what can a user access?
+  \item Identity Management: Managing the accounts of the users using the service (creating their account, removing their account).
+  \item Federated Identity: presents third parties with a token for authentication, rather than username/password. All passwords go through SSO portal.
+  \item Compliance Management: Monitoring and reporting for audits. Check against security standards.
+\end{enumerate}
+\cite{SSOOverview}
+
+In terms of security standards, what standards are there? https://pages.nist.gov/800-63-3/sp800-63-3.html#approved
+
+
+SAML2 has also been researched into using a biometric system before - using fingerprints. This system
+overcomes the initial security concerns with passwords, by using fingerprints (which can't be as easily guessed or
+stolen). It was also found however that the client-side nature of such a system also lends itself well to further attacks,
+due to the necessary transmission of raw biometric data between client and server. \cite{SAMLFingerPrint}
 \section{Definitions}
 
 
@@ -48,6 +73,6 @@ accessible via an API, these system can be used both for web, as well as for IoT
 all the security measures of our system, but they're certainly welcome.
 \section{Conclusion}
 % The conclusion.
-\section{References}\label{references}
+\label{references}
 \printbibliography
 \end{document}

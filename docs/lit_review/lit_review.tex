@@ -31,7 +31,18 @@ detected, and several confirmation methods to ensure the user is indeed who they
 
 \paragraph{Areas of Research}
 
+With the given input, how can we be sure that it is original? How can we confirm that the input isn't spoofed,
+and the person is in front of the camera at the correct time? The solution is to use liveness tests, to ensure
+that the input is of someone who is alive, and not spoofed. 
 
+One method is to carry out pupil tracking. This triggers an LED to light up, and tracks the user's pupil and
+compares it to the location of the LED.
+\cite{LivenessTestPupilTracking} For the web, while this method of using LEDs wouldn't necessarily match up,
+one could instead use visual indicators within the web browser. 
+
+Another method is to use eye blinking. The method proposed uses an ultra-sonic sensor,
+which wouldn't be present for most devices connected to the web. However, alternative computer vision methods could be used.
+Furthermore, this paper uses a blink pattern as a password, with the user being detected based on the dimensions of their eyes.\cite{LivenessTestBlinking}
 
 
 %SAML2 for SSO cross origin (as effectively this is what our system will be using to tie into other sites)
@@ -50,7 +61,12 @@ set of credentials. The five key focuses of Identity and Access Management (and 
 \end{enumerate}
 \cite{SSOOverview}
 
-In terms of security standards, what standards are there? https://pages.nist.gov/800-63-3/sp800-63-3.html#approved
+In terms of security standards, a system for the web needs to follow the required standards to ensure it's fairly secure,
+especially for the level of data that's required to be secured. For Identity Proofing (user provides evidence that they are indeed who they say they are),
+there are three levels: IAL1 doesn't require any link to their real life identity, IAL2 has evidence that a real world identity exists and verifies that the link to this real world identity actually exists,
+and IAL3 which requires a physical presence for identity proofing. For the authentication process, there are three levels: AAL1 requires either single or multi-factor authentication, and successful auth requires
+the user to prove possession and control of the authenticator; AAL2 requires two methods of authentication (two factor); AAL3 requires the use of hardware authentication and two distinct methods of authentication.
+\cite{NISTDigitalIdentityGuidelines}
 
 
 SAML2 has also been researched into using a biometric system before - using fingerprints. This system

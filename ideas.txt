@@ -1,0 +1,22 @@
+One idea is to use Lip Reading methods to get the user to speak certain words:
+
+@INPROCEEDINGS{5646264, 
+author={A. A. Shaikh and D. K. Kumar and W. C. Yau and M. Z. C. Azemin and J. Gubbi}, 
+booktitle={2010 3rd International Congress on Image and Signal Processing}, 
+title={Lip reading using optical flow and support vector machines}, 
+year={2010}, 
+volume={1}, 
+number={}, 
+pages={327-330}, 
+keywords={feature extraction;support vector machines;lip reading;optical flow;support vector machines;discrete utterance;lip motion;feature vector;Computer vision;Optical imaging;Support vector machines;Visualization;Speech recognition;Image motion analysis;Speech;Lipreading;support vector machine;optical flow}, 
+doi={10.1109/CISP.2010.5646264}, 
+ISSN={}, 
+month={Oct},}
+
+By detecting the mouth region in the video, this could then be used to determine whether the user is indeed real. With
+words generated randomly, this adds randomness to the video.
+
+(still a potential attack to this would be to somehow fetch a video of someone saying all of these words, or some of these words)
+
+(this could be particularly true for celebrities, because video content could be stitched together from their content).
+

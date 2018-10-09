@@ -2139,8 +2139,11 @@
     <bcf:datasource type="file" datatype="bibtex">lit_review.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">SSOOverview</bcf:citekey>
-    <bcf:citekey order="2">SAMLFingerPrint</bcf:citekey>
+    <bcf:citekey order="1">LivenessTestPupilTracking</bcf:citekey>
+    <bcf:citekey order="2">LivenessTestBlinking</bcf:citekey>
+    <bcf:citekey order="3">SSOOverview</bcf:citekey>
+    <bcf:citekey order="4">NISTDigitalIdentityGuidelines</bcf:citekey>
+    <bcf:citekey order="5">SAMLFingerPrint</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="ynt/global/" type="entry" sortscheme="ynt" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

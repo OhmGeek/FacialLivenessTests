@@ -1,0 +1,208 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{ynt/global/}
+    \entry{LivenessTestBlinking}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=d35fdce34ce57c3c653db13c68381e5c}{%
+           family={Asaduzzaman},
+           familyi={A\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4538a74581fd1ee4b63617036d3fbddb}{%
+           family={Mummidi},
+           familyi={M\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=57478dc23c9d586a741a7b46aea00c13}{%
+           family={Mridha},
+           familyi={M\bibinitperiod},
+           given={M.\bibnamedelimi F.},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=5af28c591bcae4b5683349b0a1a2d764}{%
+           family={Sibai},
+           familyi={S\bibinitperiod},
+           given={F.\bibnamedelimi N.},
+           giveni={F\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{1c50c5faafbab8a5b542e823e0d62a59}
+      \strng{fullhash}{37e2bbc3ff09adc41c755dd81f067fcc}
+      \strng{authornamehash}{1c50c5faafbab8a5b542e823e0d62a59}
+      \strng{authorfullhash}{37e2bbc3ff09adc41c755dd81f067fcc}
+      \field{labelalpha}{Asa+15}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2015 International Conference on Advances in Electrical Engineering (ICAEE)}
+      \field{month}{12}
+      \field{title}{Improving facial recognition accuracy by applying liveness monitoring technique}
+      \field{year}{2015}
+      \field{pages}{133\bibrangedash 136}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1109/ICAEE.2015.7506814
+      \endverb
+      \keyw{cameras;computer network security;face recognition;Internet;stereo image processing;transport protocols;ultrasonic transducers;video signal processing;facial recognition accuracy;liveness monitoring technique;transmission control protocol;Internet protocol;TCP-IP suite;photograph;video clip;3D model spoofing;facial features;biometric systems;Web-camera;eye blinking password system;ultrasonic range sensing module;liveness detection;Face recognition;Cameras;Monitoring;Face;Lighting;Three-dimensional displays;Authentication;Eye blinking password;facial recognition;liveliness monitoring;security in biometric systems;video spoofing}
+    \endentry
+    \entry{SSOOverview}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=d8f77efbc85f3795eff0aa9db9fba421}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c16e2714ffa028c7d11e98c70d218a5f}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=157a2d93680feb1b7f40fa2b2af44f71}{%
+           family={Dave},
+           familyi={D\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{0616cd6e8cfc21e4b555c15c7f4e4fce}
+      \strng{fullhash}{0616cd6e8cfc21e4b555c15c7f4e4fce}
+      \strng{authornamehash}{0616cd6e8cfc21e4b555c15c7f4e4fce}
+      \strng{authorfullhash}{0616cd6e8cfc21e4b555c15c7f4e4fce}
+      \field{labelalpha}{SSD15}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2015 International Conference on Green Computing and Internet of Things (ICGCIoT)}
+      \field{month}{10}
+      \field{title}{Identity and access management- a comprehensive study}
+      \field{year}{2015}
+      \field{pages}{1481\bibrangedash 1485}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1109/ICGCIoT.2015.7380701
+      \endverb
+      \keyw{authorisation;trusted computing;access management;identity management;SAML2.0;OAuth;OpenID;Security Assertion Markup Language;user-centric digital identity;Open Authorization;federated identity;trust relationship;Cloud computing;Authorization;Servers;Authentication;Protocols;Organizations;Security as a Service;IAM;SAML;OpenID;OAuth}
+    \endentry
+    \entry{SAMLFingerPrint}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=dac57c00dc2fa32673aeeec5b044a17a}{%
+           family={Khodabacchus},
+           familyi={K\bibinitperiod},
+           given={M.\bibnamedelimi Y.},
+           giveni={M\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=d68728cfc7a051ef679f2598cf397e95}{%
+           family={Soyjaudah},
+           familyi={S\bibinitperiod},
+           given={K.\bibnamedelimi M.\bibnamedelimi S.},
+           giveni={K\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=2e8daabeede55d69d4b44bb8c24c1310}{%
+           family={Ramsawock},
+           familyi={R\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{efea6a59ceff8c738a33559a54e24665}
+      \strng{fullhash}{efea6a59ceff8c738a33559a54e24665}
+      \strng{authornamehash}{efea6a59ceff8c738a33559a54e24665}
+      \strng{authorfullhash}{efea6a59ceff8c738a33559a54e24665}
+      \field{labelalpha}{KSR17}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 1st International Conference on Next Generation Computing Applications (NextComp)}
+      \field{month}{7}
+      \field{title}{Secured SAML cloud authentication using fingerprint}
+      \field{year}{2017}
+      \field{pages}{151\bibrangedash 156}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/NEXTCOMP.2017.8016191
+      \endverb
+      \keyw{authorisation;cloud computing;fingerprint identification;public key cryptography;secured SAML cloud authentication;centralized certification method;single-sign-on;SAML SSO protocol;Security Assertion Markup Language;CVSS;common vulnerability scoring system;cancelable fingerprint;Authentication;Fingerprint recognition;XML;Cloud computing;fingerprint;biometrics;SAML;security;authentication}
+    \endentry
+    \entry{LivenessTestPupilTracking}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=d275df6e6cf853d090156550542819e5}{%
+           family={Killioğlu},
+           familyi={K\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=51bcff87f7729b4c2c8eef40b0fb750d}{%
+           family={Taşkiran},
+           familyi={T\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d016b397b483c48d9f719fe15009d582}{%
+           family={Kahraman},
+           familyi={K\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{00170bab577bd14409edd99b1d25dd72}
+      \strng{fullhash}{00170bab577bd14409edd99b1d25dd72}
+      \strng{authornamehash}{00170bab577bd14409edd99b1d25dd72}
+      \strng{authorfullhash}{00170bab577bd14409edd99b1d25dd72}
+      \field{labelalpha}{KTK17}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 IEEE 15th International Symposium on Applied Machine Intelligence and Informatics (SAMI)}
+      \field{month}{1}
+      \field{title}{Anti-spoofing in face recognition with liveness detection using pupil tracking}
+      \field{year}{2017}
+      \field{pages}{000087\bibrangedash 000092}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/SAMI.2017.7880281
+      \endverb
+      \keyw{eye;face recognition;feature extraction;gaze tracking;image classification;microcontrollers;object detection;antispoofing;liveness detection;pupil tracking;facial recognition system spoofing;fake face movement;pupil direction observing system;basic hardware equipment;real time camera;Haar-cascade classifier;eye region detection;feature points;stable eye region;Kanade-Lucas-Tomasi algorithm;KLT;real time camera frame;Arduino;LED;compliance requirement;liveness information;Face recognition;Face;Classification algorithms;Light emitting diodes;Cameras;Real-time systems;Feature extraction;eye location;liveness detection;face recognition;spoof-attack algorithm}
+    \endentry
+    \entry{NISTDigitalIdentityGuidelines}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=98b52a799d80d7d989b3d7db4689b76b}{%
+           family={P.\bibnamedelimi A.\bibnamedelimi Grassi},
+           familyi={P\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={M.\bibnamedelimi E.\bibnamedelimi Garcia},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=6d55fde7e3e5b5448b93729b55d9df62}{%
+           family={Fenton},
+           familyi={F\bibinitperiod},
+           given={J.\bibnamedelimi L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{2202d288284d8f5c3b94ef7b784cdbd3}
+      \strng{fullhash}{2202d288284d8f5c3b94ef7b784cdbd3}
+      \strng{authornamehash}{2202d288284d8f5c3b94ef7b784cdbd3}
+      \strng{authorfullhash}{2202d288284d8f5c3b94ef7b784cdbd3}
+      \field{labelalpha}{PF17}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{NIST Special Publication 800-63-3 Digital Identity Guidelines}
+      \field{year}{2017}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

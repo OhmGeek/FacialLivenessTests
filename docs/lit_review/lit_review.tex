@@ -37,6 +37,14 @@ With the given input, how can we be sure that it is original? How can we confirm
 and the person is in front of the camera at the correct time? The solution is to use liveness tests, to ensure
 that the input is of someone who is alive, and not spoofed. 
 
+On just an image, one could use a CNN along with non-linear diffusion. The non-linear diffusion reduces noise and
+simplifies images for further processing, while the CNN is then used to classify whether a diffused face image
+is real or faked. On the NUAA dataset (a set of faked and real faces), an accuracy of 99\% was achieved. The CNN
+used was trained with backpropagation, using the scholastic gradient method, where the pixel value was normalised between
+0 and 1. The hyperbolic tangent function was used as an activation function. For classification, a softmax function was
+used. 
+\cite{LivenessTestNonLinearDiffusion}
+
 One method is to carry out pupil tracking. This triggers an LED to light up, and tracks the user's pupil and
 compares it to the location of the LED.
 \cite{LivenessTestPupilTracking} For the web, while this method of using LEDs wouldn't necessarily match up,
@@ -45,6 +53,12 @@ one could instead use visual indicators within the web browser.
 Another method is to use eye blinking. The method proposed uses an ultra-sonic sensor,
 which wouldn't be present for most devices connected to the web. However, alternative computer vision methods could be used.
 Furthermore, this paper uses a blink pattern as a password, with the user being detected based on the dimensions of their eyes.\cite{LivenessTestBlinking}
+
+One newer method is known as face flashing. This method involves flashing patterns of light through the user's screen,
+which can then be detected using camera video. If the user is real, and therefore the video isn't being spoofed, then
+the light should follow expected parameters. This method has been partially designed to work with Cloud-based computing,
+and would work fairly well for mobile devices. \cite{LivenessTestFaceFlashing} While this can't work for all devices (particularly IoT devices that have
+cameras but not screens), this is a fairly good approximation. 
 
 
 %SAML2 for SSO cross origin (as effectively this is what our system will be using to tie into other sites)

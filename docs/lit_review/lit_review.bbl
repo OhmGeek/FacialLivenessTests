@@ -100,6 +100,45 @@
       \endverb
       \keyw{authorisation;trusted computing;access management;identity management;SAML2.0;OAuth;OpenID;Security Assertion Markup Language;user-centric digital identity;Open Authorization;federated identity;trust relationship;Cloud computing;Authorization;Servers;Authentication;Protocols;Organizations;Security as a Service;IAM;SAML;OpenID;OAuth}
     \endentry
+    \entry{LivenessTestNonLinearDiffusion}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7a957bcbca7db213bd357a92c7c26f6d}{%
+           family={Alotaibi},
+           familyi={A\bibinitperiod},
+           given={Aziz},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b422947c59230f1773849671692ef694}{%
+           family={Mahmood},
+           familyi={M\bibinitperiod},
+           given={Ausif},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a9d0bf26c91ed49b387bde30843a2723}
+      \strng{fullhash}{a9d0bf26c91ed49b387bde30843a2723}
+      \strng{authornamehash}{a9d0bf26c91ed49b387bde30843a2723}
+      \strng{authorfullhash}{a9d0bf26c91ed49b387bde30843a2723}
+      \field{labelalpha}{AM17}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A face-spoofing attack occurs when an imposter manipulates a face recognition and verification system to gain access as a legitimate user by presenting a 2D printed image or recorded video to the face sensor. This paper presents an efficient and non-intrusive method to counter face-spoofing attacks that uses a single image to detect spoofing attacks. We apply a nonlinear diffusion based on an additive operator splitting scheme. Additionally, we propose a specialized deep convolution neural network that can extract the discriminative and high-level features of the input diffused image to differentiate between a fake face and a real face. Our proposed method is both efficient and convenient compared with the previously implemented state-of-the-art methods described in the literature review. We achieved the highest reported accuracy of 99{\%} on the widely used NUAA dataset. In addition, we tested our method on the Replay Attack dataset which consists of 1200 short videos of both real access and spoofing attacks. An extensive experimental analysis was conducted that demonstrated better results when compared to previous static algorithms results. However, this result can be improved by applying a sparse autoencoder learning algorithm to obtain a more distinguishable diffused image.}
+      \field{issn}{1863-1711}
+      \field{journaltitle}{Signal, Image and Video Processing}
+      \field{month}{5}
+      \field{number}{4}
+      \field{title}{Deep face liveness detection based on nonlinear diffusion using convolution neural network}
+      \field{volume}{11}
+      \field{year}{2017}
+      \field{pages}{713\bibrangedash 720}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/s11760-016-1014-2
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s11760-016-1014-2
+      \endverb
+    \endentry
     \entry{SAMLFingerPrint}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=dac57c00dc2fa32673aeeec5b044a17a}{%
@@ -201,6 +240,45 @@
       \field{month}{6}
       \field{title}{NIST Special Publication 800-63-3 Digital Identity Guidelines}
       \field{year}{2017}
+    \endentry
+    \entry{LivenessTestFaceFlashing}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=e2a85a213a87ffbfd38e5401b0bbd9d7}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Di},
+           giveni={D\bibinitperiod}}}%
+        {{hash=562c3a232fa23a682b6a45ddc001d4c3}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Zhe},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=39d5890f1f1c35c915522c98267065d1}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Yinqian},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=a8f85bd07fffd24b320aec287b5e7972}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Kehuan},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{e41017067352321a24ab255822fad50f}
+      \strng{fullhash}{a75c7e1164985c662253b9f753516082}
+      \strng{authornamehash}{e41017067352321a24ab255822fad50f}
+      \strng{authorfullhash}{a75c7e1164985c662253b9f753516082}
+      \field{labelalpha}{Tan+18}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{25th Annual Network and Distributed System Security Symposium, {NDSS} 2018, San Diego, California, USA, February 18-21, 2018}
+      \field{title}{Face Flashing: a Secure Liveness Detection Protocol based on Light Reflections}
+      \field{year}{2018}
+      \verb{url}
+      \verb http://wp.internetsociety.org/ndss/wp-content/uploads/sites/25/2018/02/ndss2018%5C_03B-5%5C_Tang%5C_paper.pdf
+      \endverb
     \endentry
   \endsortlist
 \endrefsection

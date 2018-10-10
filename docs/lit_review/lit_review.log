@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  10 OCT 2018 13:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  10 OCT 2018 19:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -683,28 +683,34 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 109.
+(Font)              <7> on input line 117.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 109.
+(Font)              <5> on input line 117.
 
-Overfull \hbox (11.4373pt too wide) in paragraph at lines 110--110
+Overfull \hbox (11.4373pt too wide) in paragraph at lines 118--118
 []\OT1/cmr/m/n/10 A. Sharma, S. Sharma, and M. Dave. \  Iden-tity and ac-cess m
 anagement-
  []
 
-[3] [4] (./lit_review.aux)
+[3]
+Overfull \hbox (3.15778pt too wide) in paragraph at lines 118--118
+\OT1/cmr/m/it/10 Congress on Im-age and Sig-nal Pro-cess-ing (CISP)\OT1/cmr/m/n
+/10 . Oct. 2015, pp. 594{
+ []
+
+[4] (./lit_review.aux)
 Package logreq Info: Writing requests to 'lit_review.run.xml'.
 \openout1 = `lit_review.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8315 strings out of 493013
- 145189 string characters out of 6135682
- 578717 words of memory out of 5000000
- 11800 multiletter control sequences out of 15000+600000
+ 8321 strings out of 493013
+ 146245 string characters out of 6135682
+ 578839 words of memory out of 5000000
+ 11806 multiletter control sequences out of 15000+600000
  8403 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,6n,45p,1465b,1467s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,6n,45p,1465b,1468s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -713,7 +719,7 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmtt10.pfb>
-Output written on lit_review.pdf (4 pages, 127024 bytes).
+Output written on lit_review.pdf (4 pages, 129223 bytes).
 PDF statistics:
  49 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream

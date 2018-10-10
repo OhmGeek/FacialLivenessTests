@@ -1,25 +1,27 @@
 [0] Config.pm:354> INFO - This is Biber 2.7 (beta)
 [0] Config.pm:357> INFO - Logfile is 'lit_review.blg'
-[29] biber:303> INFO - === Wed Oct 10, 2018, 13:07:17
-[43] Biber.pm:360> INFO - Reading 'lit_review.bcf'
-[125] Biber.pm:836> INFO - Found 7 citekeys in bib section 0
-[142] Biber.pm:3671> INFO - Processing section 0
-[156] Biber.pm:3841> INFO - Looking for bibtex format file 'lit_review.bib' for section 0
-[158] bibtex.pm:1424> INFO - Decoding LaTeX character macros into UTF-8
-[164] bibtex.pm:1281> INFO - Found BibTeX data source 'lit_review.bib'
-[168] Utils.pm:164> WARN - month field 'May' in entry 'LivenessTestNonLinearDiffusion' is not an integer - this will probably not sort properly.
-[178] Utils.pm:164> WARN - month field 'Jan' in entry 'LivenessTestPupilTracking' is not an integer - this will probably not sort properly.
-[181] Utils.pm:164> WARN - month field 'Dec' in entry 'LivenessTestBlinking' is not an integer - this will probably not sort properly.
-[185] Utils.pm:164> WARN - month field 'Oct' in entry 'SSOOverview' is not an integer - this will probably not sort properly.
-[187] Utils.pm:164> WARN - month field 'June' in entry 'NISTDigitalIdentityGuidelines' is not an integer - this will probably not sort properly.
-[190] Utils.pm:164> WARN - month field 'July' in entry 'SAMLFingerPrint' is not an integer - this will probably not sort properly.
-[191] Utils.pm:164> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[191] Utils.pm:164> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
-[192] Utils.pm:164> WARN - I didn't find a database entry for crossref 'DBLP:conf/ndss/2018' in entry 'LivenessTestFaceFlashing' - ignoring (section 0)
-[210] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[210] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[210] Biber.pm:3500> INFO - Sorting list 'ynt/global/' of type 'entry' with scheme 'ynt' and locale 'en-US'
-[210] Biber.pm:3506> INFO - No sort tailoring available for locale 'en-US'
-[220] bbl.pm:608> INFO - Writing 'lit_review.bbl' with encoding 'UTF-8'
-[223] bbl.pm:712> INFO - Output to lit_review.bbl
-[223] Biber.pm:110> INFO - WARNINGS: 9
+[31] biber:303> INFO - === Wed Oct 10, 2018, 19:51:43
+[44] Biber.pm:360> INFO - Reading 'lit_review.bcf'
+[131] Biber.pm:836> INFO - Found 9 citekeys in bib section 0
+[146] Biber.pm:3671> INFO - Processing section 0
+[160] Biber.pm:3841> INFO - Looking for bibtex format file 'lit_review.bib' for section 0
+[162] bibtex.pm:1424> INFO - Decoding LaTeX character macros into UTF-8
+[168] bibtex.pm:1281> INFO - Found BibTeX data source 'lit_review.bib'
+[171] Utils.pm:164> WARN - month field 'Dec' in entry 'FaceRecognitionGabor' is not an integer - this will probably not sort properly.
+[173] Utils.pm:164> WARN - month field 'Oct' in entry 'FaceRecognitionAutoencoder' is not an integer - this will probably not sort properly.
+[176] Utils.pm:164> WARN - month field 'May' in entry 'LivenessTestNonLinearDiffusion' is not an integer - this will probably not sort properly.
+[184] Utils.pm:164> WARN - month field 'Jan' in entry 'LivenessTestPupilTracking' is not an integer - this will probably not sort properly.
+[186] Utils.pm:164> WARN - month field 'Dec' in entry 'LivenessTestBlinking' is not an integer - this will probably not sort properly.
+[190] Utils.pm:164> WARN - month field 'Oct' in entry 'SSOOverview' is not an integer - this will probably not sort properly.
+[192] Utils.pm:164> WARN - month field 'June' in entry 'NISTDigitalIdentityGuidelines' is not an integer - this will probably not sort properly.
+[195] Utils.pm:164> WARN - month field 'July' in entry 'SAMLFingerPrint' is not an integer - this will probably not sort properly.
+[195] Utils.pm:164> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[195] Utils.pm:164> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[198] Utils.pm:164> WARN - I didn't find a database entry for crossref 'DBLP:conf/ndss/2018' in entry 'LivenessTestFaceFlashing' - ignoring (section 0)
+[219] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[219] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[219] Biber.pm:3500> INFO - Sorting list 'ynt/global/' of type 'entry' with scheme 'ynt' and locale 'en-US'
+[219] Biber.pm:3506> INFO - No sort tailoring available for locale 'en-US'
+[232] bbl.pm:608> INFO - Writing 'lit_review.bbl' with encoding 'UTF-8'
+[235] bbl.pm:712> INFO - Output to lit_review.bbl
+[235] Biber.pm:110> INFO - WARNINGS: 11

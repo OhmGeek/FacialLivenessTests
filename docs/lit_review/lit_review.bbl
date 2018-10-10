@@ -19,6 +19,39 @@
 
 \refsection{0}
   \sortlist[entry]{ynt/global/}
+    \entry{FaceRecognitionGabor}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=74842a2986e84c58b8dfe76185770da0}{%
+           family={Tse},
+           familyi={T\bibinitperiod},
+           given={Siu-Hong},
+           giveni={S\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=1ff70aded7ffeca02ec88003add77023}{%
+           family={Lam},
+           familyi={L\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{37618daeae69b2e45337b33dba664c5f}
+      \strng{fullhash}{37618daeae69b2e45337b33dba664c5f}
+      \strng{authornamehash}{37618daeae69b2e45337b33dba664c5f}
+      \strng{authorfullhash}{37618daeae69b2e45337b33dba664c5f}
+      \field{labelalpha}{TL08}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2008 10th International Conference on Control, Automation, Robotics and Vision}
+      \field{month}{12}
+      \field{title}{Efficient face recognition with a large database}
+      \field{year}{2008}
+      \field{pages}{944\bibrangedash 949}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ICARCV.2008.4795645
+      \endverb
+      \keyw{face recognition;image retrieval;visual databases;face recognition algorithm;face database;indexing structure;discriminative feature extraction;Gabor wavelets;query face;Face recognition;Image databases;Signal processing algorithms;Spatial databases;Indexing;Robotics and automation;Scattering;Automatic control;Robot control;Robot vision systems;face recognition;large database;vantage objects}
+    \endentry
     \entry{LivenessTestBlinking}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=d35fdce34ce57c3c653db13c68381e5c}{%
@@ -99,6 +132,44 @@
       \verb 10.1109/ICGCIoT.2015.7380701
       \endverb
       \keyw{authorisation;trusted computing;access management;identity management;SAML2.0;OAuth;OpenID;Security Assertion Markup Language;user-centric digital identity;Open Authorization;federated identity;trust relationship;Cloud computing;Authorization;Servers;Authentication;Protocols;Organizations;Security as a Service;IAM;SAML;OpenID;OAuth}
+    \endentry
+    \entry{FaceRecognitionAutoencoder}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=7969b27c3036c48b4c828e3e7465cebb}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=262394c964914c2a67b690bd67fde298}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1a7c1830b4284b8ec19c2a5d1b0b3db4}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{c041ff08a3983c19d1e7783e54a923d6}
+      \strng{fullhash}{c041ff08a3983c19d1e7783e54a923d6}
+      \strng{authornamehash}{c041ff08a3983c19d1e7783e54a923d6}
+      \strng{authorfullhash}{c041ff08a3983c19d1e7783e54a923d6}
+      \field{labelalpha}{ZLZ15}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2015 8th International Congress on Image and Signal Processing (CISP)}
+      \field{month}{10}
+      \field{title}{Deep neural network for face recognition based on sparse autoencoder}
+      \field{year}{2015}
+      \field{pages}{594\bibrangedash 598}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1109/CISP.2015.7407948
+      \endverb
+      \keyw{computer vision;face recognition;neural nets;visual databases;deep neural network;sparse autoencoder;computer vision;face recognition method;sparse coding neural network;softmax classifiers;face image preprocessing;deep hierarchical network;ORL;Yale-B;PERET face database;Face recognition;Machine learning;Classification algorithms;Biological neural networks;Face;Feature extraction;deep learning;sparse coding;face recognition;softmax classifier}
     \endentry
     \entry{LivenessTestNonLinearDiffusion}{article}{}
       \name{author}{2}{}{%

@@ -1,0 +1,14 @@
+[[source]]
+verify_ssl = true
+url = "https://pypi.org/simple"
+name = "pypi"
+
+[packages]
+tensorflow = "*"
+keras = "*"
+sklearn = "*"
+
+[requires]
+python_version = "3.5"
+
+[dev-packages]

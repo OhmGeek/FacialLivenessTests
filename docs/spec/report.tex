@@ -34,16 +34,18 @@
     \paragraph{Minimum Objectives}
         \begin{itemize}
             \item Server that recognises a user given their face (therefore carrying out authentication), generating a token for a user given their face. This token can be used for authorization.
-            \item 
+            \item Client side that accepts user video, and transmits it to the main application for further processing
+            \item Main server that utilises microservices to do the large amounts of processing necessary at scale.
         \end{itemize}
     \paragraph{Intermediate Objectives}
         \begin{itemize}
-            \item Liveness tests - how can we ensure the user input image is of a person, and not a printout of someone's face?
-            \item Scalable system - providing a service layer which is usable by many other users for a variety of uses, and that can scale up if required.
+            \item CNN-based liveness for a photograph of a user's face
+            \item Reference image facial matching, using a CNN.
         \end{itemize}
     \paragraph{Advanced Objectives}
         \begin{itemize}
             \item Preventing replay attacks - preventing someone from intercepting someone's facial image, and using it to gain access.
+            \item SAML2 protocol implemented, to provide an SSO to many other applications.
         \end{itemize}
     \paragraph{References}
         \begin{itemize}

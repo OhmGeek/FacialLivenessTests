@@ -33,6 +33,14 @@ detected, and several confirmation methods to ensure the user is indeed who they
 One initial consideration is to detect who a specific user is. Some existing measures require further images of a user
 and require the training of a neural network. While this might work for a small number of faces, this isn't easily scalable.
 
+While one could easily train a neural network to determine whether a given person is present, this isn't scalable.
+An alternative method would be to instead use a method involving vectorising an image of a face into the key features,
+and using these features 
+\cite{FaceRecognitionGabor}
+However, this could also be done with deep learning using an auto-encoder to generate a vector, that can then be used in identifying the user.
+\cite{FaceRecognitionAutoencoder}. This is ideal, because one could then more easily carry out a search through a database using a much more concise vector, compared to the larger
+Gabor vector that might be produced, or indeed the entire image.
+
 With the given input, how can we be sure that it is original? How can we confirm that the input isn't spoofed,
 and the person is in front of the camera at the correct time? The solution is to use liveness tests, to ensure
 that the input is of someone who is alive, and not spoofed. 

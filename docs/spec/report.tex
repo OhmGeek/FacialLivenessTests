@@ -12,6 +12,7 @@
 % - "Deep learning based face liveness detection in videos" https://ieeexplore.ieee.org/document/8090202/
 % - Ideas: texture based - an image of a face will have the facial textures, while the texture of a piece of paper is very different.
 % - Video vs Photo. Wtih a video, you don't just use the subject image, but also factor in movement and changes.
+    
     \paragraph{Title}
         Facial Authentication System for the Web
     \paragraph{Project Type}
@@ -20,13 +21,15 @@
         - Traditional username and password focused approaches to authentication have drawbacks (such as password leaks)
         - Existing biometric methods have their problems when applied to a web system, due to the transparency of web systems.
         - Overcoming the transparency hurdle would produce a secure method of authentication for the web, using faces of users.
+        - Using multiple methods of facial recognition, facial liveness tests, coupled with implementation details, these can be used to create a robust
+        authentication service.
     \paragraph{Preliminary Preparation}
         \begin{itemize}
             \item Existing biometric web-based authentication methods, how do they work, what are their benefits/drawbacks?
             \item What spoofing methods could be undertaken, and how can we prevent these?
             \item What are the privacy concerns regarding a facial recognition approach, and how can these be mitigated?
             \item How can this be integrated into a web service?
-            \item OAuth Authentication - how could facial recognition play into an existing OAuth authentication method?
+            \item Use as a single sign on service (SSO). What protocols are there, how do they work, how can we integrate our system into these standards?
         \end{itemize}
     \paragraph{Minimum Objectives}
         \begin{itemize}
@@ -44,7 +47,19 @@
         \end{itemize}
     \paragraph{References}
         \begin{itemize}
-            \item JSON Web Tokens, and their application
-            \item Keras (https://keras.io)
+            \item Keras (https://keras.io) for Machine Learning
+            \item OpenCV (https://opencv.org/) for image Processing
+            \item 
         \end{itemize}
+
+    \paragraph{Time Management - Project Plan}
+    
+    Throughout the project, an agile method shall be conducted. Each sprint shall last two weeks
+    starting on the Friday (after a supervisor meeting), 
+    with a mid-sprint meeting the following Friday. Start/end sprint meetings shall consist of what existing work has been done, along with what is needed to be focused on in the following sprint. The mid-sprint meetings
+    are there to spot problems throughout the sprint cycle, to advise on a different approach or just for general troubleshooting. Trello shall be used to keep an Agile board of tasks that are "To Do", "In Progress",
+    or "Done". 
+
+    \textbf{INSERT GANTT CHART HERE SHOWING TASKS/SPRINTS}
+    
 \end{document}

@@ -1,9 +1,9 @@
-PWD /home/ryan/Documents/Programming/LivenessTests/docs/spec
+PWD /home/ryan/Documents/dev/LivenessTests/docs/spec
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/ryan/Documents/Programming/LivenessTests/docs/spec/report.tex
+INPUT /home/ryan/Documents/dev/LivenessTests/docs/spec/report.tex
 OUTPUT report.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls

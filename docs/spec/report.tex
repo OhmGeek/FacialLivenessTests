@@ -1,5 +1,7 @@
 \documentclass{article}
-
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage[moderate]{savetrees}
 \begin{document}
 % Research into:
 % - Eigenfaces
@@ -44,24 +46,15 @@
         \end{itemize}
     \paragraph{Advanced Objectives}
         \begin{itemize}
-            \item Preventing replay attacks - preventing someone from intercepting someone's facial image, and using it to gain access.
+            \item Preventing replay attacks - preventing someone from intercepting someone's facial image using image metadata methods.
+            \item Lipreading speech-based liveness check
             \item SAML2 protocol implemented, to provide an SSO to many other applications.
         \end{itemize}
     \paragraph{References}
         \begin{itemize}
             \item Keras (https://keras.io) for Machine Learning
             \item OpenCV (https://opencv.org/) for image Processing
-            \item 
         \end{itemize}
 
-    \paragraph{Time Management - Project Plan}
-    
-    Throughout the project, an agile method shall be conducted. Each sprint shall last two weeks
-    starting on the Friday (after a supervisor meeting), 
-    with a mid-sprint meeting the following Friday. Start/end sprint meetings shall consist of what existing work has been done, along with what is needed to be focused on in the following sprint. The mid-sprint meetings
-    are there to spot problems throughout the sprint cycle, to advise on a different approach or just for general troubleshooting. Trello shall be used to keep an Agile board of tasks that are "To Do", "In Progress",
-    or "Done". 
-
-    \textbf{INSERT GANTT CHART HERE SHOWING TASKS/SPRINTS}
-    
+   \includepdf{gantt.pdf}
 \end{document}

@@ -22,8 +22,8 @@
         Computer Vision, Image Processing and Security
     \paragraph{Description}
     In order to avoid spoofing in facial recognition systems, liveness tests are needed. While various liveness tests exist,
-    some require specialized hardware and are therefore not suitable. This project aims to select the most suitable methods for
-    a web facial authentication system, and analyze their effectiveness in terms of security. A liveness test is suitable if it
+    some require specialised hardware and are therefore not suitable. This project aims to select the most suitable methods for
+    a web facial authentication system, and analyse their effectiveness in terms of security. A liveness test is suitable if it
     uses only one built-in camera (found within laptops in the webcam, or in mobile devices as the front camera), and potentially
     the device screen (which varies in size depending on the device used), and can be done in near real time.
     \paragraph{Preliminary Preparation}

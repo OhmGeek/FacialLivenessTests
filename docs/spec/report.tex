@@ -33,16 +33,26 @@
         \end{itemize}
     \paragraph{Minimum Objectives}
         \begin{itemize}
-            \item Build the test framework, to test using several different datasets and different methods, comparing them.
+            \item Build the test framework, to test using several different datasets and liveness tests.
             \item Implement the image quality based liveness test.
+            \item Train the classifier used within the image quality based liveness test.
+            \item Evaluate the image quality liveness test.
         \end{itemize}
     \paragraph{Intermediate Objectives}
         \begin{itemize}
-            \item Implement the eye tracking liveness method.
+            \item Implement the eye tracking liveness test.
+            \item Train the eye tracking liveness test classifier.
+            \item Evaluate the eye tracking liveness test.
             \item Implement the CNN based liveness method (involving texture and temporal metrics).
+            \item Train the CNN based liveness method classifier.
+            \item Evaluate the CNN based liveness method.
+            \item Compare all implemented methods together.
         \end{itemize}
     \paragraph{Advanced Objectives}
         \begin{itemize}
+            \item Implement a consolodation layer, combining the metrics above through a classifier.
+            \item Train the consolodation layer classifier
+            \item Evaluate the performance of the consolodation layer compared to each method individually
             \item Implement the facial flashing liveness test.
         \end{itemize}
     \paragraph{References}

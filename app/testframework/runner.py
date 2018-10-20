@@ -7,7 +7,7 @@ class TestRunner:
         self._tests = tests
         self._data = data
 
-    def run():
+    def run(self):
         """ 
         run a set of tests, on a set of models, with a set of datasets 
         

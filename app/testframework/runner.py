@@ -1,6 +1,6 @@
-
 class TestRunner:
     """ Run tests on a set of models """
+
     def __init__(self, logger, models, tests, data):
         """
         Create an instance of a test running

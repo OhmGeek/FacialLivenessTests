@@ -1,13 +1,20 @@
-
 class TestRunner:
     """ Run tests on a set of models """
+
     def __init__(self, logger, models, tests, data):
+        """
+        Create an instance of a test running
+        :param logger: A logging object to log the execution.
+        :param models: A list of models to test.
+        :param tests: A list of tests to execution on the models.
+        :param data: A set of data to use.
+        """
         self._logger = logger
         self._models = models
         self._tests = tests
         self._data = data
 
-    def run():
+    def run(self):
         """ 
         run a set of tests, on a set of models, with a set of datasets 
         
@@ -23,7 +30,7 @@ class TestRunner:
             model_counter = 0
             for model in self._models:
                 self._logger.info("Executing for model %d of %d" % (model_counter, len(self._models)))
-                outcome = test.run(model, data)
+                outcome = test.run(model, self._data)
                 test_outcome.append(outcome)
             outcomes.append(test_outcome)
         self._logger.info("Finished logging")

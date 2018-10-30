@@ -5,17 +5,6 @@ class ModelNotValidError(Exception):
     pass
 
 
-class TestDummyCase(GenericTest):
-    def run(self, model, data):
-        # First, make sure the given model is actually a liveness test. If not, break.
-        if not isinstance(model, typeof(AbstractLivenessTest)):
-            raise ModelNotValidError()
-
-        # get the model output
-        output = model.evaluate(data)
-
-        # return outcome from the model.
-        return output
 
 class GenericTest(ABC):
     """ A generic implementation of a test """
@@ -30,3 +19,15 @@ class GenericTest(ABC):
     @abstractmethod
     def run(self, model, data):
         pass
+
+class TestDummyCase(GenericTest):
+    def run(self, model, data):
+        # First, make sure the given model is actually a liveness test. If not, break.
+        if not isinstance(model, typeof(AbstractLivenessTest)):
+            raise ModelNotValidError()
+
+        # get the model output
+        output = model.evaluate(data)
+
+        # return outcome from the model.
+        return output

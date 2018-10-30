@@ -10,14 +10,14 @@ def main():
     logging.basicConfig(level=logging.INFO)
 
     print("Running test.py")
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa")
-    dataset.pre_process()
-    data = dataset.get_all_datasets()
+    # dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa")
+    # dataset.pre_process()
+    # data = dataset.get_all_datasets()
 
     models = [DummyLivenessTest(logging.getLogger("root.liveness.generic.DummyLivenessTest"))]
     tests = [TestDummyCase(logging.getLogger("c.o.testframework.tests.TestDummyCase"))]
 
-    test_runner = TestRunner(logging.getLogger("c.o.testframework.runner"), models, tests, data)
+    test_runner = TestRunner(logging.getLogger("c.o.testframework.runner"), models, tests, ["data"])
 
     test_runner.run()
     

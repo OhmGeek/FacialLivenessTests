@@ -23,7 +23,7 @@ class GenericTest(ABC):
 class TestDummyCase(GenericTest):
     def run(self, model, data):
         # First, make sure the given model is actually a liveness test. If not, break.
-        if not isinstance(model, typeof(AbstractLivenessTest)):
+        if not isinstance(model, AbstractLivenessTest):
             raise ModelNotValidError()
 
         # get the model output

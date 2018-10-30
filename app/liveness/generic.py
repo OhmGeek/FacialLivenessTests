@@ -1,17 +1,5 @@
 from abc import ABC, abstractmethod
 
-class DummyLivenessTest(ABC):
-    def __init__(self,logger):
-        self._logger = logger
-        super().__init__()
-
-    def evaluate(self, input):
-        # First, log the input to test.
-        val = str(input)
-        self._logger.info("Data input: %s" % val)
-
-        # Return the input as the output for unit test sake.
-        return input
 
 class AbstractLivenessTest(ABC):
     def __init__(self, logger):
@@ -26,3 +14,13 @@ class AbstractLivenessTest(ABC):
             :param input - a specific input image to test.
         """
         pass
+
+
+class DummyLivenessTest(AbstractLivenessTest):
+    def evaluate(self, input):
+        # First, log the input to test.
+        val = str(input)
+        self._logger.info("Data input: %s" % val)
+
+        # Return the input as the output for unit test sake.
+        return input

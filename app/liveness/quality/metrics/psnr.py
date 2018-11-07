@@ -3,8 +3,8 @@ Peak Signal to Noise Ratio
 """
 import numpy as np
 
-from app.liveness.quality.metrics.generic import AbstractQualityMetric
-from app.liveness.quality.metrics.mse import MeanSquaredErrorMetric
+from metrics.generic import AbstractQualityMetric
+from metrics.mse import MeanSquaredErrorMetric
 
 
 class PeakSignalToNoiseRatioMetric(AbstractQualityMetric):
@@ -13,7 +13,7 @@ class PeakSignalToNoiseRatioMetric(AbstractQualityMetric):
 
         mse = mse_metric.calculate(image, blurred_image)
 
-        max_image_squared_val = np.squared(image).max()
+        max_image_squared_val = np.square(image).max()
 
         psnr = 10 * np.log(max_image_squared_val / mse)
 

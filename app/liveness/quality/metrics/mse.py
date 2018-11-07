@@ -1,7 +1,7 @@
 """
 Mean Squared Error
 """
-from app.liveness.quality.metrics.generic import AbstractQualityMetric
+from metrics.generic import AbstractQualityMetric
 import numpy as np
 
 

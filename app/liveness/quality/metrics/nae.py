@@ -3,7 +3,7 @@ Normalised Absolute Error
 """
 import numpy as np
 
-from app.liveness.quality.metrics.generic import AbstractQualityMetric
+from metrics.generic import AbstractQualityMetric
 
 
 class NormalisedAbsoluteErrorMetric(AbstractQualityMetric):

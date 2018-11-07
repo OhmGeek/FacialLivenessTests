@@ -10,9 +10,7 @@ import cv2
 import logging
 def main():
     logger = logging.getLogger()
-    # NormalisedCrossCorrelationMetric(logger)
-    # MaximumDifferenceMetric, MeanSquaredErrorMetric,  NormalisedAbsoluteErrorMetric, NormalisedCrossCorrelationMetric, PeakSignalToNoiseRatioMetric, StructuralContentMetric, SignalToNoiseRatioMetric
-    metrics = [MaximumDifferenceMetric(logger), MeanSquaredErrorMetric(logger),  NormalisedAbsoluteErrorMetric(logger), PeakSignalToNoiseRatioMetric(logger), StructuralContentMetric(logger), SignalToNoiseRatioMetric(logger)]
+    metrics = [MaximumDifferenceMetric(logger), MeanSquaredErrorMetric(logger), NormalisedCrossCorrelationMetric(logger),  NormalisedAbsoluteErrorMetric(logger), PeakSignalToNoiseRatioMetric(logger), StructuralContentMetric(logger), SignalToNoiseRatioMetric(logger)]
 
     image = cv2.imread('/home/ryan/datasets/nuaa/ClientRaw/0001/0001_00_00_01_2.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

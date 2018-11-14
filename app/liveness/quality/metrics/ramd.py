@@ -14,5 +14,5 @@ class RAveragedMetric(AbstractQualityMetric):
 
         # Sum all values smaller than or equal to R
         values_to_sum = abs_difference[np.where(abs_difference <= R)]
-
+        
 

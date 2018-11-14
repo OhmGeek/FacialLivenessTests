@@ -15,6 +15,7 @@ def laplacian(x, i, j):
     return math.ceil((x[i+1, j] + x[i-1, j] + x[i, j+1] + x[i, j-1] - (4*x[i,j])))
 
 def laplacian_of_image(image):
+    # TODO: make this faster. This is a bottleneck.
     output = np.zeros_like(image)
     for row_index, row in enumerate(image):
         for col_index, col in enumerate(row):

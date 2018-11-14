@@ -12,12 +12,12 @@ from metrics.gme import GradientMagnitudeErrorMetric
 from metrics.gpe import GradientPhaseErrorMetric
 from metrics.sme import SpectralMagnitudeErrorMetric
 from metrics.spe import SpectralPhaseErrorMetric
+from metrics.tcd import TotalCornerDifferenceMetric
 import cv2
 import logging
 def main():
     logger = logging.getLogger()
-    metrics = [SpectralPhaseErrorMetric(logger), SpectralMagnitudeErrorMetric(logger)]
-
+    metrics = [TotalCornerDifferenceMetric(logger)]
     image = cv2.imread('/home/ryan/datasets/nuaa/ClientRaw/0001/0001_00_00_01_2.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gaussian_image = cv2.GaussianBlur(image,(5,5),0)

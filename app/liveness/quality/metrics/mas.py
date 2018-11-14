@@ -3,16 +3,6 @@ import numpy as np
 
 from metrics.generic import AbstractQualityMetric
 
-def get_angle_of_images(image, blurred_image):
-    scalar_product = np.dot(image, blurred_image)
-    
-    mag_image = np.sqrt(image.dot(image))
-    mag_blurred_image = np.sqrt(blurred_image.dot(blurred_image))
-
-    alpha = (2/np.pi) * np.arccos(scalar_product / (mag_image * mag_blurred_image))
-
-    return alpha
-
 class MeanAngleSimilarityMetric(AbstractQualityMetric):
     def calculate(self, image, blurred_image):
         """

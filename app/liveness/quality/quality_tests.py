@@ -6,11 +6,13 @@ from metrics.nxc import NormalisedCrossCorrelationMetric
 from metrics.psnr import PeakSignalToNoiseRatioMetric
 from metrics.sc import StructuralContentMetric
 from metrics.snr import SignalToNoiseRatioMetric
+from metrics.ad import AverageDifferenceMetric
+from metrics.lmse import LaplacianMeanSquaredMetric
 import cv2
 import logging
 def main():
     logger = logging.getLogger()
-    metrics = [MaximumDifferenceMetric(logger), MeanSquaredErrorMetric(logger), NormalisedCrossCorrelationMetric(logger),  NormalisedAbsoluteErrorMetric(logger), PeakSignalToNoiseRatioMetric(logger), StructuralContentMetric(logger), SignalToNoiseRatioMetric(logger)]
+    metrics = [LaplacianMeanSquaredMetric(logger)]
 
     image = cv2.imread('/home/ryan/datasets/nuaa/ClientRaw/0001/0001_00_00_01_2.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

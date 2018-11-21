@@ -24,7 +24,7 @@ class TotalEdgeDifferenceMetric(AbstractQualityMetric):
         """
         # First, use sobel.
         image_grad = cv2.Sobel(image,cv2.CV_64F,1,1,ksize=5)
-        blurred_image = cv2.Sobel(blurred_image,cv2.CV_64F,1,1,ksize=5)
+        blurred_image_grad = cv2.Sobel(blurred_image,cv2.CV_64F,1,1,ksize=5)
 
         np.subtract(image_grad, blurred_image)
 

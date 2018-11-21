@@ -1,7 +1,7 @@
 """ Mean Angle Similarity """
 import numpy as np
 
-from metrics.generic import AbstractQualityMetric
+from liveness.quality.metrics.generic import AbstractQualityMetric
 
 class MeanAngleSimilarityMetric(AbstractQualityMetric):
     def calculate(self, image, blurred_image):

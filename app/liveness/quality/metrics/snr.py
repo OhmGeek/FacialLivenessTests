@@ -1,8 +1,8 @@
 """ Signal to noise ratio"""
 import numpy as np
 
-from metrics.generic import AbstractQualityMetric
-from metrics.mse import MeanSquaredErrorMetric
+from liveness.quality.metrics.generic import AbstractQualityMetric
+from liveness.quality.metrics.mse import MeanSquaredErrorMetric
 
 
 class SignalToNoiseRatioMetric(AbstractQualityMetric):

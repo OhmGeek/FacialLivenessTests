@@ -1,7 +1,7 @@
 """
 Spectral Phase Error
 """
-from metrics.generic import AbstractQualityMetric
+from liveness.quality.metrics.generic import AbstractQualityMetric
 import numpy as np
 import cv2
 

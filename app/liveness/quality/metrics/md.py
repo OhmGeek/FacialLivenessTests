@@ -1,7 +1,7 @@
 """ Maximum Difference """
 import numpy as np
 
-from metrics.generic import AbstractQualityMetric
+from liveness.quality.metrics.generic import AbstractQualityMetric
 
 
 class MaximumDifferenceMetric(AbstractQualityMetric):

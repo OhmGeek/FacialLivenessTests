@@ -7,7 +7,7 @@ where I is the original image, and G is the gaussian blurred image.
 """
 import numpy as np
 
-from metrics.generic import AbstractQualityMetric
+from liveness.quality.metrics.generic import AbstractQualityMetric
 
 
 class NormalisedCrossCorrelationMetric(AbstractQualityMetric):

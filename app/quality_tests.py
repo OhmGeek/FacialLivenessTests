@@ -21,6 +21,7 @@ from liveness.quality.metrics.tcd import TotalCornerDifferenceMetric
 from liveness.quality.metrics.mas import MeanAngleSimilarityMetric
 from liveness.quality.metrics.mams import MeanAngleMagnitudeSimilarityMetric
 from liveness.quality.metrics.jqi import JPEGQualityIndexMetric
+from liveness.quality.metrics.ssim import StructuralSimilarityMetric
 import cv2
 import logging
 def main():
@@ -31,8 +32,8 @@ def main():
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gaussian_image = cv2.GaussianBlur(image,(5,5),0)
 
-    m = JPEGQualityIndexMetric(logger)
-    print(m.calculate(image))
+    m = StructuralSimilarityMetric(logger)
+    print(m.calculate(image, gaussian_image))
 
 
 if __name__ == '__main__':

@@ -13,6 +13,6 @@ class MaximumDifferenceMetric(AbstractQualityMetric):
         :return: the maximum difference
         """
         difference = np.subtract(image, blurred_image)
-        difference = np.absolute(difference)
+        difference = np.abs(difference)
 
         return difference.max()

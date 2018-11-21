@@ -8,7 +8,6 @@ from metrics.sc import   StructuralContentMetric
 from metrics.snr import  SignalToNoiseRatioMetric
 from metrics.ad import   AverageDifferenceMetric
 from metrics.lmse import LaplacianMeanSquaredMetric
-<<<<<<< HEAD
 from metrics.gme import  GradientMagnitudeErrorMetric
 from metrics.gpe import  GradientPhaseErrorMetric
 from metrics.sme import  SpectralMagnitudeErrorMetric
@@ -21,21 +20,20 @@ from metrics.spe import SpectralPhaseErrorMetric
 from metrics.tcd import TotalCornerDifferenceMetric
 from metrics.mas import MeanAngleSimilarityMetric
 from metrics.mams import MeanAngleMagnitudeSimilarityMetric
-
+from metrics.jqi import JPEGQualityIndexMetric
 import cv2
 import logging
 def main():
     logger = logging.getLogger()
 
-    metrics = [MaximumDifferenceMetric(logger),MeanSquaredErrorMetric(logger),NormalisedAbsoluteErrorMetric(logger),NormalisedCrossCorrelationMetric(logger),PeakSignalToNoiseRatioMetric(logger),StructuralContentMetric(logger),SignalToNoiseRatioMetric(logger),AverageDifferenceMetric(logger),LaplacianMeanSquaredMetric(logger),GradientMagnitudeErrorMetric(logger),GradientPhaseErrorMetric(logger),SpectralMagnitudeErrorMetric(logger),SpectralPhaseErrorMetric(logger), TotalCornerDifferenceMetric(logger)]
     image = cv2.imread('/home/ryan/datasets/nuaa/ClientRaw/0001/0001_00_00_02_2.jpg')
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gaussian_image = cv2.GaussianBlur(image,(5,5),0)
-    vector_factory = DefaultMetricVectorCreator(metrics)
 
-    output_vector = vector_factory.create_vector(image, gaussian_image)
-    print(output_vector)
+    m = JPEGQualityIndexMetric(logger)
+    print(m.calculate(image))
+
 
 if __name__ == '__main__':
     main()

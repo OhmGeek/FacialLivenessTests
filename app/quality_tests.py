@@ -23,8 +23,10 @@ from liveness.quality.metrics.mams import MeanAngleMagnitudeSimilarityMetric
 from liveness.quality.metrics.jqi import JPEGQualityIndexMetric
 from liveness.quality.metrics.ssim import StructuralSimilarityMetric
 from liveness.quality.metrics.hlfi import HighLowFrequencyIndexMetric
+from liveness.quality.metrics.niqe import NaturalnessEstimator
 import cv2
 import logging
+
 def main():
     logger = logging.getLogger()
 
@@ -33,9 +35,9 @@ def main():
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gaussian_image = cv2.GaussianBlur(image,(5,5),0)
 
-    m = HighLowFrequencyIndexMetric(logger)
+    m = NaturalnessEstimator(logger)
     print(m.calculate(image))
-
+    print(m.calculate(gaussian_image))
 
 if __name__ == '__main__':
     main()

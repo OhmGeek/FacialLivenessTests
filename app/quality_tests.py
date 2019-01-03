@@ -24,6 +24,7 @@ from liveness.quality.metrics.jqi import JPEGQualityIndexMetric
 from liveness.quality.metrics.ssim import StructuralSimilarityMetric
 from liveness.quality.metrics.hlfi import HighLowFrequencyIndexMetric
 from liveness.quality.metrics.niqe import NaturalnessEstimator
+from liveness.quality.metrics.biqi import BlindImageQualityIndex
 import cv2
 import logging
 
@@ -35,7 +36,7 @@ def main():
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gaussian_image = cv2.GaussianBlur(image,(5,5),0)
 
-    m = NaturalnessEstimator(logger)
+    m = BlindImageQualityIndex(logger)
     print(m.calculate(image))
     print(m.calculate(gaussian_image))
 

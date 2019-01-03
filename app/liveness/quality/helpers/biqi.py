@@ -13,19 +13,20 @@ Returns:
 """
 
 
-import numpy
+import numpy as np
 import pywt
 import math
 import subprocess
 import os
 import sys
 import traceback
-from sklearn import svm
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)) + "/biqi_data")
 
 def gammalist():
     r_gam = []
     gam = []
-    for i in xrange(200, 1001):
+    for i in range(200, 1001):
         num = i / 1000.0
         gam.append(num)
         gamv = math.gamma(1.0/num)*math.gamma(3.0/num)/math.pow(math.gamma(2.0/num), 2)
@@ -38,14 +39,14 @@ def wavedec2(arr):
         r = pywt.dwt2(arr, 'db9')
         return r[1]
     except Exception as e:
-        print "wavedec2 error"
+        print("wavedec2 error")
         raise e
 
 
 def downscale(arr):
     h, w = arr.shape
     newshape = (int(h/2), int(w/2))
-    newarr = numpy.resize(arr, newshape)
+    newarr = np.resize(arr, newshape)
     return newarr
 
 def jpg_quality(arr):
@@ -53,17 +54,17 @@ def jpg_quality(arr):
     if m < 16 or n < 16:
         return -2.0
 
-    arr = arr.astype(numpy.float)
+    arr = arr.astype(np.float)
 
     d_h = arr[:, 1:] - arr[:, :n-1]
-    d_arr = numpy.zeros((m, int(n/8)-1), dtype=numpy.float)
+    d_arr = np.zeros((m, int(n/8)-1), dtype=np.float)
     for i in range(1,int(n/8)-1):
         d_arr[:, i] = d_h[:, i*8-1]
 
-    B_h = (numpy.abs(d_arr)).mean()
-    A_h = (8.0*(numpy.abs(d_h)).mean()-B_h) / 7.0
+    B_h = (np.abs(d_arr)).mean()
+    A_h = (8.0*(np.abs(d_h)).mean()-B_h) / 7.0
 
-    sign_h = numpy.zeros(d_h.shape)
+    sign_h = np.zeros(d_h.shape)
     for i in range(d_h.shape[0]):
         for j in range(d_h.shape[1]):
             if d_h[i,j] > 0:
@@ -78,14 +79,14 @@ def jpg_quality(arr):
     Z_h = (left_sig*right_sig<0).mean()
 
     d_v = arr[1:,:] - arr[:m-1, :]
-    d_arr = numpy.zeros((int(m/8)-1, n), dtype=numpy.float)
+    d_arr = np.zeros((int(m/8)-1, n), dtype=np.float)
     for i in range(1, int(m/8)-1):
         d_arr[i, :] = d_v[i*8-1,:]
 
-    B_v = (numpy.abs(d_arr)).mean()
-    A_v = (8.0*(numpy.abs(d_v)).mean()-B_v) / 7.0
+    B_v = (np.abs(d_arr)).mean()
+    A_v = (8.0*(np.abs(d_v)).mean()-B_v) / 7.0
 
-    sign_v = numpy.zeros(d_v.shape)
+    sign_v = np.zeros(d_v.shape)
     for i in range(d_v.shape[0]):
         for j in range(d_v.shape[1]):
             if d_v[i,j]>0:
@@ -115,7 +116,6 @@ def jpg_quality(arr):
 
 def biqi(arr):
 
-    os.chdir("biqi_data/")
 
     jpeg_score = jpg_quality(arr)
 
@@ -206,7 +206,7 @@ def biqi(arr):
     rep_vector.extend(gam_vert)
     rep_vector.extend(gam_diag)
 
-    with open("test_ind.txt", "wb") as f:
+    with open("test_ind.txt", "w") as f:
         l = "{} ".format(1)
         f.write(l)
         for idx, v in enumerate(rep_vector):
@@ -215,7 +215,6 @@ def biqi(arr):
         f.write("\n")
 
     os.system("svm-scale -r range2 test_ind.txt >> test_ind_scaled")
-    svm.SVC()
     os.system("svm-predict -b 1 test_ind_scaled model_89 output_89")
     os.system("rm -f test_ind_scaled")
 
@@ -256,6 +255,6 @@ def biqi(arr):
     f.close()
     sumprobs = probs[0] + probs[2] + probs[3] + probs[4]
     newprobs = [probs[0] / sumprobs, probs[2] / sumprobs, probs[3] / sumprobs, probs[4] / sumprobs]
-    result = jp2k_score * newprobs[0] + wn_score * newprobs[2] + blur_score * newprobs[3] + ff_score * newprobs[4]
+    result = jp2k_score * newprobs[0] + wn_score * newprobs[1] + blur_score * newprobs[2] + ff_score * newprobs[3]
     return result
 

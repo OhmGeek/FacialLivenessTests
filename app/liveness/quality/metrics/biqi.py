@@ -4,4 +4,4 @@ from liveness.quality.helpers.biqi import biqi
 
 class BlindImageQualityIndex(AbstractNoReferenceQualityMetric):
     def calculate(self, image):
-        return biqi(image)  
+        return biqi(image)

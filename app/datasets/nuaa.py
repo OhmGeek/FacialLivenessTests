@@ -4,6 +4,7 @@ import cv2
 import glob
 import h5py
 from os.path import isfile as check_file_exists
+from os.path import dirname, realpath
 
 class PreprocessingIncompleteError(Exception):
     """ An error to be raised when preprocessing hasn't been executed """
@@ -11,7 +12,6 @@ class PreprocessingIncompleteError(Exception):
 
 
 class NUAADataset(Dataset):
-    _filename = ...  # type: str
 
     def __init__(self, logger, filename, labels=["ImposterRaw", "ClientRaw"]):
         """
@@ -22,7 +22,7 @@ class NUAADataset(Dataset):
         self._filename = filename
         self._labels = labels
         self._datasets = None
-        self._output_filename = '../datasets/nuaa/nuaa.h5'
+        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/nuaa/nuaa.h5'
         super().__init__()
 
     def pre_process(self):
@@ -42,9 +42,14 @@ class NUAADataset(Dataset):
                 label_images = []
 
                 # For each label, go through all the files in the directory/classification.
+                counter = 0
                 for img_filename in glob.iglob(self._filename + '/%s/**/*.jpg' % label):
+                    counter += 1
                     img = cv2.imread(img_filename)
                     label_images.append(img)
+
+                    if counter > 100:
+                        break
                 # Now images are created and stored in the dataset.
                 dataset = hf.create_dataset(label, data=label_images)
                 self._logger.info("Dataset created")
@@ -57,4 +62,16 @@ class NUAADataset(Dataset):
             self._logger.error("Preprocessing wasn't executed. Therefore, no datasets are loaded.")
             raise PreprocessingIncompleteError()
         return self._datasets
+
+    def read_dataset(self, label):
+        if(self._datasets is None):
+            self._logger.error("Preprocessing not executed.")
+            raise PreprocessingIncompleteError()
+
+        output = None
+        with h5py.File(self._output_filename, 'r') as h5_file:
+            output = h5_file[label][:]
+        
+        return output
+
 

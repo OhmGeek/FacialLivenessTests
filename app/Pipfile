@@ -9,6 +9,7 @@ numpy = "*"
 opencv-python = "*"
 scikit-image = "*"
 pywavelets = "*"
+pypyrtools = "*"
 
 [requires]
 python_version = "3.5"

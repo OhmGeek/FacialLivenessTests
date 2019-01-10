@@ -12,6 +12,7 @@ pywavelets = "*"
 pypyrtools = "*"
 sklearn = "*"
 "h5py" = "*"
+keras = "*"
 
 [requires]
 python_version = "3.5"

@@ -10,6 +10,8 @@ opencv-python = "*"
 scikit-image = "*"
 pywavelets = "*"
 pypyrtools = "*"
+sklearn = "*"
+"h5py" = "*"
 
 [requires]
 python_version = "3.5"

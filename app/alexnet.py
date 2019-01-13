@@ -1,12 +1,20 @@
 import keras
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling2D
+from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling2D, Lambda
 from keras.layers.normalization import BatchNormalization
 import numpy as np
+import cv2
+
+def image_resize(img):
+    return cv2.resize(img, (224, 224))
 
 def create_model():
     # First, create an empty sequential model.
     model = Sequential()
+
+    # First, image resize layer (take any dimensional image down to 224 x 224 with 3 channels).
+    # we do this by creating a lambda (through the predefined function above)
+    model.add(Lambda(image_size))
 
     # 1st Conv Layer
     model.add(Conv2D(filters=96, input_shape=(224,224,3), kernel_size=(11,11), strides=(4,4), padding='valid'))

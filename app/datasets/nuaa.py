@@ -36,7 +36,6 @@ class NUAADataset(Dataset):
             return
 
         with h5py.File(self._output_filename, 'w') as hf:
-
             for label in self._labels:
                 self._logger.info("Start looking at label %s in dataset." % label)
                 label_images = []

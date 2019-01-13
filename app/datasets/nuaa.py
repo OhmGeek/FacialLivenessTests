@@ -21,6 +21,7 @@ class NUAADataset(Dataset):
         self._logger = logger
         self._filename = filename
         self._labels = labels
+        self._is_file_open = False
         self._datasets = None
         self._output_filename = dirname(realpath(__file__)) + '/../../datasets/nuaa/nuaa.h5'
         super().__init__()
@@ -57,15 +58,26 @@ class NUAADataset(Dataset):
             raise PreprocessingIncompleteError()
         return self._datasets
 
+    def _open_file(self):
+        self._h5_file = h5py.File(self._output_filename, 'r')
+        self._is_file_open = True
+
     def read_dataset(self, label):
         if(self._datasets is None):
             self._logger.error("Preprocessing not executed.")
             raise PreprocessingIncompleteError()
 
         output = None
-        with h5py.File(self._output_filename, 'r') as h5_file:
-            output = h5_file[label][:]
+        
+        if(not self._is_file_open):
+            self._open_file()
+        
+        output = self._h5_file[label]
         
         return output
 
+    def close(self):
+        if(self._is_file_open):
+            self._h5_file.close()
+    
 

@@ -107,11 +107,12 @@ def main():
     client_set = dataset.read_dataset("ClientRaw")
     client_y = np.repeat([0.0, 1.0], client_set.shape[0])
 
+    # Merge the two, and create the final sets.
+    x = np.concatenate((imposter_set, client_set))
+    y = np.concatenate((imposter_y, client_y))
+
     # Train the model on our training set.
     model.fit(x, y, batch_size=64, epochs=1, verbose=1, validation_split=0.2, shuffle=True)
-
-
-
 
 if __name__ == "__main__":
     main()

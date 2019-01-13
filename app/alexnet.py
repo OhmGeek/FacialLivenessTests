@@ -1,9 +1,11 @@
+import logging
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling2D, Lambda
 from keras.layers.normalization import BatchNormalization
 import numpy as np
 import cv2
+from datasets.nuaa import NUAADataset
 
 def image_resize(img):
     return cv2.resize(img, (224, 224))
@@ -82,16 +84,34 @@ def create_model():
 
     return model
 
-# First, fetch the two distinct sets of data.
-# Two neurons: [1.0, 0.0] -> fake, [0.0, 1.0] -> real
-# For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
-# Now create the CNN model
-model = create_model()
+def main():
+    # First, fetch the two distinct sets of data.
+    # Two neurons: [1.0, 0.0] -> fake, [0.0, 1.0] -> real
+    # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
-model.summary()
+    # Now create the CNN model
+    model = create_model()
 
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.summary()
 
-# Train the model on our training set.
-# model.fit(x, y, batch_size=64, epochs=1, verbose=1, validation_split=0.2, shuffle=True)
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+    # Now create the training set.
+    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa/")
+    dataset.pre_process()
+
+    imposter_set = dataset.read_dataset("ImposterRaw")
+    imposter_y = np.repeat([1.0, 0.0], imposter_set.shape[0])
+
+    client_set = dataset.read_dataset("ClientRaw")
+    client_y = np.repeat([0.0, 1.0], client_set.shape[0])
+
+    # Train the model on our training set.
+    model.fit(x, y, batch_size=64, epochs=1, verbose=1, validation_split=0.2, shuffle=True)
+
+
+
+
+if __name__ == "__main__":
+    main()

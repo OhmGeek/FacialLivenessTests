@@ -116,5 +116,7 @@ def main():
     # Train the model on our training set.
     model.fit(x, y, batch_size=64, epochs=5, verbose=1, validation_split=0.7, shuffle=True)
 
+    dataset.close() # Important, to close the file.
+
 if __name__ == "__main__":
     main()

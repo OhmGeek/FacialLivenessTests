@@ -11,19 +11,21 @@ class PreprocessingIncompleteError(Exception):
     pass
 
 
-class NUAADataset(Dataset):
-    # TODO export labels to a separate mapper.
-    def __init__(self, logger, filename, labels=["ImposterRaw", "ClientRaw"]):
+class ReplayAttackDataset(Dataset):
+    # TODO export labels to some map (so we can understand what real/attack are in terms of other datasets.)
+    def __init__(self, logger, filename, mode='devel', labels=["real", "attack"]):
         """
         Initialise the dataset
         :param filename: the location of the extracted dataset on disk (the root folder).
+        :param mode: the mode (e.g. devel, test, etc)
+        :param labels: the output labels we expect (real, attack)
         """
         self._logger = logger
         self._filename = filename
         self._labels = labels
         self._is_file_open = False
         self._datasets = None
-        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/nuaa/nuaa.h5'
+        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/replayAttackDB/replayAttack.h5'
         super().__init__()
 
     def pre_process(self):
@@ -36,16 +38,20 @@ class NUAADataset(Dataset):
             self._logger.info("File exists, so finish preprocessing early.")
             return
 
+        raise NotImplementedError()
         with h5py.File(self._output_filename, 'w') as hf:
             for label in self._labels:
                 self._logger.info("Start looking at label %s in dataset." % label)
                 label_images = []
-
-                # For each label, go through all the files in the directory/classification.
-                for img_filename in glob.iglob(self._filename + '/%s/**/*.jpg' % label):
-                    img = cv2.imread(img_filename)
-                    label_images.append(img)
-                # Now images are created and stored in the dataset.
+                for vid_filename in glob.iglob(self._filename + '/%s/**/*.mov' % label):
+                    vidcap = cv2.VideoCapture(vid_filename)
+                    count = 0
+                    while vidcap.isOpened():
+                        success, image = vidcap.read()
+                        if(success and count % 20 == 0):
+                            count += 1
+                            label_images.append(image)
+                    vidcap.release()
                 dataset = hf.create_dataset(label, data=label_images)
                 self._logger.info("Dataset created")
                 self._datasets.append(dataset)

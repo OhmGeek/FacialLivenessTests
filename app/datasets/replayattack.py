@@ -21,37 +21,49 @@ class ReplayAttackDataset(Dataset):
         :param labels: the output labels we expect (real, attack)
         """
         self._logger = logger
-        self._filename = filename
+        self._filename = filename + 'replayattack-' + mode + '/' + mode
         self._labels = labels
         self._is_file_open = False
         self._datasets = None
-        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/replayAttackDB/replayAttack.h5'
+        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/replay-attack/replayAttack.h5'
+        print(self._output_filename)
         super().__init__()
 
     def pre_process(self):
         """Pre-process the dataset."""
         # First, load imposter images.
         self._datasets = []
+        print(self._filename)
 
         # If a training set exists, don't try to start again from scratch.
-        if check_file_exists(self._output_filename):
-            self._logger.info("File exists, so finish preprocessing early.")
-            return
+        # if check_file_exists(self._output_filename):
+        #     self._logger.info("File exists, so finish preprocessing early.")
+        #     return
 
-        raise NotImplementedError()
         with h5py.File(self._output_filename, 'w') as hf:
             for label in self._labels:
                 self._logger.info("Start looking at label %s in dataset." % label)
                 label_images = []
-                for vid_filename in glob.iglob(self._filename + '/%s/**/*.mov' % label):
+                # Go through each video
+                glob_arg = self._filename + '/%s/**/*.mov' % label
+                print(glob_arg)
+                for vid_filename in glob.iglob(glob_arg, recursive=True):
+                    print(vid_filename)
                     vidcap = cv2.VideoCapture(vid_filename)
                     count = 0
+                    # Capture each 20 frames within the video, saving them as label images.
                     while vidcap.isOpened():
                         success, image = vidcap.read()
-                        if(success and count % 20 == 0):
-                            count += 1
+                        count += 1
+                        if(success and count % 30 == 0):
+                            print(count)
+                            count = 0
                             label_images.append(image)
+                        if not success:
+                            break
                     vidcap.release()
+                    print("Released.")
+                # save to the dataset.
                 dataset = hf.create_dataset(label, data=label_images)
                 self._logger.info("Dataset created")
                 self._datasets.append(dataset)

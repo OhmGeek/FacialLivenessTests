@@ -18,9 +18,9 @@ def create_model():
     # First, image resize layer (take any dimensional image down to 224 x 224 with 3 channels).
     # we do this by creating a lambda (through the predefined function above)
     # model.add(Lambda(image_resize))
-    model.add(Lambda(lambda x: tf.image.resize_images(x,[224,224]), input_shape=(None,None,3)))
+    model.add(Lambda(lambda x: tf.image.resize_images(x,[320,240]), input_shape=(None,None,3)))
     # 1st Conv Layer
-    model.add(Conv2D(filters=96, input_shape=(224,224,3), kernel_size=(11,11), strides=(4,4), padding='valid'))
+    model.add(Conv2D(filters=96, input_shape=(320,240,3), kernel_size=(11,11), strides=(4,4), padding='valid'))
     model.add(Activation('relu'))
 
     # Max pooling
@@ -60,7 +60,7 @@ def create_model():
     model.add(Flatten())
 
     # 1st Dense Layer
-    model.add(Dense(4096, input_shape=(224*224*3,)))
+    model.add(Dense(4096, input_shape=(320*240*3,)))
     model.add(Activation('relu'))
 
     model.add(Dropout(0.4))
@@ -95,7 +95,7 @@ def main():
     model = create_model()
 
 
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy', 'categorical_accuracy'])
     model.build()
     model.summary()
 
@@ -103,10 +103,10 @@ def main():
     dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("ImposterRaw")
+    imposter_set = dataset.read_dataset("attack")
     imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
 
-    client_set = dataset.read_dataset("ClientRaw")
+    client_set = dataset.read_dataset("real")
     client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
 
     # Merge the two, and create the final sets.
@@ -114,7 +114,7 @@ def main():
     y = np.concatenate((imposter_y, client_y))
 
     # Train the model on our training set.
-    model.fit(x, y, batch_size=64, epochs=5, verbose=1, validation_split=0.7, shuffle=True)
+    model.fit(x, y, batch_size=8, epochs=5, verbose=1, validation_split=0.33, shuffle=True)
 
     dataset.close() # Important, to close the file.
 

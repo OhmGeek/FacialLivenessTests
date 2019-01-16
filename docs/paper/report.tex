@@ -56,9 +56,6 @@ Facial liveness, convolutional neural networks, image quality metrics
     detected, and several confirmation methods to ensure the user is indeed who they say they are (and not just someone spoofing the system).
     Before such a system is developed, a facial liveness testing method must be found that operated in near real-time, and that is fairly accurate.
 
-    % TODO: maybe remove this part, if we don't get that far.
-    Furthermore, some communication scheme between a public device (e.g. client-side web browser code, that can be accessed), and the liveness system, must be present
-    in order to ensure facial spoofing isn't present on the client input (reusing the same image).
 
 \section{Related Work}
     TODO related Work
@@ -66,6 +63,22 @@ Facial liveness, convolutional neural networks, image quality metrics
 
 \section{Solution}
     % Solution to the problem
+
+    \subsection{A system for preventing 3D spoofing attacks}
+        While the systems before might go partially towards preventing 3D spoofing attacks, we now propose a method
+        that is designed for classifying facial liveness based on a 3D point cloud.
+
+        \subsubsection{Point Cloud Reconstruction}
+            In order to classify an image/video, a 3D point cloud needs to be created, containing many 3D points $(x,y,z)$
+            of a user's face. With video, producing this 3D point cloud is fairly easy, using Structure from Motion.
+
+            However, some information may not necessarily be known, such as camera information, so this could prove more tricky.
+            
+
+            TODO: confirm what method we'll use (leaning towards 3D reconstruction)
+
+        \subsubsection{3D point cloud classification}
+            An architecture called PointNet can then be used, being passed the 3D point information. This can then be used to classify.
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     TODO results
@@ -74,8 +87,15 @@ Facial liveness, convolutional neural networks, image quality metrics
     % what are the uses of our research? e.g. influence and improve the design of xyz...
     TODO evaluation
 
+
+    % Improvements:
+    % 3D attacks more difficult. One could extend this method using 3D reconstruction (sfm based on videos)
+    % then recovering 3D details, and using these as input features.
+    % this would allow for 3D reconstruction to some extent. Would require video input.
 \section{Conclusions}
     % overall, what did hte projct show?
+
+
 \bibliographystyle{dinat}
 \bibliography{report}
 

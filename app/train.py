@@ -79,6 +79,6 @@ def main():
     model = QualitySVMModel()
     # Evaluate on testing set
     model.train(train_vectors, train_outputs)
-
+    print(model.evaluate(train_vectors, train_outputs))
 if __name__ == "__main__":
     main()

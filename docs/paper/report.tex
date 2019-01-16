@@ -46,8 +46,19 @@ Facial liveness, convolutional neural networks, image quality metrics
 \end{keywords}
 
 \section{Introduction}
-    TODO introduction.
     % What is the project about?
+    Currently, username and password authentication is commonplace throughout the web. However, username and password
+    based authentication systems have a number of problems. Some common passwords can be broken using dictionary attacks,
+    especially if they consist partially or entirely of a word in a standard dictionary. Furthermore, the process of shoulder surfing is possible (watching out
+    for someone's password, and how they type it).
+
+    An easy to use system is necessary to remove the choice from the user (in terms of password), relying on the user being automatically
+    detected, and several confirmation methods to ensure the user is indeed who they say they are (and not just someone spoofing the system).
+    Before such a system is developed, a facial liveness testing method must be found that operated in near real-time, and that is fairly accurate.
+
+    % TODO: maybe remove this part, if we don't get that far.
+    Furthermore, some communication scheme between a public device (e.g. client-side web browser code, that can be accessed), and the liveness system, must be present
+    in order to ensure facial spoofing isn't present on the client input (reusing the same image).
 
 \section{Related Work}
     TODO related Work
@@ -55,7 +66,6 @@ Facial liveness, convolutional neural networks, image quality metrics
 
 \section{Solution}
     % Solution to the problem
-    TODO solution
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     TODO results

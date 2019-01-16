@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  16 JAN 2019 10:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  16 JAN 2019 10:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -154,21 +154,23 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 44.
+ (./report.bbl
 
-No file report.bbl.
-[1
+Package natbib Warning: Empty `thebibliography' environment on input line 10.
+
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2102 strings out of 493013
- 29224 string characters out of 6135682
+ 2105 strings out of 493013
+ 29256 string characters out of 6135682
  90385 words of memory out of 5000000
- 5633 multiletter control sequences out of 15000+600000
+ 5634 multiletter control sequences out of 15000+600000
  13798 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,4n,25p,347b,151s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on report.pdf (1 page, 36396 bytes).
+Output written on report.pdf (1 page, 36547 bytes).
 PDF statistics:
  21 PDF objects out of 1000 (max. 8388607)
  14 compressed objects within 1 object stream

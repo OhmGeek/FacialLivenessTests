@@ -21,7 +21,6 @@ img = np.swapaxes(img, 2, 1)
 img = np.array([img])
 
 pred = model.predict(img)
-print(pred.shape)
 vol = pred[0] * 255
 im = img[0]
 im = np.swapaxes(im, 0, 1)
@@ -30,7 +29,20 @@ im = np.swapaxes(im, 1, 2)
 volRGB = np.stack(((vol > 1) * im[:,:,0],
                    (vol > 1) * im[:,:,1],
                    (vol > 1) * im[:,:,2]), axis=3)
+# for i, p in enumerate(volRGB[80:180:5]):
+#     plt.subplot(5, 4, i + 1)
+#     plt.imshow(p)
 
-for i, p in enumerate(volRGB[80:180:5]):
-    plt.subplot(5, 4, i + 1)
-    plt.imshow(p)
+
+vv.clf()
+
+v = vv.volshow(volRGB, renderStyle='iso')
+
+l0 = vv.gca()
+l0.light0.ambient = 0.9 # 0.2 is default for light 0
+l0.light0.diffuse = 1.0 # 1.0 is default
+
+a = vv.gca()
+a.camera.fov = 0 # orthographic
+
+vv.use().Run()

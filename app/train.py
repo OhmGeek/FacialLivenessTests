@@ -80,6 +80,6 @@ def main():
     model = QualitySVMModel()
     # Evaluate on testing set
     model.train(train_vectors, train_outputs)
-
+    model.save()
 if __name__ == "__main__":
     main()

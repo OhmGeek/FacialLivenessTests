@@ -36,9 +36,9 @@ class ReplayAttackDataset(Dataset):
         print(self._filename)
 
         # If a training set exists, don't try to start again from scratch.
-        # if check_file_exists(self._output_filename):
-        #     self._logger.info("File exists, so finish preprocessing early.")
-        #     return
+        if check_file_exists(self._output_filename):
+            self._logger.info("File exists, so finish preprocessing early.")
+            return
 
         with h5py.File(self._output_filename, 'w') as hf:
             for label in self._labels:
@@ -55,7 +55,7 @@ class ReplayAttackDataset(Dataset):
                     while vidcap.isOpened():
                         success, image = vidcap.read()
                         count += 1
-                        if(success and count % 30 == 0):
+                        if(success and count % 10 == 0):
                             print(count)
                             count = 0
                             label_images.append(image)

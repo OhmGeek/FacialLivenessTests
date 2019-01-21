@@ -45,7 +45,7 @@ def main():
     vector_creator = DefaultMetricVectorCreator(metrics)
 
     print("Running test.py")
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa/")
+    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ohmgeek_default/datasets/nuaa/")
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("ImposterRaw")
@@ -78,7 +78,15 @@ def main():
     
     model = QualitySVMModel()
     # Evaluate on testing set
+    print("Now training")
     model.train(train_vectors, train_outputs)
-    print(model.evaluate(train_vectors, train_outputs))
+    print("Trained.")
+    print("")
+    print("Now saving")
+    model.save()
+    print("Saved.")
+    print("")
+    print("Output Results:")
+    print(model.test(train_vectors, train_outputs))
 if __name__ == "__main__":
     main()

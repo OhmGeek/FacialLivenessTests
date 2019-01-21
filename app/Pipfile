@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 name = "pypi"
 
 [packages]
-pyvideoquality = {editable = true, ref = "v0.1.0-beta.5", git = "https://github.com/OhmGeek/video-quality.git"}
+pyvideoquality = {ref = "v0.1.0-beta.5",editable = true,git = "https://github.com/OhmGeek/video-quality.git"}
 numpy = "*"
 opencv-python = "*"
 scikit-image = "*"

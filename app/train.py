@@ -88,5 +88,6 @@ def main():
     print("")
     print("Output Results:")
     print(model.test(train_vectors, train_outputs))
+
 if __name__ == "__main__":
     main()

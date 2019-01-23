@@ -1,0 +1,5 @@
+With SVM training:
+Accuracy was 0.4791666666666667
+
+We can (and must) do better.
+

@@ -11,25 +11,29 @@ class PreprocessingIncompleteError(Exception):
     pass
 
 
-class NUAADataset(Dataset):
-    # TODO export labels to a separate mapper.
-    def __init__(self, logger, filename, labels=["ImposterRaw", "ClientRaw"]):
+class ReplayAttackDataset(Dataset):
+    # TODO export labels to some map (so we can understand what real/attack are in terms of other datasets.)
+    def __init__(self, logger, filename, mode='devel', labels=["real", "attack"]):
         """
         Initialise the dataset
         :param filename: the location of the extracted dataset on disk (the root folder).
+        :param mode: the mode (e.g. devel, test, etc)
+        :param labels: the output labels we expect (real, attack)
         """
         self._logger = logger
-        self._filename = filename
+        self._filename = filename + 'replayattack-' + mode + '/' + mode
         self._labels = labels
         self._is_file_open = False
         self._datasets = None
-        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/nuaa/nuaa.h5'
+        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/replay-attack/replayAttack.h5'
+        print(self._output_filename)
         super().__init__()
 
     def pre_process(self):
         """Pre-process the dataset."""
         # First, load imposter images.
         self._datasets = []
+        print(self._filename)
 
         # If a training set exists, don't try to start again from scratch.
         if check_file_exists(self._output_filename):
@@ -40,12 +44,26 @@ class NUAADataset(Dataset):
             for label in self._labels:
                 self._logger.info("Start looking at label %s in dataset." % label)
                 label_images = []
-
-                # For each label, go through all the files in the directory/classification.
-                for img_filename in glob.iglob(self._filename + '/%s/**/*.jpg' % label):
-                    img = cv2.imread(img_filename)
-                    label_images.append(img)
-                # Now images are created and stored in the dataset.
+                # Go through each video
+                glob_arg = self._filename + '/%s/**/*.mov' % label
+                print(glob_arg)
+                for vid_filename in glob.iglob(glob_arg, recursive=True):
+                    print(vid_filename)
+                    vidcap = cv2.VideoCapture(vid_filename)
+                    count = 0
+                    # Capture each 20 frames within the video, saving them as label images.
+                    while vidcap.isOpened():
+                        success, image = vidcap.read()
+                        count += 1
+                        if(success and count % 10 == 0):
+                            print(count)
+                            count = 0
+                            label_images.append(image)
+                        if not success:
+                            break
+                    vidcap.release()
+                    print("Released.")
+                # save to the dataset.
                 dataset = hf.create_dataset(label, data=label_images)
                 self._logger.info("Dataset created")
                 self._datasets.append(dataset)

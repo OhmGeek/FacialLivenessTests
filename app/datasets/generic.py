@@ -13,3 +13,9 @@ class Dataset(ABC):
         :return:
         """
         pass
+
+    @abstractmethod
+    def close(self):
+        """Close a dataset after use.
+        """
+        pass

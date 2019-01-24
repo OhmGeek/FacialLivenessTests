@@ -1,4 +1,5 @@
 from datasets.nuaa import NUAADataset
+from datasets.replayattack import ReplayAttackDataset
 from liveness.generic import DummyLivenessTest
 from liveness.quality.model import QualitySVMModel, QualityLDAModel
 from testframework.tests import TestDummyCase
@@ -48,8 +49,8 @@ def main():
     dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ohmgeek_default/datasets/nuaa/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("ImposterRaw")
-    client_set = dataset.read_dataset("ClientRaw")
+    imposter_set = dataset.read_dataset("attack")
+    client_set = dataset.read_dataset("real")
     # Divide dataset into train, and test (40%, 60%)
 
     # train_set = np.concatenate((train_set, client_set[:int(client_set.shape[0] / 2)]))

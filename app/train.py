@@ -1,7 +1,7 @@
 from datasets.nuaa import NUAADataset
 from datasets.replayattack import ReplayAttackDataset
 from liveness.generic import DummyLivenessTest
-from liveness.quality.model import QualitySVMModel
+from liveness.quality.model import QualitySVMModel, QualityLDAModel
 from testframework.tests import TestDummyCase
 from testframework.runner import TestRunner
 from liveness.quality.metrics.factory import metric_factory
@@ -63,7 +63,7 @@ def main():
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
             train_vectors.append(vector)
-            train_outputs.append(1.0)
+            train_outputs.append([1.0, 0.0])
         except:
             logger.error("Error while evaluating image.")
 
@@ -73,11 +73,11 @@ def main():
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
             train_vectors.append(vector)
-            train_outputs.append(0.0)
+            train_outputs.append([0.0, 1.0])
         except:
             logger.error("Error while evaluating image")
     
-    model = QualitySVMModel()
+    model = QualityLDAModel()
     # Evaluate on testing set
     print("Now training")
     model.train(train_vectors, train_outputs)

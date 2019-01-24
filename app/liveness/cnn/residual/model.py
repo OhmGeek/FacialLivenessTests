@@ -53,5 +53,5 @@ class ResidualNetwork(object):
         # set model. 
         self._model = model
         self._is_model_created = True
-        
+
         return model

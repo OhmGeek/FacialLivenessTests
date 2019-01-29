@@ -8,13 +8,13 @@ Source: https://gist.github.com/mjdietzx/0cb95922aac14d446a6530f87b3a04ce
 
 from keras import layers
 
-def create_common_layers(y):
+def add_common_layers(y):
     y = layers.BatchNormalization()(y)
     y = layers.LeakyReLU()(y)
 
     return y
 
-def residual_block(y, nb_channels_in, nb_channels_out, _strides=(1, 1), _project_shortcut=False):
+def residual_block(y, nb_channels_in, nb_channels_out, cardinality, _strides=(1, 1), _project_shortcut=False):
     """
     Our network consists of a stack of residual blocks. These blocks have the same topology,
     and are subject to two simple rules:
@@ -28,7 +28,7 @@ def residual_block(y, nb_channels_in, nb_channels_out, _strides=(1, 1), _project
     y = add_common_layers(y)
 
     # ResNeXt (identical to ResNet when `cardinality` == 1)
-    y = grouped_convolution(y, nb_channels_in, _strides=_strides)
+    y = grouped_convolution(y, nb_channels_in, cardinality, _strides)
     y = add_common_layers(y)
 
     y = layers.Conv2D(nb_channels_out, kernel_size=(1, 1), strides=(1, 1), padding='same')(y)
@@ -50,7 +50,7 @@ def residual_block(y, nb_channels_in, nb_channels_out, _strides=(1, 1), _project
 
     return y
 
-def grouped_convolution(y, nb_channels, _strides):
+def grouped_convolution(y, nb_channels, cardinality, _strides):
     # when `cardinality` == 1 this is just a standard convolution
     if cardinality == 1:
         return layers.Conv2D(nb_channels, kernel_size=(3, 3), strides=_strides, padding='same')(y)

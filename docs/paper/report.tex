@@ -58,14 +58,24 @@ Facial liveness, convolutional neural networks, image quality metrics
 
 
 \section{Related Work}
-    TODO related Work
-    % literature review esqe stuff.
-
+    - First basic metrics
+    - image Quality assessment (different types of image quality metrics used ,and why they should be effective). Drawbacks of these
+    - movement based assessment (requiring actions to be performed, and their problems).
+    - Deep Learning methods (what methods exist, their performance)
+    - 3D mask prevention methods (kinect based ones that require 3D input, or SFM, which isn't really valid here)
 \section{Solution}
     % Solution to the problem
+    \subsection{Image Quality Assessment based liveness test}
+        For 2D spoofing attacks, spoofed images are typically lower quality than the real images, and thus by measuring the image quality
+        one can train a classifier to detect real and spoofed images respectively.
+
+        The method used, based on \textbf{CITE the paper we use here}, implements 24 different metrics (with varying differences), and produces
+        a vector for each image. Initially, classification was done using a Support Vector Machine (SVM), but after experimentation this proved to be fairly
+        unreliable (yielding 70\% accuracy on the test set). The classifier was later changed to use Linear Discriminant Analysis (LDA) which yielded a much improved
+        accuracy (96\% accuracy on the test set). \textbf{TODO: give more accuracy figures of accuracy here, I can't remember the exact numbers}.
 
     \subsection{A system for preventing 3D spoofing attacks}
-        While the systems before might go partially towards preventing 3D spoofing attacks, we now propose a method
+        While the systems before might go partially towards preventing 3D spoofing attacks, though primarily considering the 2D image, we now propose a method
         that is designed for classifying facial liveness based on a 3D point cloud.
 
         \subsubsection{Point Cloud Reconstruction}

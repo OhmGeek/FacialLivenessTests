@@ -1,15 +1,16 @@
 # Fdb version 3
-["bibtex report"] 1547638031 "report.aux" "report.bbl" "report" 1547638032
+["bibtex report"] 1547638031 "report.aux" "report.bbl" "report" 1548775787
   "/usr/share/texlive/texmf-dist/bibtex/bst/dinat/dinat.bst" 1136766823 44478 8171722d387d8657f0397923511dcd08 ""
-  "report.aux" 1547638031 1073 7850665c5047dbc80c0ecb5f5b46bd0e ""
-  "report.bcf" 1547633633 95450 938a84bc044b943610d935cf2ea8cec8 ""
-  "report.bib" 1547633260 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "report.aux" 1548775787 1073 7850665c5047dbc80c0ecb5f5b46bd0e ""
+  "report.bcf" 1548775203 95450 938a84bc044b943610d935cf2ea8cec8 ""
+  "report.bib" 1548775203 0 d41d8cd98f00b204e9800998ecf8427e ""
   (generated)
-  "report.bbl"
   "report.blg"
-["pdflatex"] 1547638031 "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" "report.pdf" "report" 1547638032
+  "report.bbl"
+["pdflatex"] 1548775787 "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf" "report" 1548775787
   "/etc/texmf/web2c/texmf.cnf" 1535887058 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" 1547638031 4092 bf9da55e1e55edfb9bc91b17bd159078 ""
+  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux" 1548775787 1073 7850665c5047dbc80c0ecb5f5b46bd0e ""
+  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" 1548775787 4395 11f147efce7acc17f0b05df96b170aa9 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -57,11 +58,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1488610416 31340 0f53f8665296bf8fe6c697f9505e31d8 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1535887270 2044936 0edf5ca64352b50b145b46ea2ee03d92 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1537698701 3870313 5cb597b8f10e7cd23a9b69383e0285c9 ""
-  "durhampaper.sty" 1547633620 2084 f00544ecc21ca7073f5d34970d26a007 ""
-  "report.aux" 1547638031 1073 7850665c5047dbc80c0ecb5f5b46bd0e ""
-  "report.bbl" 1547638031 374 6ade0fcfb6c29aca2b61ca8d484e6cd4 "bibtex report"
-  "report.tex" 1547638031 4092 bf9da55e1e55edfb9bc91b17bd159078 ""
+  "durhampaper.sty" 1548775203 2084 f00544ecc21ca7073f5d34970d26a007 ""
+  "report.aux" 1548775787 1073 7850665c5047dbc80c0ecb5f5b46bd0e ""
+  "report.bbl" 1548775203 374 6ade0fcfb6c29aca2b61ca8d484e6cd4 "bibtex report"
+  "report.tex" 1548775787 4395 11f147efce7acc17f0b05df96b170aa9 ""
   (generated)
   "report.pdf"
-  "report.aux"
+  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.log"
+  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf"
   "report.log"
+  "report.aux"

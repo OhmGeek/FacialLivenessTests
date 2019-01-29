@@ -70,15 +70,17 @@ Facial liveness, convolutional neural networks, image quality metrics
 
         \subsubsection{Point Cloud Reconstruction}
             In order to classify an image/video, a 3D point cloud needs to be created, containing many 3D points $(x,y,z)$
-            of a user's face. With video, producing this 3D point cloud is fairly easy, using Structure from Motion.
-
-            However, some information may not necessarily be known, such as camera information, so this could prove more tricky.
-            
-
-            TODO: confirm what method we'll use (leaning towards 3D reconstruction)
+            of a user's face. While 3d reconstruction is easier with videos (using structure from motion or other multiview based methods),
+            there also exist image-based reconstruction methods such as vrn \textbf{CITE VRN network model here for 3d reconstruction}, which are
+            more specific and designed for reconstructing faces based on images.
 
         \subsubsection{3D point cloud classification}
-            An architecture called PointNet can then be used, being passed the 3D point information. This can then be used to classify.
+            Once the 3D reconstruction is obtained, one can then classify this using some model to produce the fake/real metric.
+
+            For points, PointNet is a model that can be used \textbf{EXPLAIN POINTNET}
+
+            However, as we are using voxels, there is a more specialised architecutre called Voxnet that is designed for classifying
+            3d volume-based objects. This is the model used here.
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     TODO results

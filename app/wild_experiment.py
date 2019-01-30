@@ -1,5 +1,3 @@
-from keras.models import load_model
-from vrn import custom_layers
 import visvis as vv
 import cv2
 import numpy as np
@@ -37,16 +35,16 @@ for i, p in enumerate(volRGB[80:180:5]):
     plt.subplot(5, 4, i + 1)
     plt.imshow(p)
 
+plt.show()
+# vv.clf()
 
-vv.clf()
+# v = vv.volshow(volRGB, renderStyle='iso')
 
-v = vv.volshow(volRGB, renderStyle='iso')
+# l0 = vv.gca()
+# l0.light0.ambient = 0.9 # 0.2 is default for light 0
+# l0.light0.diffuse = 1.0 # 1.0 is default
 
-l0 = vv.gca()
-l0.light0.ambient = 0.9 # 0.2 is default for light 0
-l0.light0.diffuse = 1.0 # 1.0 is default
+# a = vv.gca()
+# a.camera.fov = 0 # orthographic
 
-a = vv.gca()
-a.camera.fov = 0 # orthographic
-
-vv.use().Run()
+# vv.use().Run()

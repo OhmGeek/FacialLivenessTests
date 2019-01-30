@@ -59,3 +59,15 @@ class FaceVoxelBuilder(object):
             Reconstruct a face from 2D -> 3D
         """
         img = preprocess_image_for_builder(image)
+
+        pred = self._model.predict(img)
+        vol = pred[0] * 255
+        im = img[0]
+        im = np.swapaxes(im, 0, 1)
+        im = np.swapaxes(im, 1, 2)
+
+        vol_rgb = np.stack(((vol > 1) * im[:,:,0],
+                        (vol > 1) * im[:,:,1],
+                        (vol > 1) * im[:,:,2]), axis=3)
+
+        return vol_rgb

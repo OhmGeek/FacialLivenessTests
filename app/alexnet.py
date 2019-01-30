@@ -23,7 +23,7 @@ def main():
     # model.summary()
 
     # Now create the training set.
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/")
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/")
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")
@@ -40,8 +40,14 @@ def main():
     model.train(x, y)
 
     dataset = None
+    x = None
+    y = None
+    imposter_set = None
+    imposter_y = None
+    client_set = None
+    client_y = None
     # Now create the training set.
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/nuaa/")
+    dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa/")
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("ImposterRaw")
@@ -53,10 +59,12 @@ def main():
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))
     y = np.concatenate((imposter_y, client_y))
-
+    
+    print(x)
+    print(y)
     score = model.test(x, y)
     print("Final Accuracy is: " + str(score[1]))
-    model.save('alexnet.h5')
+    #model.save('alexnet.h5')
     dataset.close() # Important, to close the file.
 
 if __name__ == "__main__":

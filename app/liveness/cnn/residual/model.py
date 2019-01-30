@@ -27,53 +27,14 @@ class ResidualNetwork(object):
     def test(self, x, y):
         score = self._model.evaluate(x, y, verbose=1)
         return score
+
+    def save(self, pickle_path):
+        with open(pickle_path, 'wb') as f:
+            pickle.dump(self._model, f)
     
     def _create_model(self):
-
-        # # Now create input
-        # y = layers.Input(shape=(None, None, self._nb_channels))
-        # x = layers.Lambda(lambda img: tf.image.resize_images(img,[self._img_width,self._img_height]), input_shape=(None,None,3))(y)
-        # x = layers.Conv2D(64, kernel_size=(7, 7), strides=(2, 2), padding='same')(x)
-        # x = add_common_layers(x)
-
-        # # conv2
-        # x = layers.MaxPool2D(pool_size=(3, 3), strides=(2, 2), padding='same')(x)
-        # for i in range(3):
-        #     project_shortcut = True if i == 0 else False
-        #     x = residual_block(x, 128, 256, self._cardinality, _project_shortcut=project_shortcut)
-
-        # # conv3
-        # for i in range(4):
-        #     # down-sampling is performed by conv3_1, conv4_1, and conv5_1 with a stride of 2
-        #     strides = (2, 2) if i == 0 else (1, 1)
-        #     x = residual_block(x, 256, 512,self._cardinality,_strides=strides)
-
-        # # conv4
-        # for i in range(6):
-        #     strides = (2, 2) if i == 0 else (1, 1)
-        #     x = residual_block(x, 512, 1024,self._cardinality, _strides=strides)
-
-        # # conv5
-        # for i in range(3):
-        #     strides = (2, 2) if i == 0 else (1, 1)
-        #     x = residual_block(x, 1024, 2048,self._cardinality, _strides=strides)
-
-        # x = layers.GlobalAveragePooling2D()(x)
-        # x = layers.Dense(2)(x)
-
-        # model = keras_Model(inputs=[y], outputs=[x])  
-
-        # # set model. 
-        # self._model = model
-        # self._is_model_created = True
-
-        # self._model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy', 'categorical_accuracy'])
-        # self._model.build(input_shape=(None, None, 3))
-        # self._model.summary() ## TODO make this be called seperately.
-
         cnn_model = ResNet50(include_top=False, weights='imagenet', input_shape=None)
  
-        
         final_network = Sequential()
         final_network.add(Lambda(lambda img: tf.image.resize_images(img,[self._img_width,self._img_height]), input_shape=(None,None,3)))
         final_network.add(Lambda(lambda img: tf.image.convert_image_dtype(img, tf.float32)))

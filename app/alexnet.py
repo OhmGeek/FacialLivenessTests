@@ -67,6 +67,6 @@ def main():
     print("Final Accuracy is: " + str(score[1]))
     model.save('alexnet.h5')
     dataset.close() # Important, to close the file.
-
+    
 if __name__ == "__main__":
     main()

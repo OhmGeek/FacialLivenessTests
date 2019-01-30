@@ -4,8 +4,10 @@ from liveness.cnn.residual.model import ResidualNetwork
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling2D, Lambda
 from keras.layers.normalization import BatchNormalization
+from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam
 from keras.engine.input_layer import Input
+from sklearn.utils import shuffle
 import numpy as np
 import cv2
 from datasets.nuaa import NUAADataset
@@ -18,6 +20,8 @@ def main():
 
     # Now create the CNN model
     model = ResidualNetwork(logging.Logger("resnet"))
+  
+    
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
     # model.summary()
@@ -36,6 +40,9 @@ def main():
     x = np.concatenate((imposter_set, client_set))
     y = np.concatenate((imposter_y, client_y))
 
+    print(np.isnan(x).any())
+    print(np.isnan(y).any())
+    x,y = shuffle(x, y)
     # Train the model on our training set.
     model.train(x, y)
 
@@ -53,6 +60,8 @@ def main():
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))
     y = np.concatenate((imposter_y, client_y))
+
+    x,y = shuffle(x, y)
 
     score = model.test(x, y)
     print("Final Accuracy is: " + str(score[1]))

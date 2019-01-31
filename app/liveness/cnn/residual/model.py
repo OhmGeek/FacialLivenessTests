@@ -22,7 +22,7 @@ class ResidualNetwork(object):
         self._is_model_created = False
 
     def train(self, x, y):
-        self._model.fit(x, y, batch_size=8, epochs=1, verbose=1, validation_split=0.33, shuffle=True)
+        self._model.fit(x, y, batch_size=64, epochs=50, verbose=1, validation_split=0.33, shuffle=True)
 
     def test(self, x, y):
         score = self._model.evaluate(x, y, verbose=1)
@@ -43,6 +43,8 @@ class ResidualNetwork(object):
         final_network.add(Dense(2000, activation='relu'))
         final_network.add(Dropout(0.4))
         final_network.add(Dense(1000, activation='relu'))
+        final_network.add(Dropout(0.4))
+        final_network.add(Dense(500, activation='relu'))
         final_network.add(Dropout(0.4))
         final_network.add(Dense(500, activation='relu'))
         final_network.add(Dropout(0.4))

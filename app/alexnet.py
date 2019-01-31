@@ -8,6 +8,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam
 from keras.engine.input_layer import Input
 from sklearn.utils import shuffle
+from sklearn.model_selection import KFold
 import numpy as np
 import cv2
 from datasets.nuaa import NUAADataset
@@ -36,15 +37,36 @@ def main():
     client_set = dataset.read_dataset("real")
     client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
 
+    gen = ImageDataGenerator(horizontal_flip = True,
+                         vertical_flip = True,
+                         width_shift_range = 0.1,
+                         height_shift_range = 0.1,
+                         zoom_range = 0.1,
+                         rotation_range = 20
+                        )
+
+
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))
     y = np.concatenate((imposter_y, client_y))
 
-    print(np.isnan(x).any())
-    print(np.isnan(y).any())
+    k = 10
     x,y = shuffle(x, y)
+    folds = list(KFold(n_splits=k, shuffle=True, random_state=1).split(x, y))
+
     # Train the model on our training set.
-    model.train(x, y)
+    batch_size = 32
+    for j, (train_idx, val_idx) in enumerate(folds):
+        print("Training on fold %d" % j)
+        x_train_cv = x[train_idx]
+        y_train_cv = y[train_idx]
+        x_valid_cv = x[val_idx]
+        y_valid_cv = y[val_idx]
+
+        generator = gen.flow(x_train_cv, y_train_cv, batch_size=batch_size)
+        model.fit_generator(generator, steps_per_epoch=len(x_train_cv)/batch_size, epochs=15, shuffle=True, verbose=1, validation_data=(x_valid_cv, y_valid_cv))
+
+        print(model.test(x_valid_cv, y_valid_cv))
 
     dataset = None
     # Now create the training set.

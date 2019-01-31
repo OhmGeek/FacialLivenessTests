@@ -24,6 +24,9 @@ class ResidualNetwork(object):
     def train(self, x, y):
         self._model.fit(x, y, batch_size=8, epochs=1, verbose=1, validation_split=0.33, shuffle=True)
 
+    def fit_generator(self, generator, steps_per_epoch=None, epochs=1, shuffle=True, verbose=1, validation_data=None):
+        return self._model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=epochs, shuffle=shuffle, verbose=verbose, validation_data=validation_data)
+        
     def test(self, x, y):
         score = self._model.evaluate(x, y, verbose=1)
         return score
@@ -60,7 +63,8 @@ class ResidualNetwork(object):
         self._model = final_network
         self._is_model_created = True
 
-        self._model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'categorical_accuracy'])
+        opt_adam = keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
+        self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'categorical_accuracy'])
         self._model.build(input_shape=(None, None, 3))
         self._model.summary() ## TODO make this be called seperately.
 

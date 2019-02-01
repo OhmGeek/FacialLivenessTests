@@ -9,6 +9,7 @@ from keras.optimizers import Adam
 from keras.engine.input_layer import Input
 from keras.backend import tf
 from liveness.cnn.residual.block import add_common_layers, residual_block
+import pickle
 
 class ResidualNetwork(object):
     def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32):
@@ -26,7 +27,7 @@ class ResidualNetwork(object):
 
     def fit_generator(self, generator, steps_per_epoch=None, epochs=1, shuffle=True, verbose=1, validation_data=None):
         return self._model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=epochs, shuffle=shuffle, verbose=verbose, validation_data=validation_data)
-        
+
     def test(self, x, y):
         score = self._model.evaluate(x, y, verbose=1)
         return score
@@ -43,11 +44,13 @@ class ResidualNetwork(object):
         final_network.add(Lambda(lambda img: tf.image.convert_image_dtype(img, tf.float32)))
         final_network.add(cnn_model)
         final_network.add(Flatten())
-        final_network.add(Dense(2000, activation='relu'))
+        final_network.add(Dense(200, activation='relu'))
         final_network.add(Dropout(0.4))
-        final_network.add(Dense(1000, activation='relu'))
+        final_network.add(Dense(100, activation='relu'))
         final_network.add(Dropout(0.4))
-        final_network.add(Dense(500, activation='relu'))
+        final_network.add(Dense(100, activation='relu'))
+        final_network.add(Dropout(0.4))
+        final_network.add(Dense(50, activation='relu'))
         final_network.add(Dropout(0.4))
         final_network.add(Dense(2, activation='relu'))
         final_network.add(Activation('softmax'))
@@ -63,7 +66,7 @@ class ResidualNetwork(object):
         self._model = final_network
         self._is_model_created = True
 
-        opt_adam = keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
+        opt_adam = keras.optimizers.Adam(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
         self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'categorical_accuracy'])
         self._model.build(input_shape=(None, None, 3))
         self._model.summary() ## TODO make this be called seperately.

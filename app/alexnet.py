@@ -52,21 +52,25 @@ def main():
 
     k = 10
     x,y = shuffle(x, y)
-    folds = list(KFold(n_splits=k, shuffle=True, random_state=1).split(x, y))
+    # folds = list(KFold(n_splits=k, shuffle=True, random_state=1).split(x, y))
 
     # Train the model on our training set.
-    batch_size = 32
-    for j, (train_idx, val_idx) in enumerate(folds):
-        print("Training on fold %d" % j)
-        x_train_cv = x[train_idx]
-        y_train_cv = y[train_idx]
-        x_valid_cv = x[val_idx]
-        y_valid_cv = y[val_idx]
+    batch_size = 10
+    generator = gen.flow(x, y, batch_size=batch_size)
+    # for j, (train_idx, val_idx) in enumerate(folds):
+    #     print("Training on fold %d" % j)
+    #     x_train_cv = x[train_idx]
+    #     y_train_cv = y[train_idx]
+    #     x_valid_cv = x[val_idx]
+    #     y_valid_cv = y[val_idx]
 
-        generator = gen.flow(x_train_cv, y_train_cv, batch_size=batch_size)
-        model.fit_generator(generator, steps_per_epoch=len(x_train_cv)/batch_size, epochs=15, shuffle=True, verbose=1, validation_data=(x_valid_cv, y_valid_cv))
+    #     generator = gen.flow(x_train_cv, y_train_cv, batch_size=batch_size)
+    #     model.fit_generator(generator, steps_per_epoch=len(x_train_cv)/batch_size, epochs=15, shuffle=True, verbose=1, validation_data=(x_valid_cv, y_valid_cv))
 
-        print(model.test(x_valid_cv, y_valid_cv))
+    #     print(model.test(x_valid_cv, y_valid_cv))
+
+    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=50, shuffle=True, verbose=1)
+    model.save('alexnet.h5')
 
     dataset = None
     x = None

@@ -23,7 +23,7 @@ class ResidualNetwork(object):
         self._is_model_created = False
 
     def train(self, x, y):
-        self._model.fit(x, y, batch_size=8, epochs=1, verbose=1, validation_split=0.33, shuffle=True)
+        self._model.fit(x, y, batch_size=64, epochs=50, verbose=1, validation_split=0.33, shuffle=True)
 
     def fit_generator(self, generator, steps_per_epoch=None, epochs=1, shuffle=True, verbose=1, validation_data=None):
         return self._model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=epochs, shuffle=shuffle, verbose=verbose, validation_data=validation_data)
@@ -51,6 +51,8 @@ class ResidualNetwork(object):
         final_network.add(Dense(100, activation='relu'))
         final_network.add(Dropout(0.4))
         final_network.add(Dense(50, activation='relu'))
+        final_network.add(Dropout(0.4))
+        final_network.add(Dense(500, activation='relu'))
         final_network.add(Dropout(0.4))
         final_network.add(Dense(2, activation='relu'))
         final_network.add(Activation('softmax'))

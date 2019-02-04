@@ -69,8 +69,8 @@ def main():
 
     #     print(model.test(x_valid_cv, y_valid_cv))
 
-    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=50, shuffle=True, verbose=1)
-    model.save('alexnet.h5')
+    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=1, shuffle=True, verbose=1)
+    # model.save('alexnet.h5')
 
     dataset = None
     x = None
@@ -96,7 +96,7 @@ def main():
     x,y = shuffle(x, y)
 
     score = model.test(x, y)
-    print("Final Accuracy is: " + str(score[1]))
+    print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')
     dataset.close() # Important, to close the file.
     

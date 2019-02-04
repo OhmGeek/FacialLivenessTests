@@ -9,7 +9,7 @@ from keras.optimizers import Adam
 from keras.engine.input_layer import Input
 from keras.backend import tf
 from liveness.cnn.residual.block import add_common_layers, residual_block
-import pickle
+import h5py
 
 class ResidualNetwork(object):
     def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32):
@@ -33,8 +33,7 @@ class ResidualNetwork(object):
         return score
 
     def save(self, pickle_path):
-        with open(pickle_path, 'wb') as f:
-            pickle.dump(self._model, f)
+        self._model.save_weights(pickle_path)
     
     def _create_model(self):
         cnn_model = ResNet50(include_top=False, weights='imagenet', input_shape=None)

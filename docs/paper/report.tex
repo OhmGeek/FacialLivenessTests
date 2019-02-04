@@ -5,6 +5,7 @@
 \usepackage{natbib}
 \usepackage{durhampaper}
 \usepackage{subfigure}
+\usepackage{todonotes}
 % \usepackage{harvard}
 % \usepackage[moderate]{savetrees}
 \usepackage{url}
@@ -26,18 +27,18 @@
 
 % The abstract must be a Structured Abstract with the headings {\bf Context/Background}, {\bf Aims}, {\bf Method}, {\bf Results}, and {\bf Conclusions}.  This section should not be longer than half of a page, and having no more than one or two sentences under each heading is advised.
 \paragraph{Context/Background}
-    TODO
+    \todo{TODO context}
 
 \paragraph{Aims}
-    TODO
+    \todo{TODO}
 
 \paragraph{Method}
-    TODO
+    \todo{TODO}
 
 \paragraph{Results}
-    TODO
+    \todo{TODO}
 \paragraph{Conclusions}
-    TODO
+    \todo{TODO}
 
 \end{abstract}
 
@@ -58,21 +59,40 @@ Facial liveness, convolutional neural networks, image quality metrics
 
 
 \section{Related Work}
-    - First basic metrics
-    - image Quality assessment (different types of image quality metrics used ,and why they should be effective). Drawbacks of these
-    - movement based assessment (requiring actions to be performed, and their problems).
-    - Deep Learning methods (what methods exist, their performance)
-    - 3D mask prevention methods (kinect based ones that require 3D input, or SFM, which isn't really valid here)
+    % LIT REVIEW GOES HERE!
+    % - First basic metrics
+    % - image Quality assessment (different types of image quality metrics used ,and why they should be effective). Drawbacks of these
+    % - movement based assessment (requiring actions to be performed, and their problems).
+    % - Deep Learning methods (what methods exist, their performance)
+    % - 3D mask prevention methods (kinect based ones that require 3D input, or SFM, which isn't really valid here)
 \section{Solution}
     % Solution to the problem
     \subsection{Image Quality Assessment based liveness test}
         For 2D spoofing attacks, spoofed images are typically lower quality than the real images, and thus by measuring the image quality
         one can train a classifier to detect real and spoofed images respectively.
 
-        The method used, based on \textbf{CITE the paper we use here}, implements 24 different metrics (with varying differences), and produces
+        The method used, based on the work of \citet{ImageQualityAssessmentTest}, implements 24 different metrics with varying differences, and produces
         a vector for each image. Initially, classification was done using a Support Vector Machine (SVM), but after experimentation this proved to be fairly
         unreliable (yielding 70\% accuracy on the test set). The classifier was later changed to use Linear Discriminant Analysis (LDA) which yielded a much improved
-        accuracy (96\% accuracy on the test set). \textbf{TODO: give more accuracy figures of accuracy here, I can't remember the exact numbers}.
+        accuracy (96\% accuracy on the test set). \todo[inline]{TODO: give more accuracy figures of accuracy here, I can't remember the exact numbers}.
+
+    \subsection{Residual Network based 2D liveness test}
+        Recently, 2D convolutional neural networks have had great success in image classification tasks. Therefore, it might be possible to train
+        a residual neural network (resnet) to classify for facial liveness tasks.
+
+        In order to simplify the process of training, an existing resnet model (ResNet50) was used, with only the final convolutional layer being
+        set to trainable. This is because the initial convolutional layers contain the standard features contained within images, while the final one
+        learns bundles of features. Internal feed forward activations use relu, while the external output uses the softmax activation function
+
+        Training was completed using the categorical cross-entropy loss function (as this is considered multiclass).
+        We yield a 2-tuple output from this model, which is the probability of each possible case. We take the value with the highest probability as the true outcome.
+
+        The output of this ResNet model is then fed into a 2D Max Pooling layer, which then feeds into a feed forward neural network.
+        Initially, the model was trained using the Adam optimiser, but this yielded poor accuracy (75\% accuracy). Utilising the standard
+        gradient descent (SGD) optimiser with a low learning rate yielded far greater accuracy.
+
+        \missingfigure{TODO: insert diagram of architecture of our final resnet model}
+        \todo{TODO: insert citation for trying pretrained imagenet}
 
     \subsection{A system for preventing 3D spoofing attacks}
         While the systems before might go partially towards preventing 3D spoofing attacks, though primarily considering the 2D image, we now propose a method
@@ -81,23 +101,22 @@ Facial liveness, convolutional neural networks, image quality metrics
         \subsubsection{Point Cloud Reconstruction}
             In order to classify an image/video, a 3D point cloud needs to be created, containing many 3D points $(x,y,z)$
             of a user's face. While 3d reconstruction is easier with videos (using structure from motion or other multiview based methods),
-            there also exist image-based reconstruction methods such as vrn \textbf{CITE VRN network model here for 3d reconstruction}, which are
-            more specific and designed for reconstructing faces based on images.
+            there also exist image-based reconstruction methods such as vrn (\citealt{3DReconstructionMethod}) which are more specific and designed for reconstructing faces based on images.
 
         \subsubsection{3D point cloud classification}
             Once the 3D reconstruction is obtained, one can then classify this using some model to produce the fake/real metric.
 
-            For points, PointNet is a model that can be used \textbf{EXPLAIN POINTNET}
+            For points, PointNet is a model that can be used \todo[inline]{EXPLAIN POINTNET}
 
             However, as we are using voxels, there is a more specialised architecutre called Voxnet that is designed for classifying
-            3d volume-based objects. This is the model used here.
+            3d volume-based objects. This is the model used here. \todo[inline]{EXPLAIN VOXNET}. \cite{VoxNetModel}.
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
-    TODO results
+    \textbf{TODO results}
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...
-    TODO evaluation
+    \textbf{TODO evaluation}
 
 
     % Improvements:
@@ -108,7 +127,7 @@ Facial liveness, convolutional neural networks, image quality metrics
     % overall, what did the project show?
 
 
-\bibliographystyle{dinat}
+\bibliographystyle{plain}
 \bibliography{report}
 
 \end{document}

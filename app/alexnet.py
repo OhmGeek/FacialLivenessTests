@@ -4,7 +4,7 @@ from liveness.cnn.residual.model import ResidualNetwork
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling2D, Lambda
 from keras.layers.normalization import BatchNormalization
-from keras.preprocessing.image import ImageDataGenerator
+from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array
 from keras.optimizers import Adam
 from keras.engine.input_layer import Input
 from sklearn.utils import shuffle
@@ -14,26 +14,33 @@ import cv2
 from datasets.nuaa import NUAADataset
 from datasets.replayattack import ReplayAttackDataset
 import face_recognition
+from PIL import Image
 
 def get_largest_bounding_box(locations):
-    w = max(locations, key=lambda t,r,b,l: np.linalg.norm(t-b) * np.linalg.norm(r-l))
+    if len(locations) == 0:
+        return None
+    w = max(locations, key=lambda x: np.linalg.norm(x[0]-x[2]) * np.linalg.norm(x[1]-x[3]))
     return w
 
-def pre_process_fn(image):
-    locations = face_recognition.face_locations(image)
+def pre_process_fn(image_arr):
+    original_shape = image_arr.shape
+    image_arr = image_arr.astype(np.uint8)
+    locations = face_recognition.face_locations(image_arr)
+    
     max_loc = get_largest_bounding_box(locations)
-
     # If there's an error, just use the whole image.
     if max_loc is None:
-        return image
+        return image_arr
 
     # Otherwise, isolate the face.
     top, right, bottom, left = max_loc
 
-    face_image = image[top:bottom, left:right]
+    face_image = image_arr[top:bottom, left:right]
     
-    print(face_image.shape)
-    return face_image
+    # Now, to fix a bug in Keras, resize this image.
+    face_image = cv2.resize(face_image, dsize=(original_shape[1], original_shape[0]), interpolation=cv2.INTER_CUBIC)
+
+    return (face_image)
 
 def main():
     # First, fetch the two distinct sets of data.
@@ -60,10 +67,6 @@ def main():
 
     gen = ImageDataGenerator(horizontal_flip = True,
                          vertical_flip = True,
-                         width_shift_range = 0.1,
-                         height_shift_range = 0.1,
-                         zoom_range = 0.1,
-                         rotation_range = 20,
                          preprocessing_function=pre_process_fn
                         )
 

@@ -58,6 +58,7 @@ class ReplayAttackDataset(Dataset):
                         if(success and count % 20 == 0):
                             print(count)
                             count = 0
+                            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                             label_images.append(image)
                         if not success:
                             break

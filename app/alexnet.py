@@ -30,8 +30,9 @@ def pre_process_fn(image):
     # Otherwise, isolate the face.
     top, right, bottom, left = max_loc
 
-    face_image = image[top:bottom, left:right, :]
+    face_image = image[top:bottom, left:right]
     
+    print(face_image.shape)
     return face_image
 
 def main():

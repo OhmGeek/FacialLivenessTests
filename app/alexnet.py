@@ -56,17 +56,17 @@ def main():
     # model.summary()
 
     # Now create the training set.
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/")
+    dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")
+    imposter_set = dataset.read_dataset("ImposterRaw")
     imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
 
-    client_set = dataset.read_dataset("real")
+    client_set = dataset.read_dataset("ClientRaw")
     client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
 
     gen = ImageDataGenerator(horizontal_flip = True,
-                         vertical_flip = True,
+                         vertical_flip = False,
                          preprocessing_function=pre_process_fn
                         )
 
@@ -105,13 +105,13 @@ def main():
     client_set = None
     client_y = None
     # Now create the training set.
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa/")
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("ImposterRaw")
+    imposter_set = dataset.read_dataset("attack")
     imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
 
-    client_set = dataset.read_dataset("ClientRaw")
+    client_set = dataset.read_dataset("real")
     client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
 
     # Merge the two, and create the final sets.
@@ -119,8 +119,9 @@ def main():
     y = np.concatenate((imposter_y, client_y))
 
     x,y = shuffle(x, y)
-
-    score = model.test(x, y)
+    
+    generator = gen.flow(x, y, batch_size=100)
+    score = model.test_generator(generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')
     dataset.close() # Important, to close the file.

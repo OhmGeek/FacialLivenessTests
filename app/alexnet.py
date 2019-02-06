@@ -13,6 +13,27 @@ import numpy as np
 import cv2
 from datasets.nuaa import NUAADataset
 from datasets.replayattack import ReplayAttackDataset
+import face_recognition
+
+def get_largest_bounding_box(locations):
+    w = max(locations, key=lambda t,r,b,l: np.linalg.norm(t-b) * np.linalg.norm(r-l))
+    return w
+
+def pre_process_fn(image):
+    locations = face_recognition.face_locations(image)
+    max_loc = get_largest_bounding_box(locations)
+
+    # If there's an error, just use the whole image.
+    if max_loc is None:
+        return image
+
+    # Otherwise, isolate the face.
+    top, right, bottom, left = max_loc
+
+    face_image = image[top:bottom, left:right]
+    
+    print(face_image.shape)
+    return face_image
 
 def main():
     # First, fetch the two distinct sets of data.
@@ -42,7 +63,8 @@ def main():
                          width_shift_range = 0.1,
                          height_shift_range = 0.1,
                          zoom_range = 0.1,
-                         rotation_range = 20
+                         rotation_range = 20,
+                         preprocessing_function=pre_process_fn
                         )
 
 

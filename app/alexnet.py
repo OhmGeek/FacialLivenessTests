@@ -55,7 +55,7 @@ def main():
     # folds = list(KFold(n_splits=k, shuffle=True, random_state=1).split(x, y))
 
     # Train the model on our training set.
-    batch_size = 10
+    batch_size = 100
     generator = gen.flow(x, y, batch_size=batch_size)
     # for j, (train_idx, val_idx) in enumerate(folds):
     #     print("Training on fold %d" % j)

@@ -63,8 +63,8 @@ class ResidualNetwork(object):
         self._model = final_network
         self._is_model_created = True
 
-        opt_adam = keras.optimizers.Adam(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-        self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'top_k_categorical_accuracy'])
+        opt_adam = keras.optimizers.SGD(lr=0.005, decay=1e-6, momentum=0.9)
+        self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
         self._model.build(input_shape=(None, None, 3))
         self._model.summary() ## TODO make this be called seperately.
 

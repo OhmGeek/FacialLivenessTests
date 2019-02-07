@@ -32,6 +32,10 @@ class ResidualNetwork(AbstractModel):
         score = self._model.evaluate(x, y, verbose=1)
         return score
 
+    def evaluate(self, image):
+        score = self._model.predict(image)
+        return score
+    
     # -- Generators: both for fitting and testing.
     def fit_generator(self, generator, steps_per_epoch=None, epochs=1, shuffle=True, verbose=1, validation_data=None):
         return self._model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=epochs, shuffle=shuffle, verbose=verbose, validation_data=validation_data)

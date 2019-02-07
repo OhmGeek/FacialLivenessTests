@@ -1,7 +1,6 @@
 from datasets.nuaa import NUAADataset
-from datasets.replayattack import ReplayAttackDataset
 from liveness.generic import DummyLivenessTest
-from liveness.quality.model import QualitySVMModel, QualityLDAModel
+from liveness.quality.model import QualitySVMModel
 from testframework.tests import TestDummyCase
 from testframework.runner import TestRunner
 from liveness.quality.metrics.factory import metric_factory
@@ -49,46 +48,44 @@ def main():
     dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ohmgeek_default/datasets/nuaa/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")
-    client_set = dataset.read_dataset("real")
+    imposter_set = dataset.read_dataset("ImposterRaw")
+    client_set = dataset.read_dataset("ClientRaw")
     # Divide dataset into train, and test (40%, 60%)
 
     # train_set = np.concatenate((train_set, client_set[:int(client_set.shape[0] / 2)]))
+    model = QualitySVMModel(logging.Logger("svm"))
 
-    train_vectors = []
-    train_outputs = []
-    for imposter_img in imposter_set[: int(imposter_set.shape[0] / 2)]:
+    test_vectors = []
+    test_outputs = []
+    for imposter_img in imposter_set[int(imposter_set.shape[0] / 2) + 1:]:
         try:
             image = cv2.cvtColor(imposter_img, cv2.COLOR_BGR2GRAY)
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
-            train_vectors.append(vector)
-            train_outputs.append([1.0, 0.0])
+            test_vectors.append(vector)
+            test_outputs.append(1.0)
         except:
             logger.error("Error while evaluating image.")
 
-    for client_img in client_set[: int(client_set.shape[0] / 2)]:
+    for client_img in client_set[int(client_set.shape[0] / 2) + 1:]:
         try:
             image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
-            train_vectors.append(vector)
-            train_outputs.append([0.0, 1.0])
+            test_vectors.append(vector)
+            test_outputs.append(0.0)
         except:
             logger.error("Error while evaluating image")
+
     
-    model = QualityLDAModel()
     # Evaluate on testing set
-    print("Now training")
-    model.train(train_vectors, train_outputs)
-    print("Trained.")
-    print("")
-    print("Now saving")
-    model.save()
-    print("Saved.")
+    print("Now loaded")
+    model.load('/home/ryan/models/model.pkl')
+    print("Loaded.")
     print("")
     print("Output Results:")
-    print(model.test(train_vectors, train_outputs))
+    print(model.test(test_vectors, test_outputs))
+
 
 if __name__ == "__main__":
     main()

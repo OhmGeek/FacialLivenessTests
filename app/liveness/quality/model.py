@@ -38,7 +38,7 @@ class QualitySVMModel(AbstractModel):
         return self._model.score(input_x, input_y)
 
 class QualityLDAModel(AbstractModel):
-    def __init__(self):
+    def __init__(self, logger):
         self._model = LDA()
 
         super().__init__(logger)

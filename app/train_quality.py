@@ -46,11 +46,11 @@ def main():
     vector_creator = DefaultMetricVectorCreator(metrics)
 
     print("Running test.py")
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ohmgeek_default/datasets/nuaa/")
+    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")
-    client_set = dataset.read_dataset("real")
+    imposter_set = dataset.read_dataset("ImposterRaw")
+    client_set = dataset.read_dataset("ClientRaw")
     # Divide dataset into train, and test (40%, 60%)
 
     # train_set = np.concatenate((train_set, client_set[:int(client_set.shape[0] / 2)]))
@@ -63,7 +63,7 @@ def main():
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
             train_vectors.append(vector)
-            train_outputs.append([1.0, 0.0])
+            train_outputs.append(0.0) # 0.0 -> fake
         except:
             logger.error("Error while evaluating image.")
 
@@ -73,11 +73,11 @@ def main():
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
             train_vectors.append(vector)
-            train_outputs.append([0.0, 1.0])
+            train_outputs.append(1.0) # 1.0 -> real
         except:
             logger.error("Error while evaluating image")
     
-    model = QualityLDAModel()
+    model = QualityLDAModel(logging.Logger("lda_model"))
     # Evaluate on testing set
     print("Now training")
     model.train(train_vectors, train_outputs)

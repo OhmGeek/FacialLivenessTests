@@ -53,7 +53,7 @@ def main():
     # Divide dataset into train, and test (40%, 60%)
 
     # train_set = np.concatenate((train_set, client_set[:int(client_set.shape[0] / 2)]))
-    model = QualitySVMModel()
+    model = QualitySVMModel(logging.Logger("svm"))
 
     test_vectors = []
     test_outputs = []

@@ -35,6 +35,7 @@ class ResidualNetwork(object):
     def test_generator(self, generator):
         score = self._model.evaluate_generator(generator, verbose=1, steps=500)
         return score
+    
     def save(self, pickle_path):
         self._model.save_weights(pickle_path)
     

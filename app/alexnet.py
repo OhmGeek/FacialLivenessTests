@@ -94,7 +94,7 @@ def main():
 
     #     print(model.test(x_valid_cv, y_valid_cv))
 
-    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=3, shuffle=True, verbose=1)
+    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=5, shuffle=True, verbose=1)
     # model.save('alexnet.h5')
 
     dataset = None

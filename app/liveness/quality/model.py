@@ -1,5 +1,5 @@
 from sklearn.svm import SVC
-from sklearn.lda import LDA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.model_selection import GridSearchCV
 import pickle
 from liveness.generic import AbstractModel

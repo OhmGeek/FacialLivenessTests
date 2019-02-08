@@ -62,5 +62,18 @@ class ResidualNetwork(AbstractModel):
         model.add(Conv3D(32, (5,5,5), strides=(2,2,2), activation='LeakyReLU'))
         model.add(Conv3D(32, (3,3,3), strides=(1,1,1), activation='LeakyReLU'))
         model.add(MaxPooling3D(strides=(2,2,2)))
+
+        model.add(Flatten())
+
+        # Now the dense classifier
         model.add(Dense(128))
         model.add(Dense(2, activation='softmax'))
+
+        self._model = model
+
+        opt_adam = keras.optimizers.SGD(lr=learning_rate, decay=1e-6, momentum=0.9)
+        self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
+        self._model.build(input_shape=(None, None, 3))
+        self._model.summary() ## TODO make this be called seperately.
+
+        return model

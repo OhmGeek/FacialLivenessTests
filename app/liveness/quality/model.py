@@ -1,14 +1,17 @@
 from sklearn.svm import SVC
-from sklearn.lda import LDA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.model_selection import GridSearchCV
 import pickle
+from liveness.generic import AbstractModel
 import os
 
-class QualitySVMModel(object):
-    def __init__(self):
+class QualitySVMModel(AbstractModel):
+    def __init__(self,logger):
         parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
         svm = SVC(C=0.7, gamma='auto') # todo allow params to be set through constructor
         self._model = GridSearchCV(svm, parameters, cv=5)
+
+        super().__init__(logger)
 
     def train(self, training_inputs, training_outputs):
         """Train the SVM model
@@ -34,9 +37,11 @@ class QualitySVMModel(object):
     def test(self, input_x, input_y):
         return self._model.score(input_x, input_y)
 
-class QualityLDAModel(object):
-    def __init__(self):
+class QualityLDAModel(AbstractModel):
+    def __init__(self, logger):
         self._model = LDA()
+
+        super().__init__(logger)
 
     def train(self, training_inputs, training_outputs):
         """Train the SVM model

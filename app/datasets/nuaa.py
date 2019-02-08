@@ -44,6 +44,7 @@ class NUAADataset(Dataset):
                 # For each label, go through all the files in the directory/classification.
                 for img_filename in glob.iglob(self._filename + '/%s/**/*.jpg' % label):
                     img = cv2.imread(img_filename)
+                    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                     label_images.append(img)
                 # Now images are created and stored in the dataset.
                 dataset = hf.create_dataset(label, data=label_images)

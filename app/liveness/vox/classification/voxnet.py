@@ -5,7 +5,7 @@ This contains the VoxNet model used to classify the 3d structure.
 import keras
 from keras import layers
 from keras.models import Model as keras_Model
-from keras.layers import Dense, Activation, Dropout, Flatten, Conv3D, MaxPooling3D, Lambda
+from keras.layers import Dense, Activation, Dropout, Flatten, Conv3D, MaxPooling3D, Lambda, LeakyReLU, Reshape
 from keras import Sequential
 from keras.layers.normalization import BatchNormalization
 from keras.applications.resnet50 import ResNet50
@@ -16,7 +16,7 @@ from liveness.cnn.residual.block import add_common_layers, residual_block
 from liveness.generic import AbstractModel
 import h5py
 
-class ResidualNetwork(AbstractModel):
+class VoxNet(AbstractModel):
     def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32):
         self._img_height = default_img_dimensions[1]
         self._img_width = default_img_dimensions[0]
@@ -30,7 +30,7 @@ class ResidualNetwork(AbstractModel):
         super().__init__(logger)
 
     def train(self, x, y):
-        self._model.fit(x, y, batch_size=64, epochs=1, verbose=1, validation_split=0.33, shuffle=True)
+        self._model.fit(x, y, batch_size=32, epochs=8, verbose=1, validation_split=0.33, shuffle=True)
 
     def test(self, x, y):
         score = self._model.evaluate(x, y, verbose=1)
@@ -59,21 +59,25 @@ class ResidualNetwork(AbstractModel):
     def _create_model(self, learning_rate=0.001):
         model = Sequential()
 
-        model.add(Conv3D(32, (5,5,5), strides=(2,2,2), activation='LeakyReLU'))
-        model.add(Conv3D(32, (3,3,3), strides=(1,1,1), activation='LeakyReLU'))
+        model.add(Reshape([32,32,32,1]))
+        model.add(Conv3D(32, (5,5,5), strides=(2,2,2)))
+        model.add(LeakyReLU(alpha=0.1))
+        model.add(Conv3D(32, (3,3,3), strides=(1,1,1)))
+        model.add(LeakyReLU(alpha=0.1))
         model.add(MaxPooling3D(strides=(2,2,2)))
 
         model.add(Flatten())
 
         # Now the dense classifier
         model.add(Dense(128))
-        model.add(Dense(2, activation='softmax'))
+        model.add(Dense(14, activation='softmax'))
 
-        self._model = model
+        model.build(input_shape=(None, 32,32,32))
+        model.summary() ## TODO make this be called seperately.
 
         opt_adam = keras.optimizers.SGD(lr=learning_rate, decay=1e-6, momentum=0.9)
-        self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
-        self._model.build(input_shape=(None, None, 3))
-        self._model.summary() ## TODO make this be called seperately.
+        model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
+
+        self._model = model
 
         return model

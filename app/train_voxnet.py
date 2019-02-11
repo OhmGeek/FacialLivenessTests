@@ -14,10 +14,25 @@ def train():
     print(labels)
     model.train(voxels, labels)
 
+    print("Trained.")
+
     model.save('pretrained-voxnet.pkl')
 
+    print("Saved.")
+
+    # clear and empty the memory.
+    voxels = None
+    labels = None
+
+    print("Now ready to load testing set")
     # Now test using the test dataset.
     voxels, labels = helper.load_data_from_npy(npy_dir, mode='testing')
+
+    print(voxels)
+
+    print("Now labels:")
+    print(labels)    
+
     labels = to_categorical(labels)
     results = model.test(voxels, labels)
 

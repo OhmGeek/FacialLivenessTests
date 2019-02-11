@@ -30,7 +30,7 @@ class VoxNet(AbstractModel):
         super().__init__(logger)
 
     def train(self, x, y):
-        self._model.fit(x, y, batch_size=32, epochs=8, verbose=1, validation_split=0.33, shuffle=True)
+        self._model.fit(x, y, batch_size=32, epochs=2, verbose=1, validation_split=0.33, shuffle=True)
 
     def test(self, x, y):
         score = self._model.evaluate(x, y, verbose=1)
@@ -56,7 +56,7 @@ class VoxNet(AbstractModel):
         self._model.load_weights(pickle_path)
 
     # -- Private functions
-    def _create_model(self, learning_rate=0.001):
+    def _create_model(self, learning_rate=0.0001):
         model = Sequential()
 
         model.add(Reshape([32,32,32,1]))
@@ -69,13 +69,15 @@ class VoxNet(AbstractModel):
         model.add(Flatten())
 
         # Now the dense classifier
+        model.add(Dropout(0.4))
         model.add(Dense(128))
+        model.add(Dropout(0.4))
         model.add(Dense(14, activation='softmax'))
 
         model.build(input_shape=(None, 32,32,32))
         model.summary() ## TODO make this be called seperately.
 
-        opt_adam = keras.optimizers.SGD(lr=learning_rate, decay=1e-6, momentum=0.9)
+        opt_adam = keras.optimizers.Adam()
         model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
 
         self._model = model

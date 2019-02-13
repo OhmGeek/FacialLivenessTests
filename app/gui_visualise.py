@@ -26,17 +26,16 @@ from liveness.io.reader import ModelReader
 
 model_path = str(sys.argv[1])
 
-dataset = ReplayAttackDataset(Logger("nuaa"), "/home/ryan/datasets/replay-attack/")
+dataset = ReplayAttackDataset(Logger("nuaa"), "/home/ryan/datasets/ReplayAttackDB/")
 dataset.pre_process()
-imgs = dataset.get_all_datasets()
+print(dataset)
+imgs = dataset.read_dataset("attack")
 model = ModelReader().read_from_file(model_path)
 # display all images in directory (sorted by filename)
-
-for img_num in range(0, len(imgs)):
-    img = imgs[img_num]
-    
+for img in imgs:
+    print(img.shape)
     prediction = model.evaluate(img)
-
+    print(prediction)
     # Create a figure
     fig = plt.figure()
     fig.add_subplot(111)

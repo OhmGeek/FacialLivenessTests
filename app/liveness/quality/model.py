@@ -5,6 +5,48 @@ import pickle
 from liveness.generic import AbstractModel
 import os
 
+def preprocessor(data):
+    metrics_names = [
+        "ad",
+        "biqi",
+        "gme",
+        "gpe",
+        "hlfi",
+        "jqi",
+        "lmse",
+        "mams",
+        "mas",
+        "md",
+        "mse",
+        "nae",
+        "niqe",
+        "nxc",
+        "psnr",
+        "ramd",
+        "sc",
+        "sme",
+        "snr",
+        "spe",
+        "ssim",
+        "tcd",
+        "ted",
+        "vifd"
+    ]
+
+    metrics = metric_factory(metrics_names, logger)
+    vector_creator = DefaultMetricVectorCreator(metrics)
+    train_vectors = []
+    for client_img in data:
+        try:
+            image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
+            gaussian_image = cv2.GaussianBlur(image,(5,5),0)
+            vector = vector_creator.create_vector(image, gaussian_image)
+            train_vectors.append(vector)
+        except:
+            logger.error("Error while evaluating image")
+
+    return train_vectors
+
 class QualitySVMModel(AbstractModel):
     def __init__(self,logger):
         parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
@@ -20,11 +62,12 @@ class QualitySVMModel(AbstractModel):
             training_inputs {np.array} -- Array of input vectors
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
-
+        training_inputs = preprocessor(training_inputs)
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        return self._model.predict(input_img)
+        training_inputs = preprocessor(input_img)
+        return self._model.predict(training_inputs)
 
     def save(self, pickle_path):
         with open(pickle_path, 'wb') as f:
@@ -35,7 +78,10 @@ class QualitySVMModel(AbstractModel):
             self._model = pickle.load(f)
 
     def test(self, input_x, input_y):
-        return self._model.score(input_x, input_y)
+        training_inputs = preprocessor(input_x)
+        return self._model.score(training_inputs, input_y)
+
+
 
 class QualityLDAModel(AbstractModel):
     def __init__(self, logger):
@@ -50,11 +96,12 @@ class QualityLDAModel(AbstractModel):
             training_inputs {np.array} -- Array of input vectors
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
-
+        training_inputs = preprocessor(training_inputs)
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        return self._model.predict(input_img)
+        training_inputs = preprocessor(input_img)
+        return self._model.predict(training_inputs)
 
     def save(self, pickle_path):
         with open(pickle_path, 'wb') as f:
@@ -65,4 +112,5 @@ class QualityLDAModel(AbstractModel):
             self._model = pickle.load(f)
 
     def test(self, input_x, input_y):
-        return self._model.score(input_x, input_y)
+        training_inputs = preprocessor(input_x)
+        return self._model.score(training_inputs, input_y)

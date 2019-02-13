@@ -5,5 +5,5 @@ class ModelReader(object):
         pass
 
     def read_from_file(self, filename):
-        with open(pickle_filename, 'rb') as f:
+        with open(filename, 'rb') as f:
             return pickle.load(f)

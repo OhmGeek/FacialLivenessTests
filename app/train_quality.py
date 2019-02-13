@@ -9,6 +9,7 @@ from liveness.quality.metric_vector import DefaultMetricVectorCreator
 import cv2
 import logging
 import numpy as np
+from liveness.io.writer import ModelWriter
 
 def main():
     # first, set log level to display everything we want
@@ -84,7 +85,10 @@ def main():
     print("Trained.")
     print("")
     print("Now saving")
-    model.save()
+
+    writer = ModelWriter(model)
+    writer.save('quality_model.pkl')
+    
     print("Saved.")
     print("")
     print("Output Results:")

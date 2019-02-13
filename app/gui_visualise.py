@@ -15,24 +15,22 @@
 
 import cv2
 import os
+from datasets.nuaa import NUAADataset
+from datasets.replayattack import ReplayAttackDataset
+from logging import Logger
 
+dataset = NUAADataset(Logger("nuaa"), "/home/ryan/datasets/nuaa/")
+dataset.pre_process()
+imgs = dataset.get_all_datasets()
 
 # display all images in directory (sorted by filename)
 
-for filename in sorted(os.listdir(directory_to_cycle)):
-
-    # if it is a PNG file
-
-    if '.png' in filename:
-        print(os.path.join(directory_to_cycle, filename));
-
-        # read it and display in a window
-
-        img = cv2.imread(os.path.join(directory_to_cycle, filename), cv2.IMREAD_COLOR)
-        cv2.imshow('the image',img)
-        key = cv2.waitKey(200) # wait 200ms
-        if (key == ord('x')):
-            break
+for img_num in range(0, len(imgs)):
+    img = imgs[img_num]
+    cv2.imshow('the image',img)
+    key = cv2.waitKey(200) # wait 200ms
+    if (key == ord('x')):
+        break
 
 
 # close all windows

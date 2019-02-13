@@ -4,8 +4,12 @@ from sklearn.model_selection import GridSearchCV
 import pickle
 from liveness.generic import AbstractModel
 import os
+from liveness.quality.metrics.factory import metric_factory
+from liveness.quality.metric_vector import DefaultMetricVectorCreator
+import cv2
+import numpy as np
 
-def preprocessor(data):
+def preprocessor(data, logger):
     metrics_names = [
         "ad",
         "biqi",
@@ -62,11 +66,11 @@ class QualitySVMModel(AbstractModel):
             training_inputs {np.array} -- Array of input vectors
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
-        training_inputs = preprocessor(training_inputs)
+        training_inputs = preprocessor(training_inputs, self._logger)
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        training_inputs = preprocessor(input_img)
+        training_inputs = preprocessor(input_img, self._logger)
         return self._model.predict(training_inputs)
 
     def save(self, pickle_path):
@@ -78,7 +82,7 @@ class QualitySVMModel(AbstractModel):
             self._model = pickle.load(f)
 
     def test(self, input_x, input_y):
-        training_inputs = preprocessor(input_x)
+        training_inputs = preprocessor(input_x, self._logger)
         return self._model.score(training_inputs, input_y)
 
 
@@ -96,11 +100,11 @@ class QualityLDAModel(AbstractModel):
             training_inputs {np.array} -- Array of input vectors
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
-        training_inputs = preprocessor(training_inputs)
+        training_inputs = preprocessor(training_inputs, self._logger)
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        training_inputs = preprocessor(input_img)
+        training_inputs = preprocessor(input_img, self._logger)
         return self._model.predict(training_inputs)
 
     def save(self, pickle_path):
@@ -112,5 +116,5 @@ class QualityLDAModel(AbstractModel):
             self._model = pickle.load(f)
 
     def test(self, input_x, input_y):
-        training_inputs = preprocessor(input_x)
+        training_inputs = preprocessor(input_x, self._logger)
         return self._model.score(training_inputs, input_y)

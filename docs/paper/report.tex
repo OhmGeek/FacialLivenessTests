@@ -109,7 +109,16 @@ Facial liveness, convolutional neural networks, image quality metrics
             For points, PointNet is a model that can be used \todo[inline]{EXPLAIN POINTNET}
 
             However, as we are using voxels, there is a more specialised architecutre called Voxnet that is designed for classifying
-            3d volume-based objects. This is the model used here. \todo[inline]{EXPLAIN VOXNET}. \cite{VoxNetModel}.
+            3d volume-based objects. VoxNet takes in a point cloud and converts this to an occupancy grid. This is then fed through two convolutional layers,
+            pooled, and then goes through a dense layer before reaching the classifier output (a dense layer with the k outcomes). 
+
+            Instead of training on our existing datasets, we first train a VoxNet model on the SUOD dataset, in order to learn the basic features surrounding
+            3D classification. This largely uses the tools provided in the original implementation of VoxNet, but with a custom Keras implementation. This pretrained
+            model is then saved, for use in our final implementation.
+
+            Using this original VoxNet implementation, the last dense layer is then ignored, with it being extended to contain further dense layers, and an eventual output classifier (for fake/real respectively).
+
+            
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     \textbf{TODO results}

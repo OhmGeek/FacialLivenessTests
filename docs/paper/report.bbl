@@ -13,11 +13,4 @@ Aaron~S Jackson, Adrian Bulat, Vasileios Argyriou, and Georgios Tzimiropoulos.
   volumetric cnn regression.
 \newblock {\em International Conference on Computer Vision}, 2017.
 
-\bibitem{VoxNetModel}
-D.~Maturana and S.~Scherer.
-\newblock Voxnet: A 3d convolutional neural network for real-time object
-  recognition.
-\newblock In {\em 2015 IEEE/RSJ International Conference on Intelligent Robots
-  and Systems (IROS)}, pages 922--928, Sep. 2015.
-
 \end{thebibliography}

@@ -117,8 +117,15 @@ Facial liveness, convolutional neural networks, image quality metrics
             model is then saved, for use in our final implementation.
 
             Using this original VoxNet implementation, the last dense layer is then ignored, with it being extended to contain further dense layers, and an eventual output classifier (for fake/real respectively).
+           
+        \subsubsection{How this overall system functions}
+            Each image is first preprocessed: the image is fed through the 3D reconstruction network, and the output is a set of Voxels.
+            Using these voxels, they are then resized into a (24 x 24 x 24) shape to provide a basis for the network. From here, they are
+            fed through several convolutional layers, before then being fed through several dense layers for classification. 
 
-            
+            \missingfigure{INSERT FIGURE HERE CONTAINING PIPELINE}
+    \subsection{Visualisation and Demonstration}
+        In order to visualise the overall outcome of facial liveness, a generic model 
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     \textbf{TODO results}

@@ -68,7 +68,7 @@ class QualitySVMModel(AbstractModel):
             training_inputs {np.array} -- Array of input vectors
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
-        training_inputs, training_outputs = preprocessor(training_inputs, training_outputs self._logger)
+        training_inputs, training_outputs = preprocessor(training_inputs, training_outputs, self._logger)
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
@@ -102,7 +102,7 @@ class QualityLDAModel(AbstractModel):
             training_inputs {np.array} -- Array of input vectors
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
-        training_inputs = preprocessor(training_inputs, self._logger)
+        training_inputs = preprocessor(training_inputs, training_outputs, self._logger)
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):

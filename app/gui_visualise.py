@@ -1,17 +1,3 @@
-#####################################################################
-
-# Example : load and display a set of images from a directory
-# basic illustrative python script
-
-# For use with provided test / training datasets
-
-# Author : Toby Breckon, toby.breckon@durham.ac.uk
-
-# Copyright (c) 2015 / 2016 School of Engineering & Computing Science,
-#                    Durham University, UK
-# License : LGPL - http://www.gnu.org/licenses/lgpl.html
-
-#####################################################################
 
 import cv2
 import os
@@ -25,13 +11,21 @@ import matplotlib.pyplot as plt
 from liveness.io.reader import ModelReader
 
 model_path = str(sys.argv[1])
+model_outputs = str(sys.argv[2]) # 1 => use Certainty, 2=> real, fake
 
 dataset = ReplayAttackDataset(Logger("nuaa"), "/home/ryan/datasets/ReplayAttackDB/")
 dataset.pre_process()
 print(dataset)
 imgs = dataset.read_dataset("attack")
 model = ModelReader().read_from_file(model_path)
-# display all images in directory (sorted by filename)
+objects = None
+
+# Setup the labels
+if(model_outputs == "1"):
+    objects = ('Certainty', )
+else:
+    objects = ('Real', 'Fake')
+
 for img in imgs:
     print(img.shape)
     prediction = model.evaluate(img)
@@ -45,7 +39,6 @@ for img in imgs:
     fig.canvas.draw()
 
     # Do the plot
-    objects = ('Real', 'Fake')
     y_pos = np.arange(len(objects))
     
     plt.bar(y_pos, prediction, align='center', alpha=0.5)

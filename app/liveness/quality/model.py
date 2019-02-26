@@ -48,7 +48,8 @@ def preprocessor(data, outputs, logger):
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
             train_vectors.append(vector)
-            train_outputs.append(outputs[i])
+            if(outputs is not None):
+                train_outputs.append(outputs[i])
         except:
             logger.error("Error while evaluating image")
 
@@ -73,7 +74,7 @@ class QualitySVMModel(AbstractModel):
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        training_inputs = preprocessor(input_img, self._logger)
+        training_inputs, _ = preprocessor(input_img, None, self._logger)
         return self._model.predict(training_inputs)
 
     def save(self, pickle_path):
@@ -108,7 +109,8 @@ class QualityLDAModel(AbstractModel):
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        training_inputs = preprocessor(input_img, self._logger)
+        # Ignore any outputs, this being None means it will return garbage.
+        training_inputs, _ = preprocessor(input_img, None, self._logger)
         
         return self._model.predict(training_inputs)
 

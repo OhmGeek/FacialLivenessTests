@@ -58,12 +58,12 @@ def main():
 
     train_vectors = []
     train_outputs = []
-    for imposter_img in imposter_set[: int(imposter_set.shape[0] / 2)]:
+    for imposter_img in imposter_set[: int(imposter_set.shape[0] / 4)]:
         train_vectors.append(imposter_img)
         train_outputs.append(0.0) # 0.0 -> fake
       
 
-    for client_img in client_set[: int(client_set.shape[0] / 2)]:
+    for client_img in client_set[: int(client_set.shape[0] / 4)]:
         train_vectors.append(client_img)
         train_outputs.append(1.0) # 1.0 -> real
         

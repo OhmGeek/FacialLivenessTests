@@ -74,7 +74,7 @@ def main():
     print("Trained.")
     print("")
     print("Now saving")
-    model.save()
+    # model.save('lda_model.pkl')
     print("Saved.")
     print("")
     print("Output Results:")

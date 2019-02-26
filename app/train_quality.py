@@ -59,24 +59,14 @@ def main():
     train_vectors = []
     train_outputs = []
     for imposter_img in imposter_set[: int(imposter_set.shape[0] / 2)]:
-        try:
-            image = cv2.cvtColor(imposter_img, cv2.COLOR_BGR2GRAY)
-            gaussian_image = cv2.GaussianBlur(image,(5,5),0)
-            vector = vector_creator.create_vector(image, gaussian_image)
-            train_vectors.append(vector)
-            train_outputs.append(0.0) # 0.0 -> fake
-        except:
-            logger.error("Error while evaluating image.")
+        train_vectors.append(imposter_img)
+        train_outputs.append(0.0) # 0.0 -> fake
+      
 
     for client_img in client_set[: int(client_set.shape[0] / 2)]:
-        try:
-            image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
-            gaussian_image = cv2.GaussianBlur(image,(5,5),0)
-            vector = vector_creator.create_vector(image, gaussian_image)
-            train_vectors.append(vector)
-            train_outputs.append(1.0) # 1.0 -> real
-        except:
-            logger.error("Error while evaluating image")
+        train_vectors.append(client_img)
+        train_outputs.append(1.0) # 1.0 -> real
+        
     
     model = QualityLDAModel(logging.Logger("lda_model"))
     # Evaluate on testing set

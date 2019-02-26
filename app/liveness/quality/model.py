@@ -41,8 +41,9 @@ def preprocessor(data, outputs, logger):
     vector_creator = DefaultMetricVectorCreator(metrics)
     train_vectors = []
     train_outputs = []
-    for i, client_img in enumerate(data):
+    for i in range(len(data)):
         try:
+            client_img = data[i]
             image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
@@ -102,11 +103,13 @@ class QualityLDAModel(AbstractModel):
             training_inputs {np.array} -- Array of input vectors
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
-        training_inputs = preprocessor(training_inputs, training_outputs, self._logger)
+        training_inputs, training_outputs = preprocessor(training_inputs, training_outputs, self._logger)
+
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
         training_inputs = preprocessor(input_img, self._logger)
+        
         return self._model.predict(training_inputs)
 
     def save(self, pickle_path):

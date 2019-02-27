@@ -58,12 +58,12 @@ def main():
 
     train_vectors = []
     train_outputs = []
-    for imposter_img in imposter_set[: int(imposter_set.shape[0] / 4)]:
+    for imposter_img in imposter_set[: int(imposter_set.shape[0] / 32)]:
         train_vectors.append(imposter_img)
         train_outputs.append(0.0) # 0.0 -> fake
       
 
-    for client_img in client_set[: int(client_set.shape[0] / 4)]:
+    for client_img in client_set[: int(client_set.shape[0] / 32)]:
         train_vectors.append(client_img)
         train_outputs.append(1.0) # 1.0 -> real
         
@@ -77,12 +77,10 @@ def main():
     print("Now saving")
 
     writer = ModelWriter(model)
-    writer.save('quality_model.pkl')
+    writer.save('/home/ryan/quality_model.pkl')
     
     print("Saved.")
     print("")
-    print("Output Results:")
-    print(model.test(train_vectors, train_outputs))
 
 if __name__ == "__main__":
     main()

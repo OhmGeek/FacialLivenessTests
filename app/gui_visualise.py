@@ -16,7 +16,7 @@ model_outputs = str(sys.argv[2]) # 1 => use Certainty, 2=> real, fake
 dataset = NUAADataset(Logger("nuaa"), "/home/ryan/datasets/nuaa/")
 dataset.pre_process()
 print(dataset)
-imgs = dataset.read_dataset("ImposterRaw")
+imgs = dataset.read_dataset("ClientRaw")
 model = ModelReader().read_from_file(model_path)
 objects = None
 

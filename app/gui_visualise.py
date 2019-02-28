@@ -13,10 +13,10 @@ from liveness.io.reader import ModelReader
 model_path = str(sys.argv[1])
 model_outputs = str(sys.argv[2]) # 1 => use Certainty, 2=> real, fake
 
-dataset = ReplayAttackDataset(Logger("nuaa"), "/home/ryan/datasets/ReplayAttackDB/")
+dataset = NUAADataset(Logger("nuaa"), "/home/ryan/datasets/nuaa/")
 dataset.pre_process()
 print(dataset)
-imgs = dataset.read_dataset("attack")
+imgs = dataset.read_dataset("ImposterRaw")
 model = ModelReader().read_from_file(model_path)
 objects = None
 
@@ -28,7 +28,13 @@ else:
 
 for img in imgs:
     print(img.shape)
-    prediction = model.evaluate(img)
+    print(model.__dict__)
+    try:
+        prediction = model.evaluate(np.array(img))
+
+    except Exception as ex:
+        print("Skipping image because of exception", ex)
+        continue
     print(prediction)
     # Create a figure
     fig = plt.figure()
@@ -53,10 +59,11 @@ for img in imgs:
 
     output = np.hstack((img, bar_chart))
     cv2.imshow('Prediction',img)
-    key = cv2.waitKey(200) # wait 200ms
+    key = cv2.waitKey(1) # wait 200ms
     if (key == ord('x')):
         break
 
+    exit()
 
 # close all windows
 

@@ -43,15 +43,19 @@ def preprocessor(data, outputs, logger):
     train_outputs = []
     for i in range(len(data)):
         try:
-            client_img = data[i]
-            image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
+            image = data[i]
+            logger.info("image converted")
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
+            print("Gaussian Blurred")
             vector = vector_creator.create_vector(image, gaussian_image)
+            print("Vector created")
             train_vectors.append(vector)
+            print("Vector added to vectors.")
             if(outputs is not None):
                 train_outputs.append(outputs[i])
-        except:
+        except RuntimeError as error:
             logger.error("Error while evaluating image")
+            logger.error(error)
 
     return train_vectors, train_outputs
 
@@ -88,8 +92,6 @@ class QualitySVMModel(AbstractModel):
     def test(self, input_x, input_y):
         training_inputs = preprocessor(input_x, self._logger)
         return self._model.score(training_inputs, input_y)
-
-
 
 class QualityLDAModel(AbstractModel):
     def __init__(self, logger):

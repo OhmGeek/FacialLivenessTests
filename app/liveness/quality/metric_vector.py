@@ -15,7 +15,7 @@ class DefaultMetricVectorCreator(AbstractMetricVectorCreator):
         for m in self.metrics:
             # TODO: refactor this, as this is dumb.
             value = None
-            
+            print("Looking at metric: ", m)
             if(isinstance(m, AbstractNoReferenceQualityMetric)):
                 # if no reference, just pass input.
 

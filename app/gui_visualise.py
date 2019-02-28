@@ -42,9 +42,7 @@ for img in imgs:
     fig = plt.figure()
     fig.add_subplot(111)
 
-    # If we haven't already shown or saved the plot, then we need to
-    # draw the figure first...
-    fig.canvas.draw()
+   
 
     # Do the plot
     y_pos = np.arange(len(objects))
@@ -53,7 +51,9 @@ for img in imgs:
     plt.xticks(y_pos, objects)
     plt.ylabel('Certainty')
     plt.title('Model prediction of certainty')
-    
+     # If we haven't already shown or saved the plot, then we need to
+    # draw the figure first...
+    fig.canvas.draw()
     # Now take the output bar chart as numpy array image.
     bar_chart = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
     bar_chart = bar_chart.reshape(fig.canvas.get_width_height()[::-1] + (3,))

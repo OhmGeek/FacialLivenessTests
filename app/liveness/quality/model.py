@@ -44,6 +44,8 @@ def preprocessor(data, outputs, logger):
     for i in range(len(data)):
         try:
             image = data[i]
+            print(image.shape)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             logger.info("image converted")
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             print("Gaussian Blurred")

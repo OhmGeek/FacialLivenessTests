@@ -42,8 +42,6 @@ def wavedec2(arr):
             raise ValueError('Must be at least 1 value in the array')
 
         r = pywt.dwt2(arr, 'db9')
-        print("POST PYWT DWT2")
-        print(r)
         return r[1]
     except Exception as e:
         print("wavedec2 error")
@@ -126,9 +124,7 @@ def biqi(arr):
 
 
     jpeg_score = jpg_quality(arr)
-    print("JPEG score produced: ", jpeg_score)
     gam_list, gam = gammalist()
-    print("Gamma list produced: ", gam_list)
     mu_horz = []
     mu_vert = []
     mu_diag = []
@@ -164,35 +160,23 @@ def biqi(arr):
     diff_vert = [(i, gam_list[i]-rho_vert) for i in range(len(gam_list))]
     diff_diag = [(i, gam_list[i]-rho_diag) for i in range(len(gam_list))]
 
-    print("Diff list produced. ")
     diff_horz = sorted(diff_horz, key=lambda item: item[1])
     diff_vert = sorted(diff_vert, key=lambda item: item[1])
     diff_diag = sorted(diff_diag, key=lambda item: item[1])
-    print("Diff list sorted. ")
     gam_horz.append(gam[diff_horz[0][0]])
     gam_vert.append(gam[diff_vert[0][0]])
     gam_diag.append(gam[diff_diag[0][0]])
 
-    print("Prepare to start looping!")
     for i in range(1, 3):
-        print("Downscale loop:", i)
         arr = downscale(arr)
-        print("Done downscaling")
         h, v, d = wavedec2(arr)
-        print("Done decomp")
         h_curr = h.flatten('F')
-        print("h flatten")
         v_curr = v.flatten('F')
-        print("v flatten")
         d_curr = d.flatten('F')
-        print("d flatten")
 
         mu_horz.append(h_curr.mean())
-        print("mu_horz append")
         mu_vert.append(v_curr.mean())
-        print("mu_vert append")
         mu_diag.append(d_curr.mean())
-        print("mu_diag append")
 
         sigma_sq_horz.append(((h_curr-h_curr.mean())*(h_curr-h_curr.mean())).mean())
         sigma_sq_vert.append(((v_curr-v_curr.mean())*(v_curr-v_curr.mean())).mean())
@@ -218,23 +202,14 @@ def biqi(arr):
         gam_vert.append(gam[diff_vert[0][0]])
         gam_diag.append(gam[diff_diag[0][0]])
 
-    print("PREP to assign rep vector")
     rep_vector = sigma_sq_horz
-    print("=")
     rep_vector.extend(sigma_sq_vert)
-    print("==")
     rep_vector.extend(sigma_sq_diag)
-    print("===")
     rep_vector.extend(gam_horz)
-    print("====")
     rep_vector.extend(gam_vert)
-    print("=====")
     rep_vector.extend(gam_diag)
-    print("======")
 
-    print("PRepare to write test_ind.txt")
     with open("test_ind.txt", "w") as f:
-        print("Write to file. ")
         l = "{} ".format(1)
         f.write(l)
         for idx, v in enumerate(rep_vector):
@@ -242,17 +217,12 @@ def biqi(arr):
             f.write(ll)
         f.write("\n")
 
-    print("Finished writing to file. ")
     os.system("svm-scale -r range2 test_ind.txt >> test_ind_scaled")
-    print("svm-scale done. ")
     os.system("svm-predict -b 1 test_ind_scaled model_89 output_89")
-    print("svm-predict done. ")
     os.system("rm -f test_ind_scaled")
 
     os.system("svm-scale -r range2_jp2k test_ind.txt >> test_ind_scaled")
-    print("svm-scale done. ")
     os.system("svm-predict -b 1 test_ind_scaled model_89_jp2k output_blur")
-    print("svm-predict done. ")
     f = open("output_blur", "rb")
     jp2k_score = float(f.readline().strip())
     f.close()
@@ -260,27 +230,21 @@ def biqi(arr):
 
 
     os.system("svm-scale -r range2_wn test_ind.txt >> test_ind_scaled")
-    print("svm-scale done. ")
     os.system("svm-predict -b 1 test_ind_scaled model_89_wn output_blur")
-    print("svm-predict done. ")
     f = open("output_blur", "rb")
     wn_score = float(f.readline().strip())
     f.close()
     os.system("rm output_blur test_ind_scaled")
 
     os.system("svm-scale -r range2_blur test_ind.txt >> test_ind_scaled")
-    print("svm-scale done. ")
     os.system("svm-predict -b 1 test_ind_scaled model_89_blur output_blur")
-    print("svm-predict done. ")
     f = open("output_blur", "rb")
     blur_score = float(f.readline().strip())
     f.close()
     os.system("rm output_blur test_ind_scaled")
 
     os.system("svm-scale -r range2_ff test_ind.txt >> test_ind_scaled")
-    print("svm-scale done. ")
     os.system("svm-predict -b 1 test_ind_scaled model_89_ff output_blur")
-    print("svm-predict done. ")
     f = open("output_blur", "rb")
     ff_score = float(f.readline().strip())
     f.close()

@@ -26,15 +26,17 @@ if(model_outputs == "1"):
 else:
     objects = ('Real', 'Fake')
 
+counter = 0
 for img in imgs:
-    print(img.shape)
-    print(model.__dict__)
+    counter += 1
+    print("###### IMAGE ", counter)
     try:
-        prediction = model.evaluate(np.array(img))
+        prediction = model.evaluate(np.array([img]))
 
     except Exception as ex:
         print("Skipping image because of exception", ex)
         continue
+    
     print(prediction)
     # Create a figure
     fig = plt.figure()
@@ -47,7 +49,7 @@ for img in imgs:
     # Do the plot
     y_pos = np.arange(len(objects))
     
-    plt.bar(y_pos, prediction, align='center', alpha=0.5)
+    plt.bar(y_pos, prediction, align='center')
     plt.xticks(y_pos, objects)
     plt.ylabel('Certainty')
     plt.title('Model prediction of certainty')
@@ -58,12 +60,11 @@ for img in imgs:
 
 
     output = np.hstack((img, bar_chart))
-    cv2.imshow('Prediction',img)
-    key = cv2.waitKey(1) # wait 200ms
+    cv2.imshow('Prediction',output)
+    key = cv2.waitKey(1000 ) # wait 200ms
     if (key == ord('x')):
         break
 
-    exit()
 
 # close all windows
 

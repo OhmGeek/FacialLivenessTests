@@ -13,10 +13,10 @@ from liveness.io.reader import ModelReader
 model_path = str(sys.argv[1])
 model_outputs = str(sys.argv[2]) # 1 => use Certainty, 2=> real, fake
 
-dataset = NUAADataset(Logger("nuaa"), "/home/ryan/datasets/nuaa/")
+dataset = ReplayAttackDataset(Logger("nuaa"), "/home/ryan/datasets/replayAttackDB/")
 dataset.pre_process()
 print(dataset)
-imgs = dataset.read_dataset("ClientRaw")
+imgs = dataset.read_dataset("attack")
 model = ModelReader().read_from_file(model_path)
 objects = None
 
@@ -28,6 +28,7 @@ else:
 
 counter = 0
 for img in imgs:
+    plt.close()
     counter += 1
     print("###### IMAGE ", counter)
     try:
@@ -42,8 +43,8 @@ for img in imgs:
     fig = plt.figure()
     fig.add_subplot(111)
 
-   
-
+    print("#############################################")
+ 
     # Do the plot
     y_pos = np.arange(len(objects))
     
@@ -57,9 +58,10 @@ for img in imgs:
     # Now take the output bar chart as numpy array image.
     bar_chart = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
     bar_chart = bar_chart.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-
-
-    output = np.hstack((img, bar_chart))
+    
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    output_img = cv2.resize(img, dsize=(bar_chart.shape[1], bar_chart.shape[0]), interpolation=cv2.INTER_CUBIC)
+    output = np.hstack((output_img, bar_chart))
     cv2.imshow('Prediction',output)
     key = cv2.waitKey(1000 ) # wait 200ms
     if (key == ord('x')):

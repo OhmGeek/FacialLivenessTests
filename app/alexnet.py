@@ -1,6 +1,7 @@
 import logging
 import keras
 from liveness.cnn.residual.model import ResidualNetwork
+from liveness.io.writer import ModelWriter
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling2D, Lambda
 from keras.layers.normalization import BatchNormalization
@@ -96,6 +97,8 @@ def main():
 
     model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=5, shuffle=True, verbose=1)
     # model.save('alexnet.h5')
+    writer = ModelWriter(model)
+    writer.save("/home/ohmgeek_default/alexnet.h5")
 
     dataset = None
     x = None

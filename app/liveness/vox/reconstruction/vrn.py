@@ -13,13 +13,14 @@ def preprocess_image_for_builder(image, new_size=(192,192)):
     # This takes an image, preprocesses the image.
     ## First, resize to new size (default: 192 x 192)
     image = cv2.resize(image, new_size)
-
+    print("Resized")
     ## B,G,R -> R,G,B
     b,g,r = cv2.split(image)
     image = cv2.merge([r,g,b])
     image = np.swapaxes(image, 2, 0)
     image = np.swapaxes(image, 2, 1)
 
+    print("Split.")
     # R,G,B -> image
     image = np.array([image])
 
@@ -59,7 +60,6 @@ class FaceVoxelBuilder(object):
             Reconstruct a face from 2D -> 3D
         """
         img = preprocess_image_for_builder(image)
-
         pred = self._model.predict(img)
         vol = pred[0] * 255
         im = img[0]
@@ -71,3 +71,11 @@ class FaceVoxelBuilder(object):
                         (vol > 1) * im[:,:,2]), axis=3)
 
         return vol_rgb
+
+    def build_3d_multiple(self, images):
+        outputs = []
+        for image in images:
+            output = self.build_3d(image)
+            outputs.append(output)
+
+        return np.array(outputs)

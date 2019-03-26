@@ -12,9 +12,12 @@ builder = FaceVoxelBuilder(logging.Logger(""))
 
 # load in image
 img = cv2.imread('/home/ryan/datasets/nuaa/ClientRaw/0001/0001_00_00_02_2.jpg')
-
+imgs = []
+imgs.append(img)
+imgs.append(img)
+imgs = np.array(imgs)
 # build 3D
-volRGB = builder.build_3d(img)
+volRGB = builder.build_3d_multiple(imgs)
 
 # Render slices on screen
 for i, p in enumerate(volRGB[80:180:5]):

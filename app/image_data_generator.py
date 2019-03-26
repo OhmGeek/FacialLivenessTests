@@ -25,6 +25,5 @@ class DataGenerator(keras.utils.Sequence):
 
         # TODO convert x_values to voxels.
         x = self.voxel_builder.build_3d_multiple(x_values)
-
         return x, y
 

@@ -18,7 +18,7 @@ imgs.append(img)
 imgs = np.array(imgs)
 # build 3D
 volRGB = builder.build_3d_multiple(imgs)
-
+print(volRGB.shape)
 # Render slices on screen
 for i, p in enumerate(volRGB[80:180:5]):
     plt.subplot(5, 4, i + 1)

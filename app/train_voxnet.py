@@ -72,7 +72,7 @@ def main():
 
     # Train the model on our training set.
     batch_size = 100
-    generator = DataGenerator(x, y, batch_size=32)
+    generator = DataGenerator(x, y, batch_size=8)
 
     steps_per_epoch = len(x) / batch_size
     steps_per_epoch = 1

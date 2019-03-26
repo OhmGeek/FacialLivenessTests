@@ -6,7 +6,6 @@ This is then passed for classification.
 import numpy as np
 import cv2
 from keras.models import load_model
-import tensorflow as tf
 from liveness.vox.reconstruction import custom_layers
 
 def preprocess_image_for_builder(image, new_size=(192,192)):
@@ -69,7 +68,6 @@ class FaceVoxelBuilder(object):
                         (vol > 1) * im[:,:,1],
                         (vol > 1) * im[:,:,2]), axis=3)
 
-        print("VolRGB shape:", vol_rgb.shape)
         return vol_rgb
 
     def build_3d_multiple(self, images):

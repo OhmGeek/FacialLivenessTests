@@ -59,10 +59,10 @@ class VoxNet(AbstractModel):
     def _create_model(self, learning_rate=0.0001):
         model = Sequential()
 
-        model.add(Reshape([32,32,32,1]))
-        model.add(Conv3D(32, (5,5,5), strides=(2,2,2)))
+        # model.add(Reshape([200,192,192,3]))
+        model.add(Conv3D(5, (5,5,5), strides=(2,2,2)))
         model.add(LeakyReLU(alpha=0.1))
-        model.add(Conv3D(32, (3,3,3), strides=(1,1,1)))
+        model.add(Conv3D(5, (3,3,3), strides=(1,1,1)))
         model.add(LeakyReLU(alpha=0.1))
         model.add(MaxPooling3D(strides=(2,2,2)))
 
@@ -70,11 +70,11 @@ class VoxNet(AbstractModel):
 
         # Now the dense classifier
         model.add(Dropout(0.4))
-        model.add(Dense(128))
+        model.add(Dense(10))
         model.add(Dropout(0.4))
-        model.add(Dense(14, activation='softmax'))
+        model.add(Dense(2, activation='softmax'))
 
-        model.build(input_shape=(None, 32,32,32))
+        model.build(input_shape=(None, 200,192,192,3))
         model.summary() ## TODO make this be called seperately.
 
         opt_adam = keras.optimizers.Adam()

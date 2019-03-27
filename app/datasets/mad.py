@@ -5,6 +5,7 @@ import glob
 import h5py
 from os.path import isfile as check_file_exists
 from os.path import dirname, realpath
+import random
 
 class PreprocessingIncompleteError(Exception):
     """ An error to be raised when preprocessing hasn't been executed """
@@ -25,6 +26,7 @@ class MaskAttackDataset(Dataset):
         self._is_file_open = False
         self._datasets = None
         self._output_filename = dirname(realpath(__file__)) + '/../../datasets/mad/mad.h5'
+        self._labels = ["B", "C"]
         super().__init__()
 
     def pre_process(self):
@@ -39,36 +41,28 @@ class MaskAttackDataset(Dataset):
 
         # TODO: go through preprocessing dataset into h5 file (all in one).
 
-        # with h5py.File(self._output_filename, 'w') as hf:
-        #     for label in self._labels:
-        #         self._logger.info("Start looking at label %s in dataset." % label)
-        #         label_images = []
-        #         # Go through each video
-        #         glob_arg = self._filename + '/%s/**/*.mov' % label
-        #         print(glob_arg)
-        #         for vid_filename in glob.iglob(glob_arg, recursive=True):
-        #             print(vid_filename)
-        #             vidcap = cv2.VideoCapture(vid_filename)
-        #             count = 0
-        #             # Capture each 20 frames within the video, saving them as label images.
-        #             while vidcap.isOpened():
-        #                 success, image = vidcap.read()
-        #                 count += 1
-        #                 if(success and count % 20 == 0):
-        #                     print(count)
-        #                     count = 0
-        #                     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        #                     label_images.append(image)
-        #                 if not success:
-        #                     break
-        #             vidcap.release()
-        #             print("Released.")
-        #         # save to the dataset.
-        #         dataset = hf.create_dataset(label, data=label_images)
-        #         self._logger.info("Dataset created")
-        #         self._datasets.append(dataset)
+        with h5py.File(self._output_filename, 'w') as hf:
+            for label in self._labels:
+                self._logger.info("Start looking at label %s in dataset." % label)
+                label_images = []
+                # Go through each h5 file
+                glob_arg = self._filename + '/%s/**/*.hdf5' % label
+                print(glob_arg)
+                for vid_filename in glob.iglob(glob_arg, recursive=True):
+                    print(vid_filename)
+                    # Now open h5py file for reading.
+                    with h5py.File(vid_filename, "r") as mad_file:
+                        file_images = mad_file['Color_Data']
+                        for img in file_images[0:5]:
+                            label_images.append(img)
 
-        # self._logger.info("Dataset preprocessing completed.")
+                    print(label_images)
+                # save to the dataset.
+                dataset = hf.create_dataset(label, data=label_images)
+                self._logger.info("Dataset created")
+                self._datasets.append(dataset)
+
+        self._logger.info("Dataset preprocessing completed.")
 
     def get_all_datasets(self):
         if(self._datasets == None):

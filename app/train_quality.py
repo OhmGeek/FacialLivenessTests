@@ -47,12 +47,11 @@ def main():
     vector_creator = DefaultMetricVectorCreator(metrics)
 
     print("Running test.py")
-    # dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa/")
-    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.mad"), "/home/ryan/datasets/mad/")
+    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("C") # ImposterRaw
-    client_set = dataset.read_dataset("B") # ClientRaw
+    imposter_set = dataset.read_dataset("ImposterRaw") # ImposterRaw
+    client_set = dataset.read_dataset("ClientRaw") # ClientRaw
     # Divide dataset into train, and test (40%, 60%)
     # train_set = np.concatenate((train_set, client_set[:int(client_set.shape[0] / 2)]))
     train_vectors = []

@@ -44,12 +44,15 @@ def preprocessor(data, outputs, logger):
     for i in range(len(data)):
         try:
             client_img = data[i]
+            print(client_img)
             image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
+
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
             train_vectors.append(vector)
             train_outputs.append(outputs[i])
-        except:
+        except Exception as e:
+            print(e)
             logger.error("Error while evaluating image")
 
     return train_vectors, train_outputs

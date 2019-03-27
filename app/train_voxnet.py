@@ -13,7 +13,7 @@ from sklearn.utils import shuffle
 from sklearn.model_selection import KFold
 import numpy as np
 import cv2
-from datasets.nuaa import NUAADataset
+from datasets.mad import MaskAttackDataset
 from datasets.replayattack import ReplayAttackDataset
 import face_recognition
 from PIL import Image
@@ -48,14 +48,14 @@ def main():
     # model.summary()
 
     # Now create the training set.
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/")
+    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/mad/")
     # dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")
+    imposter_set = dataset.read_dataset("C")
     imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
 
-    client_set = dataset.read_dataset("real")
+    client_set = dataset.read_dataset("B")
     client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
 
     # gen = VoxelDataGenerator(
@@ -68,14 +68,12 @@ def main():
     y = np.concatenate((imposter_y, client_y))
 
     x,y = shuffle(x, y)
-    # folds = list(KFold(n_splits=k, shuffle=True, random_state=1).split(x, y))
 
     # Train the model on our training set.
-    batch_size = 100
-    generator = DataGenerator(x, y, batch_size=8)
+    batch_size = 8
+    generator = DataGenerator(x, y, batch_size=batch_size)
 
     steps_per_epoch = len(x) / batch_size
-    steps_per_epoch = 1
     model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=5, shuffle=True, verbose=1)
     # model.save('alexnet.h5')
 
@@ -104,7 +102,7 @@ def main():
 
     x,y = shuffle(x, y)
     
-    generator = gen.flow(x, y, batch_size=100)
+    generator = gen.flow(x, y, batch_size=8)
     score = model.test_generator(generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')

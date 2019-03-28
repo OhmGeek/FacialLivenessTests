@@ -14,6 +14,7 @@ from sklearn.model_selection import KFold
 import numpy as np
 import cv2
 from datasets.mad import MaskAttackDataset
+from datasets.nuaa import NUAADataset
 from datasets.replayattack import ReplayAttackDataset
 import face_recognition
 from PIL import Image
@@ -48,8 +49,8 @@ def main():
     # model.summary()
 
     # Now create the training set.
-    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/mad/")
-    # dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
+    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/mad/")
+    #dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("C")

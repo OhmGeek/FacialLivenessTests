@@ -26,14 +26,20 @@
 % These instructions give you guidelines for preparing the final paper.  DO NOT change any settings, such as margins and font sizes.  Just use this as a template and modify the contents into your final paper.  Do not cite references in the abstract.
 
 % The abstract must be a Structured Abstract with the headings {\bf Context/Background}, {\bf Aims}, {\bf Method}, {\bf Results}, and {\bf Conclusions}.  This section should not be longer than half of a page, and having no more than one or two sentences under each heading is advised.
-\paragraph{Context/Background}
-    \todo{TODO context}
+\paragraph{Context}
+    \todo{TODO}
 
 \paragraph{Aims}
-    \todo{TODO}
+    % This might belong more in the method.
+    \begin{itemize}
+        \item Verify the results of the Image Quality Assessment test.
+        \item Assess the outcome Convolutional Neural Networks on classifying real/spoofed images.
+        \item Design and implement a new 3D based liveness test, aimed to prevent mask attacks.
+        \item Determine the outcome of fusing the three above methods together, and how successful this is.
+    \end{itemize}
 
 \paragraph{Method}
-    \todo{TODO}
+   
 
 \paragraph{Results}
     \todo{TODO}
@@ -53,18 +59,60 @@ Facial liveness, convolutional neural networks, image quality metrics
     especially if they consist partially or entirely of a word in a standard dictionary. Furthermore, the process of shoulder surfing is possible (watching out
     for someone's password, and how they type it).
 
-    An easy to use system is necessary to remove the choice from the user (in terms of password), relying on the user being automatically
-    detected, and several confirmation methods to ensure the user is indeed who they say they are (and not just someone spoofing the system).
-    Before such a system is developed, a facial liveness testing method must be found that operated in near real-time, and that is fairly accurate.
+    % TODO this needs to be readjusted to make it sound more formal and clear.
+   While there are different measures of detecting liveness, each method is specialised towards defending against a given attack. The aim of this project is to understand
+   the existing liveness detection methods, which type of attack they aim to prevent, and how effective they are. Once this has been achieved, the aim shall be to bring
+   each of these methods together, hopefully improving the effectiveness of such a system by encorporating multiple methods.
 
+    % TODO might be worth explaining that we are focusing here on only images, rather than video. Explain why...
+
+    In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
+    We also confirm the success of the Image Quality Assessment method for Facial Liveness, and provide an improve
+    % In this context, we propose 
 
 \section{Related Work}
     % LIT REVIEW GOES HERE!
-    % - First basic metrics
+    As defined in \cite{FaceSpoofingAttacksStudy}, the types of face spoofing attacks can be described under three sections: Photo Attack, Video Attack and Mask Attack.
+
+    \subsection{2D Spoofing Attacks}
+        Photo and Video Attacks are both 2D spoofing attacks, which involve using a previously retrieved photo/video, and holding it in front of a camera. In the case of photo attacks,
+        a single photo is used, where in video, some video would be played back on a screen. \cite{FaceSpoofingAttacksStudy}.
+
+        With video-based facial recognition systems, motions of some form can be used to determine whether the person is real or spoofed, such as blinking, head movement and others.
+        % TODO "As shown in ..., a blinking method using ... yields ... results
+        % Head movement methods shown in .... yield ... by using ...
+        % Face flashing methods, recently proposed in ..., yield impressive results, but require a screen and the results vary based on screen size.
+        In the method defined in \cite{SFMClassifier}, structure from motion was used on the video to produce a 3D model of a user, with the depth channel being used to determine whether a person is real, or whether it's simply an image.
+        They also extended this by fusing this method with audio verification. The fusion of multiple methods provides greater reliablity. However, while SFM works with video, it doesn't work with a single image,
+        and it also doesn't work if a video with little motion is provided. This fusion was completed using a Bayesian Network 
+
+        While motion based methods are video-only, quality based methods are useful for both videos and images (either by extracting key video frames or using all video frames and combining the results).
+        %TODO explain old image quality methods, and their results and how they work. What's bad/what's good?
+
+        While there are various quality metrics that have been used, combining a large number of them can yield some increased accuracy. By combining 25 different metrics,
+        , yielding the resulting metric values into a large vector, and using that as input to a classifier (an LDA), this yields fairly high accuracy. \cite{ImageQualityAssessmentTest}.
+        This is an example of combining many items to yield better results. While each metric on its own isn't that great, using them all together yields better results.
+        
+        Recently, deep learning based approaches have been taken to facial liveness (both video and image based).
+        % Some existing CNN based methods.
+        % then explain Alexnet's success previously with image classification, and by extension residual networks extension.
+
+    \subsection{3D Spoofing Attacks}
+        Mask Attacks are a 3D spoofing attack, which involve creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy} These are much less prevalent, but with 3D printing becoming more mainstream, this
+        could potentially get more prevalent in the future.
+
+        % Explain the method shown in Choudhary et al., 1999 - SFM. Problem: depth information ahrd to obtain when still with SFM. Noise also problematic.
+        % Which uses Structure From Motion.
+
+        
+    % What are the different types of attacks that one would expect? 
+    % Then, explain the different methods that can be applied, including references.
     % - image Quality assessment (different types of image quality metrics used ,and why they should be effective). Drawbacks of these
     % - movement based assessment (requiring actions to be performed, and their problems).
     % - Deep Learning methods (what methods exist, their performance)
     % - 3D mask prevention methods (kinect based ones that require 3D input, or SFM, which isn't really valid here)
+
+
 \section{Solution}
     % Solution to the problem
     \subsection{Image Quality Assessment based liveness test}

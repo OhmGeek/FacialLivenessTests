@@ -3,44 +3,46 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: plain.bst
 Database file #1: report.bib
-You've used 2 entries,
+Warning--empty booktitle in FaceSpoofingAttacksStudy
+You've used 4 entries,
             2118 wiz_defined-function locations,
-            511 strings with 4506 characters,
-and the built_in function-call counts, 678 in all, are:
-= -- 61
-> -- 41
-< -- 0
-+ -- 16
-- -- 14
-* -- 55
-:= -- 126
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 13
+            524 strings with 4924 characters,
+and the built_in function-call counts, 1504 in all, are:
+= -- 141
+> -- 82
+< -- 1
++ -- 33
+- -- 28
+* -- 108
+:= -- 252
+add.period$ -- 13
+call.type$ -- 4
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 21
-empty$ -- 45
-format.name$ -- 14
-if$ -- 132
+cite$ -- 5
+duplicate$ -- 57
+empty$ -- 112
+format.name$ -- 28
+if$ -- 314
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 11
+int.to.str$ -- 4
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 32
 preamble$ -- 1
-purify$ -- 11
+purify$ -- 22
 quote$ -- 0
-skip$ -- 14
+skip$ -- 39
 stack$ -- 0
-substring$ -- 31
-swap$ -- 2
-text.length$ -- 0
+substring$ -- 74
+swap$ -- 14
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 0
-while$ -- 5
-width$ -- 3
-write$ -- 23
+type$ -- 16
+warning$ -- 1
+while$ -- 12
+width$ -- 5
+write$ -- 44
+(There was 1 warning)

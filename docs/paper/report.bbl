@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{SFMClassifier}
+Tanzeem Choudhury, Brian Clarkson, Tony Jebara, and Alex Pentland.
+\newblock Multimodal person recognition using unconstrained audio and video.
+\newblock In {\em Proceedings, International Conference on Audio-and
+  Video-Based Person Authentication}, pages 176--181. Citeseer, 1999.
+
 \bibitem{ImageQualityAssessmentTest}
 J.~Galbally, S.~Marcel, and J.~Fierrez.
 \newblock Image quality assessment for fake biometric detection: Application to
@@ -12,5 +18,10 @@ Aaron~S Jackson, Adrian Bulat, Vasileios Argyriou, and Georgios Tzimiropoulos.
 \newblock Large pose 3d face reconstruction from a single image via direct
   volumetric cnn regression.
 \newblock {\em International Conference on Computer Vision}, 2017.
+
+\bibitem{FaceSpoofingAttacksStudy}
+Sandeep Kumar, Sukhwinder Singh, and Jagdish Kumar.
+\newblock A comparative study on face spoofing attacks.
+\newblock 05 2017.
 
 \end{thebibliography}

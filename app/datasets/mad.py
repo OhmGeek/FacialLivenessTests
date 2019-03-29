@@ -31,6 +31,7 @@ class MaskAttackDataset(Dataset):
         self._logger = logger
         self._filename = filename
         self._is_file_open = False
+        self.subjects = subjects
         self._datasets = None
         self._output_filename = dirname(realpath(__file__)) + '/../../datasets/mad/mad.h5'
         self._labels = ["B", "C"]

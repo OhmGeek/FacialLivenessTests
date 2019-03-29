@@ -40,7 +40,7 @@
 
 \paragraph{Method}
    
-
+    \todo{TODO}
 \paragraph{Results}
     \todo{TODO}
 \paragraph{Conclusions}
@@ -146,31 +146,35 @@ Facial liveness, convolutional neural networks, image quality metrics
         While the systems before might go partially towards preventing 3D spoofing attacks, though primarily considering the 2D image, we now propose a method
         that is designed for classifying facial liveness based on a 3D point cloud.
 
-        \subsubsection{Point Cloud Reconstruction}
-            In order to classify an image/video, a 3D point cloud needs to be created, containing many 3D points $(x,y,z)$
-            of a user's face. While 3d reconstruction is easier with videos (using structure from motion or other multiview based methods),
-            there also exist image-based reconstruction methods such as vrn (\citealt{3DReconstructionMethod}) which are more specific and designed for reconstructing faces based on images.
+        \subsubsection{2D to 3D Conversion}
+            In order to classify an image/video, the 2D image needs to be converted to a 3D representation of a user's face. While 3d reconstruction is easier with videos (using structure from motion or other multiview based methods),
+            there also exist image-based reconstruction methods such as vrn (\citealt{3DReconstructionMethod}) which are more specific and designed for reconstructing faces based on images. This also has benefits, as structure from motion
+            is unable to reconstruct 3D from a single image, or from videos with very little motion.
+
+            The image was converted by first applying a facial detection algorithm on the image, and cropping the image down to provide only the face. This cropped image was then resized to
+            be of size $(192, 192)$, still in colour. This cropped and resized image was then fed through the VRN network. After this, the network output was filtered and stacked to provide the voxel input required.
+
+            The code to operate this can be found under the \emph{liveness.vox.reconstruction} namespace within the code.
 
         \subsubsection{3D point cloud classification}
             Once the 3D reconstruction is obtained, one can then classify this using some model to produce the fake/real metric.
-
-            For points, PointNet is a model that can be used \todo[inline]{EXPLAIN POINTNET}
-
-            However, as we are using voxels, there is a more specialised architecutre called Voxnet that is designed for classifying
-            3d volume-based objects. VoxNet takes in a point cloud and converts this to an occupancy grid. This is then fed through two convolutional layers,
+            
+            VoxNet takes in a point cloud and converts this to an occupancy grid. This is then fed through two convolutional layers,
             pooled, and then goes through a dense layer before reaching the classifier output (a dense layer with the k outcomes). 
 
-            Instead of training on our existing datasets, we first train a VoxNet model on the SUOD dataset, in order to learn the basic features surrounding
-            3D classification. This largely uses the tools provided in the original implementation of VoxNet, but with a custom Keras implementation. This pretrained
-            model is then saved, for use in our final implementation.
+            As a pretrained version of VoxNet wasn't readily available, the whole system was trained together from scratch.
 
-            Using this original VoxNet implementation, the last dense layer is then ignored, with it being extended to contain further dense layers, and an eventual output classifier (for fake/real respectively).
-           
-        \subsubsection{How this overall system functions}
-            Each image is first preprocessed: the image is fed through the 3D reconstruction network, and the output is a set of Voxels.
-            Using these voxels, they are then resized into a (24 x 24 x 24) shape to provide a basis for the network. From here, they are
-            fed through several convolutional layers, before then being fed through several dense layers for classification. 
+        \subsubsection{Linking everything together}
+            While each system is self-contained, linking them together took a little bit more work than expected. The models themselves couldn't be directly joined together,
+            as VRN required extra postprocessing steps which couldn't be implemented using tensors within tensorflow. As such, the initial 2D to 3D conversion was required to be run
+            as a preprocessing step.
 
+            To assist in the training phase, a generator was written in Python to conduct the postprocessing on the fly for each batch, which didn't require the entire preprocessing step to be done before training, 
+            thus reducing the peak memory usage problems. While an ImageDataGenerator was used previously, this isn't compatible with 3D, and therefore a custom module needed to be written.
+
+            Once the preprocessing had been completed, the preprocessed image was fed to the VoxNet. 
+
+            % tODO explain experiments.
             \missingfigure{INSERT FIGURE HERE CONTAINING PIPELINE}
     \subsection{Visualisation and Demonstration}
         In order to visualise the overall outcome of facial liveness, a generic model 

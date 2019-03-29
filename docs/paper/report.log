@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  28 MAR 2019 16:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  28 MAR 2019 16:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -384,26 +384,25 @@ Package natbib Warning: Author undefined for citation`ImageQualityAssessmentTest
 (natbib)                on page 2 on input line 122.
 
 [2]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 150.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 150.
-
 
 Package natbib Warning: Author undefined for citation`3DReconstructionMethod' 
-(natbib)                on page 3 on input line 152.
+(natbib)                on page 3 on input line 151.
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 155.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 155.
 [3] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl) [4] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 12666 strings out of 493013
- 254339 string characters out of 6135681
- 299537 words of memory out of 5000000
- 15956 multiletter control sequences out of 15000+600000
+ 12672 strings out of 493013
+ 254481 string characters out of 6135681
+ 303431 words of memory out of 5000000
+ 15962 multiletter control sequences out of 15000+600000
  15737 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,80p,482b,894s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,80p,482b,906s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (4 pages, 89744 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (4 pages, 90824 bytes).
 PDF statistics:
  49 PDF objects out of 1000 (max. 8388607)
  35 compressed objects within 1 object stream

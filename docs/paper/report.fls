@@ -192,11 +192,11 @@ INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmbi7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
-INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
-INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
+INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb

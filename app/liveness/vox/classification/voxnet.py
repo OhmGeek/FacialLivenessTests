@@ -72,13 +72,13 @@ class VoxNet(AbstractModel):
         model.add(Dropout(0.4))
         model.add(Dense(10))
         model.add(Dropout(0.4))
-        model.add(Dense(2, activation='softmax'))
+        model.add(Dense(1, activation='softmax'))
 
         model.build(input_shape=(None, 200,192,192,3))
         model.summary() ## TODO make this be called seperately.
 
         opt_adam = keras.optimizers.Adam()
-        model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
+        model.compile(loss='binary_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
 
         self._model = model
 

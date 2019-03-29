@@ -19,20 +19,19 @@ from datasets.replayattack import ReplayAttackDataset
 import face_recognition
 from PIL import Image
 import sys
+# def get_largest_bounding_box(locations):
+#     if len(locations) == 0:
+#         return None
+#     w = max(locations, key=lambda x: np.linalg.norm(x[0]-x[2]) * np.linalg.norm(x[1]-x[3]))
+#     return w
 
-def get_largest_bounding_box(locations):
-    if len(locations) == 0:
-        return None
-    w = max(locations, key=lambda x: np.linalg.norm(x[0]-x[2]) * np.linalg.norm(x[1]-x[3]))
-    return w
-
-def pre_process_fn(image_arr):
+# def pre_process_fn(image_arr):
     
-    face_image = image_arr
-    voxel_builder = FaceVoxelBuilder(logging.Logger("VoxelBuilder"))
-    face_3d = voxel_builder.build_3d(face_image)
+#     face_image = image_arr
+#     voxel_builder = FaceVoxelBuilder(logging.Logger("VoxelBuilder"))
+#     face_3d = voxel_builder.build_3d(face_image)
 
-    return (face_3d)
+#     return (face_3d)
 
 def main():
     # First, fetch the two distinct sets of data.
@@ -54,15 +53,10 @@ def main():
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("C")
-    imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
+    imposter_y = np.tile([0.0], imposter_set.shape[0])
 
     client_set = dataset.read_dataset("B")
-    client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
-
-    # gen = VoxelDataGenerator(
-    #                      preprocessing_function=pre_process_fn,
-    #                     )
-
+    client_y = np.tile([1.0], client_set.shape[0])
 
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))

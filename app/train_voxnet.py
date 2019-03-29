@@ -48,7 +48,7 @@ def main():
     # model.summary()
 
     # Now create the training set.
-    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/mad/")
+    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/mad/", subjects=[1,2,3,4,5,6,7])
     #dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
     dataset.pre_process()
 
@@ -82,14 +82,14 @@ def main():
     client_y = None
 
     # Now create the training set.
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/")
+    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/mad/", subjects=[8,9,10,11,12,13,14,15,16,17])
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")
-    imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
+    imposter_set = dataset.read_dataset("C")
+    imposter_y = np.tile([0.0], imposter_set.shape[0])
 
-    client_set = dataset.read_dataset("real")
-    client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
+    client_set = dataset.read_dataset("B")
+    client_y = np.tile([1.0], client_set.shape[0])
 
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))

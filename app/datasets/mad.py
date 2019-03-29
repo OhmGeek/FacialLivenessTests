@@ -5,7 +5,14 @@ import glob
 import h5py
 from os.path import isfile as check_file_exists
 from os.path import dirname, realpath
+from os.path import split as os_split
 import random
+
+def get_subject_from_filename(filename):
+    # first two numbers
+    str_subject = filename[0:2]
+
+    return (int(str_subject))
 
 class PreprocessingIncompleteError(Exception):
     """ An error to be raised when preprocessing hasn't been executed """
@@ -14,7 +21,7 @@ class PreprocessingIncompleteError(Exception):
 # TODO refactor some of the methods into the base class.
 class MaskAttackDataset(Dataset):
     # TODO export labels to some map (so we can understand what real/attack are in terms of other datasets.)
-    def __init__(self, logger, filename):
+    def __init__(self, logger, filename, subjects=None):
         """
         Initialise the dataset
         :param filename: the location of the extracted dataset on disk (the root folder).
@@ -34,10 +41,11 @@ class MaskAttackDataset(Dataset):
         # First, load imposter images.
         self._datasets = []
 
-        # If a training set exists, don't try to start again from scratch.
-        if check_file_exists(self._output_filename):
-            self._logger.info("File exists, so finish preprocessing early.")
-            return
+        # TODO: need to refactor this somehow to allow varying subjects with caching.
+        # # If a training set exists, don't try to start again from scratch.
+        # if check_file_exists(self._output_filename):
+        #     self._logger.info("File exists, so finish preprocessing early.")
+        #     return
 
         # TODO: go through preprocessing dataset into h5 file (all in one).
 
@@ -50,6 +58,15 @@ class MaskAttackDataset(Dataset):
                 print(glob_arg)
                 for vid_filename in glob.iglob(glob_arg, recursive=True):
                     print(vid_filename)
+                    
+                    _, filename_only = os_split(vid_filename)
+                    # Now we're going to extract the subject from the filename.
+                    subject = get_subject_from_filename(filename_only)
+
+                    # Skip any subjects TODO: rewrite this loop, because this is very bad practice.
+                    if self.subjects is not None and subject not in self.subjects:
+                        continue
+
                     # Now open h5py file for reading.
                     with h5py.File(vid_filename, "r") as mad_file:
                         file_images = mad_file['Color_Data']

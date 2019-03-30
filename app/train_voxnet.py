@@ -48,7 +48,7 @@ def main():
     # model.summary()
 
     # Now create the training set.
-    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/mad/", subjects=[1,2,3,4,5,6,7])
+    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/mad/", subjects=[1,2,3,4,5,6,7])
     #dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
     dataset.pre_process()
 
@@ -65,14 +65,13 @@ def main():
     x,y = shuffle(x, y)
 
     # Train the model on our training set.
-    batch_size = 64
+    batch_size = 8
     generator = DataGenerator(x, y, batch_size=batch_size)
 
     steps_per_epoch = len(x) / batch_size
     model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=5, shuffle=True, verbose=1)
     # model.save('alexnet.h5')
 
-    exit()
     dataset = None
     x = None
     y = None

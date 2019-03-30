@@ -41,7 +41,7 @@ def main():
 
     print(sys.getrecursionlimit())
     # Now create the CNN model
-    model = VoxNet(logging.Logger("voxnet"))
+    model = VoxNet(logging.Logger("voxnet"), learning_rate=0.01)
     
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
@@ -65,14 +65,13 @@ def main():
     x,y = shuffle(x, y)
 
     # Train the model on our training set.
-    batch_size = 8
+    batch_size = 32
     generator = DataGenerator(x, y, batch_size=batch_size)
 
     steps_per_epoch = len(x) / batch_size
     model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=5, shuffle=True, verbose=1)
     # model.save('alexnet.h5')
 
-    exit()
     dataset = None
     x = None
     y = None

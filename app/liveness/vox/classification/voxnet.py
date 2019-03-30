@@ -17,13 +17,13 @@ from liveness.generic import AbstractModel
 import h5py
 
 class VoxNet(AbstractModel):
-    def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32):
+    def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32, learning_rate=0.0001):
         self._img_height = default_img_dimensions[1]
         self._img_width = default_img_dimensions[0]
         self._nb_channels = nb_channels
         self._cardinality = cardinality
 
-        self._model = self._create_model()
+        self._model = self._create_model(learning_rate=learning_rate)
         self._is_model_created = False
 
         # Now let's go ahead and create the base object.
@@ -56,13 +56,15 @@ class VoxNet(AbstractModel):
         self._model.load_weights(pickle_path)
 
     # -- Private functions
-    def _create_model(self, learning_rate=0.0001):
+    def _create_model(self, learning_rate):
         model = Sequential()
 
         # model.add(Reshape([200,192,192,3]))
-        model.add(Conv3D(10, (5,5,5), strides=(2,2,2)))
+        model.add(Conv3D(32, (5,5,5), strides=(2,2,2)))
         model.add(LeakyReLU(alpha=0.1))
         model.add(Conv3D(10, (3,3,3), strides=(1,1,1)))
+        model.add(LeakyReLU(alpha=0.1))
+        model.add(Conv3D(5, (3,3,3), strides=(1,1,1)))
         model.add(LeakyReLU(alpha=0.1))
         model.add(MaxPooling3D(strides=(2,2,2)))
 
@@ -70,15 +72,13 @@ class VoxNet(AbstractModel):
 
         # Now the dense classifier
         model.add(Dropout(0.4))
-        model.add(Dense(20))
+        model.add(Dense(300))
+        model.add(Dropout(0.4))
+        model.add(Dense(100))
         model.add(Dropout(0.4))
         model.add(Dense(10))
         model.add(Dropout(0.4))
-        model.add(Dense(10))
-        model.add(Dropout(0.4))
-        model.add(Dense(10))
-        model.add(Dropout(0.4))
-        model.add(Dense(1, activation='softmax'))
+        model.add(Dense(1, activation='sigmoid'))
 
         model.build(input_shape=(None, 200,192,192,3))
         model.summary() ## TODO make this be called seperately.

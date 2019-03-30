@@ -36,6 +36,6 @@ class DataGenerator(keras.utils.Sequence):
         x = preprocess_fn_multiple(x_values)
 
         # Then find voxel representation.
-        x = self.voxel_builder.build_3d_multiple(x_values)
+        x = self.voxel_builder.build_3d_multiple(x)
         return x, y
 

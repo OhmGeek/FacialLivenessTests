@@ -19,19 +19,6 @@ from datasets.replayattack import ReplayAttackDataset
 import face_recognition
 from PIL import Image
 import sys
-# def get_largest_bounding_box(locations):
-#     if len(locations) == 0:
-#         return None
-#     w = max(locations, key=lambda x: np.linalg.norm(x[0]-x[2]) * np.linalg.norm(x[1]-x[3]))
-#     return w
-
-# def pre_process_fn(image_arr):
-    
-#     face_image = image_arr
-#     voxel_builder = FaceVoxelBuilder(logging.Logger("VoxelBuilder"))
-#     face_3d = voxel_builder.build_3d(face_image)
-
-#     return (face_3d)
 
 def main():
     # First, fetch the two distinct sets of data.
@@ -41,14 +28,14 @@ def main():
 
     print(sys.getrecursionlimit())
     # Now create the CNN model
-    model = VoxNet(logging.Logger("voxnet"), learning_rate=0.01)
+    model = VoxNet(logging.Logger("voxnet"), learning_rate=0.1)
     
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
     # model.summary()
 
     # Now create the training set.
-    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/mad/", subjects=[1,2,3,4,5,6,7])
+    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/mad/", subjects=[1])
     #dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
     dataset.pre_process()
 
@@ -65,7 +52,7 @@ def main():
     x,y = shuffle(x, y)
 
     # Train the model on our training set.
-    batch_size = 32
+    batch_size = 4
     generator = DataGenerator(x, y, batch_size=batch_size)
 
     steps_per_epoch = len(x) / batch_size

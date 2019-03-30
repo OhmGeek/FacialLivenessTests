@@ -71,7 +71,7 @@ class MaskAttackDataset(Dataset):
                     # Now open h5py file for reading.
                     with h5py.File(vid_filename, "r") as mad_file:
                         file_images = mad_file['Color_Data']
-                        for img in file_images[0:50:]:
+                        for img in file_images[0:150:]:
                             # First, we need to transpose and reorder for Opencv.
                             img = img.transpose(2,1,0)
                             label_images.append(img)

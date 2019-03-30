@@ -59,26 +59,32 @@ class VoxNet(AbstractModel):
     def _create_model(self, learning_rate):
         model = Sequential()
 
-        # model.add(Reshape([200,192,192,3]))
-        model.add(Conv3D(32, (5,5,5), strides=(2,2,2)))
+        model.add(Conv3D(64, (3,3,3)))
         model.add(LeakyReLU(alpha=0.1))
-        model.add(Conv3D(10, (3,3,3), strides=(1,1,1)))
+        model.add(MaxPooling3D((2,2,2), strides=(2,2,2)))
+
+        model.add(Conv3D(128, (3,3,3)))
         model.add(LeakyReLU(alpha=0.1))
-        model.add(Conv3D(5, (3,3,3), strides=(1,1,1)))
+        model.add(MaxPooling3D((2,2,2), strides=(2,2,2)))
+
+        model.add(Conv3D(256, (3,3,3)))
         model.add(LeakyReLU(alpha=0.1))
-        model.add(MaxPooling3D(strides=(2,2,2)))
+        model.add(MaxPooling3D((2,2,2), strides=(2,2,2)))
+
+        model.add(Conv3D(512, (3,3,3)))
+        model.add(LeakyReLU(alpha=0.1))
+        model.add(MaxPooling3D((2,2,2), strides=(2,2,2)))
 
         model.add(Flatten())
 
         # Now the dense classifier
-        model.add(Dropout(0.4))
-        model.add(Dense(300))
-        model.add(Dropout(0.4))
-        model.add(Dense(100))
-        model.add(Dropout(0.4))
+        # model.add(Dropout(0.4))
         model.add(Dense(10))
-        model.add(Dropout(0.4))
-        model.add(Dense(1, activation='sigmoid'))
+        # model.add(Dropout(0.4))
+        # model.add(Dense(100))
+        # model.add(Dropout(0.4))
+        # model.add(Dropout(0.4))
+        model.add(Dense(1, activation='softmax'))
 
         model.build(input_shape=(None, 200,192,192,3))
         model.summary() ## TODO make this be called seperately.

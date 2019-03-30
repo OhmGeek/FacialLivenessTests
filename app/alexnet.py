@@ -38,7 +38,7 @@ def pre_process_fn(image_arr):
     face_image = image_arr[top:bottom, left:right]
     
     # Now, to fix a bug in Keras, resize this image.
-    face_image = cv2.resize(face_image, dsize=(original_shape[1], original_shape[0]), interpolation=cv2.INTER_CUBIC)
+    face_image = cv2.resize(face_image, dsize=(32, 32), interpolation=cv2.INTER_CUBIC)
 
     return (face_image)
 

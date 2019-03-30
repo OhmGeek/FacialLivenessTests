@@ -65,7 +65,7 @@ def main():
     x,y = shuffle(x, y)
 
     # Train the model on our training set.
-    batch_size = 64
+    batch_size = 8
     generator = DataGenerator(x, y, batch_size=batch_size)
 
     steps_per_epoch = len(x) / batch_size

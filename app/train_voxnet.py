@@ -35,7 +35,7 @@ def main():
     # model.summary()
 
     # Now create the training set.
-    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/mad/", subjects=[1])
+    dataset = MaskAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/mad/", subjects=[1])
     #dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
     dataset.pre_process()
 

@@ -13,6 +13,7 @@ import numpy as np
 import cv2
 from datasets.nuaa import NUAADataset
 from datasets.replayattack import ReplayAttackDataset
+from datasets.mad import MaskAttackDataset
 import face_recognition
 from PIL import Image
 
@@ -38,7 +39,7 @@ def pre_process_fn(image_arr):
     face_image = image_arr[top:bottom, left:right]
     
     # Now, to fix a bug in Keras, resize this image.
-    face_image = cv2.resize(face_image, dsize=(32, 32), interpolation=cv2.INTER_CUBIC)
+    face_image = cv2.resize(face_image, dsize=(original_shape[1], original_shape[0]), interpolation=cv2.INTER_CUBIC)
 
     return (face_image)
 
@@ -48,22 +49,22 @@ def main():
     # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
     # Now create the CNN model
-    model = ResidualNetwork(logging.Logger("resnet"))
+    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0001)
   
-    
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
     # model.summary()
 
     # Now create the training set.
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
+    #dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
+    dataset = MaskAttackDataset(logging.getLogger("mad"), "/home/ohmgeek_default/datasets/mad", subjects=[1,2,3,4,5,6,7])
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("ImposterRaw")
-    imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
+    imposter_set = dataset.read_dataset("C")
+    imposter_y = np.tile([0.0], imposter_set.shape[0])
 
-    client_set = dataset.read_dataset("ClientRaw")
-    client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
+    client_set = dataset.read_dataset("B")
+    client_y = np.tile([1.0], client_set.shape[0])
 
     gen = ImageDataGenerator(horizontal_flip = True,
                          vertical_flip = False,
@@ -94,7 +95,7 @@ def main():
 
     #     print(model.test(x_valid_cv, y_valid_cv))
 
-    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=5, shuffle=True, verbose=1)
+    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=10, shuffle=True, verbose=1)
     # model.save('alexnet.h5')
 
     dataset = None

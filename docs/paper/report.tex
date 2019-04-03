@@ -93,9 +93,35 @@ Facial liveness, convolutional neural networks, image quality metrics
         , yielding the resulting metric values into a large vector, and using that as input to a classifier (an LDA), this yields fairly high accuracy. \cite{ImageQualityAssessmentTest}.
         This is an example of combining many items to yield better results. While each metric on its own isn't that great, using them all together yields better results.
         
-        Recently, deep learning based approaches have been taken to facial liveness (both video and image based).
+        Recently, deep learning based approaches have been applied to facial liveness (both video and image based).
+
+        In particular, Convolutional Neural Networks are a key approach to this to learn features (e.g. texture based methods).
+        Due to the existing datasets available, training CNNs has been difficult due to lack of data where overfitting has been common.
+        The method proposed in \cite{Patel2016CrossDatabaseFA} uses CaffeNet, inputting both the full image along with the isolated face.
+        The output yielded general texture differences, as well as specific facial texture differences. Another interesting idea proposed
+        in this paper is the fusion of two algorithms together to produce an outcome, therefore reducing the false reject rate.
+        %Cite above wiht http://vipl.ict.ac.cn/uploadfile/upload/2017020711382879.pdf
+        
+        Outside of the facial liveness field, image classification on the imagenet dataset has proven popular and yielded some fairly good
+        results. One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
+        This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Since the AlexNet paper was written,
+        newer methods have been built that performed better. The VGG16 model improved AlexNet by replacing larger filters by more smaller filters one after another.
+        However, VGG requires a high amount of computational power, something that's not easily deployable \todo{Cite VGG lack of deployability} on a real-life system
+        due to high time and space requirements. Therefore, GoogLeNet Inception is an improved module that approximates a space Convolutional Network with a normal
+        dense construction. Since a small number of neurons is effective, computational requirements are kept small. \todo{Cite GoogLeNet Inception}
+        Another key problem with deep convolutional networks on Image Classification is the vanishing gradient problem, where early layers have very small gradients during the training process and
+        are therefore much more difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block. \todo{Explain Resnets better}.
+        The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficent than VGG in terms of computational power needed. \todo{Cite Residual Networks}
+        Could these models provide 
+
+
+
+
+
         % Some existing CNN based methods.
         % then explain Alexnet's success previously with image classification, and by extension residual networks extension.
+
+        % Temporal based Methods
 
     \subsection{3D Spoofing Attacks}
         Mask Attacks are a 3D spoofing attack, which involve creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy} These are much less prevalent, but with 3D printing becoming more mainstream, this

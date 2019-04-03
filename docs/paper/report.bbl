@@ -19,9 +19,21 @@ Aaron~S Jackson, Adrian Bulat, Vasileios Argyriou, and Georgios Tzimiropoulos.
   volumetric cnn regression.
 \newblock {\em International Conference on Computer Vision}, 2017.
 
+\bibitem{AlexNet}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In F.~Pereira, C.~J.~C. Burges, L.~Bottou, and K.~Q. Weinberger,
+  editors, {\em Advances in Neural Information Processing Systems 25}, pages
+  1097--1105. Curran Associates, Inc., 2012.
+
 \bibitem{FaceSpoofingAttacksStudy}
 Sandeep Kumar, Sukhwinder Singh, and Jagdish Kumar.
 \newblock A comparative study on face spoofing attacks.
 \newblock 05 2017.
+
+\bibitem{Patel2016CrossDatabaseFA}
+Keyurkumar Patel, Hu~Han, and Anil~K. Jain.
+\newblock Cross-database face antispoofing with robust feature representation.
+\newblock In {\em CCBR}, 2016.
 
 \end{thebibliography}

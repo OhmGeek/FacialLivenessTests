@@ -175,6 +175,19 @@ Facial liveness, convolutional neural networks, image quality metrics
         a vector for each image. Initially, classification was done using a Support Vector Machine (SVM), but after experimentation this proved to be fairly
         unreliable (yielding 70\% accuracy on the test set). The classifier was later changed to use Linear Discriminant Analysis (LDA) which yielded a much improved
         accuracy (96\% accuracy on the test set). \todo[inline]{TODO: give more accuracy figures of accuracy here, I can't remember the exact numbers}.
+        A visual explanation of the method can be seen in Figure \ref{ImageQualityLivenessTestDiagram}. 
+
+        \todo{Add more information here about each metric, the PyVideoQuality manual work that needed doing, and any custom code}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\linewidth]{ImageQualityLivenessTest.pdf}
+            \label{ImageQualityLivenessTestDiagram}
+            \caption{The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics.
+            (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value
+            is 1.0 for real, and 0.0 for fake, or in between.}
+        \end{figure}
+
 
     \subsection{Residual Network based 2D liveness test}
         Recently, 2D convolutional neural networks have had great success in image classification tasks. Therefore, it might be possible to train

@@ -1,10 +1,21 @@
 \begin{thebibliography}{1}
 
+\bibitem{ReplayAttackDataset}
+Ivana Chingovska, Andr{\'{e}} Anjos, and S{\'{e}}bastien Marcel.
+\newblock On the effectiveness of local binary patterns in face anti-spoofing.
+\newblock 2012.
+
 \bibitem{SFMClassifier}
 Tanzeem Choudhury, Brian Clarkson, Tony Jebara, and Alex Pentland.
 \newblock Multimodal person recognition using unconstrained audio and video.
 \newblock In {\em Proceedings, International Conference on Audio-and
   Video-Based Person Authentication}, pages 176--181. Citeseer, 1999.
+
+\bibitem{3DMadDataset}
+Nesli Erdogmus and Sébastien Marcel.
+\newblock Spoofing in 2d face recognition with 3d masks and anti-spoofing with
+  kinect.
+\newblock 2013.
 
 \bibitem{ImageQualityAssessmentTest}
 J.~Galbally, S.~Marcel, and J.~Fierrez.
@@ -35,5 +46,11 @@ Sandeep Kumar, Sukhwinder Singh, and Jagdish Kumar.
 Keyurkumar Patel, Hu~Han, and Anil~K. Jain.
 \newblock Cross-database face antispoofing with robust feature representation.
 \newblock In {\em CCBR}, 2016.
+
+\bibitem{NUAADataset}
+Xiaoyang Tan, Yi~Li, Jun Liu, and Lin Jiang.
+\newblock Face liveness detection from a single image with sparse low rank
+  bilinear discriminative model.
+\newblock In {\em ECCV}, 2010.
 
 \end{thebibliography}

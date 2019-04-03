@@ -85,7 +85,6 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}2D to 3D Conversion}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}3D point cloud classification}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}Linking everything together}{4}}
-\@writefile{tdo}{\contentsline {todo}{Figure: INSERT FIGURE HERE CONTAINING PIPELINE}{4}}
 \bibstyle{plain}
 \bibdata{report}
 \bibcite{ReplayAttackDataset}{{1}{}{{}}{{}}}
@@ -94,11 +93,13 @@
 \bibcite{ImageQualityAssessmentTest}{{4}{}{{}}{{}}}
 \bibcite{3DReconstructionMethod}{{5}{}{{}}{{}}}
 \bibcite{AlexNet}{{6}{}{{}}{{}}}
-\bibcite{FaceSpoofingAttacksStudy}{{7}{}{{}}{{}}}
-\bibcite{Patel2016CrossDatabaseFA}{{8}{}{{}}{{}}}
-\bibcite{NUAADataset}{{9}{}{{}}{{}}}
-\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\newlabel{3DClassifierArchitectureDiagram}{{C.3}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some postprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. }}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {D}Visualisation and Demonstration}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{5}}
+\bibcite{FaceSpoofingAttacksStudy}{{7}{}{{}}{{}}}
+\bibcite{Patel2016CrossDatabaseFA}{{8}{}{{}}{{}}}
+\bibcite{NUAADataset}{{9}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers

@@ -227,7 +227,21 @@ Facial liveness, convolutional neural networks, image quality metrics
             Once the preprocessing had been completed, the preprocessed image was fed to the VoxNet. 
 
             % tODO explain experiments.
-            \missingfigure{INSERT FIGURE HERE CONTAINING PIPELINE}
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{voxnet.pdf}
+                \label{3DClassifierArchitectureDiagram}
+                \caption{
+                    This is an overview of the 3D classifier. \textbf{(A)} a high resolution image is input into the classifier. \textbf{(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. 
+                    The image is then resized to be 192x192 pixels, which is what's required by the VRN process.
+                    \textbf{(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some postprocessing from the VRN model 
+                    is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model).
+                    \textbf{(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify.
+                    \textbf{(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked.
+                }
+            \end{figure}
+
     \subsection{Visualisation and Demonstration}
         In order to visualise the overall outcome of facial liveness, a generic model 
 \section{Results}

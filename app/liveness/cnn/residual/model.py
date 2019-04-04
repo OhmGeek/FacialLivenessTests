@@ -37,8 +37,8 @@ class ResidualNetwork(AbstractModel):
         return score
     
     # -- Generators: both for fitting and testing.
-    def fit_generator(self, generator, steps_per_epoch=None, epochs=1, shuffle=True, verbose=1, validation_data=None):
-        return self._model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=epochs, shuffle=shuffle, verbose=verbose, validation_data=validation_data)
+    def fit_generator(self, generator, steps_per_epoch=None, epochs=1, shuffle=True, verbose=1, validation_data=None, validation_steps=None):
+        return self._model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=epochs, shuffle=shuffle, verbose=verbose, validation_data=validation_data, validation_steps=validation_steps)
 
     def test_generator(self, generator):
         score = self._model.evaluate_generator(generator, verbose=1, steps=500)

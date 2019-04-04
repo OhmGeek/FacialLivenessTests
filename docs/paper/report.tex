@@ -199,9 +199,10 @@ Facial liveness, convolutional neural networks, image quality metrics
         set to trainable. This is because the initial convolutional layers contain the standard features contained within images, while the final one
         learns bundles of features. Internal feed forward activations use relu, while the external output uses the sigmoid activation function
 
-        While the Adam optimiser was initially used, this was later changed to Standard Gradient Descent, with a learning rate of 0.0001 and momentum of 0.9.
-        While using Adam, the outcome of the results was a model that didn't generalise that well, and research found in \cite{SGDBetterThanAdamForImageClassification}
-        stated that SGD would perform better. This in fact was true, and yielded an improvement. 
+        Initially, I was using the Standard Gradient Descent optimiser, due to the findings of \cite{SGDBetterThanAdamForImageClassification} which stated
+        that SGD was better than Adam for generalisation. However, after experimenting further I found that using an Adam optimiser with a learning rate of 0.001
+        led to an improved validation accuracy. With SGD the validation accuracy fluctuated, peaking at around 0.75 without increasing further. With Adam, the
+        validation accuracy obtained in the results section was yielded, which was quite a large improvement.
 
         Initially, the entire image was fed directly into the Residual Network, but this yielded fairly poor performance and generalisation. As a result,
         a HoG based face detector was used to find the largest bounding box in an image (of a person's face), and crop the image around this face structure. The HoG detector was
@@ -281,6 +282,14 @@ Facial liveness, convolutional neural networks, image quality metrics
                     \textbf{(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked.
                 }
             \end{figure}
+
+    \subsection{Datasets for training and testing}
+            With each of the above classifiers, they were trained using the NUAA dataset (the entire dataset), and the testing was carried out using the Replay-Attack dataset.
+            Initially this role was switched, but NUAA has far more samples which makes it more suitable for deep learning classification compared to Replay-Attack.
+
+            Since the Replay-Attack dataset consists entirely of videos, each video was stepped through and an image was produced each second. This was then fed through to the appropriate model.
+            
+            \todo{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}
 
     \subsection{Visualisation and Demonstration}
         In order to visualise the overall outcome of facial liveness, a generic model 

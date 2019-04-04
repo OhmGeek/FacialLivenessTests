@@ -81,16 +81,15 @@
 \citation{3DReconstructionMethod}
 \@writefile{tdo}{\contentsline {todo}{Figure: TODO: insert diagram of architecture of our final resnet model}{5}}
 \@writefile{tdo}{\contentsline {todo}{TODO: insert citation for trying pretrained imagenet}{5}}
-\pgfsyspdfmark {pgfid58}{6345015}{18209507}
-\pgfsyspdfmark {pgfid61}{36188921}{18207214}
-\pgfsyspdfmark {pgfid62}{38040312}{17988324}
+\pgfsyspdfmark {pgfid58}{6345015}{16636643}
+\pgfsyspdfmark {pgfid61}{36188921}{16634350}
+\pgfsyspdfmark {pgfid62}{38040312}{16415460}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}A system for preventing 3D spoofing attacks}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}2D to 3D Conversion}{5}}
 \newlabel{3DClassifierArchitectureDiagram}{{C.3}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some postprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. }}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}3D point cloud classification}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}Linking everything together}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D}Visualisation and Demonstration}{6}}
 \bibstyle{plain}
 \bibdata{report}
 \bibcite{ReplayAttackDataset}{{1}{}{{}}{{}}}
@@ -103,7 +102,13 @@
 \bibcite{Patel2016CrossDatabaseFA}{{8}{}{{}}{{}}}
 \bibcite{NUAADataset}{{9}{}{{}}{{}}}
 \bibcite{SGDBetterThanAdamForImageClassification}{{10}{}{{}}{{}}}
-\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Datasets for training and testing}{7}}
+\@writefile{tdo}{\contentsline {todo}{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}{7}}
+\pgfsyspdfmark {pgfid63}{7328055}{43111610}
+\pgfsyspdfmark {pgfid66}{36188921}{43109317}
+\pgfsyspdfmark {pgfid67}{38040312}{42890427}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Visualisation and Demonstration}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{7}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers

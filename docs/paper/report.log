@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  4 APR 2019 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  4 APR 2019 17:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -400,18 +400,18 @@ Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 186.
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 213.
+(Font)              <7> on input line 214.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 213.
+(Font)              <5> on input line 214.
 
 
 Package natbib Warning: Author undefined for citation`3DReconstructionMethod' 
-(natbib)                on page 5 on input line 243.
+(natbib)                on page 5 on input line 244.
 
 [5] <voxnet.pdf, id=49, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 273.
+Package pdftex.def Info: voxnet.pdf used on input line 274.
 (pdftex.def)             Requested size: 416.13188pt x 140.0497pt.
  [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
 
@@ -419,20 +419,20 @@ pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper
 >] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
 Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no © in font ptmr7t!
-) [7] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+ [7]) [8] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 12760 strings out of 493013
- 256564 string characters out of 6135681
- 332095 words of memory out of 5000000
- 16048 multiletter control sequences out of 15000+600000
+ 12768 strings out of 493013
+ 256749 string characters out of 6135681
+ 332407 words of memory out of 5000000
+ 16056 multiletter control sequences out of 15000+600000
  15737 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,80p,1139b,892s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (7 pages, 233070 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (8 pages, 234651 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 111 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

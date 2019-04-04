@@ -53,7 +53,7 @@ def main():
     # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
     # Now create the CNN model
-    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0001, default_img_dimensions=(224,224))
+    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.001, default_img_dimensions=(224,224))
   
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
@@ -71,7 +71,8 @@ def main():
 
     gen = ImageDataGenerator(horizontal_flip = False,
                          vertical_flip = False,
-                         preprocessing_function=pre_process_fn
+                         preprocessing_function=pre_process_fn,
+                         validation_split=0.2
                         )
 
 
@@ -82,9 +83,9 @@ def main():
     x,y = shuffle(x, y)
 
     # Train the model on our training set.
-    batch_size = 64
-    generator = gen.flow(x, y, batch_size=batch_size)
-
+    batch_size = 256
+    generator = gen.flow(x, y, batch_size=batch_size, subset='training')
+    validation_generator = gen.flow(x, y, batch_size=batch_size, subset='validation')
     size_of_dataset = len(x)
 
     dataset = None
@@ -114,7 +115,7 @@ def main():
 
 
 
-    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=15, shuffle=True, verbose=1, validation_data=test_generator, validation_steps=len(x) / batch_size)
+    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=10, shuffle=True, verbose=1, validation_data=test_generator, validation_steps=len(x) / batch_size)
     model.save('alexnet.h5')
 
     

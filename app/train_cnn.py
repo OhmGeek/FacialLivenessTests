@@ -43,7 +43,7 @@ def pre_process_fn(image_arr):
     face_image = image_arr[top:new_bottom, left:new_right]
     
     # Now, to fix a bug in Keras, resize this image.
-    face_image = cv2.resize(face_image, dsize=(32, 32), interpolation=cv2.INTER_CUBIC)
+    face_image = cv2.resize(face_image, dsize=(original_shape[1], original_shape[0]), interpolation=cv2.INTER_CUBIC)
 
     return (face_image)
 
@@ -53,7 +53,7 @@ def main():
     # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
     # Now create the CNN model
-    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0001, default_img_dimensions=(32,32))
+    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0005, default_img_dimensions=(224,224))
   
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
@@ -83,10 +83,10 @@ def main():
     x,y = shuffle(x, y)
 
     # Train the model on our training set.
-    batch_size = 4
+    batch_size = 16
     generator = gen.flow(x, y, batch_size=batch_size)
 
-    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=1, shuffle=True, verbose=1)
+    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=2, shuffle=True, verbose=1)
     model.save('alexnet.h5')
 
     dataset = None

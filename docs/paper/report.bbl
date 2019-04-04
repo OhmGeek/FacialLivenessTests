@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{ReplayAttackDataset}
 Ivana Chingovska, Andr{\'{e}} Anjos, and S{\'{e}}bastien Marcel.
@@ -52,5 +52,13 @@ Xiaoyang Tan, Yi~Li, Jun Liu, and Lin Jiang.
 \newblock Face liveness detection from a single image with sparse low rank
   bilinear discriminative model.
 \newblock In {\em ECCV}, 2010.
+
+\bibitem{SGDBetterThanAdamForImageClassification}
+Ashia~C Wilson, Rebecca Roelofs, Mitchell Stern, Nati Srebro, and Benjamin
+  Recht.
+\newblock The marginal value of adaptive gradient methods in machine learning.
+\newblock In I.~Guyon, U.~V. Luxburg, S.~Bengio, H.~Wallach, R.~Fergus,
+  S.~Vishwanathan, and R.~Garnett, editors, {\em Advances in Neural Information
+  Processing Systems 30}, pages 4148--4158. Curran Associates, Inc., 2017.
 
 \end{thebibliography}

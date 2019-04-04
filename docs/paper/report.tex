@@ -195,15 +195,34 @@ Facial liveness, convolutional neural networks, image quality metrics
 
         In order to simplify the process of training, an existing resnet model (ResNet50) was used, with only the final convolutional layer being
         set to trainable. This is because the initial convolutional layers contain the standard features contained within images, while the final one
-        learns bundles of features. Internal feed forward activations use relu, while the external output uses the softmax activation function
+        learns bundles of features. Internal feed forward activations use relu, while the external output uses the sigmoid activation function
 
-        Training was completed using the categorical cross-entropy loss function (as this is considered multiclass).
-        We yield a 2-tuple output from this model, which is the probability of each possible case. We take the value with the highest probability as the true outcome.
+        While the Adam optimiser was initially used, this was later changed to Standard Gradient Descent, with a learning rate of 0.0001 and momentum of 0.9.
+        While using Adam, the outcome of the results was a model that didn't generalise that well, and research found in \cite{SGDBetterThanAdamForImageClassification}
+        stated that SGD would perform better. This in fact was true, and yielded an improvement. 
 
-        The output of this ResNet model is then fed into a 2D Max Pooling layer, which then feeds into a feed forward neural network.
-        Initially, the model was trained using the Adam optimiser, but this yielded poor accuracy (75\% accuracy). Utilising the standard
-        gradient descent (SGD) optimiser with a low learning rate yielded far greater accuracy.
+        Initially, the entire image was fed directly into the Residual Network, but this yielded fairly poor performance and generalisation. As a result,
+        a HoG based face detector was used to find the largest bounding box in an image (of a person's face), and crop the image around this face structure. The HoG detector was
+        initially used due to performance benefits, since a neural network based face detector would require slightly more processing power, and therefore time, to both train and
+        predict with our model.
 
+        The image is then resized to the expected input size (required for the Keras image data generator), before again being resized to an image of shape (224, 224).
+        While this worked, the bounding box width and height ratio did differ a large amount, which could potentially have yielded slightly poorer performance.
+        Given a bounding box $B = (top, bottom, left, right)$, we can create a new bounding box $B'$ which retains square dimensions, by first finding the square
+        side width $s$. Mathematically, this is defined as:
+
+        $$s = Max(bottom - top, right - left)$$
+
+        Now we create a new bounding box, defined as:
+
+        $$B' = (top, top + s, left, right + s)$$.
+
+        By following this method, the model appeared to perform better overall, as rather than focusing on the overall image quality (which the previous model did),
+        it would focus on the facial region.
+
+        During the process of training, it was noted that the HoG detector was missing approximately one eighth of the faces, therefore outputting the entire image, which
+        could potentially have an impact on training and the accuracy of the model.
+        
         \missingfigure{TODO: insert diagram of architecture of our final resnet model}
         \todo{TODO: insert citation for trying pretrained imagenet}
 

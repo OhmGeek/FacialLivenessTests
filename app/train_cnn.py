@@ -61,7 +61,6 @@ def main():
 
     # Now create the training set.
     dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ohmgeek_default/datasets/nuaa")
-    # dataset = MaskAttackDataset(logging.getLogger("mad"), "/home/ohmgeek_default/datasets/mad", subjects=[1,2,3,4,5,6,7])
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("ImposterRaw")
@@ -86,8 +85,7 @@ def main():
     batch_size = 64
     generator = gen.flow(x, y, batch_size=batch_size)
 
-    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=15, shuffle=True, verbose=1)
-    model.save('alexnet.h5')
+    size_of_dataset = len(x)
 
     dataset = None
     x = None
@@ -112,7 +110,14 @@ def main():
 
     x,y = shuffle(x, y)
     
-    generator = gen.flow(x, y, batch_size=8)
+    test_generator = gen.flow(x, y, batch_size=8)
+
+
+
+    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=15, shuffle=True, verbose=1, validation_data=test_generator)
+    model.save('alexnet.h5')
+
+    
     score = model.test_generator(generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')

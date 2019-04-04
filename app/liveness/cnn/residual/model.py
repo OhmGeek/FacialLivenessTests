@@ -67,10 +67,10 @@ class ResidualNetwork(AbstractModel):
         final_network.add(Dropout(0.3))
         final_network.add(Dense(50, activation='relu'))
         final_network.add(Dropout(0.3))
-        final_network.add(Dense(500, activation='relu'))
+        final_network.add(Dense(50, activation='relu'))
         final_network.add(Dropout(0.6))
         final_network.add(Dense(1, activation='relu'))
-        final_network.add(Activation('softmax'))
+        final_network.add(Activation('sigmoid'))
 
         # Now freeze all but the base convolutional layer in resnet.
         for layer in cnn_model.layers:

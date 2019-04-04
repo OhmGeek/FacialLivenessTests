@@ -43,7 +43,7 @@ def pre_process_fn(image_arr):
     face_image = image_arr[top:new_bottom, left:new_right]
     
     # Now, to fix a bug in Keras, resize this image.
-    face_image = cv2.resize(face_image, dsize=(original_shape[1], original_shape[0]), interpolation=cv2.INTER_CUBIC)
+    face_image = cv2.resize(face_image, dsize=(32, 32), interpolation=cv2.INTER_CUBIC)
 
     return (face_image)
 
@@ -53,24 +53,24 @@ def main():
     # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
     # Now create the CNN model
-    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0001)
+    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0001, default_img_dimensions=(32,32))
   
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
     # model.summary()
 
     # Now create the training set.
-    #dataset = NUAADataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/nuaa")
-    dataset = MaskAttackDataset(logging.getLogger("mad"), "/home/ohmgeek_default/datasets/mad", subjects=[1,2,3,4,5,6,7])
+    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ohmgeek_default/datasets/nuaa")
+    # dataset = MaskAttackDataset(logging.getLogger("mad"), "/home/ohmgeek_default/datasets/mad", subjects=[1,2,3,4,5,6,7])
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("C")
+    imposter_set = dataset.read_dataset("ImposterRaw")
     imposter_y = np.tile([0.0], imposter_set.shape[0])
 
-    client_set = dataset.read_dataset("B")
+    client_set = dataset.read_dataset("ClientRaw")
     client_y = np.tile([1.0], client_set.shape[0])
 
-    gen = ImageDataGenerator(horizontal_flip = True,
+    gen = ImageDataGenerator(horizontal_flip = False,
                          vertical_flip = False,
                          preprocessing_function=pre_process_fn
                         )
@@ -80,27 +80,14 @@ def main():
     x = np.concatenate((imposter_set, client_set))
     y = np.concatenate((imposter_y, client_y))
 
-    k = 10
     x,y = shuffle(x, y)
-    # folds = list(KFold(n_splits=k, shuffle=True, random_state=1).split(x, y))
 
     # Train the model on our training set.
-    batch_size = 10
+    batch_size = 4
     generator = gen.flow(x, y, batch_size=batch_size)
-    # for j, (train_idx, val_idx) in enumerate(folds):
-    #     print("Training on fold %d" % j)
-    #     x_train_cv = x[train_idx]
-    #     y_train_cv = y[train_idx]
-    #     x_valid_cv = x[val_idx]
-    #     y_valid_cv = y[val_idx]
 
-    #     generator = gen.flow(x_train_cv, y_train_cv, batch_size=batch_size)
-    #     model.fit_generator(generator, steps_per_epoch=len(x_train_cv)/batch_size, epochs=15, shuffle=True, verbose=1, validation_data=(x_valid_cv, y_valid_cv))
-
-    #     print(model.test(x_valid_cv, y_valid_cv))
-
-    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=10, shuffle=True, verbose=1)
-    # model.save('alexnet.h5')
+    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=1, shuffle=True, verbose=1)
+    model.save('alexnet.h5')
 
     dataset = None
     x = None
@@ -110,14 +97,14 @@ def main():
     client_set = None
     client_y = None
     # Now create the training set.
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/")
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/")
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")
-    imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
+    imposter_y = np.tile([0.0], imposter_set.shape[0])
 
     client_set = dataset.read_dataset("real")
-    client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
+    client_y = np.tile([1.0], client_set.shape[0])
 
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))
@@ -125,7 +112,7 @@ def main():
 
     x,y = shuffle(x, y)
     
-    generator = gen.flow(x, y, batch_size=100)
+    generator = gen.flow(x, y, batch_size=8)
     score = model.test_generator(generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')

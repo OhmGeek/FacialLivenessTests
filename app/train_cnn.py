@@ -35,7 +35,11 @@ def pre_process_fn(image_arr):
     # Otherwise, isolate the face.
     top, right, bottom, left = max_loc
 
-    face_image = image_arr[top:bottom, left:right]
+    dist = max(abs(bottom - top), abs(right - left))
+
+    new_bottom = top + dist
+    new_right = left + dist
+    face_image = image_arr[top:new_bottom, left:new_right]
     
     # Now, to fix a bug in Keras, resize this image.
     face_image = cv2.resize(face_image, dsize=(32, 32), interpolation=cv2.INTER_CUBIC)
@@ -80,7 +84,7 @@ def main():
     # folds = list(KFold(n_splits=k, shuffle=True, random_state=1).split(x, y))
 
     # Train the model on our training set.
-    batch_size = 100
+    batch_size = 10
     generator = gen.flow(x, y, batch_size=batch_size)
     # for j, (train_idx, val_idx) in enumerate(folds):
     #     print("Training on fold %d" % j)

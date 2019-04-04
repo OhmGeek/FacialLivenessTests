@@ -60,14 +60,30 @@ class ResidualNetwork(AbstractModel):
         final_network.add(Lambda(lambda img: tf.image.convert_image_dtype(img, tf.float32)))
         final_network.add(cnn_model)
         final_network.add(Flatten())
-        final_network.add(Dense(200, activation='relu'))
-        final_network.add(Dense(100, activation='relu'))
+        final_network.add(Dense(200, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu')) 
+        final_network.add(Dense(100, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
+       
         final_network.add(Dropout(0.3))
-        final_network.add(Dense(100, activation='relu'))
+        final_network.add(Dense(100, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
         final_network.add(Dropout(0.3))
-        final_network.add(Dense(50, activation='relu'))
+        
+        
+        final_network.add(Dense(50, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
         final_network.add(Dropout(0.3))
-        final_network.add(Dense(50, activation='relu'))
+
+
+        final_network.add(Dense(50, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
+
         final_network.add(Dropout(0.6))
         final_network.add(Dense(1, activation='relu'))
         final_network.add(Activation('sigmoid'))

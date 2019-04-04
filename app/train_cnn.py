@@ -26,7 +26,7 @@ def get_largest_bounding_box(locations):
 def pre_process_fn(image_arr):
     original_shape = image_arr.shape
     image_arr = image_arr.astype(np.uint8)
-    locations = face_recognition.face_locations(image_arr)
+    locations = face_recognition.face_locations(image_arr, number_of_times_to_upsample=0, model='cnn')
     
     max_loc = get_largest_bounding_box(locations)
     # If there's an error, just use the whole image.
@@ -53,7 +53,7 @@ def main():
     # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
     # Now create the CNN model
-    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0005, default_img_dimensions=(224,224))
+    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0001, default_img_dimensions=(224,224))
   
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
@@ -83,10 +83,10 @@ def main():
     x,y = shuffle(x, y)
 
     # Train the model on our training set.
-    batch_size = 16
+    batch_size = 64
     generator = gen.flow(x, y, batch_size=batch_size)
 
-    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=2, shuffle=True, verbose=1)
+    model.fit_generator(generator, steps_per_epoch=len(x)/batch_size, epochs=15, shuffle=True, verbose=1)
     model.save('alexnet.h5')
 
     dataset = None

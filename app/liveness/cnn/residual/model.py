@@ -13,13 +13,13 @@ from liveness.generic import AbstractModel
 import h5py
 
 class ResidualNetwork(AbstractModel):
-    def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32):
+    def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32, learning_rate=0.001):
         self._img_height = default_img_dimensions[1]
         self._img_width = default_img_dimensions[0]
         self._nb_channels = nb_channels
         self._cardinality = cardinality
 
-        self._model = self._create_model()
+        self._model = self._create_model(learning_rate)
         self._is_model_created = False
 
         # Now let's go ahead and create the base object.
@@ -69,7 +69,7 @@ class ResidualNetwork(AbstractModel):
         final_network.add(Dropout(0.3))
         final_network.add(Dense(500, activation='relu'))
         final_network.add(Dropout(0.6))
-        final_network.add(Dense(2, activation='relu'))
+        final_network.add(Dense(1, activation='relu'))
         final_network.add(Activation('softmax'))
 
         # Now freeze all but the base convolutional layer in resnet.
@@ -84,7 +84,7 @@ class ResidualNetwork(AbstractModel):
         self._is_model_created = True
 
         opt_adam = keras.optimizers.SGD(lr=learning_rate, decay=1e-6, momentum=0.9)
-        self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
+        self._model.compile(loss='binary_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
         self._model.build(input_shape=(None, None, 3))
         self._model.summary() ## TODO make this be called seperately.
 

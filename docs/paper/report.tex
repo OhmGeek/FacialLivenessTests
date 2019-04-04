@@ -39,8 +39,10 @@
     \end{itemize}
 
 \paragraph{Method}
-   
-    \todo{TODO}
+   \begin{itemize}
+        \item The image quality assessment test was implemented in Python
+        \item A CNN based 
+   \end{itemize}
 \paragraph{Results}
     \todo{TODO}
 \paragraph{Conclusions}
@@ -221,8 +223,14 @@ Facial liveness, convolutional neural networks, image quality metrics
         it would focus on the facial region.
 
         During the process of training, it was noted that the HoG detector was missing approximately one eighth of the faces, therefore outputting the entire image, which
-        could potentially have an impact on training and the accuracy of the model.
+        could potentially have an impact on training and the accuracy of the model. Changing this to the CNN based classifier had surprising results: the computational performance increased,
+        due to the underlying GPU acceleration, and the accuracy also improved due to the lack of random noise in the training set (through the generators). One thing to note with the CNN based
+        face detector was to ensure upsampling was set to zero, otherwise memory issues would result (since the model and face detector model all need to be stored in GPU memory).
         
+        All of this massively improved the result, but generalisation was still a concern. Batch Normalization was therefore added to help make the make the model generalise further.
+        This yielded a much better result, despite taking slightly longer to train.
+
+
         \missingfigure{TODO: insert diagram of architecture of our final resnet model}
         \todo{TODO: insert citation for trying pretrained imagenet}
 

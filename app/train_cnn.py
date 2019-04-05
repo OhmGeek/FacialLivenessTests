@@ -115,11 +115,11 @@ def main():
 
 
 
-    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=10, shuffle=True, verbose=1, validation_data=test_generator, validation_steps=len(x) / batch_size)
+    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=1, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
     model.save('alexnet.h5')
 
     
-    score = model.test_generator(generator)
+    score = model.test_generator(test_generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')
     dataset.close() # Important, to close the file.

@@ -25,7 +25,7 @@ class ReplayAttackDataset(Dataset):
         self._labels = labels
         self._is_file_open = False
         self._datasets = None
-        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/replay-attack/replayAttack.h5'
+        self._output_filename = dirname(realpath(__file__)) + '/../../datasets/replay-attack/replayAttack' + mode + '.h5'
         print(self._output_filename)
         super().__init__()
 

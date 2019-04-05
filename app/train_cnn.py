@@ -71,8 +71,7 @@ def main():
 
     gen = ImageDataGenerator(horizontal_flip = False,
                          vertical_flip = False,
-                         preprocessing_function=pre_process_fn,
-                         validation_split=0.2
+                         preprocessing_function=pre_process_fn
                         )
 
 
@@ -85,7 +84,24 @@ def main():
     # Train the model on our training set.
     batch_size = 256
     generator = gen.flow(x, y, batch_size=batch_size, subset='training')
-    validation_generator = gen.flow(x, y, batch_size=batch_size, subset='validation')
+
+    # This is the validation generator
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/", mode='test')
+    dataset.pre_process()
+
+    imposter_set = dataset.read_dataset("attack")
+    imposter_y = np.tile([0.0], imposter_set.shape[0])
+
+    client_set = dataset.read_dataset("real")
+    client_y = np.tile([1.0], client_set.shape[0])
+
+    # Merge the two, and create the final sets.
+    x = np.concatenate((imposter_set, client_set))
+    y = np.concatenate((imposter_y, client_y))
+
+    x,y = shuffle(x, y)
+
+    validation_generator = gen.flow(x, y, batch_size=batch_size)
     size_of_dataset = len(x)
 
     dataset = None
@@ -96,7 +112,7 @@ def main():
     client_set = None
     client_y = None
     # Now create the training set.
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/")
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/", mode='test')
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")

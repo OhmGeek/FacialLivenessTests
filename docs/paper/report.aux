@@ -79,17 +79,23 @@
 \newlabel{ImageQualityLivenessTestDiagram}{{A}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics. (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value is 1.0 for real, and 0.0 for fake, or in between.}}{4}}
 \citation{3DReconstructionMethod}
-\@writefile{tdo}{\contentsline {todo}{Figure: TODO: insert diagram of architecture of our final resnet model}{5}}
 \@writefile{tdo}{\contentsline {todo}{TODO: insert citation for trying pretrained imagenet}{5}}
-\pgfsyspdfmark {pgfid58}{6345015}{16636643}
-\pgfsyspdfmark {pgfid61}{36188921}{16634350}
-\pgfsyspdfmark {pgfid62}{38040312}{16415460}
+\pgfsyspdfmark {pgfid57}{7328055}{22729914}
+\pgfsyspdfmark {pgfid60}{36188921}{22727621}
+\pgfsyspdfmark {pgfid61}{38040312}{22508731}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}A system for preventing 3D spoofing attacks}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}2D to 3D Conversion}{5}}
-\newlabel{3DClassifierArchitectureDiagram}{{C.3}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some postprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. }}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}3D point cloud classification}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}Linking everything together}{6}}
+\newlabel{2DCNNArchitecture}{{B}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the liveness score as before).}}{6}}
+\newlabel{3DClassifierArchitectureDiagram}{{C.3}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some postprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. }}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}3D point cloud classification}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}Linking everything together}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Datasets for training and testing}{7}}
+\@writefile{tdo}{\contentsline {todo}{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}{7}}
+\pgfsyspdfmark {pgfid62}{7328055}{7110097}
+\pgfsyspdfmark {pgfid65}{36188921}{7107804}
+\pgfsyspdfmark {pgfid66}{38040312}{6888914}
 \bibstyle{plain}
 \bibdata{report}
 \bibcite{ReplayAttackDataset}{{1}{}{{}}{{}}}
@@ -100,15 +106,40 @@
 \bibcite{AlexNet}{{6}{}{{}}{{}}}
 \bibcite{FaceSpoofingAttacksStudy}{{7}{}{{}}{{}}}
 \bibcite{Patel2016CrossDatabaseFA}{{8}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Visualisation and Demonstration}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Image Quality Liveness Test}{8}}
+\@writefile{tdo}{\contentsline {todo}{Add False Positive/False Negative accuracy here}{8}}
+\pgfsyspdfmark {pgfid67}{7328055}{34067642}
+\@writefile{tdo}{\contentsline {todo}{Add time to conduct computation here (without multithreading) - for predictions only, not training}{8}}
+\pgfsyspdfmark {pgfid72}{7328055}{34067642}
+\pgfsyspdfmark {pgfid70}{36188921}{34065349}
+\pgfsyspdfmark {pgfid71}{38040312}{33846459}
+\pgfsyspdfmark {pgfid75}{36188921}{28846405}
+\pgfsyspdfmark {pgfid76}{38040312}{28627515}
+\@writefile{tdo}{\contentsline {todo}{show an example image of the system at work with image quality liveness}{8}}
+\pgfsyspdfmark {pgfid77}{7328055}{33281210}
+\pgfsyspdfmark {pgfid80}{36188921}{20347383}
+\pgfsyspdfmark {pgfid81}{38040312}{20128493}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}2D Convolutional Neural Network Liveness Test}{8}}
+\@writefile{tdo}{\contentsline {todo}{Insert time here to isolate face/preprocess}{8}}
+\pgfsyspdfmark {pgfid82}{7328055}{30004410}
+\@writefile{tdo}{\contentsline {todo}{Insert time here to conduct neural network prediction}{8}}
+\pgfsyspdfmark {pgfid87}{7328055}{30004410}
+\@writefile{tdo}{\contentsline {todo}{Insert system performance (specs of Lexo)}{8}}
+\pgfsyspdfmark {pgfid92}{7328055}{30004410}
+\@writefile{tdo}{\contentsline {todo}{}{8}}
+\pgfsyspdfmark {pgfid97}{7328055}{30004410}
+\pgfsyspdfmark {pgfid85}{36188921}{13553937}
+\pgfsyspdfmark {pgfid86}{38040312}{13335047}
+\pgfsyspdfmark {pgfid90}{36188921}{9773507}
+\pgfsyspdfmark {pgfid91}{38040312}{9554617}
+\pgfsyspdfmark {pgfid95}{36188921}{4554563}
+\pgfsyspdfmark {pgfid96}{38040312}{4335673}
+\pgfsyspdfmark {pgfid100}{36188921}{22429}
+\pgfsyspdfmark {pgfid101}{38040312}{-196461}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{8}}
 \bibcite{NUAADataset}{{9}{}{{}}{{}}}
 \bibcite{SGDBetterThanAdamForImageClassification}{{10}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D}Datasets for training and testing}{7}}
-\@writefile{tdo}{\contentsline {todo}{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}{7}}
-\pgfsyspdfmark {pgfid63}{7328055}{43111610}
-\pgfsyspdfmark {pgfid66}{36188921}{43109317}
-\pgfsyspdfmark {pgfid67}{38040312}{42890427}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E}Visualisation and Demonstration}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{7}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers

@@ -229,10 +229,19 @@ Facial liveness, convolutional neural networks, image quality metrics
         face detector was to ensure upsampling was set to zero, otherwise memory issues would result (since the model and face detector model all need to be stored in GPU memory).
         
         All of this massively improved the result, but generalisation was still a concern. Batch Normalization was therefore added to help make the make the model generalise further.
-        This yielded a much better result, despite taking slightly longer to train.
+        This yielded a much better result, despite taking slightly longer to train. 
 
-
-        \missingfigure{TODO: insert diagram of architecture of our final resnet model}
+        The final architecture can be seen in Figure \ref{2DCNNArchitecture}. While normalization layers aren't visible, they are located in between each dense layer. The residual network
+        is also simplified.
+        
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.6\linewidth]{2DCNNArchitecture.pdf}
+            \label{2DCNNArchitecture}
+            \caption{The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers
+            of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the
+            liveness score as before).}
+        \end{figure}
         \todo{TODO: insert citation for trying pretrained imagenet}
 
     \subsection{A system for preventing 3D spoofing attacks}
@@ -295,7 +304,26 @@ Facial liveness, convolutional neural networks, image quality metrics
         In order to visualise the overall outcome of facial liveness, a generic model 
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
-    \textbf{TODO results}
+    For both liveness tests, cross dataset validation/testing was conducted. Each model was trained using the entire NUAA dataset, and the Replay-Attack test set
+    was used to measure the results shown below. In the case of the 2D Convolutional Neural Network (CNN), a validation set was required to ensure the model performed
+    well, so in this case the Replay-Attack devel set was used. It must be noted that no overlap occurs between the Replay-Attack devel and test sets, to prevent the risk
+    of these results being invalid.
+
+    \subsection{Image Quality Liveness Test}
+        Overall, the Image Quality Test performed as expected with reference to the initial paper. Unlike the original paper however, instead of isolating the face
+        from the input image, the entire image was used. While isolating the face might perform well, using the entire image might provide further subtle information
+        about the image quality.
+
+        \todo{Add False Positive/False Negative accuracy here}
+        \todo{Add time to conduct computation here (without multithreading) - for predictions only, not training}
+
+        \todo{show an example image of the system at work with image quality liveness}
+
+    \subsection{2D Convolutional Neural Network Liveness Test}
+        \todo{Insert time here to isolate face/preprocess}
+        \todo{Insert time here to conduct neural network prediction}
+        \todo{Insert system performance (specs of Lexo)}
+        \todo{}
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...

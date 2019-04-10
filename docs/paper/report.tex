@@ -40,14 +40,20 @@
 
 \paragraph{Method}
    \begin{itemize}
-        \item The image quality assessment test was implemented in Python
-        \item A CNN based 
+        \item The image quality assessment test was implemented in Python to consider the image as a whole
+        \item A CNN based 2D liveness test was implemented in Python to classify facial structure.
+        \item A 3D based liveness test was proposed and investigated as to its usefulness.
    \end{itemize}
 \paragraph{Results}
-    \todo{TODO}
+    \begin{itemize}
+        \item Image Quality Assessment test performed well, being in the 90\% accuracy range over ReplayAttack test.
+        \item CNN based 2D test performed adequately, yielding 76\% accuracy over the ReplayAttack test dataset.
+        \item The VoxNet based 3D liveness test performed poorly, and had various performance issues that means it's not currently practical to deploy.
+    \end{itemize}
 \paragraph{Conclusions}
-    \todo{TODO}
-
+    Overall, both the Image Quality assessment and CNN based 2D test are ideal in a web-based liveness test as a service system. Image Quality based metric individually yields
+    impressive results, but the CNN based metric would perform well when working together with other metrics. In addition, the speed at which queries can be answered shows 
+    that these can reasonably be used in a web system without extensive delays in processing, or without requiring any additional hardware (aside from a camera).
 \end{abstract}
 
 \begin{keywords}
@@ -233,7 +239,7 @@ Facial liveness, convolutional neural networks, image quality metrics
 
         The final architecture can be seen in Figure \ref{2DCNNArchitecture}. While normalization layers aren't visible, they are located in between each dense layer. The residual network
         is also simplified.
-        
+
         \begin{figure}
             \centering
             \includegraphics[width=0.6\linewidth]{2DCNNArchitecture.pdf}

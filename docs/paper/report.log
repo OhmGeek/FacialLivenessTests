@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  10 APR 2019 13:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  10 APR 2019 13:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -375,51 +375,47 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 53.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 59.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Marginpar on page 2 moved.
-
-[2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 LaTeX Warning: Marginpar on page 3 moved.
 
 
 Package natbib Warning: Author undefined for citation`ImageQualityAssessmentTest' 
-(natbib)                on page 3 on input line 176.
+(natbib)                on page 3 on input line 182.
 
 <ImageQualityLivenessTest.pdf, id=16, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 186.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 192.
 (pdftex.def)             Requested size: 416.13188pt x 399.32643pt.
  [3] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 214.
+(Font)              <7> on input line 220.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 214.
+(Font)              <5> on input line 220.
  <2DCNNArchitecture.pdf, id=42, 387.36719pt x 716.6775pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 239.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 245.
 (pdftex.def)             Requested size: 249.68166pt x 461.94179pt.
 
 
 Package natbib Warning: Author undefined for citation`3DReconstructionMethod' 
-(natbib)                on page 5 on input line 253.
+(natbib)                on page 5 on input line 259.
 
 [5] [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <voxnet.pdf, id=73, 626.34pt x 210.7875pt>
+>] <voxnet.pdf, id=72, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 283.
+Package pdftex.def Info: voxnet.pdf used on input line 289.
 (pdftex.def)             Requested size: 416.13188pt x 140.0497pt.
  [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
 
@@ -432,22 +428,22 @@ LaTeX Warning: Marginpar on page 8 moved.
 LaTeX Warning: Marginpar on page 8 moved.
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 323--323
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 323--323
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 323--323
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 323--323
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
@@ -468,15 +464,15 @@ Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no © in font ptmr7t!
  [8]) [9] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 12818 strings out of 493013
- 257947 string characters out of 6135681
- 366202 words of memory out of 5000000
- 16105 multiletter control sequences out of 15000+600000
+ 12802 strings out of 493013
+ 257573 string characters out of 6135681
+ 364375 words of memory out of 5000000
+ 16089 multiletter control sequences out of 15000+600000
  15737 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,80p,1139b,892s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,80p,1139b,858s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (9 pages, 286311 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (9 pages, 286462 bytes).
 PDF statistics:
  134 PDF objects out of 1000 (max. 8388607)
  92 compressed objects within 1 object stream

@@ -53,7 +53,7 @@ def main():
     # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
     # Now create the CNN model
-    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.001, default_img_dimensions=(224,224))
+    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0005, default_img_dimensions=(224,224))
   
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
@@ -83,10 +83,10 @@ def main():
 
     # Train the model on our training set.
     batch_size = 256
-    generator = gen.flow(x, y, batch_size=batch_size, subset='training')
+    generator = gen.flow(x, y, batch_size=batch_size)
 
     # This is the validation generator
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/", mode='test')
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/", mode='devel')
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")
@@ -112,7 +112,7 @@ def main():
     client_set = None
     client_y = None
     # Now create the training set.
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/", mode='test')
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/", mode='test')
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")
@@ -131,7 +131,7 @@ def main():
 
 
 
-    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=1, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
+    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=20, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
     model.save('alexnet.h5')
 
     

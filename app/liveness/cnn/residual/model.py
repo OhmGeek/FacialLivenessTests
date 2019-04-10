@@ -74,15 +74,38 @@ class ResidualNetwork(AbstractModel):
         final_network.add(Dropout(0.3))
         
         
+        final_network.add(Dense(100, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
+        final_network.add(Dropout(0.3))
+
+
+        final_network.add(Dense(100, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
+        final_network.add(Dropout(0.3))
+
+        final_network.add(Dense(75, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
+        final_network.add(Dropout(0.3))
+
+        final_network.add(Dense(50, use_bias=False))
+        final_network.add(BatchNormalization())
+        final_network.add(Activation('relu'))
+        final_network.add(Dropout(0.3))
+
         final_network.add(Dense(50, use_bias=False))
         final_network.add(BatchNormalization())
         final_network.add(Activation('relu'))
         final_network.add(Dropout(0.3))
 
 
+
         final_network.add(Dense(50, use_bias=False))
         final_network.add(BatchNormalization())
         final_network.add(Activation('relu'))
+
 
         final_network.add(Dropout(0.6))
         final_network.add(Dense(1, activation='relu'))
@@ -92,9 +115,8 @@ class ResidualNetwork(AbstractModel):
         for layer in cnn_model.layers:
             layer.trainable = False
         
-        # Only last layer is trainable.
+        # Only last two layers are trainable.
         cnn_model.layers[-1].trainable = True
-
         # set model. 
         self._model = final_network
         self._is_model_created = True

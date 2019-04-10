@@ -10,45 +10,45 @@ Warning--string name "september" is undefined
 Warning--empty booktitle in ReplayAttackDataset
 Warning--empty booktitle in 3DMadDataset
 Warning--empty booktitle in FaceSpoofingAttacksStudy
-You've used 10 entries,
+You've used 11 entries,
             2118 wiz_defined-function locations,
-            563 strings with 6330 characters,
-and the built_in function-call counts, 4011 in all, are:
-= -- 363
-> -- 237
-< -- 3
-+ -- 91
-- -- 79
-* -- 275
-:= -- 657
-add.period$ -- 33
-call.type$ -- 10
-change.case$ -- 64
+            571 strings with 6546 characters,
+and the built_in function-call counts, 4454 in all, are:
+= -- 407
+> -- 250
+< -- 4
++ -- 96
+- -- 83
+* -- 300
+:= -- 717
+add.period$ -- 36
+call.type$ -- 11
+change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 163
-empty$ -- 310
-format.name$ -- 79
-if$ -- 854
+cite$ -- 14
+duplicate$ -- 186
+empty$ -- 351
+format.name$ -- 83
+if$ -- 960
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 10
-newline$ -- 53
-num.names$ -- 24
-pop$ -- 94
+int.to.str$ -- 11
+missing$ -- 11
+newline$ -- 58
+num.names$ -- 26
+pop$ -- 102
 preamble$ -- 1
-purify$ -- 54
+purify$ -- 58
 quote$ -- 0
-skip$ -- 109
+skip$ -- 130
 stack$ -- 0
-substring$ -- 185
-swap$ -- 44
-text.length$ -- 3
+substring$ -- 218
+swap$ -- 55
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 40
+type$ -- 44
 warning$ -- 3
-while$ -- 32
-width$ -- 12
-write$ -- 106
+while$ -- 36
+width$ -- 13
+write$ -- 117
 (There were 5 warnings)

@@ -330,19 +330,37 @@ Facial liveness, convolutional neural networks, image quality metrics
         \todo{Insert time here to conduct neural network prediction}
         \todo{Insert system performance (specs of Lexo)}
         \todo{}
+
+        While these results might not appear to be as ideal, this is partly due to the nature of the Replay-Attack dataset as each 20th frame was taken from the dataset.
+        Due to this, when there is movement and where the face isn't visible by the camera, the image can't be correctly processed and therefore the entire image is used
+        as the input to the network, thus yielding poorer performance than expected. This is only encountered with this metric due to the requirement that the facial extraction is successful. 
+        
+    \subsection{3D VoxNet Liveness Test}
+            As discussed in the method, this metric had several performance challenges. Applying VoxNet caused memory issues, in addition to yielding very poor performance
+            (50\% accuracy with a single dense layer output), indicating that the features weren't being learnt correctly. 69\% accuracy was expected, as specified in the
+            VoxNet paper \cite{VoxNetModel}. There are a few reasons why this wasn't matched: firstly, the voxnet model we needed required large inputs: (192 x 192 x 192 x 3),
+            which is far too high for easy and real-time computation. 
+
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...
-    \textbf{TODO evaluation}
+    \subsection{Improvements}
+    While our system works fairly well for 2D based attacks, performance for 3D based attacks definitely needs work.
+    While our VoxNet based method didn't yield any meaningful results, there is a chance that a 2D image could yield results
+    with 3D based attacks (using a residual network on a static image to detect minor mask-based imperfections), or alternatively
+    considering a sequence of images using LSTMs to detect changes in movement. This however would require video input, meaning the
+    NUAA dataset wouldn't be useful.
 
+    Furthermore, while our current system focuses mostly on the liveness tests, one must also consider input-based attacks (using prerecorded digital files
+    sent to the server). In the case of the Safari web browser on iOS, existing web browser APIs only allow a general media capture command (which allows the user to
+    either record a video/image or upload something from their library), and this can't be overridden. This needs to be addressed in order to provide a truly useful
+    liveness service. Video-based tests involving random movement (e.g. head movement) could be added to our consolidation layer to assist in preventing this. Additionally, content ID
+    based liveness checks could be used to ensure videos aren't reused, but this would require additional data storage which wouldn't necessarily scale as easily.
 
-    % Improvements:
-    % 3D attacks more difficult. One could extend this method using 3D reconstruction (sfm based on videos)
-    % then recovering 3D details, and using these as input features.
-    % this would allow for 3D reconstruction to some extent. Would require video input.
 \section{Conclusions}
     % overall, what did the project show?
-
+    This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks. The consolidation layer provides
+    an ideal point of extension, allowing for multiple tests to work together and allow confirmation to prevent false positives (which would lead to security problems).
 
 \bibliographystyle{plain}
 \bibliography{report}

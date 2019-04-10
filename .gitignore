@@ -1,4 +1,4 @@
 .vscode/
 .idea/
 __pycache__/
-*.h5
+datasets/**/*.h5

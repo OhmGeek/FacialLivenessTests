@@ -17,6 +17,7 @@ tensorflow = "*"
 visvis = "*"
 "pyqt5" = "*"
 face-recognition = "*"
+joblib = "*"
 
 [requires]
 python_version = "3.5"

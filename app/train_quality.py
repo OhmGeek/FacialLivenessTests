@@ -53,14 +53,13 @@ def main():
     imposter_set = dataset.read_dataset("ImposterRaw") # ImposterRaw
     client_set = dataset.read_dataset("ClientRaw") # ClientRaw
     # Divide dataset into train, and test (40%, 60%)
-    # train_set = np.concatenate((train_set, client_set[:int(client_set.shape[0] / 2)]))
     train_vectors = []
     train_outputs = []
-    for imposter_img in imposter_set[: int(imposter_set.shape[0] / 2)]:
+    for imposter_img in imposter_set[: int(imposter_set.shape[0])]:
         train_vectors.append(imposter_img)
         train_outputs.append(0.0) # 0.0 -> fake
 
-    for client_img in client_set[: int(client_set.shape[0] / 2)]:
+    for client_img in client_set[: int(client_set.shape[0])]:
         train_vectors.append(client_img)
         train_outputs.append(1.0) # 1.0 -> real
     
@@ -73,11 +72,30 @@ def main():
     print("Trained.")
     print("")
     print("Now saving")
-    # model.save('lda_model.pkl')
+    model.save('lda_model.pkl')
     print("Saved.")
-    print("")
-    print("Output Results:")
-    print(model.test(train_vectors, train_outputs))
+
+    # Now we train with ReplayAttack
+    print("Now load replay attack for testing")
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/", mode='test')
+    dataset.pre_process()
+
+    imposter_set = dataset.read_dataset("attack") # ImposterRaw
+    client_set = dataset.read_dataset("real") # ClientRaw
+    train_vectors = []
+    train_outputs = []
+    for imposter_img in imposter_set[: int(imposter_set.shape[0])]:
+        train_vectors.append(imposter_img)
+        train_outputs.append(0.0) # 0.0 -> fake
+
+    for client_img in client_set[: int(client_set.shape[0])]:
+        train_vectors.append(client_img)
+        train_outputs.append(1.0) # 1.0 -> real
+    
+    print("Get ready to test")
+    score = model.test(train_vectors, train_outputs)
+    print("testing finished")
+    print(score)
 
 if __name__ == "__main__":
     main()

@@ -139,11 +139,12 @@ Facial liveness, convolutional neural networks, image quality metrics
         \subsubsection{Datasets}
         %Datasets
         While models exist, in order to test these models data is needed. One of the most common and earliest dataset for facial liveness is the NUAA dataset,
-        which consists of photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera.  \cite{NUAADataset}
+        which consists of photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera. \cite{NUAADataset}
 
         In 2012, the Replay-Attack dataset was first released , which consists of 1,300 video clips of both photo and video attacks. Each
         set of videos/images are taken under different illumination conditions, and various different attack methods were collected: printed photo, low resolution and high resolution screens with both photos and 
-        videos being displayed. \cite{ReplayAttackDataset}
+        videos being displayed. The entire dataset consists of several 'subdatasets': the 'devel' dataset is designed as a validation set/training set, while
+        the 'test' dataset is designed as a test dataset (and therefore must not be used in the training/validation process). \cite{ReplayAttackDataset}
 
 
         \subsubsection{Temporal-based Liveness Tests}
@@ -196,6 +197,35 @@ Facial liveness, convolutional neural networks, image quality metrics
             is 1.0 for real, and 0.0 for fake, or in between.}
         \end{figure}
 
+        Originally, the source code accompanying this paper was written in Matlab, using some Matlab-based libraries for certain metrics. Scikit learn provided 
+        the necessary classifiers (LDA, SVM), OpenCV provided some simple image manipulation code (e.g. Gaussian Blur), and Numpy allowed for a large amount of
+        image-based calculations.
+
+        \paragraph{Numpy/OpenCV powered metrics, utilising image based calculations}
+        Several metrics simply required pixel based calculations between an image, and a gaussian blurred version of the same image. These were fairly easy to implement,
+        utilising numpy to manage the individual pixel calculations. In some cases (e.g. GradientMagnitudeErrorMetric), other image operations such as a Sobel filter were needed, and in this
+        instance OpenCV was used to carry out these operations. Some of these also relied on other linear algebra libraries built into Numpy for the calculations.
+        In some cases, further functions were written to work with these libraries.
+
+        Metrics that are included here are: Average, Maximum Difference, Gradient Magnitude Error, Gradient Phase Error Metric, JPEGQualityIndexMetric, MSE (and the laplacian equivalent), Angle-based similarity metrics,
+        Absolute Error Metric, Normalised Cross Correlation, Signal to Noise Ratio based metrics, Corner and Edge based metrics, and Visual Information Fidelity metric (which uses gaussian blurs at various scales).
+
+        \paragraph{Fourier/wavelet based metrics}
+        In some cases, fourier transforms could be carried out with a combination of opencv and numpy metrics, this was the case with the HighLowFrequencyIndexMetric,
+        and SpectralPhaseErrorMetric.
+
+        Some metrics required further wavelet transforms that weren't available within existing imported libraries. Rather than implementing these metrics completely
+        from scratch, a library was needed. Existing code had been written \cite{VideoQualityOriginal}, but it had two problems: it wasn't compatible with Python3, but only
+        with Python2, and also it wasn't in an easily importable/managable library form for integration into an existing app.
+
+        Therefore, the existing code was forked in order to be updated. The Python2 to Python3 upgrade was completed fairly easily, simply by correcting imports that were incorrect
+        for newer versions, and also version specific corrections (such as $== None$ being changed to $is$ $None$ in Python3).
+        
+        Once this was completed, the code was bundled into a package by creating a $setup.py$ file. This allows for code reuse, and also makes dependencies for the project
+        more managable by using a hosted version of the package, rather than a version on the local repository (as the underlying code for the metric will rarely be touched).
+        The setup file also requires a Makefile be created to install dependencies using pip. Once this was completed, a GitHub release was created for the package, which allows it to be
+        imported into an existing project using pip. \cite{VideoQualityUpdated}
+
 
     \subsection{Residual Network based 2D liveness test}
         Recently, 2D convolutional neural networks have had great success in image classification tasks. Therefore, it might be possible to train
@@ -236,6 +266,8 @@ Facial liveness, convolutional neural networks, image quality metrics
         
         All of this massively improved the result, but generalisation was still a concern. Batch Normalization was therefore added to help make the make the model generalise further.
         This yielded a much better result, despite taking slightly longer to train. 
+
+        Throughout the training process, a binary crossentropy loss function was used, since there are only two possible classes, being predicted with a single number output. 
 
         The final architecture can be seen in Figure \ref{2DCNNArchitecture}. While normalization layers aren't visible, they are located in between each dense layer. The residual network
         is also simplified.

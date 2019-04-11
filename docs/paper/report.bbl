@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{VideoQualityOriginal}
+Aizvorski.
+\newblock aizvorski/video-quality, Mar 2015.
+
 \bibitem{ReplayAttackDataset}
 Ivana Chingovska, Andr{\'{e}} Anjos, and S{\'{e}}bastien Marcel.
 \newblock On the effectiveness of local binary patterns in face anti-spoofing.
@@ -48,6 +52,10 @@ D.~Maturana and S.~Scherer.
   recognition.
 \newblock In {\em 2015 IEEE/RSJ International Conference on Intelligent Robots
   and Systems (IROS)}, pages 922--928, Sep. 2015.
+
+\bibitem{VideoQualityUpdated}
+OhmGeek.
+\newblock Ohmgeek/video-quality, Dec 2018.
 
 \bibitem{Patel2016CrossDatabaseFA}
 Keyurkumar Patel, Hu~Han, and Anil~K. Jain.

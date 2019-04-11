@@ -4,51 +4,51 @@ The top-level auxiliary file: report.aux
 The style file: plain.bst
 Database file #1: report.bib
 Warning--string name "september" is undefined
---line 100 of file report.bib
+--line 102 of file report.bib
 Warning--string name "september" is undefined
---line 108 of file report.bib
+--line 110 of file report.bib
 Warning--empty booktitle in ReplayAttackDataset
 Warning--empty booktitle in 3DMadDataset
 Warning--empty booktitle in FaceSpoofingAttacksStudy
-You've used 11 entries,
+You've used 13 entries,
             2118 wiz_defined-function locations,
-            571 strings with 6546 characters,
-and the built_in function-call counts, 4454 in all, are:
-= -- 407
-> -- 250
+            583 strings with 6700 characters,
+and the built_in function-call counts, 4852 in all, are:
+= -- 441
+> -- 264
 < -- 4
-+ -- 96
-- -- 83
-* -- 300
-:= -- 717
-add.period$ -- 36
-call.type$ -- 11
-change.case$ -- 69
++ -- 102
+- -- 87
+* -- 316
+:= -- 781
+add.period$ -- 40
+call.type$ -- 13
+change.case$ -- 77
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 186
-empty$ -- 351
-format.name$ -- 83
-if$ -- 960
+cite$ -- 16
+duplicate$ -- 200
+empty$ -- 395
+format.name$ -- 87
+if$ -- 1046
 int.to.chr$ -- 0
-int.to.str$ -- 11
+int.to.str$ -- 13
 missing$ -- 11
-newline$ -- 58
-num.names$ -- 26
-pop$ -- 102
+newline$ -- 66
+num.names$ -- 30
+pop$ -- 120
 preamble$ -- 1
-purify$ -- 58
+purify$ -- 64
 quote$ -- 0
-skip$ -- 130
+skip$ -- 146
 stack$ -- 0
-substring$ -- 218
-swap$ -- 55
+substring$ -- 228
+swap$ -- 57
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 44
+type$ -- 52
 warning$ -- 3
-while$ -- 36
-width$ -- 13
-write$ -- 117
+while$ -- 40
+width$ -- 15
+write$ -- 133
 (There were 5 warnings)

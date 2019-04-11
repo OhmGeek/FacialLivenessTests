@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  10 APR 2019 14:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  11 APR 2019 15:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -384,98 +384,101 @@ LaTeX Warning: Marginpar on page 3 moved.
 
 
 Package natbib Warning: Author undefined for citation`ImageQualityAssessmentTest' 
-(natbib)                on page 3 on input line 182.
+(natbib)                on page 3 on input line 183.
 
 <ImageQualityLivenessTest.pdf, id=16, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 192.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 193.
 (pdftex.def)             Requested size: 416.13188pt x 399.32643pt.
  [3] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 220.
+(Font)              <7> on input line 222.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 220.
- <2DCNNArchitecture.pdf, id=42, 387.36719pt x 716.6775pt>
+(Font)              <5> on input line 222.
+ [5] <2DCNNArchitecture.pdf, id=47, 258.9675pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 245.
-(pdftex.def)             Requested size: 249.68166pt x 461.94179pt.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 277.
+(pdftex.def)             Requested size: 249.68166pt x 715.16615pt.
+
+
+LaTeX Warning: Float too large for page by 94.19919pt on input line 282.
 
 
 Package natbib Warning: Author undefined for citation`3DReconstructionMethod' 
-(natbib)                on page 5 on input line 259.
+(natbib)                on page 6 on input line 291.
 
-[5] [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
+[6] [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <voxnet.pdf, id=72, 626.34pt x 210.7875pt>
+>] <voxnet.pdf, id=77, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 289.
+Package pdftex.def Info: voxnet.pdf used on input line 321.
 (pdftex.def)             Requested size: 416.13188pt x 140.0497pt.
- [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+ [8 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 9 moved.
 
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 9 moved.
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 361--361
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 361--361
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 361--361
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
 
-Overfull \hbox (13.2892pt too wide) in paragraph at lines 329--329
+Overfull \hbox (13.2892pt too wide) in paragraph at lines 361--361
 \OT1/ptm/m/n/10 face/preprocess  
  []
 
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 9 moved.
 
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 9 moved.
 
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 9 moved.
 
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 9 moved.
 
-[8] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
+(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl [9]
 Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no © in font ptmr7t!
-) [9] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+) [10] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 12805 strings out of 493013
- 257630 string characters out of 6135681
- 364391 words of memory out of 5000000
- 16092 multiletter control sequences out of 15000+600000
+ 12811 strings out of 493013
+ 257795 string characters out of 6135681
+ 360014 words of memory out of 5000000
+ 16098 multiletter control sequences out of 15000+600000
  15737 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,80p,1139b,858s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (9 pages, 289747 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (10 pages, 293531 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 137 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

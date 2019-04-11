@@ -111,7 +111,7 @@ class QualityLDAModel(AbstractModel):
         self._model.fit(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        training_inputs = preprocessor(input_img, self._logger)
+        training_inputs, _ = preprocessor(input_img, [None], self._logger)
         
         return self._model.predict(training_inputs)
 
@@ -124,5 +124,5 @@ class QualityLDAModel(AbstractModel):
             self._model = pickle.load(f)
 
     def test(self, input_x, input_y):
-        training_inputs = preprocessor(input_x, self._logger)
+        training_inputs, training_outputs = preprocessor(input_x, input_y, self._logger)
         return self._model.score(training_inputs, input_y)

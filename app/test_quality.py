@@ -1,6 +1,6 @@
-from datasets.nuaa import NUAADataset
+from datasets.replayattack import ReplayAttackDataset
 from liveness.generic import DummyLivenessTest
-from liveness.quality.model import QualitySVMModel
+from liveness.quality.model import QualityLDAModel
 from testframework.tests import TestDummyCase
 from testframework.runner import TestRunner
 from liveness.quality.metrics.factory import metric_factory
@@ -14,78 +14,28 @@ def main():
     # TODO: change this to warn for production.
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger()
-    metrics_names = [
-        "ad",
-        "biqi",
-        "gme",
-        "gpe",
-        "hlfi",
-        "jqi",
-        "lmse",
-        "mams",
-        "mas",
-        "md",
-        "mse",
-        "nae",
-        "niqe",
-        "nxc",
-        "psnr",
-        "ramd",
-        # "rred",
-        "sc",
-        "sme",
-        "snr",
-        "spe",
-        "ssim",
-        "tcd",
-        "ted",
-        "vifd"
-    ]
-    metrics = metric_factory(metrics_names, logger)
-    vector_creator = DefaultMetricVectorCreator(metrics)
 
     print("Running test.py")
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ohmgeek_default/datasets/nuaa/")
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replay-attack/", mode='test')
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("ImposterRaw")
-    client_set = dataset.read_dataset("ClientRaw")
-    # Divide dataset into train, and test (40%, 60%)
+    imposter_set = dataset.read_dataset("attack")[:10]
+    output_imposter = [0.0 for x in range(imposter_set.shape[0])]
 
-    # train_set = np.concatenate((train_set, client_set[:int(client_set.shape[0] / 2)]))
-    model = QualitySVMModel(logging.Logger("svm"))
+    client_set = dataset.read_dataset("real")[:10]
+    output_client = [1.0 for x in range(client_set.shape[0])]
 
-    test_vectors = []
-    test_outputs = []
-    for imposter_img in imposter_set[int(imposter_set.shape[0] / 2) + 1:]:
-        try:
-            image = cv2.cvtColor(imposter_img, cv2.COLOR_BGR2GRAY)
-            gaussian_image = cv2.GaussianBlur(image,(5,5),0)
-            vector = vector_creator.create_vector(image, gaussian_image)
-            test_vectors.append(vector)
-            test_outputs.append(1.0)
-        except:
-            logger.error("Error while evaluating image.")
+    # Load the model.
+    model = QualityLDAModel(logger)
+    model.load('/home/ryan/Documents/dev/LivenessTests/models/lda_model.pkl')
 
-    for client_img in client_set[int(client_set.shape[0] / 2) + 1:]:
-        try:
-            image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
-            gaussian_image = cv2.GaussianBlur(image,(5,5),0)
-            vector = vector_creator.create_vector(image, gaussian_image)
-            test_vectors.append(vector)
-            test_outputs.append(0.0)
-        except:
-            logger.error("Error while evaluating image")
+    # Merge the data together.
+    input_x = np.concatenate((imposter_set, client_set))
+    input_y = np.concatenate((output_imposter, output_client))
 
-    
-    # Evaluate on testing set
-    print("Now loaded")
-    model.load('/home/ryan/models/model.pkl')
-    print("Loaded.")
-    print("")
-    print("Output Results:")
-    print(model.test(test_vectors, test_outputs))
-
+    score = model.test(input_x, input_y)
+    print("Total results")
+    print(score)
 
 if __name__ == "__main__":
     main()

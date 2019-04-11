@@ -10,6 +10,7 @@ from liveness.quality.metric_vector import DefaultMetricVectorCreator
 import cv2
 import logging
 import numpy as np
+from sklearn.utils import shuffle
 
 def main():
     # first, set log level to display everything we want
@@ -47,11 +48,11 @@ def main():
     vector_creator = DefaultMetricVectorCreator(metrics)
 
     print("Running test.py")
-    dataset = NUAADataset(logging.getLogger("c.o.datasets.nuaa"), "/home/ryan/datasets/nuaa/")
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattackdevel"), "/home/ryan/datasets/replayAttackDB/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("ImposterRaw") # ImposterRaw
-    client_set = dataset.read_dataset("ClientRaw") # ClientRaw
+    imposter_set = dataset.read_dataset("attack") # ImposterRaw
+    client_set = dataset.read_dataset("real") # ClientRaw
     # Divide dataset into train, and test (40%, 60%)
     train_vectors = []
     train_outputs = []
@@ -77,23 +78,22 @@ def main():
 
     # Now we train with ReplayAttack
     print("Now load replay attack for testing")
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replayAttackDB/", mode='test')
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattacktest"), "/home/ryan/datasets/replayAttackDB/", mode='test')
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack") # ImposterRaw
-    client_set = dataset.read_dataset("real") # ClientRaw
-    train_vectors = []
-    train_outputs = []
-    for imposter_img in imposter_set[: int(imposter_set.shape[0])]:
-        train_vectors.append(imposter_img)
-        train_outputs.append(0.0) # 0.0 -> fake
+    imposter_set = dataset.read_dataset("attack")[:10]
+    output_imposter = [0.0 for x in range(imposter_set.shape[0])]
 
-    for client_img in client_set[: int(client_set.shape[0])]:
-        train_vectors.append(client_img)
-        train_outputs.append(1.0) # 1.0 -> real
+    client_set = dataset.read_dataset("real")[:10]
+    output_client = [1.0 for x in range(client_set.shape[0])]
     
+    # Merge the data together.
+    input_x = np.concatenate((imposter_set, client_set))
+    input_y = np.concatenate((output_imposter, output_client))
+
+    input_x, input_y = shuffle(input_x, input_y)
     print("Get ready to test")
-    score = model.test(train_vectors, train_outputs)
+    score = model.test(input_x, input_y)
     print("testing finished")
     print(score)
 

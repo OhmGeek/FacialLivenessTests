@@ -7,7 +7,7 @@
 \usepackage{subfigure}
 \usepackage{todonotes}
 % \usepackage{harvard}
-% \usepackage[moderate]{savetrees}
+\usepackage[moderate]{savetrees}
 \usepackage{url}
 
 \title{Facial Liveness Testing: For The Web}
@@ -188,12 +188,25 @@ Facial liveness, convolutional neural networks, image quality metrics
         \subsubsection{Temporal-based Liveness Tests}
         These liveness tests require a video input, rather than an image. Rather than looking directly at an image, they mostly look at the differences between the images in a video.
         
-        \todo{Add Eye tracking source}
-        \todo{Add face movement source}
+        % Blinking
+        \paragraph{Blink Detection}
 
-        However, one drawback of temporal based liveness tests is that they require video input, which is often more computationally intensive than standard image input. Furthermore, over a network video input would require
-        far greater network bandwidth.
+        % Eye Tracking
+        \paragraph{Eye Tracking}
 
+
+        % Face Flashing
+        \paragraph{Face Flashing}
+        One method, known as the "Face Flashing" liveness detection method, uses the light diffusing off a screen to determine that the input is in fact from the user, rather than from a spoofed recorded/simulated input.
+        The method also considers how the light is diffused, as light would diffuse differently based on a face compared to a piece of paper/a screen. \cite{LivenessTestFaceFlashing}
+        While this metrics seems very promising at avoiding replay attacks, testing it to a larger degree is more difficult due to the lack of data available for testing, and therefore not implemented for this project.
+        One potential drawback though would be with devices that don't have screens but do have cameras, such as with IoT devices. Since a screen isn't present on these, the liveness test wouldn't work. However, for traditional mobile phones/computers
+        this would work better.
+
+        Overall, these metrics would be fairly useful on video input, since they take into account the movement/differences between frames, but for implementation purposes they are difficult to test due to lack of datasets available for them
+        (since they require special information that isn't available from existing sets). 
+
+        In a web-based approach, the face flashing approach would be particularly useful at determining whether a source-quality image was being fed into the algorithm, since the random face flashing colours would be able to be detected.
         
     \subsection{3D Spoofing Attacks}
         Mask Attacks are a 3D spoofing attack, which involve creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy} These are much less prevalent, but with 3D printing becoming more mainstream, this
@@ -451,7 +464,7 @@ Facial liveness, convolutional neural networks, image quality metrics
     This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks. The consolidation layer provides
     an ideal point of extension, allowing for multiple tests to work together and allow confirmation to prevent false positives (which would lead to security problems).
 
-\bibliographystyle{plain}
+\bibliographystyle{abbrv}
 \bibliography{report}
 
 \end{document}

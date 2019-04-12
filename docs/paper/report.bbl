@@ -5,26 +5,26 @@ Aizvorski.
 \newblock aizvorski/video-quality, Mar 2015.
 
 \bibitem{DeepNeuralNetworkDeployability}
-Alfredo Canziani, Adam Paszke, and Eugenio Culurciello.
+A.~Canziani, A.~Paszke, and E.~Culurciello.
 \newblock An analysis of deep neural network models for practical applications.
 \newblock {\em arXiv preprint arXiv:1605.07678}, 2016.
 
 \bibitem{ReplayAttackDataset}
-Ivana Chingovska, Andr{\'{e}} Anjos, and S{\'{e}}bastien Marcel.
+I.~Chingovska, A.~Anjos, and S.~Marcel.
 \newblock On the effectiveness of local binary patterns in face anti-spoofing.
-\newblock 2012.
+\newblock september 2012.
 
 \bibitem{SFMClassifier}
-Tanzeem Choudhury, Brian Clarkson, Tony Jebara, and Alex Pentland.
+T.~Choudhury, B.~Clarkson, T.~Jebara, and A.~Pentland.
 \newblock Multimodal person recognition using unconstrained audio and video.
 \newblock In {\em Proceedings, International Conference on Audio-and
-  Video-Based Person Authentication}, pages 176--181. Citeseer, 1999.
+  Video-Based Person Authentication}, pages 176--181. Citeseer, March 1999.
 
 \bibitem{3DMadDataset}
-Nesli Erdogmus and Sébastien Marcel.
+N.~Erdogmus and S.~Marcel.
 \newblock Spoofing in 2d face recognition with 3d masks and anti-spoofing with
   kinect.
-\newblock 2013.
+\newblock september 2013.
 
 \bibitem{ImageQualityAssessmentTest}
 J.~Galbally, S.~Marcel, and J.~Fierrez.
@@ -34,20 +34,20 @@ J.~Galbally, S.~Marcel, and J.~Fierrez.
   2014.
 
 \bibitem{3DReconstructionMethod}
-Aaron~S Jackson, Adrian Bulat, Vasileios Argyriou, and Georgios Tzimiropoulos.
+A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.
 \newblock Large pose 3d face reconstruction from a single image via direct
   volumetric cnn regression.
-\newblock {\em International Conference on Computer Vision}, 2017.
+\newblock {\em International Conference on Computer Vision}, September 2017.
 
 \bibitem{AlexNet}
-Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
 \newblock Imagenet classification with deep convolutional neural networks.
 \newblock In F.~Pereira, C.~J.~C. Burges, L.~Bottou, and K.~Q. Weinberger,
   editors, {\em Advances in Neural Information Processing Systems 25}, pages
   1097--1105. Curran Associates, Inc., 2012.
 
 \bibitem{FaceSpoofingAttacksStudy}
-Sandeep Kumar, Sukhwinder Singh, and Jagdish Kumar.
+S.~Kumar, S.~Singh, and J.~Kumar.
 \newblock A comparative study on face spoofing attacks.
 \newblock 05 2017.
 
@@ -63,25 +63,32 @@ OhmGeek.
 \newblock Ohmgeek/video-quality, Dec 2018.
 
 \bibitem{Patel2016CrossDatabaseFA}
-Keyurkumar Patel, Hu~Han, and Anil~K. Jain.
+K.~Patel, H.~Han, and A.~K. Jain.
 \newblock Cross-database face antispoofing with robust feature representation.
-\newblock In {\em CCBR}, 2016.
+\newblock In {\em CCBR}, October 2016.
 
 \bibitem{GoogLeNet}
-Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
-  Anguelov, Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
+C.~Szegedy, W.~Liu, Y.~Jia, P.~Sermanet, S.~Reed, D.~Anguelov, D.~Erhan,
+  V.~Vanhoucke, and A.~Rabinovich.
 \newblock Going deeper with convolutions.
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, 2015.
 
 \bibitem{NUAADataset}
-Xiaoyang Tan, Yi~Li, Jun Liu, and Lin Jiang.
+X.~Tan, Y.~Li, J.~Liu, and L.~Jiang.
 \newblock Face liveness detection from a single image with sparse low rank
   bilinear discriminative model.
 \newblock In {\em ECCV}, 2010.
 
+\bibitem{LivenessTestFaceFlashing}
+D.~Tang, Z.~Zhou, Y.~Zhang, and K.~Zhang.
+\newblock Face flashing: a secure liveness detection protocol based on light
+  reflections.
+\newblock In {\em 25th Annual Network and Distributed System Security
+  Symposium, {NDSS} 2018, San Diego, California, USA, February 18-21, 2018},
+  August 2018.
+
 \bibitem{SGDBetterThanAdamForImageClassification}
-Ashia~C Wilson, Rebecca Roelofs, Mitchell Stern, Nati Srebro, and Benjamin
-  Recht.
+A.~C. Wilson, R.~Roelofs, M.~Stern, N.~Srebro, and B.~Recht.
 \newblock The marginal value of adaptive gradient methods in machine learning.
 \newblock In I.~Guyon, U.~V. Luxburg, S.~Bengio, H.~Wallach, R.~Fergus,
   S.~Vishwanathan, and R.~Garnett, editors, {\em Advances in Neural Information

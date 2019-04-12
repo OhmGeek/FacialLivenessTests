@@ -1,55 +1,51 @@
 This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
-The style file: plain.bst
+The style file: abbrv.bst
 Database file #1: report.bib
-Warning--string name "september" is undefined
---line 117 of file report.bib
-Warning--string name "september" is undefined
---line 125 of file report.bib
 Warning--I didn't find a database entry for "RRED"
 Warning--empty booktitle in ReplayAttackDataset
 Warning--empty booktitle in 3DMadDataset
 Warning--empty booktitle in FaceSpoofingAttacksStudy
-You've used 15 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            595 strings with 7185 characters,
-and the built_in function-call counts, 5614 in all, are:
-= -- 503
-> -- 330
+            605 strings with 7242 characters,
+and the built_in function-call counts, 5960 in all, are:
+= -- 530
+> -- 353
 < -- 4
-+ -- 129
-- -- 111
-* -- 375
-:= -- 919
-add.period$ -- 46
-call.type$ -- 15
-change.case$ -- 95
++ -- 138
+- -- 119
+* -- 409
+:= -- 976
+add.period$ -- 49
+call.type$ -- 16
+change.case$ -- 102
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 224
-empty$ -- 440
-format.name$ -- 111
-if$ -- 1193
+cite$ -- 19
+duplicate$ -- 238
+empty$ -- 468
+format.name$ -- 119
+if$ -- 1262
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 13
-newline$ -- 76
-num.names$ -- 34
-pop$ -- 142
+int.to.str$ -- 16
+missing$ -- 14
+newline$ -- 81
+num.names$ -- 36
+pop$ -- 153
 preamble$ -- 1
-purify$ -- 80
+purify$ -- 86
 quote$ -- 0
-skip$ -- 160
+skip$ -- 167
 stack$ -- 0
-substring$ -- 239
-swap$ -- 60
+substring$ -- 244
+swap$ -- 62
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 64
 warning$ -- 3
-while$ -- 44
-width$ -- 17
-write$ -- 153
-(There were 6 warnings)
+while$ -- 46
+width$ -- 18
+write$ -- 163
+(There were 4 warnings)

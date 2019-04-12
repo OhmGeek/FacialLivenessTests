@@ -119,14 +119,15 @@ Facial liveness, convolutional neural networks, image quality metrics
         
         \paragraph{AlexNet} 
         One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
-        This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Since the AlexNet paper was written,
-        newer methods have been built that performed better. 
+        This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Overall deployability
+        with Alexnet is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
+        as good as newer methods (such as the ones shown below), which all perform better in terms of accuracy. 
         
         \paragraph{VGG16 Network}
         The VGG16 model improved AlexNet by replacing larger filters by more smaller filters one after another.
-        However, VGG requires a high amount of computational power, something that's not easily deployable \todo{Cite VGG lack of deployability} on a real-life system
-        due to high time and space requirements. 
-        
+        However, VGG requires a high amount of computational power, something that's not easily deployable due to
+        the large number of parameters (128 million), which requires a high amount of memory and compute power compared
+        to other models. \cite{DeepNeuralNetworkDeployability}
 
         \paragraph{GoogLeNet Inception}
         GoogLeNet Inception is an improved module that approximates a space Convolutional Network with a normal
@@ -139,12 +140,14 @@ Facial liveness, convolutional neural networks, image quality metrics
         While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
 
 
+        \missingfigure{Insert graph from DeepNeuralNetworkDeployability which shows operations and accuracy on ImageNet}
+
         \subsubsection{Datasets}
         %Datasets
         While models exist, in order to test these models data is needed. One of the most common and earliest dataset for facial liveness is the NUAA dataset,
         which consists of photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera. \cite{NUAADataset}
 
-        In 2012, the Replay-Attack dataset was first released , which consists of 1,300 video clips of both photo and video attacks. Each
+        In 2012, the Replay-Attack dataset was first released, which consists of 1,300 video clips of both photo and video attacks. Each
         set of videos/images are taken under different illumination conditions, and various different attack methods were collected: printed photo, low resolution and high resolution screens with both photos and 
         videos being displayed. The entire dataset consists of several 'subdatasets': the 'devel' dataset is designed as a validation set/training set, while
         the 'test' dataset is designed as a test dataset (and therefore must not be used in the training/validation process). \cite{ReplayAttackDataset}

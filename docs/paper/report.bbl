@@ -4,6 +4,11 @@
 Aizvorski.
 \newblock aizvorski/video-quality, Mar 2015.
 
+\bibitem{DeepNeuralNetworkDeployability}
+Alfredo Canziani, Adam Paszke, and Eugenio Culurciello.
+\newblock An analysis of deep neural network models for practical applications.
+\newblock {\em arXiv preprint arXiv:1605.07678}, 2016.
+
 \bibitem{ReplayAttackDataset}
 Ivana Chingovska, Andr{\'{e}} Anjos, and S{\'{e}}bastien Marcel.
 \newblock On the effectiveness of local binary patterns in face anti-spoofing.

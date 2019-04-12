@@ -67,6 +67,12 @@ Keyurkumar Patel, Hu~Han, and Anil~K. Jain.
 \newblock Cross-database face antispoofing with robust feature representation.
 \newblock In {\em CCBR}, 2016.
 
+\bibitem{GoogLeNet}
+Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
+  Anguelov, Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
+\newblock Going deeper with convolutions.
+\newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, 2015.
+
 \bibitem{NUAADataset}
 Xiaoyang Tan, Yi~Li, Jun Liu, and Lin Jiang.
 \newblock Face liveness detection from a single image with sparse low rank

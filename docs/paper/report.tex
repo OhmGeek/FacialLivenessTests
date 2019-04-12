@@ -130,17 +130,49 @@ Facial liveness, convolutional neural networks, image quality metrics
         to other models. \cite{DeepNeuralNetworkDeployability}
 
         \paragraph{GoogLeNet Inception}
-        GoogLeNet Inception is an improved module that approximates a space Convolutional Network with a normal
-        dense construction. Since a small number of neurons is effective, computational requirements are kept small. \todo{Cite GoogLeNet Inception}
+        GoogLeNet is an improved module that approximates a space Convolutional Network with a normal
+        dense construction. One of the major features of GoogLeNet is the Inception module. The naive approach to this 
+        is to take the input from the previous layer, calculate a 1x1, 3x3 and 5x5 convolution (all at the same time), along with
+        a 3x3 max pooling before feeding this into an output, the output being the filter concatenation step.
+        However, to reduce the diemsnionality, and therefore improve performance, a 1x1 convolution is applied before
+        each 3x3 and 5x5 convolution, and after the max pooling output. These inception modules can be used and stacked
+        to improve performance without a huge increase in computation. \cite{GoogLeNet} 
+        This is shown in Figure \ref{InceptionArchitecture}.
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.7\linewidth]{InceptionModule.png}
+            \caption{The Inception module with dimensionality reduction. Diagram taken from \cite{GoogLeNet}.}
+            \label{InceptionArchitecture}
+        \end{figure}
+
+        Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
         
         \paragraph{Residual Networks}
         Another key problem with deep convolutional networks on Image Classification is the vanishing gradient problem, where early layers have very small gradients during the training process and
         are therefore much more difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block. \todo{Explain Resnets better}.
         The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficent than VGG in terms of computational power needed. \todo{Cite Residual Networks}
         While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
+        
+        In terms of Top-1\% accuracy (the accuracy with the top output in a multiclass problem) shown in Figure \ref{Top1AccuracyOverNetwork}, newer version of the Inception model perform the best,
+        with ResNet based classifiers not too far behind. AlexNet performance was fairly poor. Now compare this with the operations (the required computational power for each model), which is shown in Figure \ref{Top1AccuracyOverOperations}.
+        AlexNet and GoogLeNet require fairly few operations, in the $<10 GOps$ range. The same is true for smaller ResNet based models (e.g. ResNet 50 and 34).
+        Meanwhile, VGG requires a fairly large amount of operations ($>30 GOps$), as do later versions of Inception.
 
 
-        \missingfigure{Insert graph from DeepNeuralNetworkDeployability which shows operations and accuracy on ImageNet}
+        \begin{figure}
+            \centering
+            \includegraphics[width=.7\linewidth]{Top1AccuracyOverNetwork.png}
+            \label{Top1AccuracyOverNetwork}
+            \caption{Top 1 accuracy vs network. Chart and results from \cite{DeepNeuralNetworkDeployability}}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=.7\linewidth]{Top1AccuracyOverOperations.png}
+            \label{Top1AccuracyOverOperations}
+            \caption{Top 1 accuracy vs operations, where network size is proportional to parameters. Operations figures are for a single pass (e.g. predicting given a specific input). Chart and results from \cite{DeepNeuralNetworkDeployability}}
+        \end{figure}
 
         \subsubsection{Datasets}
         %Datasets

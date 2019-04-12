@@ -224,7 +224,15 @@ Facial liveness, convolutional neural networks, image quality metrics
         Once this was completed, the code was bundled into a package by creating a $setup.py$ file. This allows for code reuse, and also makes dependencies for the project
         more managable by using a hosted version of the package, rather than a version on the local repository (as the underlying code for the metric will rarely be touched).
         The setup file also requires a Makefile be created to install dependencies using pip. Once this was completed, a GitHub release was created for the package, which allows it to be
-        imported into an existing project using pip. \cite{VideoQualityUpdated}
+        imported into an existing project using pip. \cite{VideoQualityUpdated}. This code implements the VIF, SSIM and NIQE metrics.\todo{Need to adjust how we specify metrics and what they are}
+
+        However, this didn't include all metrics, as the Blind Image Quality Index still wasn't implemented. Once again, there were no Python3 implementations, and only Python2 implementations existed.
+        The metric itself calls for running input through a pretrained SVM, using libsvm based libraries on the system. An updated version of pywavelet is used to conduct wavelet transforms, and rather than using sklearn for SVM classification
+        running a subprocess is the best solution (reading and writing to a file, and using the data this way). Performance wise this isn't ideal, and the libsvm-based classifier could in the future be
+        imported to Sklearn, but it performs adequately for a proof of concept.
+
+        Another final metric that's missing is the RRED metric, as this wasn't implemented. The metric requires the use of steerable pyramids, which have no existing Python implementation, only a Matlab one. In order to implement this metric, it would have required first implementing a steerable pyramid library
+        before continuing to implement the remaining metric using this library, for minimal performance benefits of the current system. Therefore, this metric was skipped. \cite{RRED}
 
 
     \subsection{Residual Network based 2D liveness test}
@@ -377,18 +385,29 @@ Facial liveness, convolutional neural networks, image quality metrics
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...
     \subsection{Improvements}
+    \paragraph{Representing 3D Attacks}
     While our system works fairly well for 2D based attacks, performance for 3D based attacks definitely needs work.
     While our VoxNet based method didn't yield any meaningful results, there is a chance that a 2D image could yield results
     with 3D based attacks (using a residual network on a static image to detect minor mask-based imperfections), or alternatively
     considering a sequence of images using LSTMs to detect changes in movement. This however would require video input, meaning the
     NUAA dataset wouldn't be useful.
 
+    \paragraph{Dealing with source quality attacks that use holes in web browsers}
     Furthermore, while our current system focuses mostly on the liveness tests, one must also consider input-based attacks (using prerecorded digital files
     sent to the server). In the case of the Safari web browser on iOS, existing web browser APIs only allow a general media capture command (which allows the user to
     either record a video/image or upload something from their library), and this can't be overridden. This needs to be addressed in order to provide a truly useful
     liveness service. Video-based tests involving random movement (e.g. head movement) could be added to our consolidation layer to assist in preventing this. Additionally, content ID
     based liveness checks could be used to ensure videos aren't reused, but this would require additional data storage which wouldn't necessarily scale as easily.
 
+    \todo{Mention the GetUserMedia API that is used}
+    \todo{Source from https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia regarding the security aspects }
+    \paragraph{Existing BIQI implementation}
+    Currently, the BIQI implementation requires the use of a subprocess to call libsvm based commands on the system. Instead of using standard output, files are used which
+    cause a reduction in speed.
+    \todo{ADD Calculations here for speed with hard drive, SSD, and memory}.
+    Speed isn't the only problem here, as scaling would become a problem due to the existing implementation. 
+
+    To fix this problem, a reader would be needed to import a trained libsvm model into sklearn, and the code would then need to be refactored to use the updated sklearn model. 
 \section{Conclusions}
     % overall, what did the project show?
     This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks. The consolidation layer provides

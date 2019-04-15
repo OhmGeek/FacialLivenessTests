@@ -44,17 +44,22 @@ def preprocessor(data, outputs, logger):
     for i in range(len(data)):
         try:
             client_img = data[i]
-            print(client_img)
             image = cv2.cvtColor(client_img, cv2.COLOR_BGR2GRAY)
 
             gaussian_image = cv2.GaussianBlur(image,(5,5),0)
             vector = vector_creator.create_vector(image, gaussian_image)
-            train_vectors.append(vector)
-            train_outputs.append(outputs[i])
-        except Exception as e:
-            print(e)
-            logger.error("Error while evaluating image")
+            # None can't be in the vector. Everything must be a number.
+            if None in vector:
+                raise Exception()
 
+            train_vectors.append(vector)
+
+            if outputs is not None:
+                train_outputs.append(outputs[i])
+        except Exception as e:
+            logger.error("Error while evaluating image")
+            print(e)
+            raise e
     return train_vectors, train_outputs
 
 class QualitySVMModel(AbstractModel):
@@ -95,7 +100,7 @@ class QualitySVMModel(AbstractModel):
 
 class QualityLDAModel(AbstractModel):
     def __init__(self, logger):
-        self._model = LDA()
+        self._model = LDA(shrinkage='auto', solver='eigen')
 
         super().__init__(logger)
 
@@ -108,10 +113,10 @@ class QualityLDAModel(AbstractModel):
         """
         training_inputs, training_outputs = preprocessor(training_inputs, training_outputs, self._logger)
 
-        self._model.fit(training_inputs, training_outputs)
+        self._model.fit_transform(training_inputs, training_outputs)
 
     def evaluate(self, input_img):
-        training_inputs, _ = preprocessor(input_img, [None], self._logger)
+        training_inputs, _ = preprocessor(input_img, None, self._logger)
         
         return self._model.predict(training_inputs)
 
@@ -124,5 +129,8 @@ class QualityLDAModel(AbstractModel):
             self._model = pickle.load(f)
 
     def test(self, input_x, input_y):
+        print("Shape of test set:")
+        print("    input_x", input_x.shape)
+        print("    input_y", input_y.shape)
         training_inputs, training_outputs = preprocessor(input_x, input_y, self._logger)
         return self._model.score(training_inputs, input_y)

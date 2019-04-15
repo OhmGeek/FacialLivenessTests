@@ -410,6 +410,9 @@ Facial liveness, convolutional neural networks, image quality metrics
 
         \subsubsection{Optimising Dataset IO}
             \todo{Dataset io using h5py}
+            Due to the large dataset sizes, memory is a limit to the performance of the system. As such, optimisation needs to be achieved to allow working with large datasets within the specified memory constraints.
+            This was achieved using \emph{h5py}, which caches the dataset to a file, and the associated fetch statements are called when necessary. By doing this, the large dataset doesn't need to be entirely loaded into memory,
+            but can instead use the hard disk drive. Some performance was sacrificed (due to the reduced read speeds of SSDs/HDDs compared to RAM), but this allowed for larger and better models to be produced on a smaller (and less expensive) machine. 
        
         \todo{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}
 
@@ -436,7 +439,6 @@ Facial liveness, convolutional neural networks, image quality metrics
         \todo{Insert time here to isolate face/preprocess}
         \todo{Insert time here to conduct neural network prediction}
         \todo{Insert system performance (specs of Lexo)}
-        \todo{}
 
         While these results might not appear to be as ideal, this is partly due to the nature of the Replay-Attack dataset as each 20th frame was taken from the dataset.
         Due to this, when there is movement and where the face isn't visible by the camera, the image can't be correctly processed and therefore the entire image is used
@@ -451,32 +453,51 @@ Facial liveness, convolutional neural networks, image quality metrics
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...
-    \subsection{Improvements}
-    \paragraph{Representing 3D Attacks}
-    While our system works fairly well for 2D based attacks, performance for 3D based attacks definitely needs work.
-    While our VoxNet based method didn't yield any meaningful results, there is a chance that a 2D image could yield results
-    with 3D based attacks (using a residual network on a static image to detect minor mask-based imperfections), or alternatively
-    considering a sequence of images using LSTMs to detect changes in movement. This however would require video input, meaning the
-    NUAA dataset wouldn't be useful.
-
-    \paragraph{Preventing Source-Quality Web Browser Attacks}
-    Current approaches followed (including ones in this paper) assume that the video capture and liveness processing is conducted securely, 
-    without any interference from malicious actors. However, in the case of web browsers, the video capture process might not be secure as
-    the client-side code can be easily tampered with, and therefore shouldn't be trusted fully. The solution to this is a random video input,
-    something requested by the server and required to be contained within the video (similar to a CSRF token in web forms). The answer to this
-    is contained within an existing liveness metric: a motion based one. The process of face flashing would be ideal, as a specific colour could
-    be requested, and expected to be visible in the frame. Alternatively, head tracking and expecting a specific set of motions would also be suitable,
-    but as this would require user input might not be favourable.
-
-    % TODO might be a way of explaining tampering with getusermedia.
+    \subsection{Usefulness of our system}
     
-    \paragraph{Existing BIQI implementation}
-    Currently, the BIQI implementation requires the use of a subprocess to call libsvm based commands on the system. Instead of using standard output, files are used which
-    cause a reduction in speed.
-    \todo{ADD Calculations here for speed with hard drive, SSD, and memory}.
-    Speed isn't the only problem here, as scaling would become a problem due to the existing implementation. 
+        % Identified two metrics that could be deployed.
+        % Created the structure of such a system (e.g. consolidation layer) to allow for future extensions with further liveness tests.
+        % Applications: within IoT devices, use within web browsers alongside existing face recognition services. 
+        % There is an argument that one could steal your likeness and use it elsewhere on the internet. However, providing liveness tests
+        % are suitable, there is no other way of stealing ones face. There would be a need to ensure furhter development of such a system.
+        % Developing a single component as a service would mean developers could focus on developing their applications. 
 
-    To fix this problem, a reader would be needed to import a trained libsvm model into sklearn, and the code would then need to be refactored to use the updated sklearn model. 
+    \subsection{Improvements}
+        \paragraph{Representing 3D Attacks}
+        While our system works fairly well for 2D based attacks, performance for 3D based attacks definitely needs work.
+        While our VoxNet based method didn't yield any meaningful results, there is a chance that a 2D image could yield results
+        with 3D based attacks (using a residual network on a static image to detect minor mask-based imperfections), or alternatively
+        considering a sequence of images using LSTMs to detect changes in movement. This however would require video input, meaning the
+        NUAA dataset wouldn't be useful.
+
+        \paragraph{Preventing Source-Quality Web Browser Attacks}
+        Current approaches followed (including ones in this paper) assume that the video capture and liveness processing is conducted securely, 
+        without any interference from malicious actors. However, in the case of web browsers, the video capture process might not be secure as
+        the client-side code can be easily tampered with, and therefore shouldn't be trusted fully. The solution to this is a random video input,
+        something requested by the server and required to be contained within the video (similar to a CSRF token in web forms). The answer to this
+        is contained within an existing liveness metric: a motion based one. The process of face flashing would be ideal, as a specific colour could
+        be requested, and expected to be visible in the frame. Alternatively, head tracking and expecting a specific set of motions would also be suitable,
+        but as this would require user input might not be favourable.
+
+        % TODO might be a way of explaining tampering with getusermedia.
+        
+        \paragraph{Existing BIQI implementation}
+        Currently, the BIQI implementation requires the use of a subprocess to call libsvm based commands on the system. Instead of using standard output, files are used which
+        cause a reduction in speed.
+        \todo{ADD Calculations here for speed with hard drive, SSD, and memory}.
+        Speed isn't the only problem here, as scaling would become a problem due to the existing implementation. 
+
+        To fix this problem, a reader would be needed to import a trained libsvm model into sklearn, and the code would then need to be refactored to use the updated sklearn model. 
+
+        \paragraph{Privacy/Legal Considerations}
+            While the security of a facial liveness cloud service is reasonable, there would be some legal concerns to consider in the deployment of an actual application.
+            Face data, as with all biometric data, is classed as sensitive personal data under GDPR \todo{Find source}. As such, care would need to be taken in the development of such a system
+            to ensure the data is transferred back and forth with encryption, and if data is at rest that it is encrypted (although storing a large amount of data wouldn't necessarily be ideal).
+            \todo{Mention compliance of our current system (to some extent), and how it can be improved}
+
+            Furthermore, before deploying our current system, one major problem would be dataset licenses. The Replay-Attack dataset is licensed on condition of research, rather than for commercial use.
+            As such, the deployed version of such a liveness based system would need to use a network trained with a new dataset that has the appropriate licensing (either a bespoke one, or one that is public domain).
+
 \section{Conclusions}
     % overall, what did the project show?
     This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks. The consolidation layer provides

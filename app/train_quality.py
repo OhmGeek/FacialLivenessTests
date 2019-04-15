@@ -52,8 +52,8 @@ def main():
     dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattackdevel"), "/home/ryan/datasets/replayAttackDB/")
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")[:100] # ImposterRaw
-    client_set = dataset.read_dataset("real")[:100] # ClientRaw
+    imposter_set = dataset.read_dataset("attack")[:200] # ImposterRaw
+    client_set = dataset.read_dataset("real")[:200] # ClientRaw
     # Divide dataset into train, and test (40%, 60%)
     train_vectors = []
     train_outputs = []

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  14 APR 2019 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  15 APR 2019 22:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -477,6 +477,30 @@ Package pdftex.def Info: voxnet.pdf used on input line 384.
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
+Overfull \hbox (76.93892pt too wide) in paragraph at lines 431--438
+ [][] 
+ []
+
+
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+\OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
+ []
+
+
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+\OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
+ []
+
+
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+\OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
+ []
+
+
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+\OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
+ []
+
 
 LaTeX Warning: Marginpar on page 10 moved.
 
@@ -484,22 +508,22 @@ LaTeX Warning: Marginpar on page 10 moved.
 LaTeX Warning: Marginpar on page 10 moved.
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 439--439
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 439--439
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 439--439
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 439--439
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
@@ -525,15 +549,15 @@ Package natbib Warning: There were undefined citations.
 
 [12] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 15029 strings out of 493013
- 297498 string characters out of 6135681
- 434617 words of memory out of 5000000
- 18018 multiletter control sequences out of 15000+600000
- 34768 words of font info for 235 fonts, out of 8000000 for 9000
+ 15035 strings out of 493013
+ 297564 string characters out of 6135681
+ 437202 words of memory out of 5000000
+ 18020 multiletter control sequences out of 15000+600000
+ 34940 words of font info for 238 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,80p,1139b,735s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (12 pages, 429743 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (12 pages, 431777 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  99 compressed objects within 1 object stream

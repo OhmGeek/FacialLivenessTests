@@ -425,14 +425,38 @@ Facial liveness, convolutional neural networks, image quality metrics
     well, so in this case the Replay-Attack devel set was used. It must be noted that no overlap occurs between the Replay-Attack devel and test sets, to prevent the risk
     of these results being invalid.
 
+
+    \begin{table}
+        \centering
+        \begin{tabular}{| l | l | l | l | l | l |}
+            \hline
+            \textbf{Liveness Test} & \textbf{Accuracy (\%)} & \textbf{True Negatives (\%)} & \textbf{False Positives (\%)} & \textbf{False Negatives (\%)} & \textbf{True Positives (\%)}\\
+            Image Quality & 87 & 37.5 & 12.5 & 0.5 & 49.5\\
+            2D CNN & TBD & TBD & TBD & TBD & TBD\\
+        \end{tabular}
+        \label{ResultsTable}
+        \caption{Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).}
+    \end{table}
+
     \subsection{Image Quality Liveness Test}
         Overall, the Image Quality Test performed as expected with reference to the initial paper. Unlike the original paper however, instead of isolating the face
         from the input image, the entire image was used. While isolating the face might perform well, using the entire image might provide further subtle information
         about the image quality.
 
-        \todo{Add False Positive/False Negative accuracy here}
+        The overall results, shown in Table \ref{ResultsTable} show fairly good performace on the ReplayAttack test dataset, with an accuracy of 87\%. This is in line with
+        what was expected from the paper \cite{ImageQualityAssessmentTest}. While accuracy gives an overall account of the results, it doesn't show the overall performance.
+        
+        The level of true negatives and true positives respectively are fairly high, but the number of false positives was slightly higher than expected (i.e. where the model predicts someone to be real where they are actually not).
+        What's interesting to note is the low number of false negatives (indicating someone is fake where they are real), which in our security concious case isn't wanted (since inconvenience isn't as much of a problem as security).
+        However, the overall performance was better than expected.
+        \todo{Look into false positives/negatives, to see if we can get an outcome that performs better}
+        % Total results - the RAW data in case people need it.
+        % 0.87
+        % True Negatives:  75
+        % False Positives:  25
+        % False Negatives:  1
+        % True Positives:  99
         \todo{Add time to conduct computation here (without multithreading) - for predictions only, not training}
-
         \todo{show an example image of the system at work with image quality liveness}
 
     \subsection{2D Convolutional Neural Network Liveness Test}

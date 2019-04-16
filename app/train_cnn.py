@@ -34,7 +34,7 @@ def pre_process_fn(image_arr):
     max_loc = get_largest_bounding_box(locations)
     # If there's an error, just use the whole image.
     if max_loc is None:
-        return image_arr
+        return cv2.resize(image_arr, dsize=(224, 224), interpolation=cv2.INTER_CUBIC)
 
     # Otherwise, isolate the face.
     top, right, bottom, left = max_loc

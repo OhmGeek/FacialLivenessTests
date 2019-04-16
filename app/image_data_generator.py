@@ -1,10 +1,8 @@
 import numpy as np
 import keras
-from liveness.vox.reconstruction.vrn import FaceVoxelBuilder
 from PIL import Image
 import face_recognition
 import logging
-from alexnet import pre_process_fn
 
 def preprocess_fn_multiple(images):
     outputs = []
@@ -67,5 +65,5 @@ class ImageDataGenerator(keras.utils.Sequence):
         outputs = np.array(outputs)
 
         # Then find voxel representation.
-        return x, y
+        return outputs, y
 

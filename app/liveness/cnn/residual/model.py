@@ -7,18 +7,14 @@ from keras.layers.normalization import BatchNormalization
 from keras.applications.resnet50 import ResNet50
 from keras.optimizers import Adam
 from keras.engine.input_layer import Input
-from keras.backend import tf
 from liveness.cnn.residual.block import add_common_layers, residual_block
 from liveness.generic import AbstractModel
 import h5py
 from keras.models import load_model
 from keras.models import save_model
-
-def resize_image_fun(img):
-    return tf.image.resize_images(img, (224, 224))
-
-def image_to_float(img):
-    return tf.image.convert_image_dtype(img, tf.float32)
+#from keras.backend import tf
+import tensorflow as tf
+from keras import backend as K
 
 
 class ResidualNetwork(AbstractModel):
@@ -62,13 +58,11 @@ class ResidualNetwork(AbstractModel):
 
     # -- Private functions
     def _create_model(self, learning_rate=0.001):
-        cnn_model = ResNet50(include_top=False, weights='imagenet', input_shape=None)
+        cnn_model = ResNet50(include_top=False, weights='imagenet', input_shape=(224, 224, 3))
  
         final_network = Sequential()
-        final_network.add(Lambda(resize_image_fun, input_shape=(None,None,3)))
-        final_network.add(Lambda(image_to_float))
         final_network.add(cnn_model)
-        final_network.add(Flatten())
+        final_network.add(Flatten(input_shape=(224, 224, 3)))
         final_network.add(Dense(200, use_bias=False))
         final_network.add(BatchNormalization())
         final_network.add(Activation('relu')) 

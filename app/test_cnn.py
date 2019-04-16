@@ -16,7 +16,7 @@ def main():
     logger = logging.getLogger()
 
     print("Running test.py")
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replay-attack/", mode='test')
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replay-attack/", mode='test')
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")[:10]
@@ -26,7 +26,7 @@ def main():
     output_client = [1.0 for x in range(client_set.shape[0])]
     # Load the model.
     model = ResidualNetwork(logger)
-    model.load('/home/ryan/Documents/dev/LivenessTests/models/alexnet.h5')
+    model.load('/home/ohmgeek_default/LivenessTests/app/alexnet.h5')
 
     # Merge the data together.
     input_x = np.concatenate((imposter_set, client_set))

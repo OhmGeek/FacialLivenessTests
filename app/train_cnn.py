@@ -15,6 +15,7 @@ from datasets.nuaa import NUAADataset
 from datasets.replayattack import ReplayAttackDataset
 from datasets.mad import MaskAttackDataset
 import face_recognition
+from sklearn.metrics import confusion_matrix
 from PIL import Image
 
 def get_largest_bounding_box(locations):
@@ -138,6 +139,14 @@ def main():
     score = model.test_generator(test_generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')
+    y_pred = model.evaluate(x)
+    print(y_pred)
+    tn, fp, fn, tp = confusion_matrix(input_y, y_pred).ravel()
+
+    print("True Negatives: ", tn)
+    print("False Positives: ", fp)
+    print("False Negatives: ", fn)
+    print("True Positives: ", tp)
     dataset.close() # Important, to close the file.
     
 if __name__ == "__main__":

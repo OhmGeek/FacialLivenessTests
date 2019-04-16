@@ -72,14 +72,7 @@ class ResidualNetwork(AbstractModel):
         final_network.add(BatchNormalization())
         final_network.add(Activation('relu'))
         final_network.add(Dropout(0.3))
-        
-        
-        final_network.add(Dense(100, use_bias=False))
-        final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
-        final_network.add(Dropout(0.3))
-
-
+       
         final_network.add(Dense(100, use_bias=False))
         final_network.add(BatchNormalization())
         final_network.add(Activation('relu'))
@@ -99,8 +92,6 @@ class ResidualNetwork(AbstractModel):
         final_network.add(BatchNormalization())
         final_network.add(Activation('relu'))
         final_network.add(Dropout(0.3))
-
-
 
         final_network.add(Dense(50, use_bias=False))
         final_network.add(BatchNormalization())

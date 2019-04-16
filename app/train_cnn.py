@@ -4,7 +4,7 @@ from liveness.cnn.residual.model import ResidualNetwork
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling2D, Lambda
 from keras.layers.normalization import BatchNormalization
-from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array
+from keras.preprocessing.image import array_to_img, img_to_array
 from keras.optimizers import Adam
 from keras.engine.input_layer import Input
 from sklearn.utils import shuffle
@@ -18,7 +18,7 @@ import face_recognition
 from sklearn.metrics import confusion_matrix
 from PIL import Image
 import sys
-
+from image_data_generator import ImageDataGenerator
 
 def get_largest_bounding_box(locations):
     if len(locations) == 0:
@@ -72,11 +72,6 @@ def main():
     client_set = dataset.read_dataset("ClientRaw")
     client_y = np.tile([1.0], client_set.shape[0])
 
-    gen = ImageDataGenerator(horizontal_flip = False,
-                         vertical_flip = False,
-                         preprocessing_function=pre_process_fn
-                        )
-
 
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))
@@ -86,7 +81,7 @@ def main():
 
     # Train the model on our training set.
     batch_size = 256
-    generator = gen.flow(x, y, batch_size=batch_size)
+    generator = ImageDataGenerator(x, y, batch_size=batch_size, preprocess_fn=pre_process_fn)
 
     # This is the validation generator
     dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replayAttackDB/", mode='devel')
@@ -104,7 +99,7 @@ def main():
 
     x,y = shuffle(x, y)
 
-    validation_generator = gen.flow(x, y, batch_size=batch_size)
+    validation_generator = ImageDataGenerator(x, y, batch_size=batch_size, preprocess_fn=pre_process_fn)
     size_of_dataset = len(x)
 
     dataset = None
@@ -130,7 +125,7 @@ def main():
 
     x,y = shuffle(x, y)
     
-    test_generator = gen.flow(x, y, batch_size=8)
+    test_generator = ImageDataGenerator(x, y, batch_size=8, preprocess_fn=pre_process_fn)
 
 
 

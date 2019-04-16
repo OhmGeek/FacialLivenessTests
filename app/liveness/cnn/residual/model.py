@@ -12,8 +12,13 @@ from liveness.cnn.residual.block import add_common_layers, residual_block
 from liveness.generic import AbstractModel
 import h5py
 from keras.models import load_model
+from keras.models import save_model
 
+def resize_image_fun(img):
+    return tf.image.resize_images(img, (224, 224))
 
+def image_to_float(img):
+    return tf.image.convert_image_dtype(img, tf.float32)
 
 
 class ResidualNetwork(AbstractModel):
@@ -50,7 +55,7 @@ class ResidualNetwork(AbstractModel):
     
     # -- Override the base.
     def save(self, pickle_path):
-        self._model.save(pickle_path)
+        save_model(self._model, pickle_path)
     
     def load(self, pickle_path):
         self._model = load_model(pickle_path)
@@ -60,8 +65,8 @@ class ResidualNetwork(AbstractModel):
         cnn_model = ResNet50(include_top=False, weights='imagenet', input_shape=None)
  
         final_network = Sequential()
-        final_network.add(Lambda(lambda img: tf.image.resize_images(img,[self._img_width,self._img_height]), input_shape=(None,None,3)))
-        final_network.add(Lambda(lambda img: tf.image.convert_image_dtype(img, tf.float32)))
+        final_network.add(Lambda(resize_image_fun, input_shape=(None,None,3)))
+        final_network.add(Lambda(image_to_float))
         final_network.add(cnn_model)
         final_network.add(Flatten())
         final_network.add(Dense(200, use_bias=False))

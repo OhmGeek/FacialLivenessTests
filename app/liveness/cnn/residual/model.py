@@ -11,6 +11,10 @@ from keras.backend import tf
 from liveness.cnn.residual.block import add_common_layers, residual_block
 from liveness.generic import AbstractModel
 import h5py
+from keras.models import load_model
+
+
+
 
 class ResidualNetwork(AbstractModel):
     def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32, learning_rate=0.001):
@@ -46,10 +50,10 @@ class ResidualNetwork(AbstractModel):
     
     # -- Override the base.
     def save(self, pickle_path):
-        self._model.save_weights(pickle_path)
+        self._model.save(pickle_path)
     
     def load(self, pickle_path):
-        self._model.load_weights(pickle_path)
+        self._model = load_model(pickle_path)
 
     # -- Private functions
     def _create_model(self, learning_rate=0.001):

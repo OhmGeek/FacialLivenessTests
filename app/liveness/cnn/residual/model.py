@@ -51,10 +51,10 @@ class ResidualNetwork(AbstractModel):
     
     # -- Override the base.
     def save(self, pickle_path):
-        save_model(self._model, pickle_path)
-    
+        self._model.save_weights(pickle_path)
+
     def load(self, pickle_path):
-        self._model = load_model(pickle_path)
+        self._model.load_weights(pickle_path)
 
     # -- Private functions
     def _create_model(self, learning_rate=0.001):
@@ -102,7 +102,7 @@ class ResidualNetwork(AbstractModel):
 
 
         final_network.add(Dropout(0.6))
-        final_network.add(Dense(1, activation='relu'))
+        final_network.add(Dense(2))
         final_network.add(Activation('sigmoid'))
 
         # Now freeze all but the base convolutional layer in resnet.
@@ -116,7 +116,7 @@ class ResidualNetwork(AbstractModel):
         self._is_model_created = True
 
         opt_adam = keras.optimizers.Adam(lr=learning_rate)
-        self._model.compile(loss='binary_crossentropy', optimizer=opt_adam, metrics=['accuracy', 'mean_squared_error'])
+        self._model.compile(loss='binary_crossentropy', optimizer=opt_adam, metrics=['accuracy'])
         self._model.build(input_shape=(None, None, 3))
         self._model.summary() ## TODO make this be called seperately.
 

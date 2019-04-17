@@ -136,7 +136,7 @@ def main():
 
 
 
-    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=1, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
+    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=20, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
     model.save('alexnet.h5')
 
     

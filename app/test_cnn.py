@@ -8,7 +8,7 @@ import logging
 import numpy as np
 from sklearn.metrics import confusion_matrix
 from keras.backend import manual_variable_initialization
-from train_cnn import pre_process_fn
+from train_cnn import pre_process_fn, preprocess_fn_all
 def main():
     manual_variable_initialization(True)
     # first, set log level to display everything we want
@@ -20,27 +20,34 @@ def main():
     dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ohmgeek_default/datasets/replay-attack/", mode='test')
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")[:10]
+    imposter_set = dataset.read_dataset("attack")
     output_imposter = [0.0 for x in range(imposter_set.shape[0])]
 
-    client_set = dataset.read_dataset("real")[:10]
+    client_set = dataset.read_dataset("real")
     output_client = [1.0 for x in range(client_set.shape[0])]
     # Load the model.
     model = ResidualNetwork(logger)
-    model.load('/home/ryan/Downloads/alexnet.h5')
+    model.load('/home/ohmgeek_default/LivenessTests/app/alexnet.h5')
 
     # Merge the data together.
     input_x = np.concatenate((imposter_set, client_set))
     input_y = np.concatenate((output_imposter, output_client))
 
-    score = model.test(input_x, input_y)
-
-   
-    print("Total results")
+    score = model.test(preprocess_fn_all(input_x), input_y)
+    print("Accuracy:") 
     print(score)
 
-    preprocess_fn_numpy = np.vectorize(pre_process_fn)
-    y_pred = model.evaluate(pre_process_fn(x))
+    y_pred = model.evaluate(preprocess_fn_all(input_x))
+    
+    thresh = 0.6
+    print("Average:", np.average(y_pred))
+    print("Min:", np.amin(y_pred))
+    print("Max:", np.amax(y_pred))
+    y_pred = y_pred.argmax(axis=-1)
+
+    #y_pred[y_pred > thresh] = 1
+    #y_pred[y_pred <= thresh] = 0
+
     print(y_pred)
     tn, fp, fn, tp = confusion_matrix(input_y, y_pred).ravel()
 
@@ -48,6 +55,7 @@ def main():
     print("False Positives: ", fp)
     print("False Negatives: ", fn)
     print("True Positives: ", tp)
+    dataset.close() # Important, to close the file.
 
 if __name__ == "__main__":
     main()

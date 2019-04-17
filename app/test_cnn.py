@@ -21,10 +21,10 @@ def main():
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")
-    output_imposter = [0.0 for x in range(imposter_set.shape[0])]
+    output_imposter = [[1.0, 0.0] for x in range(imposter_set.shape[0])]
 
     client_set = dataset.read_dataset("real")
-    output_client = [1.0 for x in range(client_set.shape[0])]
+    output_client = [[0.0, 1.0] for x in range(client_set.shape[0])]
     # Load the model.
     model = ResidualNetwork(logger)
     model.load('/home/ohmgeek_default/LivenessTests/app/alexnet.h5')
@@ -49,12 +49,10 @@ def main():
     #y_pred[y_pred <= thresh] = 0
 
     print(y_pred)
-    tn, fp, fn, tp = confusion_matrix(input_y, y_pred).ravel()
+    c_matrix = confusion_matrix(input_y, y_pred)
 
-    print("True Negatives: ", tn)
-    print("False Positives: ", fp)
-    print("False Negatives: ", fn)
-    print("True Positives: ", tp)
+    print("Confusion Matrix:")
+    print(c_matrix)
     dataset.close() # Important, to close the file.
 
 if __name__ == "__main__":

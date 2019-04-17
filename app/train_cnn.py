@@ -63,7 +63,7 @@ def main():
     # For each image in X, resize to (224,224) with 3 channels. Use OpenCV.
 
     # Now create the CNN model
-    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0005, default_img_dimensions=(224,224))
+    model = ResidualNetwork(logging.Logger("resnet"), learning_rate=0.0001, default_img_dimensions=(224,224))
   
     # adam = Adam(lr=0.0005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True)
     
@@ -74,10 +74,10 @@ def main():
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("ImposterRaw")
-    imposter_y = np.tile([0.0], imposter_set.shape[0])
+    imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
 
     client_set = dataset.read_dataset("ClientRaw")
-    client_y = np.tile([1.0], client_set.shape[0])
+    client_y = np.tile([0.0, 1.0], (client_set.shape[0],1))
 
 
     # Merge the two, and create the final sets.
@@ -136,7 +136,7 @@ def main():
 
 
 
-    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=20, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
+    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=9, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
     model.save('alexnet.h5')
 
     
@@ -160,12 +160,10 @@ def main():
     y_pred = y_pred.argmax(axis=-1)
 
     print(y_pred)
-    tn, fp, fn, tp = confusion_matrix(y, y_pred).ravel()
+    c_matrix =  confusion_matrix(y, y_pred)
 
-    print("True Negatives: ", tn)
-    print("False Positives: ", fp)
-    print("False Negatives: ", fn)
-    print("True Positives: ", tp)
+    print("Confusion matrix:")
+    print(c_matrix)
     dataset.close() # Important, to close the file.
     
 if __name__ == "__main__":

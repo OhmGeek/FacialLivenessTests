@@ -65,45 +65,45 @@ class ResidualNetwork(AbstractModel):
         final_network.add(Flatten(input_shape=(224, 224, 3)))
         final_network.add(Dense(200, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu')) 
+        final_network.add(Activation('tanh')) 
         final_network.add(Dense(100, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
+        final_network.add(Activation('tanh'))
        
         final_network.add(Dropout(0.3))
         final_network.add(Dense(100, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
+        final_network.add(Activation('tanh'))
         final_network.add(Dropout(0.3))
        
         final_network.add(Dense(100, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
+        final_network.add(Activation('tanh'))
         final_network.add(Dropout(0.3))
 
         final_network.add(Dense(75, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
+        final_network.add(Activation('tanh'))
         final_network.add(Dropout(0.3))
 
         final_network.add(Dense(50, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
+        final_network.add(Activation('tanh'))
         final_network.add(Dropout(0.3))
 
         final_network.add(Dense(50, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
+        final_network.add(Activation('tanh'))
         final_network.add(Dropout(0.3))
 
         final_network.add(Dense(50, use_bias=False))
         final_network.add(BatchNormalization())
-        final_network.add(Activation('relu'))
+        final_network.add(Activation('tanh'))
 
 
         final_network.add(Dropout(0.6))
         final_network.add(Dense(2))
-        final_network.add(Activation('sigmoid'))
+        final_network.add(Activation('softmax'))
 
         # Now freeze all but the base convolutional layer in resnet.
         for layer in cnn_model.layers:
@@ -116,7 +116,7 @@ class ResidualNetwork(AbstractModel):
         self._is_model_created = True
 
         opt_adam = keras.optimizers.Adam(lr=learning_rate)
-        self._model.compile(loss='binary_crossentropy', optimizer=opt_adam, metrics=['accuracy'])
+        self._model.compile(loss='categorical_crossentropy', optimizer=opt_adam, metrics=['accuracy'])
         self._model.build(input_shape=(None, None, 3))
         self._model.summary() ## TODO make this be called seperately.
 

@@ -95,10 +95,10 @@ def main():
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")
-    imposter_y = np.tile([0.0], imposter_set.shape[0])
+    imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
 
     client_set = dataset.read_dataset("real")
-    client_y = np.tile([1.0], client_set.shape[0])
+    client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
 
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))
@@ -121,11 +121,11 @@ def main():
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")
-    imposter_y = np.tile([0.0], imposter_set.shape[0])
+    imposter_y = np.tile([1.0, 0.0], (imposter_set.shape[0], 1))
 
     client_set = dataset.read_dataset("real")
-    client_y = np.tile([1.0], client_set.shape[0])
-
+    client_y = np.tile([0.0, 1.0], (client_set.shape[0], 1))
+    
     # Merge the two, and create the final sets.
     x = np.concatenate((imposter_set, client_set))
     y = np.concatenate((imposter_y, client_y))
@@ -146,11 +146,18 @@ def main():
     print("Shape going into eval", x.shape)
     print("Y shape going into eval", y.shape)
     print("x", x)
+
+    imposter_set = dataset.read_dataset("attack")
+    imposter_y = np.tile([0.0], imposter_set.shape[0])
+
+    client_set = dataset.read_dataset("real")
+    client_y = np.tile([1.0], client_set.shape[0])
+
+    y = np.concatenate((imposter_y, client_y))
+
     y_pred = model.evaluate(preprocess_fn_all(x))
     
-    # Now threshold.
-    y_pred[y_pred > 0.5] = 1
-    y_pred[y_pred <= 0.5] = 0
+    y_pred = y_pred.argmax(axis=-1)
 
     print(y_pred)
     tn, fp, fn, tp = confusion_matrix(y, y_pred).ravel()

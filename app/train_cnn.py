@@ -136,7 +136,8 @@ def main():
     score = model.test_generator(test_generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')
-    y_pred = model.evaluate(x)
+    preprocess_fn_numpy = np.vectorize(pre_process_fn)
+    y_pred = model.evaluate(pre_process_fn(x))
     print(y_pred)
     tn, fp, fn, tp = confusion_matrix(input_y, y_pred).ravel()
 

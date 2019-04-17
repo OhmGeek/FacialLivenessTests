@@ -7,7 +7,8 @@ import cv2
 import logging
 import numpy as np
 from sklearn.metrics import confusion_matrix
-from keras.backend import manual_variable_initialization 
+from keras.backend import manual_variable_initialization
+from train_cnn import pre_process_fn
 def main():
     manual_variable_initialization(True)
     # first, set log level to display everything we want
@@ -26,7 +27,7 @@ def main():
     output_client = [1.0 for x in range(client_set.shape[0])]
     # Load the model.
     model = ResidualNetwork(logger)
-    model.load('/home/ohmgeek_default/LivenessTests/app/alexnet.h5')
+    model.load('/home/ryan/Downloads/alexnet.h5')
 
     # Merge the data together.
     input_x = np.concatenate((imposter_set, client_set))
@@ -38,7 +39,8 @@ def main():
     print("Total results")
     print(score)
 
-    y_pred = model.evaluate(input_x)
+    preprocess_fn_numpy = np.vectorize(pre_process_fn)
+    y_pred = model.evaluate(pre_process_fn(x))
     print(y_pred)
     tn, fp, fn, tp = confusion_matrix(input_y, y_pred).ravel()
 

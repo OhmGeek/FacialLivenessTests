@@ -432,7 +432,7 @@ Facial liveness, convolutional neural networks, image quality metrics
             \hline
             \textbf{Liveness Test} & \textbf{Accuracy (\%)} & \textbf{True Negatives (\%)} & \textbf{False Positives (\%)} & \textbf{False Negatives (\%)} & \textbf{True Positives (\%)}\\
             Image Quality & 87 & 37.5 & 12.5 & 0.5 & 49.5\\
-            2D CNN & 76.1 & 4600 & 0 & 1440 & 0\\
+            2D CNN & 71.2 & 4317 & 83 & 1357 & 283\\
         \end{tabular}
         \label{ResultsTable}
         \caption{Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).}
@@ -464,6 +464,8 @@ Facial liveness, convolutional neural networks, image quality metrics
         \todo{Insert time here to conduct neural network prediction}
         \todo{Insert system performance (specs of Lexo)}
 
+        % Confusion Matrix = [[4317  283]
+%           [1357   83]]
         While these results might not appear to be as ideal, this is partly due to the nature of the Replay-Attack dataset as each 20th frame was taken from the dataset.
         Due to this, when there is movement and where the face isn't visible by the camera, the image can't be correctly processed and therefore the entire image is used
         as the input to the network, thus yielding poorer performance than expected. This is only encountered with this metric due to the requirement that the facial extraction is successful. 

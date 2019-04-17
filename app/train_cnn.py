@@ -50,6 +50,13 @@ def pre_process_fn(image_arr):
 
     return (face_image)
 
+def preprocess_fn_all(x):
+    output = []
+    for img in x:
+        output.append(pre_process_fn(img))
+    output = np.array(output)
+
+    return output
 def main():
     # First, fetch the two distinct sets of data.
     # Two neurons: [1.0, 0.0] -> fake, [0.0, 1.0] -> real
@@ -98,7 +105,7 @@ def main():
     y = np.concatenate((imposter_y, client_y))
 
     x,y = shuffle(x, y)
-
+    print(x.shape)
     validation_generator = ImageDataGenerator(x, y, batch_size=batch_size, preprocess_fn=pre_process_fn)
     size_of_dataset = len(x)
 
@@ -129,17 +136,24 @@ def main():
 
 
 
-    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=20, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
+    model.fit_generator(generator, steps_per_epoch=size_of_dataset/batch_size, epochs=1, shuffle=True, verbose=1, validation_data=validation_generator, validation_steps=len(x) / batch_size)
     model.save('alexnet.h5')
 
     
     score = model.test_generator(test_generator)
     print("Final Accuracy is: " + str(score))
     #model.save('alexnet.h5')
-    preprocess_fn_numpy = np.vectorize(pre_process_fn)
-    y_pred = model.evaluate(pre_process_fn(x))
+    print("Shape going into eval", x.shape)
+    print("Y shape going into eval", y.shape)
+    print("x", x)
+    y_pred = model.evaluate(preprocess_fn_all(x))
+    
+    # Now threshold.
+    y_pred[y_pred > 0.5] = 1
+    y_pred[y_pred <= 0.5] = 0
+
     print(y_pred)
-    tn, fp, fn, tp = confusion_matrix(input_y, y_pred).ravel()
+    tn, fp, fn, tp = confusion_matrix(y, y_pred).ravel()
 
     print("True Negatives: ", tn)
     print("False Positives: ", fp)

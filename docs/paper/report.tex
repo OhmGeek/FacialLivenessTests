@@ -432,12 +432,12 @@ Facial liveness, convolutional neural networks, image quality metrics
             \hline
             \textbf{Liveness Test} & \textbf{Accuracy (\%)} & \textbf{True Negatives (\%)} & \textbf{False Positives (\%)} & \textbf{False Negatives (\%)} & \textbf{True Positives (\%)}\\
             Image Quality & 87 & 37.5 & 12.5 & 0.5 & 49.5\\
-            2D CNN & 71.2 & 4317 & 83 & 1357 & 283\\
+            2D CNN & 71.2 & 71.5 & 1.37 & 22.5 & 4.69\\
         \end{tabular}
         \label{ResultsTable}
         \caption{Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).}
     \end{table}
-
+    % CNN table: 4317 & 83 & 1357 & 283
     \subsection{Image Quality Liveness Test}
         Overall, the Image Quality Test performed as expected with reference to the initial paper. Unlike the original paper however, instead of isolating the face
         from the input image, the entire image was used. While isolating the face might perform well, using the entire image might provide further subtle information
@@ -463,7 +463,7 @@ Facial liveness, convolutional neural networks, image quality metrics
         \todo{Insert time here to isolate face/preprocess}
         \todo{Insert time here to conduct neural network prediction}
         \todo{Insert system performance (specs of Lexo)}
-
+        The overall performance of our liveness test can be seen in Table \ref{ResultsTable}. While not as accurate as the previous model, the model still detects true negatives with a fairly high percentage
         % Confusion Matrix = [[4317  283]
 %           [1357   83]]
         While these results might not appear to be as ideal, this is partly due to the nature of the Replay-Attack dataset as each 20th frame was taken from the dataset.

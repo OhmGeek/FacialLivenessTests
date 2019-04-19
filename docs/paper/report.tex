@@ -9,6 +9,7 @@
 % \usepackage{harvard}
 \usepackage[moderate]{savetrees}
 \usepackage{url}
+\usepackage{amsmath}
 
 \title{Facial Liveness Testing: For The Web}
 \author{} % leave; your name goes into \student{}
@@ -363,66 +364,144 @@ Facial liveness, convolutional neural networks, image quality metrics
 
             Once a model is trained, it needs to be saved to be used for the testing process. Saving was achieved using the Python \emph{pickle} package. For small models, pickle is ideal since it easily creates a Python object that can be loaded/written
             without additional boilerplate. Since the sklearn classifier models aren't too deep, pickle works. If the models were deeper, then Python's recursion depth limit would hit, causing errors. 
+     
             
-        \subsection{Residual Network based 2D liveness test}
-        Recently, 2D convolutional neural networks have had great success in image classification tasks. Therefore, it might be possible to train
-        a residual neural network (resnet) to classify for facial liveness tasks. The final architecture that was reached can be seen in Figure \ref{2DCNNArchitecture}.
-        These sections outline specific areas, namely preprocessing, the model, and training, in terms of the implementation detail.
-
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.5\linewidth]{2DCNNArchitecture.pdf}
-            \label{2DCNNArchitecture}
-            \caption{The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers
-            of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the
-            liveness score as before).}
-        \end{figure}
-
+        \subsection{2D based CNN Liveness Test}
+        Recently, 2D convolutional neural networks have had great success in image classification tasks. Systems that use these technologies are currently deployed in real world systems.
+        Therefore, by adapting these models to classify facial liveness, it might be possible to obtain a new model, designed for the web (with both low latency and good accuracy).
+       
         
-        \subsubsection{Preprocessing}
-            Initially, the entire image was fed directly into the Residual Network, but this yielded fairly poor performance and generalisation. As a result,
-            a HoG based face detector was used to find the largest bounding box in an image (of a person's face), and crop the image around this face structure. The HoG detector was
-            initially used due to performance benefits, since a neural network based face detector would require slightly more processing power, and therefore time, to both train and
-            predict with our model.
 
-            The image is then resized to the expected input size (required for the Keras image data generator), before again being resized to an image of shape (224, 224).
-            While this worked, the bounding box width and height ratio did differ a large amount, which could potentially have yielded slightly poorer performance.
-            Given a bounding box $B = (top, bottom, left, right)$, we can create a new bounding box $B'$ which retains square dimensions, by first finding the square
+        \subsubsection{Overview}
+            As discussed earlier in the paper, there are several different models available for image classification. Unlike imagenet based classifiers, we only have 2 output classes, which are \emph{real} and \emph{fake}.
+            Therefore, the final layer of the model would be different, but the remaining details would be identical. Unlike the image quality metric, this metric concerns itself with the facial data, to understand which faces
+            are real, and which ones are fake.
+
+        \subsubsection{Data Preprocessing}
+            As this metric concerns itself with the facial structure, it became necessary to isolate the face from the input image. Furthermore, as part of the CNN model a required input size was needed to be specified. 
+            The preprocessing step therefore needed to produce a facial image that had fixed dimensions.
+
+            This was achieved using the \emph{face\_recongition} package. Using this package, an image is input and a set of bounding boxes is yielded. The largest bounding box (by area) is found,
+            yielding the face. Initially, the bounding box was simply cropped and resized to be a square (even if it wasn't initially a square), before being passed to the model. This yielded very poor results,
+            due to the difficulty in learning the constantly changing dimensions. As a result, a new method of face isolation based on bounding boxes was designed:
+
+            Given a bounding box $B = (top, bottom, left, right)$, a new bounding box $B'$ which has square dimensions can be created by finding the square
             side width $s$. Mathematically, this is defined as:
 
             $$s = Max(bottom - top, right - left)$$
 
-            Now we create a new bounding box, defined as:
+            Using this, the new bounding box is defined as:
 
             $$B' = (top, top + s, left, right + s)$$.
 
-            By following this method, the model appeared to perform better overall, as rather than focusing on the overall image quality (which the previous model did),
-            it would focus on the facial region.
+            By following this method, the model appeared to perform better overall, and produced non-skewed images.
 
-            During the process of training, it was noted that the HoG detector was missing approximately one eighth of the faces, therefore outputting the entire image, which
-            could potentially have an impact on training and the accuracy of the model. Changing this to the CNN based classifier had surprising results: the computational performance increased,
-            due to the underlying GPU acceleration, and the accuracy also improved due to the lack of random noise in the training set (through the generators). One thing to note with the CNN based
-            face detector was to ensure upsampling was set to zero, otherwise memory issues would result (since the model and face detector model all need to be stored in GPU memory).
+            However, simply isolating the face isn't enough. A fixed size image was needed, in order to be fed into the network. After much experimentation, an image size of $(224, 224)$
+            was decided, as smaller dimensions failed to produce adequate results. The resizing was completed using OpenCV.
+
             
         \subsubsection{The Model}
+                
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.5\linewidth]{2DCNNArchitecture.pdf}
+                \label{2DCNNArchitecture}
+                \caption{The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers
+                of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the
+                liveness score as before).}
+            \end{figure}
 
-            In order to simplify the process of training, an existing resnet model (ResNet50) was used, with only the final convolutional layer being
-            set to trainable. This is because the initial convolutional layers contain the standard features contained within images, while the final one
-            learns bundles of features. Internal feed forward activations use relu, while the external output uses the sigmoid activation function
 
-            Batch Normalization was therefore added to help make the make the model generalise further.
+            \paragraph{AlexNet}
+            Initially, an AlexNet based classifier was designed. While AlexNet performance on the ImageNet dataset isn't as high as other models, it provided an ideal starting point to understand the difficulty
+            of the classification. It was eventually found that AlexNet performed relatively poorly on facial liveness classification, and therefore a switch was made to a more complex and better performing model.
 
-            Throughout the training process, a binary crossentropy loss function was used, since there are only two possible classes, being predicted with a single number output. 
+            \paragraph{Residual Networks}
+            Residual Networks were chosen over VGG and Inception due to their better performance on ImageNet, coupled with their ability to be easily deployed without excessive memory/computation requirements.
+            A ResNet 50 architecture was decided upon, as 50 layers seemed reasonable in terms of the available computational power that was available for this proof of concept. It was deemed that if ResNet 50 works, then ResNet 101 might perform equally, if not
+            slightly better. A ResNet 50 architecture is an ideal proof of concept.
 
-            The final architecture can be seen in Figure \ref{2DCNNArchitecture}. While normalization layers aren't visible, they are located in between each dense layer. The residual network
-            is also simplified.
+            While training a model from scratch might have advantages for some applications, a pretrained ResNet50 model from the Keras standard library was used. This was done due to the fairly small amount of data
+            available (and therefore using a pretrained model can avoid overfitting), and also to save time learning the basic features that are present in all generic image classification models. Training the entire
+            ResNet50 model would require a large number of parameters to be adjusted, so to further reduce the complexity of the training process, only the last layer was set to trainable, with the other layers remaining static.
 
-        \subsubsection{The Optimiser/Training}
-            Initially, I was using the Standard Gradient Descent optimiser, due to the findings of \cite{SGDBetterThanAdamForImageClassification} which stated
-            that SGD was better than Adam for generalisation. However, after experimenting further I found that using an Adam optimiser with a learning rate of 0.001
-            led to an improved validation accuracy. With SGD the validation accuracy fluctuated, peaking at around 0.75 without increasing further. With Adam, the
-            validation accuracy obtained in the results section was yielded, which was quite a large improvement.
 
+            \paragraph{Feed Forward Classifier}
+            While a CNN is ideal for processing images, a fully convolutional approach to classification didn't seem appropriate. The output from the ResNet 50 model was flattened, and fed directly into a feed forward neural network.
+            While pooling layers were considered, these only take the maximum/minimum/average of specific sections, reducing the dimensionality, and the loss of data means the feed forward layer has less information to act upon. Therefore,
+            it was instead decided to use no pooling layers. The output from the ResNet is flattened, and fed into an 8 layer feed forward neural network directly. The first layer of this network has a very large number of nodes,
+            while the number of nodes is reduced towards the network output.
+            
+            With the initial experiment, the output layer consisted of a single node, with a sigmoid activation function. The entire network was trained using a binary crossentropy loss function. The network accuracy yielded was fairly reasonable,
+            but the confusion matrix showed that the model was outputting \emph{0.0} (fake) for each value, no matter the input. This was a problem, as the network wasn't suitably learning the dataset. As a result, three changes were made to solve the problem, which are outlined below.
+            
+            \paragraph{The Problem with Activation Functions}
+            Initially, the \emph{reLU} activation function was used on all internal nodes within the feed forward network component. While relu is very popular for improved speed over traditional activation functions such as tanh and sigmoid,
+            for negative values it has a problem. ReLU is positive for all positive values, but 0 for all negative values.
+
+            While all inputs were non-negative, weights could lead to these values becoming negative. There is a known problem called "dying ReLU", where some neurons output 0
+            due to having a negative input (the weights and inputs for all input neurons sum to a non-positive value). Therefore, the model was able to learn 0 (fake) easily, but
+            couldn't learn real (1.0) at all.
+
+            This problem was counteracted by changing activation function from reLU to Leaky ReLU. Unlike reLU, leaky relu isn't zero when negative. It requires an input value $\alpha$, which is used
+            as the gradient of the line when less than zero. For this model, $\alpha=0.3$. The activation function is defined formally as:
+            
+            \todo{Find source for this, boht Relu and LeakyRELu}
+            \begin{equation}
+                Activation(x) =
+                \begin{cases}
+                  x, & \text{if}\ x>0 \\
+                  \alpha \cdot x, & \text{otherwise}
+                \end{cases}
+            \end{equation}
+
+            \paragraph{The Problem with a Single Neuron Output}
+            In order to mitigate the problem of outputting all zeros, the output method of the network was changed. Instead of a single neuron, giving a realness value, two neurones were used.
+            These neurons would use the softmax activation function, rather than the sigmoid activation function, to ensure the sum of the neuron outputs would be zero (therefore giving a probability that can be used).
+            The use of two neurons to encode the realness means that the nature for a network to learn 0 is slightly removed, as there will always be a non-zero output for one of the neurons expected. The encoding method used here
+            is called one-hot encoding in the literature.
+
+            \todo{ONe hot encoding source needed.}
+
+            \paragraph{Normalization and Dropout}
+            Batch Normalization and dropout were both used within the feed forward network component to improve learning and reduce the risk of overfitting. Overfitting was a concern due to the small dataset that was used for training.
+            Batch Normalization layers were added between each dense layer, which resulted in increased accuracy of the model.
+
+
+
+            Throughout the experimentation process, the model was found to be overfitting. Therefore dropout was added (with a dropout level of 0.3) between each dense layer. This reduced the effects of overfitting.
+
+            The overall outcome is shown in Figure \ref{2DCNNArchitecture}. The normalization and dropout are not visible in the diagram, since they are only used for training.
+
+
+        \subsubsection{The Training Process}
+            \paragraph{Optimizer}
+            Initially, the Standard Gradient Descent was used as the optimizer. This was chosen due to the findings of \cite{SGDBetterThanAdamForImageClassification},
+            which advised that SGD was better than the Adam optimiser for producing models that generalise. However, after experimenting further the Adam optimiser appeared
+            to generalise better for this project. Using the SGD optimizer, the validation accuracy fluctuated with fairly poor accuracy results overall. The Adam optimizer
+            didn't fluctuate, and the accuracy yielded was much higher.
+
+            It's possible that SGD might perform better over longer periods of time with a very small learning rate, but due to time constraints and the need to experiment and show a proof of concept,
+            Adam proved better for the purposes of this project.
+
+
+            \paragraph{Loss Function}
+                Initially, while the model had a single neuron output, the binary cross entropy loss function was used as it's suitable for a single binary output.
+                However, when the two neuron output model was introduced, the loss function was changed to use categorical cross entropy as this was the most suitable
+                for a categorical one hot encoding method.
+                \todo{Cite categorical cross entropy better for one hot encoding.}
+
+            \paragraph{Data Generators}
+                Due to the large amount of data being processed, it was necessary to use a data generator to conduct the preprocessing on the fly. While the preprocessing
+                could have been saved to disc, the preprocessing steps were changed throughout the project, therefore defeating the benefits of such an optimisation.
+
+                Initially, Keras' built-in ImageDataGenerator was used, as it allowed for a preprocess function to be passed in. While this works for a preprocess function that yields the same shape image
+                as was input, Keras' ImageDataGenerator does not support resizing images within the preprocess function (e.g. for cropping).
+
+                Initially, a Lambda expression within the network was used to resize the image, but this led to problems with saving/loading models (due to Tensorflow being necessary).
+                Therefore, a custom data generator was written from scratch. With this new generator, it wasn't necessary to follow this size constraint within the preprocess function.
+
+        % TODO this is next to be rewritten.
     \subsection{A system for preventing 3D spoofing attacks}
         While the systems before might go partially towards preventing 3D spoofing attacks, though primarily considering the 2D image, we now propose a method
         that is designed for classifying facial liveness based on a 3D point cloud. There are two distinct parts here: 2D to 3D, and 3D classifier. Each part shall be addressed
@@ -486,16 +565,15 @@ Facial liveness, convolutional neural networks, image quality metrics
 
             However, since an LDA doesn't have a validation set, the training set for the image quality metric was a merge between the NUAA and Replay-Attack devel datasets to improve performance.
 
-        \subsubsection{Optimising Dataset IO}
-            \todo{Dataset io using h5py}
-            Due to the large dataset sizes, memory is a limit to the performance of the system. As such, optimisation needs to be achieved to allow working with large datasets within the specified memory constraints.
-            This was achieved using \emph{h5py}, which caches the dataset to a file, and the associated fetch statements are called when necessary. By doing this, the large dataset doesn't need to be entirely loaded into memory,
-            but can instead use the hard disk drive. Some performance was sacrificed (due to the reduced read speeds of SSDs/HDDs compared to RAM), but this allowed for larger and better models to be produced on a smaller (and less expensive) machine. 
+        % \subsubsection{Optimising Dataset IO}
+        %     \todo{Dataset io using h5py}
+        %     Due to the large dataset sizes, memory is a limit to the performance of the system. As such, optimisation needs to be achieved to allow working with large datasets within the specified memory constraints.
+        %     This was achieved using \emph{h5py}, which caches the dataset to a file, and the associated fetch statements are called when necessary. By doing this, the large dataset doesn't need to be entirely loaded into memory,
+        %     but can instead use the hard disk drive. Some performance was sacrificed (due to the reduced read speeds of SSDs/HDDs compared to RAM), but this allowed for larger and better models to be produced on a smaller (and less expensive) machine. 
        
-        \todo{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}
+        % \todo{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}
 
-    \subsection{Visualisation and Demonstration}
-        In order to visualise the overall outcome of facial liveness, a generic model 
+  
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     For both liveness tests, cross dataset validation/testing was conducted. Each model was trained using the entire NUAA dataset, and the Replay-Attack test set

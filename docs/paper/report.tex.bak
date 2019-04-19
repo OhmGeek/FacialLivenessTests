@@ -49,8 +49,8 @@
    \end{itemize}
 \paragraph{Results}
     \begin{itemize}
-        \item Image Quality Assessment test performed well, being in the 90\% accuracy range over Replay-Attack test.
-        \item CNN based 2D test performed adequately, yielding 76\% accuracy over the Replay-Attack test dataset.
+        \item Image Quality Assessment test performed well, being in the 90\% accuracy range over ReplayAttack test.
+        \item CNN based 2D test performed adequately, yielding 76\% accuracy over the ReplayAttack test dataset.
         \item The VoxNet based 3D liveness test performed poorly, and had various performance issues that means it's not currently practical to deploy.
     \end{itemize}
 \paragraph{Conclusions}
@@ -71,9 +71,9 @@ Facial liveness, convolutional neural networks, image quality metrics
     for someone's password, and how they type it).
 
     % TODO this needs to be readjusted to make it sound more formal and clear.
-   While there are different measures of detecting liveness, each method is specialized towards defending against a given attack. The aim of this project is to understand
+   While there are different measures of detecting liveness, each method is specialised towards defending against a given attack. The aim of this project is to understand
    the existing liveness detection methods, which type of attack they aim to prevent, and how effective they are. Once this has been achieved, the aim shall be to bring
-   each of these methods together, hopefully improving the effectiveness of such a system by incorporating multiple methods.
+   each of these methods together, hopefully improving the effectiveness of such a system by encorporating multiple methods.
 
     % TODO might be worth explaining that we are focusing here on only images, rather than video. Explain why...
 
@@ -94,7 +94,7 @@ Facial liveness, convolutional neural networks, image quality metrics
         % Head movement methods shown in .... yield ... by using ...
         % Face flashing methods, recently proposed in ..., yield impressive results, but require a screen and the results vary based on screen size.
         In the method defined in \cite{SFMClassifier}, structure from motion was used on the video to produce a 3D model of a user, with the depth channel being used to determine whether a person is real, or whether it's simply an image.
-        They also extended this by fusing this method with audio verification. The fusion of multiple methods provides greater reliability. However, while SFM works with video, it doesn't work with a single image,
+        They also extended this by fusing this method with audio verification. The fusion of multiple methods provides greater reliablity. However, while SFM works with video, it doesn't work with a single image,
         and it also doesn't work if a video with little motion is provided. This fusion was completed using a Bayesian Network 
 
         While motion based methods are video-only, quality based methods are useful for both videos and images (either by extracting key video frames or using all video frames and combining the results).
@@ -107,20 +107,20 @@ Facial liveness, convolutional neural networks, image quality metrics
         Recently, deep learning based approaches have been applied to facial liveness (both video and image based).
 
         In particular, Convolutional Neural Networks are a key approach to this to learn features (e.g. texture based methods).
-        Due to the existing datasets available, training CNNs has been difficult due to lack of data where over-fitting has been common.
-        The method proposed in \cite{Patel2016CrossDatabaseFA} uses Caffe-Net, inputting both the full image along with the isolated face.
+        Due to the existing datasets available, training CNNs has been difficult due to lack of data where overfitting has been common.
+        The method proposed in \cite{Patel2016CrossDatabaseFA} uses CaffeNet, inputting both the full image along with the isolated face.
         The output yielded general texture differences, as well as specific facial texture differences. Another interesting idea proposed
         in this paper is the fusion of two algorithms together to produce an outcome, therefore reducing the false reject rate.
         %Cite above wiht http://vipl.ict.ac.cn/uploadfile/upload/2017020711382879.pdf
         
         \subsubsection{General 2D image classification models}
-        Outside of the facial liveness field, image classification on the ImageNet dataset has proven popular and yielded some fairly good
+        Outside of the facial liveness field, image classification on the imagenet dataset has proven popular and yielded some fairly good
         results. 
         
         \paragraph{AlexNet} 
         One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
         This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Overall deployability
-        with Alex net is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
+        with Alexnet is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
         as good as newer methods (such as the ones shown below), which all perform better in terms of accuracy. 
         
         \paragraph{VGG16 Network}
@@ -134,7 +134,7 @@ Facial liveness, convolutional neural networks, image quality metrics
         dense construction. One of the major features of GoogLeNet is the Inception module. The naive approach to this 
         is to take the input from the previous layer, calculate a 1x1, 3x3 and 5x5 convolution (all at the same time), along with
         a 3x3 max pooling before feeding this into an output, the output being the filter concatenation step.
-        However, to reduce the dimensionallity, and therefore improve performance, a 1x1 convolution is applied before
+        However, to reduce the diemsnionality, and therefore improve performance, a 1x1 convolution is applied before
         each 3x3 and 5x5 convolution, and after the max pooling output. These inception modules can be used and stacked
         to improve performance without a huge increase in computation. \cite{GoogLeNet} 
         This is shown in Figure \ref{InceptionArchitecture}.

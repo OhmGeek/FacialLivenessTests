@@ -227,66 +227,144 @@ Facial liveness, convolutional neural networks, image quality metrics
 
 \section{Solution}
     % Solution to the problem
-    \subsection{Image Quality Assessment based liveness test}
-        For 2D spoofing attacks, spoofed images are typically lower quality than the real images, and thus by measuring the image quality
-        one can train a classifier to detect real and spoofed images respectively.
 
-        The method used, based on the work of \citet{ImageQualityAssessmentTest}, implements 24 different metrics with varying differences, and produces
-        a vector for each image. Initially, classification was done using a Support Vector Machine (SVM), but after experimentation this proved to be fairly
-        unreliable (yielding 70\% accuracy on the test set). The classifier was later changed to use Linear Discriminant Analysis (LDA) which yielded a much improved
-        accuracy (96\% accuracy on the test set). \todo[inline]{TODO: give more accuracy figures of accuracy here, I can't remember the exact numbers}.
-        A visual explanation of the method can be seen in Figure \ref{ImageQualityLivenessTestDiagram}. 
+    \todo{Refactor into functional and non functional requirements.}
+    A system deployed to the Cloud would require a few important criteria be met. The liveness methods used should be output a liveness score after no more than 2 seconds
+    to ensure that such a system doesn't become painful to use by users. The liveness methods should not require any additional hardware (only a normal camera) so that the number
+    of devices it can be used by can be maximised. Furthermore, each liveness test must have a reasonable accuracy of over 70\%, to ensure that liveness predictions are fairly reliable.
 
-        \todo{Add more information here about each metric, the PyVideoQuality manual work that needed doing, and any custom code}
+    The solution built should be focused on the metrics to be used, and fusion of these metrics. While speed is important, network latency and transmission time shouldn't be factored in, 
+    since these are incredibly dependent on a client's internet speed/image sizes, and therefore cannot be reliably tested. For small images and reasonably fast internet, latency would be fairly small.
 
-        \begin{figure}
-            \centering
-            \includegraphics[width=\linewidth]{ImageQualityLivenessTest.pdf}
-            \label{ImageQualityLivenessTestDiagram}
-            \caption{The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics.
-            (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value
-            is 1.0 for real, and 0.0 for fake, or in between.}
-        \end{figure}
+    With these specifications in mind, the design focused on three different liveness tests: an Image Quality assessment based liveness test, a ResNet 50 based classifier (based on a pretrained ImageNet model),
+    and a novel 3D based classifer using 3D facial reconstruction models interlinked with the VoxNet 3D classification model. Each of these liveness tests have some common services that are needed; these include
+    reading large datasets without causing resource availability problems.
 
-        Originally, the source code accompanying this paper was written in Matlab, using some Matlab-based libraries for certain metrics. Scikit learn provided 
-        the necessary classifiers (LDA, SVM), OpenCV provided some simple image manipulation code (e.g. Gaussian Blur), and Numpy allowed for a large amount of
-        image-based calculations.
+    \todo{insert diagram of the overall system design (e.g. data, consolidation layer, etc)}
 
-        \paragraph{Numpy/OpenCV powered metrics, utilising image based calculations}
-        Several metrics simply required pixel based calculations between an image, and a gaussian blurred version of the same image. These were fairly easy to implement,
-        utilising numpy to manage the individual pixel calculations. In some cases (e.g. GradientMagnitudeErrorMetric), other image operations such as a Sobel filter were needed, and in this
-        instance OpenCV was used to carry out these operations. Some of these also relied on other linear algebra libraries built into Numpy for the calculations.
-        In some cases, further functions were written to work with these libraries.
+    \subsection{Shared Services}
+        \subsubsection{Dataset Managers}
+        In order to assess our liveness tests and train them, dataset managers are needed.
 
-        Metrics that are included here are: Average, Maximum Difference, Gradient Magnitude Error, Gradient Phase Error Metric, JPEGQualityIndexMetric, MSE (and the laplacian equivalent), Angle-based similarity metrics,
-        Absolute Error Metric, Normalised Cross Correlation, Signal to Noise Ratio based metrics, Corner and Edge based metrics, and Visual Information Fidelity metric (which uses gaussian blurs at various scales).
+        A generic implementation of a dataset was created as an Abstract Class, which was then extended by the NUAA, ReplayAttack and MaskAttack dataset managers.
+        This generic implementation allows for future datasets to be easily added, and also provides the class definition of what's needed, to help improve the software engineering process.
 
-        \paragraph{Fourier/wavelet based metrics}
-        In some cases, fourier transforms could be carried out with a combination of opencv and numpy metrics, this was the case with the HighLowFrequencyIndexMetric,
-        and SpectralPhaseErrorMetric.
+        The role of a dataset manager is to load in a dataset from a folder structure (which varies between dataset), conduct any basic preprocessing to convert the files into OpenCV images,
+        and produce two H5Py Datasets, one for real images, and one for fake images. The dataset manager also allows further customisation, to load specific subdatasets (such as 'devel' or 'test' in the case
+        of the ReplayAttack dataset), or load data regarding specific subjects (in the case of the Mask Attack Dataset). The role of the H5Py dataset is to normalise the datasets into a specific format,
+        to allow for easier dataset processing.
 
-        Some metrics required further wavelet transforms that weren't available within existing imported libraries. Rather than implementing these metrics completely
-        from scratch, a library was needed. Existing code had been written \cite{VideoQualityOriginal}, but it had two problems: it wasn't compatible with Python3, but only
-        with Python2, and also it wasn't in an easily importable/managable library form for integration into an existing app.
+        In addition to data normalisation, it also provided a method of reducing RAM usage, therefore allowing larger liveness test models to be created. This is because data is only fetched when needed
+        from the hard drive, rather than loading the entire dataset into RAM at once.
 
-        Therefore, the existing code was forked in order to be updated. The Python2 to Python3 upgrade was completed fairly easily, simply by correcting imports that were incorrect
-        for newer versions, and also version specific corrections (such as $== None$ being changed to $is$ $None$ in Python3).
-        
-        Once this was completed, the code was bundled into a package by creating a $setup.py$ file. This allows for code reuse, and also makes dependencies for the project
-        more managable by using a hosted version of the package, rather than a version on the local repository (as the underlying code for the metric will rarely be touched).
-        The setup file also requires a Makefile be created to install dependencies using pip. Once this was completed, a GitHub release was created for the package, which allows it to be
-        imported into an existing project using pip. \cite{VideoQualityUpdated}. This code implements the VIF, SSIM and NIQE metrics.\todo{Need to adjust how we specify metrics and what they are}
+        \todo{Diagram of Dataset management?}
 
-        However, this didn't include all metrics, as the Blind Image Quality Index still wasn't implemented. Once again, there were no Python3 implementations, and only Python2 implementations existed.
-        The metric itself calls for running input through a pretrained SVM, using libsvm based libraries on the system. An updated version of pywavelet is used to conduct wavelet transforms, and rather than using sklearn for SVM classification
-        running a subprocess is the best solution (reading and writing to a file, and using the data this way). Performance wise this isn't ideal, and the libsvm-based classifier could in the future be
-        imported to Sklearn, but it performs adequately for a proof of concept.
+        \subsubsection{Neural Network Infrastructure}
+            % Keras to simplify models, tensorflow as the underlying backend.
+            % Training machine on Google Cloud, using 64GB RAM, 8 x vCPUs, and an NVIDIA Tesla P100 GPU to improve performance of the training process through parallelism. 
+            
+            \paragraph{Neural Network Framework} 
+            For the 2D and 3D based classifiers, neural networks were to be used. It was decided to use Keras, with the Tensorflow backend, as Keras provides a high level interface to Tensorflow
+            and also allows for other backends to be used in the future (which could potentially perform better in different scenarios). The tensorflow backend was used because of the easy configuration
+            with both GPUs and without (simply install tensorflow-gpu for GPU processing, and tensorflow for CPU only processing), depending on the machine being used. A high level interface was necessary
+            to avoid boilerplate too, since models would be regularly changed to find the best outcome for each classifer.
 
-        Another final metric that's missing is the RRED metric, as this wasn't implemented. The metric requires the use of steerable pyramids, which have no existing Python implementation, only a Matlab one. In order to implement this metric, it would have required first implementing a steerable pyramid library
-        before continuing to implement the remaining metric using this library, for minimal performance benefits of the current system. Therefore, this metric was skipped. \cite{RRED}
+            \paragraph{Hardware for training}
+            Training the neural network required more processing power than was directly available. Google Cloud Compute Engine was used to provide this processing power, since it's easily accessible and has existing
+            deep learning environments with Intel-accelerated mathematics libraries. The Google Cloud instance also provided easy extensibility, since some of the liveness tests required additional tools that could not be easily installed
+            on NCC/Hamilton clusters at Durham University. Training was conducted on a VM with 64GB RAM, 8 virtual CPUs with an NVIDIA Tesla P100 GPU being used to accelerate the training process (through parallelism).
+
+            \paragraph{Hardware for testing}
+            GPUs are expensive, and therefore if such a system were deployed the cost of GPUs would provide expensive to run. Therefore, a CPU only implementation for the testing was followed, using an Intel i7-7700K (at 4.2 GHz), with
+            16GB RAM. Performance metrics were yielded using this hardware to emulate the expected performance and understand which metrics performed best and whether they performed adequately.
+
+        \subsubsection{Image Processing and Computation Management}
+            OpenCV was used to manage the processing of images, including the image loading components. This library was chosen for the wide support available, and for the large feature set that it provides (including Gaussian Blurring, some image metrics, and some fourier analysis).
+            For the rare occasions where OpenCV didn't have the required functionality, scikit-image provided some operations that were necessary.
+            
+            Numpy was instrumental in most other computation operations (including image preprocessing, mathematical calculations), due to the large speed improvements provided by the C implementation (compared to Python's slower math libraries).
+            Since opencv interfaces well with numpy, no conversion was needed which improved the ease of implementation.
 
 
-    \subsection{Residual Network based 2D liveness test}
+        \subsection{Image Quality Assessment Liveness Test}
+            \subsubsection{Overview}
+            One common way of detecting liveness is to consider the image quality of the camera input. When a printout/screen is held up to the camera, the facial image
+            will have some noticable differences, specifically in the high frequencies. There might also be some image compression visible in fake images, compared to real ones.
+            This is the basis for this method.
+
+            \todo{Reference the specification above}.
+            More specifically, the implementation was based on the work contained in \cite{ImageQualityAssessmentTest}. 24 different image quality metrics were implemented,
+            with metric values being used as an input to a classifier. From previous work, it has been shown that this metric is accurate (therefore detecting spoofing well), while
+            also being fairly fast to compute in terms of time, making it ideal for our use-case.
+
+            The classifier being used for our implementation is Linear Discriminant Analysis (LDA).
+
+            A visual explanation of the method can be seen in Figure \ref{ImageQualityLivenessTestDiagram}. 
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{ImageQualityLivenessTest.pdf}
+                \label{ImageQualityLivenessTestDiagram}
+                \caption{The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics.
+                (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value
+                is 1.0 for real, and 0.0 for fake, or in between.}
+            \end{figure}
+    
+            \subsubsection{The Metrics}
+            The original paper proposed that 25 metrics were used. However, our implementation used only 24, due to some implementation problems (which shall be detailed below).
+                %TODO mention implementation details with RRED.
+            There are various different classes of metrics, but each metric is either a full reference metric, or a no reference metric. With a full reference metric, image $I$, and image $I'$ are needed,
+            where image $I'$ is the gaussian blur of the original image $I$, with kernel size of $(5,5)$ and $\sigma = 0$. No reference metrics simply require a single image $I$.
+
+            Under the full reference metrics, some methods are based on error sensitivity (image differences, image correlations, image edges, image gradients, and frequency based comparisons),
+            structural similarity between the images, or information theoretic based measures.
+
+            Under the no reference metrics, some methods are based on training a classifier (more specifically, a support vector machine), some consider distortion, and the final metric considers the natural scene.
+            
+            Each of these metrics outputs a single floating point number. These numbers are assembled together into a vector. This vector is then later fed into the next stage (the classifier).
+
+            Most of the error sensitivity metrics were implemented manually using a mixture of Numpy and OpenCV. These were implemented manually based on the implementation guidelines available in the paper.
+
+            For the remaining metrics, some library implementations were used from scikit-image where possible, but in a majority of cases no existing library implementation existed, and as such a new library
+            was needed. These methods are outlined below.
+
+            \paragraph{The custom PyVideoQuality library}
+            For the SSIM, VIF, and other metrics, no existing implementation existed. Looking back at the original papers for these metrics, a single matlab based implementation existed, which wasn't well documented (due to no comments or
+            explanation). This was a problem, since without these metrics it would be difficult to implement this metric.
+            
+            However, after searching online, a Python 2 implementation was found on GitHub. \cite{VideoQualityOriginal} Therefore, this was forked, and code was converted to Python 3 ready for integration into the project, which included added docstrings to assist the development process. 
+            
+            In order to allow separation of concerns, it was decided to build a seperate Python package for this. A release on GitHub was created to allow for easy importing from GitHub using pip. The final library implementation can be found on GitHub. \cite{VideoQualityUpdated}
+
+
+            \paragraph{Blind Image Quality Index Code}
+            The Blind Image Quality index implementation followed a similar story to the PyVideoQuality library, as no library implementation existed. A manual implementation was considered, but in order to save time an existing Python 2 implementation was found as a gist \cite{BIQIImplementation}.
+            This was converted to Python 3 manually. A manual implementation would have taken more time as this model uses a pretrained classifier, so it would have been required to implement the required preprocessing, train a classifier to an appropriate level,
+            and then include this as part of a wider system. Therefore, using this existing implementation seemed the most suitable option due to time available. This implementation required the use of the \emph{pywavelet} library, along with \emph{libsvm} tooling from the command line to train and get the output of the metric.
+
+            \todo{a big table showing each metric, and implementation details (library vs custom code)}
+            
+
+            Once these metrics were produced, testing needed to be done to ensure that these metrics were outputting sensible values that could be relied on.
+            Two images were selected at random from the NUAA dataset (using the full image path, rather than the dataset manager created beforehand). These metrics
+            were then carried out individually on these two images. The values were then compared, to see if they differed, and to detect any potential image quality difference. 
+            Testing each of the metrics was slightly challenging as no ground truth data for each metric existed.
+
+
+        \subsubsection{Classifier}
+            Initially, a support vector machine was trialed to test whether a different classifier from the paper \cite{ImageQualityAssessmentTest} would work best. However,
+            the performance was fairly unreliable. Adding a grid search to find the optimal parameters still performed fairly pooly, yielding only 70\% accuracy when training and testing on the same dataset. This was poor compared to the expected results from the original paper. Therefore, the classifier was quickly switched to
+            use Linear Discriminant Analysis (LDA), which provided far better performance.
+
+            For both classifiers, existing SVM and LDA implementations from the \emph{sklearn} library were used for their performance. 
+            
+            The default sklearn LDA settings were initially used, but the results produced still weren't ideal. By using an eigenvector based solver, and automatic shrinkage, the LDA model performed far better, yielding the results
+            shown in the results section.
+
+            Once a model is trained, it needs to be saved to be used for the testing process. Saving was achieved using the Python \emph{pickle} package. For small models, pickle is ideal since it easily creates a Python object that can be loaded/written
+            without additional boilerplate. Since the sklearn classifier models aren't too deep, pickle works. If the models were deeper, then Python's recursion depth limit would hit, causing errors. 
+            
+        \subsection{Residual Network based 2D liveness test}
         Recently, 2D convolutional neural networks have had great success in image classification tasks. Therefore, it might be possible to train
         a residual neural network (resnet) to classify for facial liveness tasks. The final architecture that was reached can be seen in Figure \ref{2DCNNArchitecture}.
         These sections outline specific areas, namely preprocessing, the model, and training, in terms of the implementation detail.

@@ -20,6 +20,10 @@ T.~Choudhury, B.~Clarkson, T.~Jebara, and A.~Pentland.
 \newblock In {\em Proceedings, International Conference on Audio-and
   Video-Based Person Authentication}, pages 176--181. Citeseer, March 1999.
 
+\bibitem{BIQIImplementation}
+Cvley.
+\newblock cvley/imagequality, Apr 2016.
+
 \bibitem{3DMadDataset}
 N.~Erdogmus and S.~Marcel.
 \newblock Spoofing in 2d face recognition with 3d masks and anti-spoofing with

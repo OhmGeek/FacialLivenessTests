@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  18 APR 2019 14:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  19 APR 2019 14:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -438,129 +438,116 @@ File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
 Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 172.
 (pdftex.def)             Requested size: 291.29105pt x 201.05888pt.
- [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/InceptionModule.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png>] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>]
-
-Package natbib Warning: Author undefined for citation`ImageQualityAssessmentTest' 
-(natbib)                on page 5 on input line 234.
-
-<ImageQualityLivenessTest.pdf, id=31, 470.7186pt x 451.6875pt>
+ [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/InceptionModule.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png>] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] [5] <ImageQualityLivenessTest.pdf, id=34, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 244.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 306.
 (pdftex.def)             Requested size: 416.13188pt x 399.32643pt.
- [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
+ [6] [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->]
-
-Package natbib Warning: Citation `RRED' on page 6 undefined on input line 286.
-
-<2DCNNArchitecture.pdf, id=54, 258.9675pt x 741.73106pt>
+>] <2DCNNArchitecture.pdf, id=63, 258.9675pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 296.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 374.
 (pdftex.def)             Requested size: 208.06593pt x 595.96614pt.
- [6] [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
+ [8] [9 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 
 Package natbib Warning: Author undefined for citation`3DReconstructionMethod' 
-(natbib)                on page 8 on input line 355.
+(natbib)                on page 10 on input line 433.
 
-[8] <voxnet.pdf, id=86, 626.34pt x 210.7875pt>
+<voxnet.pdf, id=90, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 384.
+Package pdftex.def Info: voxnet.pdf used on input line 462.
 (pdftex.def)             Requested size: 416.13188pt x 140.0497pt.
- [9 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
-
-pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->]
-Overfull \hbox (76.93892pt too wide) in paragraph at lines 431--438
+ [10]
+Overfull \hbox (76.93892pt too wide) in paragraph at lines 509--516
  [][] 
  []
 
+[11 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>]
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 530--530
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 530--530
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 530--530
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 452--452
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 530--530
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
 
-LaTeX Warning: Marginpar on page 10 moved.
+LaTeX Warning: Marginpar on page 12 moved.
 
 
-LaTeX Warning: Marginpar on page 10 moved.
+LaTeX Warning: Marginpar on page 12 moved.
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 541--541
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 541--541
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 541--541
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 463--463
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 541--541
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-LaTeX Warning: Marginpar on page 10 moved.
+LaTeX Warning: Marginpar on page 12 moved.
 
 
-LaTeX Warning: Marginpar on page 10 moved.
+LaTeX Warning: Marginpar on page 12 moved.
 
 
-LaTeX Warning: Marginpar on page 10 moved.
+LaTeX Warning: Marginpar on page 12 moved.
 
-[10]
+[12]
 
-LaTeX Warning: Marginpar on page 11 moved.
+LaTeX Warning: Marginpar on page 13 moved.
 
 
-LaTeX Warning: Marginpar on page 11 moved.
+LaTeX Warning: Marginpar on page 13 moved.
 
-(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl [11])
-
-Package natbib Warning: There were undefined citations.
-
-[12] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl [13]) [14] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 15031 strings out of 493013
- 297518 string characters out of 6135681
- 438207 words of memory out of 5000000
- 18020 multiletter control sequences out of 15000+600000
- 34768 words of font info for 235 fonts, out of 8000000 for 9000
+ 15051 strings out of 493013
+ 297948 string characters out of 6135681
+ 436387 words of memory out of 5000000
+ 18036 multiletter control sequences out of 15000+600000
+ 35054 words of font info for 238 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,80p,1139b,735s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,78p,1140b,735s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (12 pages, 431987 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (14 pages, 440697 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
+ 158 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  27691 words of extra memory for PDF output out of 29859 (max. 10000000)
 

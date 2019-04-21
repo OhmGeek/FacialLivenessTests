@@ -501,22 +501,43 @@ Facial liveness, convolutional neural networks, image quality metrics
                 Initially, a Lambda expression within the network was used to resize the image, but this led to problems with saving/loading models (due to Tensorflow being necessary).
                 Therefore, a custom data generator was written from scratch. With this new generator, it wasn't necessary to follow this size constraint within the preprocess function.
 
-        % TODO this is next to be rewritten.
+
+    \subsection{3D Face Reconstruction Liveness Test}
+        \subsubsection{Overview}
+            While 2D methods work well for traditional paper/screen based attacks, they are not designed for detecting the wearing of 3D masks. With 3D printing
+            becoming more common, and automatic mask generators also becoming available online, this type of attack is becoming more common.
+
+            The method proposed merged recent developments in facial reconstruction with recent deep learning models for classifying 3D data, to investigate a proposed
+            architecture for a 3D classifier. Unlike previous methods, face data is captured in 2D using a standard device camera, before being reconstructed and then classified.
+
+        \subsubsection{2D Image Preprocessing}
+            The 2D preprocessing step followed a similar process to the previous liveness test proposed. A CNN based face detector produced a set of bounding boxes, and a square face image was produced
+            following the same method as was proposed previously. Unlike the previous method, the image was resized to a fixed size of (192, 192) in colour. This size was necessary due to the requirements
+            of the pretrained model.
+
+        \subsubsection{3D Facial Reconstruction}
+            A method of obtaining facial structure from a 2D image was required. While video based methods such as Structure From Motion exist, they require a video input which has a large variety in motion, which might not be available/obtainable.
+            However, recent research has developed a method known as VRN, which is a neural network designed to produce 3D facial structure from a single 2D image. \cite{3DReconstructionMethod}
+            While the original work was built using the Torch deep learning framework, a pretrained model with appropriate source code exists for Keras. \cite{VRNTorchToKeras} This pretrained model
+            takes an image of size (192, 192) in, and produces a 3D voxel based representation. 
+
+            \todo{FIX BIBTEX citation for Torch to Keras. It currently points to ResNets which is WRONG!!!}
+            \todo{INSERT graphic showing 3D face reconstruction}
+
+            In order to correcly modularize the system, the \emph{FaceVoxelBuilder} class was produced to correctly load the pretrained model, and build the voxel structure for either 1 image, or multiple images (in the case of batch training).
+
+            While implementing this component of the system, there was a problem: Tensorflow didn't build the objects from the pretrained model correctly in some cases, as certain components of the model didn't exist on the graph. This was solved by manually creating the predict function by calling a private helper function (\emph{model.\_make\_predict\_function()}).
+            This was a known issue with the version of Keras that was being used, and the solution found was specified by the developers of the framework. \cite{KerasVoxNetBug}
+
+        \subsubsection{3D Classification}
+            While 2D image based classifiers exist, and perform well, this isn't the case with 3D image classifiers. A VoxNet based classifier was chosen due to the adequate performance on the SUOD dataset (of 69\%),
+            coupled with the relatively small model size. \cite{VoxNetModel} While this model can in future be improved and adjusted, this classifier was believed to produce results that could show a proof of concept,
+            and determine whether this method would be suitable for a web-based liveness system. 
+
+            % TODO explain here the rough architecture. Also, explain 
+        
+    % Below subsection needs to be replaced.
     \subsection{A system for preventing 3D spoofing attacks}
-        While the systems before might go partially towards preventing 3D spoofing attacks, though primarily considering the 2D image, we now propose a method
-        that is designed for classifying facial liveness based on a 3D point cloud. There are two distinct parts here: 2D to 3D, and 3D classifier. Each part shall be addressed
-        individually, and then the two components combined.
-
-        \subsubsection{2D to 3D Conversion}
-            In order to classify an image/video, the 2D image needs to be converted to a 3D representation of a user's face. While 3d reconstruction is easier with videos (using structure from motion or other multiview based methods),
-            there also exist image-based reconstruction methods such as vrn (\citealt{3DReconstructionMethod}) which are more specific and designed for reconstructing faces based on images. This also has benefits, as structure from motion
-            is unable to reconstruct 3D from a single image, or from videos with very little motion.
-
-            The image was converted by first applying a facial detection algorithm on the image, and cropping the image down to provide only the face. This cropped image was then resized to
-            be of size $(192, 192)$, still in colour. This cropped and resized image was then fed through the VRN network. After this, the network output was filtered and stacked to provide the voxel input required.
-
-            The code to operate this can be found under the \emph{liveness.vox.reconstruction} namespace within the code.
-
         \subsubsection{3D point cloud classification}
             Once the 3D reconstruction is obtained, one can then classify this using some model to produce the fake/real metric.
             

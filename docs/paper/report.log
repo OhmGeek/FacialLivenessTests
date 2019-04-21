@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  19 APR 2019 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  21 APR 2019 20:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -464,14 +464,50 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 63.
- [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] <InceptionModule.png, id=13, 525.965pt x 263.98625pt>
+
+Package natbib Warning: Citation `FaceSpoofingAttacksStudy' on page 1 undefined on input line 87.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package natbib Warning: Citation `FaceSpoofingAttacksStudy' on page 2 undefined on input line 91.
+
+
+Package natbib Warning: Citation `SFMClassifier' on page 2 undefined on input line 97.
+
+
+Package natbib Warning: Citation `ImageQualityAssessmentTest' on page 2 undefined on input line 105.
+
+
+Package natbib Warning: Citation `Patel2016CrossDatabaseFA' on page 2 undefined on input line 112.
+
+
+Package natbib Warning: Citation `AlexNet' on page 2 undefined on input line 123.
+
+
+Package natbib Warning: Citation `DeepNeuralNetworkDeployability' on page 2 undefined on input line 124.
+
+
+Package natbib Warning: Citation `DeepNeuralNetworkDeployability' on page 2 undefined on input line 131.
+
+
+Package natbib Warning: Citation `GoogLeNet' on page 2 undefined on input line 140.
+
+<InceptionModule.png, id=13, 525.965pt x 263.98625pt>
 File: InceptionModule.png Graphic file (type png)
  <use InceptionModule.png>
 Package pdftex.def Info: InceptionModule.png used on input line 145.
 (pdftex.def)             Requested size: 291.29105pt x 146.20796pt.
- [2]
+
+
+Package natbib Warning: Citation `GoogLeNet' on page 2 undefined on input line 146.
+
+
+Package natbib Warning: Citation `DeepNeuralNetworkDeployability' on page 2 undefined on input line 150.
+
+[2]
 
 LaTeX Warning: Marginpar on page 3 moved.
 
@@ -482,17 +518,62 @@ File: Top1AccuracyOverNetwork.png Graphic file (type png)
  <use Top1AccuracyOverNetwork.png>
 Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 166.
 (pdftex.def)             Requested size: 291.29105pt x 213.06775pt.
- <Top1AccuracyOverOperations.png, id=19, 667.49374pt x 460.72125pt>
+
+
+Package natbib Warning: Citation `DeepNeuralNetworkDeployability' on page 3 undefined on input line 168.
+
+<Top1AccuracyOverOperations.png, id=19, 667.49374pt x 460.72125pt>
 File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
 Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 173.
 (pdftex.def)             Requested size: 291.29105pt x 201.05888pt.
- [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/InceptionModule.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png>] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] [5] <ImageQualityLivenessTest.pdf, id=34, 470.7186pt x 451.6875pt>
+
+
+Package natbib Warning: Citation `DeepNeuralNetworkDeployability' on page 3 undefined on input line 175.
+
+
+Package natbib Warning: Citation `DeepNeuralNetworkDeployability' on page 3 undefined on input line 175.
+
+
+Package natbib Warning: Citation `NUAADataset' on page 3 undefined on input line 181.
+
+
+Package natbib Warning: Citation `ReplayAttackDataset' on page 3 undefined on input line 186.
+
+[3 </home/ryan/Documents/dev/LivenessTests/docs/paper/InceptionModule.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png>]
+
+Package natbib Warning: Citation `LivenessTestFaceFlashing' on page 4 undefined on input line 202.
+
+
+Package natbib Warning: Citation `FaceSpoofingAttacksStudy' on page 4 undefined on input line 213.
+
+
+Package natbib Warning: Citation `3DMadDataset' on page 4 undefined on input line 218.
+
+[4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] [5]
+
+Package natbib Warning: Citation `ImageQualityAssessmentTest' on page 6 undefined on input line 297.
+
+<ImageQualityLivenessTest.pdf, id=34, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
 Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 307.
 (pdftex.def)             Requested size: 416.13188pt x 399.32643pt.
- [6] [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
+
+
+Package natbib Warning: Citation `VideoQualityOriginal' on page 6 undefined on input line 336.
+
+
+Package natbib Warning: Citation `VideoQualityUpdated' on page 6 undefined on input line 338.
+
+
+Package natbib Warning: Citation `BIQIImplementation' on page 6 undefined on input line 342.
+
+[6]
+
+Package natbib Warning: Citation `ImageQualityAssessmentTest' on page 7 undefined on input line 356.
+
+[7 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >] <2DCNNArchitecture.pdf, id=63, 258.9675pt x 741.73106pt>
@@ -505,39 +586,54 @@ Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 407.
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >] [10]
 
-Package natbib Warning: Author undefined for citation`3DReconstructionMethod' 
-(natbib)                on page 11 on input line 512.
+Package natbib Warning: Citation `SGDBetterThanAdamForImageClassification' on page 11 undefined on input line 479.
 
-[11] <voxnet.pdf, id=97, 626.34pt x 210.7875pt>
+
+Package natbib Warning: Citation `3DReconstructionMethod' on page 11 undefined on input line 520.
+
+
+Package natbib Warning: Citation `VRNTorchToKeras' on page 11 undefined on input line 521.
+
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+[11]
+
+Package natbib Warning: Citation `KerasVoxNetBug' on page 12 undefined on input line 530.
+
+
+Package natbib Warning: Citation `VoxNetModel' on page 12 undefined on input line 534.
+
+<voxnet.pdf, id=97, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 541.
+Package pdftex.def Info: voxnet.pdf used on input line 562.
 (pdftex.def)             Requested size: 416.13188pt x 140.0497pt.
- [12 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
-
-pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->]
-Overfull \hbox (76.93892pt too wide) in paragraph at lines 587--594
+ [12]
+Overfull \hbox (76.93892pt too wide) in paragraph at lines 608--615
  [][] 
  []
 
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 608--608
+Package natbib Warning: Citation `ImageQualityAssessmentTest' on page 13 undefined on input line 624.
+
+
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 629--629
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 608--608
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 629--629
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 608--608
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 629--629
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
 
-Overfull \hbox (4.25237pt too wide) in paragraph at lines 608--608
+Overfull \hbox (4.25237pt too wide) in paragraph at lines 629--629
 \OT1/ptm/m/n/10/-25ls (-50) tives/negatives, 
  []
 
@@ -548,22 +644,22 @@ LaTeX Warning: Marginpar on page 13 moved.
 LaTeX Warning: Marginpar on page 13 moved.
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 619--619
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 640--640
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 619--619
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 640--640
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 619--619
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 640--640
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
 
-Overfull \hbox (6.97719pt too wide) in paragraph at lines 619--619
+Overfull \hbox (6.97719pt too wide) in paragraph at lines 640--640
 \OT1/ptm/m/n/10/-25ls (-50) face/preprocess  
  []
 
@@ -576,27 +672,64 @@ LaTeX Warning: Marginpar on page 13 moved.
 
 LaTeX Warning: Marginpar on page 13 moved.
 
-[13]
+[13 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>]
+
+Package natbib Warning: Citation `VoxNetModel' on page 14 undefined on input line 653.
+
 
 LaTeX Warning: Marginpar on page 14 moved.
 
 
 LaTeX Warning: Marginpar on page 14 moved.
 
-(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl [14]) [15] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl [14]
+Missing character: There is no Â in font ptmr7t-25ls!
+Missing character: There is no · in font ptmr7t-25ls!
+
+/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl:49: You can't use `macro parameter character #' in horizontal mode.
+l.49   issue #
+              2397 Â· keras-team/keras, Apr 2016.
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Â in font ptmr7t-25ls!
+Missing character: There is no · in font ptmr7t-25ls!
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 66.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `pcr' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+)
+
+Package natbib Warning: There were undefined citations.
+
+[15] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+) ) 
 Here is how much of TeX's memory you used:
- 15697 strings out of 493013
- 305503 string characters out of 6135681
- 450601 words of memory out of 5000000
- 18647 multiletter control sequences out of 15000+600000
- 38458 words of font info for 256 fonts, out of 8000000 for 9000
+ 15763 strings out of 493013
+ 306693 string characters out of 6135681
+ 457387 words of memory out of 5000000
+ 18706 multiletter control sequences out of 15000+600000
+ 39189 words of font info for 259 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,78p,1140b,739s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (15 pages, 455024 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (15 pages, 467437 bytes).
 PDF statistics:
- 165 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
+ 169 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 28715 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 29227 words of extra memory for PDF output out of 29859 (max. 10000000)
 

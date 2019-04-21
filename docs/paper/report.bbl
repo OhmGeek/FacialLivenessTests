@@ -43,6 +43,11 @@ A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.
   volumetric cnn regression.
 \newblock {\em International Conference on Computer Vision}, September 2017.
 
+\bibitem{KerasVoxNetBug}
+Keras-Team.
+\newblock Tensorflow backend - bug in model.\_make\_predict\_function(...) ·
+  issue #2397 · keras-team/keras, Apr 2016.
+
 \bibitem{AlexNet}
 A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
 \newblock Imagenet classification with deep convolutional neural networks.
@@ -54,6 +59,11 @@ A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
 S.~Kumar, S.~Singh, and J.~Kumar.
 \newblock A comparative study on face spoofing attacks.
 \newblock 05 2017.
+
+\bibitem{VRNTorchToKeras}
+P.~Lorenz.
+\newblock Vrn torch to keras.
+\newblock \url{https://github.com/dezmoanded/vrn-torch-to-keras}, October 2018.
 
 \bibitem{VoxNetModel}
 D.~Maturana and S.~Scherer.

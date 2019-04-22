@@ -1,15 +1,16 @@
 # Fdb version 3
-["bibtex report"] 1555875900 "report.aux" "report.bbl" "report" 1555875900
+["bibtex report"] 1555941448 "report.aux" "report.bbl" "report" 1555941578
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/abbrv.bst" 1292289607 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "report.aux" 1555875900 14848 149f08fed26d2c6f8fa71959a5916e9c ""
+  "report.aux" 1555941449 16054 febcea7c42370bb3a090013c8edcd40d ""
   "report.bcf" 1555593932 95450 938a84bc044b943610d935cf2ea8cec8 ""
-  "report.bib" 1555872396 9724 7b701511c54cea8bff03d66f759d51cf ""
+  "report.bib" 1555938016 9725 91b91a5d181922672e3d535041cc1cc2 ""
   (generated)
   "report.bbl"
-["pdflatex"] 1555875901 "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf" "report" 1555875901
+  "report.blg"
+["pdflatex"] 1555941448 "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf" "report" 1555941578
   "/etc/texmf/web2c/texmf.cnf" 1539858615 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux" 1555875900 14848 149f08fed26d2c6f8fa71959a5916e9c ""
-  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" 1555875897 63371 7f3e1b7ee9ddb1ddc97b298e23288298 ""
+  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux" 1555941449 16054 febcea7c42370bb3a090013c8edcd40d ""
+  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.tex" 1555941578 64284 0e89cb7d9ad4c84d555b7690e86ddfdf ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -170,13 +171,13 @@
   "Top1AccuracyOverNetwork.png" 1555593932 52419 bc0084ad3e63fbc2041ea3048873d648 ""
   "Top1AccuracyOverOperations.png" 1555593932 88603 723f00f591e9799bc03451df3e9b121e ""
   "durhampaper.sty" 1555593932 2084 f00544ecc21ca7073f5d34970d26a007 ""
-  "report.aux" 1555875900 14848 149f08fed26d2c6f8fa71959a5916e9c ""
-  "report.bbl" 1555875901 4164 429b30001a77c35d9b66952a371ff04e "bibtex report"
-  "report.tex" 1555875897 63371 7f3e1b7ee9ddb1ddc97b298e23288298 ""
+  "report.aux" 1555941449 16054 febcea7c42370bb3a090013c8edcd40d ""
+  "report.bbl" 1555941448 4161 32a3d7f5ab3629ea99b72e5ef5fed7b4 "bibtex report"
+  "report.tex" 1555941578 64284 0e89cb7d9ad4c84d555b7690e86ddfdf ""
   "voxnet.pdf" 1555593932 53336 5a79f1521c46b5ed00f0bb42abd3e91c ""
   (generated)
   "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf"
-  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.log"
-  "report.log"
   "report.aux"
+  "report.log"
   "report.pdf"
+  "/home/ryan/Documents/dev/LivenessTests/docs/paper/report.log"

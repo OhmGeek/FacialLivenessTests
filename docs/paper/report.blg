@@ -3,14 +3,12 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
 Database file #1: report.bib
-Warning--I'm ignoring VRNTorchToKeras's extra "month" field
---line 158 of file report.bib
 Warning--empty booktitle in ReplayAttackDataset
 Warning--empty booktitle in 3DMadDataset
 Warning--empty booktitle in FaceSpoofingAttacksStudy
 You've used 19 entries,
             2118 wiz_defined-function locations,
-            618 strings with 7563 characters,
+            618 strings with 7560 characters,
 and the built_in function-call counts, 6568 in all, are:
 = -- 584
 > -- 374
@@ -49,4 +47,4 @@ warning$ -- 3
 while$ -- 52
 width$ -- 21
 write$ -- 189
-(There were 4 warnings)
+(There were 3 warnings)

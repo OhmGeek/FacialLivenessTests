@@ -532,30 +532,7 @@ Facial liveness, convolutional neural networks, image quality metrics
         \subsubsection{3D Classification}
             While 2D image based classifiers exist, and perform well, this isn't the case with 3D image classifiers. A VoxNet based classifier was chosen due to the adequate performance on the SUOD dataset (of 69\%),
             coupled with the relatively small model size. \cite{VoxNetModel} While this model can in future be improved and adjusted, this classifier was believed to produce results that could show a proof of concept,
-            and determine whether this method would be suitable for a web-based liveness system. 
-
-            % TODO explain here the rough architecture. Also, explain 
-        
-    % Below subsection needs to be replaced.
-    \subsection{A system for preventing 3D spoofing attacks}
-        \subsubsection{3D point cloud classification}
-            Once the 3D reconstruction is obtained, one can then classify this using some model to produce the fake/real metric.
-            
-            VoxNet takes in a point cloud and converts this to an occupancy grid. This is then fed through two convolutional layers,
-            pooled, and then goes through a dense layer before reaching the classifier output (a dense layer with the k outcomes). 
-
-            As a pretrained version of VoxNet wasn't readily available, the whole system was trained together from scratch.
-
-        \subsubsection{Linking everything together}
-            While each system is self-contained, linking them together took a little bit more work than expected. The models themselves couldn't be directly joined together,
-            as VRN required extra postprocessing steps which couldn't be implemented using tensors within tensorflow. As such, the initial 2D to 3D conversion was required to be run
-            as a preprocessing step.
-
-            To assist in the training phase, a generator was written in Python to conduct the postprocessing on the fly for each batch, which didn't require the entire preprocessing step to be done before training, 
-            thus reducing the peak memory usage problems. While an ImageDataGenerator was used previously, this isn't compatible with 3D, and therefore a custom module needed to be written.
-
-            Once the preprocessing had been completed, the preprocessed image was fed to the VoxNet. 
-            % tODO explain experiments.
+            and determine whether this method would be suitable for a web-based liveness system. The final architecture is shown in Figure \ref{3DClassifierArchitectureDiagram}.
 
             \begin{figure}
                 \centering
@@ -571,28 +548,31 @@ Facial liveness, convolutional neural networks, image quality metrics
                 }
             \end{figure}
 
-    \subsection{Datasets, and data management}
+        \subsubsection{The Training Process}
+            Training was conducted using a binary crossentropy loss function, with an Adam based optimizer. Binary cross entropy was used since there was only a single output node,
+            compared with a categorical approach. 
 
-        \subsection{Training/Test Split}
-            Using a single dataset is problematic due to the potential for overfitting, coupled with the risk that the classifier wouldn't generalise on the entire problem set, but rather the specific classifier.
-            
-            Therefore, it was decided to use one dataset for training, and one for testing.
-            With each of the above classifiers proposed, the NUAA dataset (the entire dataset) was used for training, and the testing was carried out using the Replay-Attack dataset.
-            If one was to use the ReplayAttack dataset for training, results were poor due to the lack of variation between the images (since we have a limited number of videos, with several frames from each video being similar, with a smaller number of subjects).
-            
-            With this approach, the overfitting was fixed but the model would now underfit due to lack of data. Furthermore, using NUAA just for training and Replay-Attack for testing had poor performance on its own, due to differences between the overall datasets (e.g. resolution issues, as well as subject specific attribute differences).
-            Therefore, cross-dataset validation was carried out. The entire NUAA dataset acted as training data, with the Replay-Attack devel dataset being used as the validation set. The test set was still seperate, as the Replay-Attack test set was used (which is seperate from the devel set, designed for testing).
-            This yielded optimum performance for the 2D CNN test.
+            In order to conduct training, a Data Generator was used to minimize memory constraints, since the entire dataset didn't need to be loaded into memory after being preprocessed. Instead,
+            only a single batch would be preprocessed on the fly, thus reducing memory usage considerably.
 
-            However, since an LDA doesn't have a validation set, the training set for the image quality metric was a merge between the NUAA and Replay-Attack devel datasets to improve performance.
+            While training, a problem with the built in data generators was encountered. While 2D images were being input, a 3D representation was required as output from the data generator,
+            something that the Keras ImageDataGenerator wasn't able to deal with. Initially, the VRN model was included as part of the classification model. This would see a 2D image being input into the model,
+            and the model would reconstruct to 3D and classify all in the same model. While this is a more monolithic approach, it would avoid the need to switch out the ImageDataGenerator. However,
+            when implemented this didn't work: the 3D reconstruction process required non-tensor operations (more specifically, the use of the stack command), which could not be included as a network layer.
 
-        % \subsubsection{Optimising Dataset IO}
-        %     \todo{Dataset io using h5py}
-        %     Due to the large dataset sizes, memory is a limit to the performance of the system. As such, optimisation needs to be achieved to allow working with large datasets within the specified memory constraints.
-        %     This was achieved using \emph{h5py}, which caches the dataset to a file, and the associated fetch statements are called when necessary. By doing this, the large dataset doesn't need to be entirely loaded into memory,
-        %     but can instead use the hard disk drive. Some performance was sacrificed (due to the reduced read speeds of SSDs/HDDs compared to RAM), but this allowed for larger and better models to be produced on a smaller (and less expensive) machine. 
-       
-        % \todo{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}
+            Therefore, the final solution was to instead conduct the 3D reconstruction as a preprocessing step, and led to the replacement of the Keras ImageDataGenerator with a custom generator, designed to output 3D from 2D input.
+            This custom generator would resize the images, reconstruct the 3D representation, and return the appropriate batch yielded. This solved the problem.
+
+        \subsubsection{The Dataset}
+            Unlike the previous two liveness tests, this liveness test relied on a completely different dataset, the Mask Attack Dataset (MAD). \cite{3DMadDataset}
+            The goal of this liveness test was to detect mask based attacks (and more widely, 3D based attacks), and this dataset was used due to it being more repesentative of the problem
+            than the ReplayAttack and NUAA datasets (which are designed for 2D based attacks).
+
+            Unlike the 2D based methods, two datasets weren't used in a cross validation style assessment of the method, so instead the MAD dataset was split by subject (the person being spoofed):
+            half of the subjects were used for the training/validation sets, and the other half were left for training purposes.
+
+            Subjects 1,2,3,4,5,6,7 were used for training purposes, and 8,9,10,11,12, 13 were used for testing purposes. Splitting up the dataset in this way was necessary to correctly assess the classifier,
+            to ensure results give a true indication of how well the model learned the features, rather than how well the model learned the dataset.
 
   
 \section{Results}
@@ -626,7 +606,6 @@ Facial liveness, convolutional neural networks, image quality metrics
         The level of true negatives and true positives respectively are fairly high, but the number of false positives was slightly higher than expected (i.e. where the model predicts someone to be real where they are actually not).
         What's interesting to note is the low number of false negatives (indicating someone is fake where they are real), which in our security concious case isn't wanted (since inconvenience isn't as much of a problem as security).
         However, the overall performance was better than expected.
-        \todo{Look into false positives/negatives, to see if we can get an outcome that performs better}
         % Total results - the RAW data in case people need it.
         % 0.87
         % True Negatives:  75
@@ -637,21 +616,35 @@ Facial liveness, convolutional neural networks, image quality metrics
         \todo{show an example image of the system at work with image quality liveness}
 
     \subsection{2D Convolutional Neural Network Liveness Test}
+
+
+
+        The overall performance of our liveness test can be seen in Table \ref{ResultsTable}. While not as accurate as the previous model, the model still detects true negatives with a fairly high percentage.
+        While the overall accuracy of this model could be improved with further training or by deepening, the results show that this basic architecture is feasible. In the security conscious environment of facial liveness,
+        false negatives, while potentially annoying to the end user, are an ideal result compared to false positives (which would imply that someone is real when they are fake). While false positives still exist, their number is small compared to the number of negatives.
+        Furthermore, the number of positives is small, meaning that this model leans on the side of caution, something that is ideal. Therefore, this model would be secure and accurate enough with further training (and potentially replacing ResNet50 with a deeper ResNet model).
+
+        However, in order to be deployable, the processing time needs to be manageable. The processing time was measured on a standard desktop computer (the specifications of which were specified in the Solution section).
         \todo{Insert time here to isolate face/preprocess}
         \todo{Insert time here to conduct neural network prediction}
         \todo{Insert system performance (specs of Lexo)}
-        The overall performance of our liveness test can be seen in Table \ref{ResultsTable}. While not as accurate as the previous model, the model still detects true negatives with a fairly high percentage
         % Confusion Matrix = [[4317  283]
 %           [1357   83]]
-        While these results might not appear to be as ideal, this is partly due to the nature of the Replay-Attack dataset as each 20th frame was taken from the dataset.
-        Due to this, when there is movement and where the face isn't visible by the camera, the image can't be correctly processed and therefore the entire image is used
-        as the input to the network, thus yielding poorer performance than expected. This is only encountered with this metric due to the requirement that the facial extraction is successful. 
-        
+
+    
     \subsection{3D VoxNet Liveness Test}
-            As discussed in the method, this metric had several performance challenges. Applying VoxNet caused memory issues, in addition to yielding very poor performance
-            (50\% accuracy with a single dense layer output), indicating that the features weren't being learnt correctly. 69\% accuracy was expected, as specified in the
-            VoxNet paper \cite{VoxNetModel}. There are a few reasons why this wasn't matched: firstly, the voxnet model we needed required large inputs: (192 x 192 x 192 x 3),
-            which is far too high for easy and real-time computation. 
+        This method had some major performance challenges. The 3D facial reconstruction worked well, producing the desired outcome. However, the 3D classifier (VoxNet), had numerous problems.
+        The original VoxNet model, proposed in \cite{VoxNetModel}, used 32 filters for the Conv3D layers (with a 32x32x32 input). However, using 32 filters in our model for each Convolutional Layer (alongside the larger data input than expected),
+        led to memory errors and wasn't able to be trained on the training hardware.  Reducing the 3D reconstruction resolution wasn't an option, since the entire model would require retraining (which would take lots of time, resources, and wasn't feasible).
+        Furthermore, as seen with the 2D CNN method, reducing the resolution might also reduce the accuracy. Therefore, the remaining solution was to reduce the number of filters down to a small 12 filters per convolution layer.
+
+        During the training process, with a variety of learning rates, the accuracy of the model didn't leave 50\% with a differing amount of batch sizes. This indicates that the model wasn't learning the features correctly (potentially due to the lack of filters in the Convolutional Layer).
+        
+        While the classifier itself didn't work and yield any meaningful results, it's also important to consider the time taken for a 2D image to be reconstructed. 
+        \todo{Figures for time to reconstruct a single image to 3D}
+
+        Due to the poor accuracy with a low number of filters, the excessive amount of memory required for unknown accuracy results, and the large time taken to reconstruct the 3D structure (not including the added time to theoretically classify the result),
+        this liveness test clearly isn't feasible for the purpose of a web liveness service.
 
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
@@ -664,7 +657,14 @@ Facial liveness, convolutional neural networks, image quality metrics
         % There is an argument that one could steal your likeness and use it elsewhere on the internet. However, providing liveness tests
         % are suitable, there is no other way of stealing ones face. There would be a need to ensure furhter development of such a system.
         % Developing a single component as a service would mean developers could focus on developing their applications. 
-
+        \paragraph{Quality Test}
+            \todo{Fill this in evaluating our system.}
+        \paragraph{2D CNN}
+            \todo{Fill in this evaluating our system.}
+        \paragraph{3D VoxNet Liveness Test}
+            As seen from the results, this method of liveness test isn't feasible. With extra training, while the accuracy of the model could be improved, the
+            real time memory requirements don't seem feasible. Based on the VoxNet paper, the accuracy achieved with a 32x32 VoxNet classifier on the SUOD dataset (a 3D dataset of objects)
+            is 69\%. While this accuracy could be justified with reasonable computational and memory characteristics, this further proves that this method isn't feasible in the current state. In the future, a new approach of detecting 3D attacks is necessary.
     \subsection{Improvements}
         \paragraph{Representing 3D Attacks}
         While our system works fairly well for 2D based attacks, performance for 3D based attacks definitely needs work.

@@ -45,8 +45,8 @@ A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.
 
 \bibitem{KerasVoxNetBug}
 Keras-Team.
-\newblock Tensorflow backend - bug in model.\_make\_predict\_function(...) ·
-  issue #2397 · keras-team/keras, Apr 2016.
+\newblock Tensorflow backend - bug in model.\_make\_predict\_function(...),
+  issue \#2397, keras-team/keras, Apr 2016.
 
 \bibitem{AlexNet}
 A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.

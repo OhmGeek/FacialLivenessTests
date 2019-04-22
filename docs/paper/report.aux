@@ -141,69 +141,68 @@
 \pgfsyspdfmark {pgfid65}{38040312}{-1388475}
 \citation{KerasVoxNetBug}
 \citation{VoxNetModel}
+\citation{3DMadDataset}
+\newlabel{3DClassifierArchitectureDiagram}{{D.4}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some postprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. }}{12}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {D.4}3D Classification}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E}A system for preventing 3D spoofing attacks}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.1}3D point cloud classification}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2}Linking everything together}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {F}Datasets, and data management}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {G}Training/Test Split}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.5}The Training Process}{12}}
 \citation{ImageQualityAssessmentTest}
-\newlabel{3DClassifierArchitectureDiagram}{{E.2}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some postprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. }}{13}}
+\citation{VoxNetModel}
 \newlabel{ResultsTable}{{IV}{13}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).}}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.6}The Dataset}{13}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Image Quality Liveness Test}{13}}
-\@writefile{tdo}{\contentsline {todo}{Look into false positives/negatives, to see if we can get an outcome that performs better}{13}}
-\pgfsyspdfmark {pgfid66}{18835565}{10904362}
 \@writefile{tdo}{\contentsline {todo}{Add time to conduct computation here (without multithreading) - for predictions only, not training}{13}}
-\pgfsyspdfmark {pgfid71}{18835565}{10904362}
+\pgfsyspdfmark {pgfid66}{18835565}{18633021}
 \@writefile{tdo}{\contentsline {todo}{show an example image of the system at work with image quality liveness}{13}}
-\pgfsyspdfmark {pgfid76}{18835565}{10904362}
-\pgfsyspdfmark {pgfid69}{36188921}{10902069}
-\pgfsyspdfmark {pgfid70}{38040312}{10683179}
-\pgfsyspdfmark {pgfid74}{36188921}{2144205}
-\pgfsyspdfmark {pgfid75}{38040312}{1925315}
-\pgfsyspdfmark {pgfid79}{36188921}{-5253793}
-\pgfsyspdfmark {pgfid80}{38040312}{-5472683}
+\pgfsyspdfmark {pgfid71}{18835565}{18633021}
+\pgfsyspdfmark {pgfid69}{36188921}{18630728}
+\pgfsyspdfmark {pgfid70}{38040312}{18411838}
+\pgfsyspdfmark {pgfid74}{36188921}{11232730}
+\pgfsyspdfmark {pgfid75}{38040312}{11013840}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}2D Convolutional Neural Network Liveness Test}{13}}
 \@writefile{tdo}{\contentsline {todo}{Insert time here to isolate face/preprocess}{13}}
-\pgfsyspdfmark {pgfid81}{7000376}{7765951}
+\pgfsyspdfmark {pgfid76}{33607516}{8710897}
 \@writefile{tdo}{\contentsline {todo}{Insert time here to conduct neural network prediction}{13}}
-\pgfsyspdfmark {pgfid86}{7000376}{7765951}
+\pgfsyspdfmark {pgfid81}{33607516}{8710897}
 \@writefile{tdo}{\contentsline {todo}{Insert system performance (specs of Lexo)}{13}}
-\pgfsyspdfmark {pgfid91}{7000376}{7765951}
-\pgfsyspdfmark {pgfid84}{36188921}{-11097834}
-\pgfsyspdfmark {pgfid85}{38040312}{-11316724}
-\pgfsyspdfmark {pgfid89}{36188921}{-16992448}
-\pgfsyspdfmark {pgfid90}{38040312}{-17211338}
-\pgfsyspdfmark {pgfid94}{36188921}{-21402014}
-\pgfsyspdfmark {pgfid95}{38040312}{-21620904}
-\citation{VoxNetModel}
-\bibstyle{abbrv}
-\bibdata{report}
-\bibcite{VideoQualityOriginal}{{1}{}{{}}{{}}}
+\pgfsyspdfmark {pgfid86}{33607516}{8710897}
+\pgfsyspdfmark {pgfid79}{36188921}{5328948}
+\pgfsyspdfmark {pgfid80}{38040312}{5110058}
+\pgfsyspdfmark {pgfid84}{36188921}{-565666}
+\pgfsyspdfmark {pgfid85}{38040312}{-784556}
+\pgfsyspdfmark {pgfid89}{36188921}{-4975232}
+\pgfsyspdfmark {pgfid90}{38040312}{-5194122}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}3D VoxNet Liveness Test}{14}}
+\@writefile{tdo}{\contentsline {todo}{Figures for time to reconstruct a single image to 3D}{14}}
+\pgfsyspdfmark {pgfid91}{16807079}{38935874}
+\pgfsyspdfmark {pgfid94}{36188921}{38933581}
+\pgfsyspdfmark {pgfid95}{38040312}{38714691}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Usefulness of our system}{14}}
+\@writefile{tdo}{\contentsline {todo}{Fill this in evaluating our system.}{14}}
+\@writefile{toc}{\contentsline {paragraph}{Quality Test}{14}}
+\pgfsyspdfmark {pgfid96}{10233059}{31861182}
+\pgfsyspdfmark {pgfid99}{36188921}{31858889}
+\pgfsyspdfmark {pgfid100}{38040312}{31639999}
+\@writefile{tdo}{\contentsline {todo}{Fill in this evaluating our system.}{14}}
+\@writefile{toc}{\contentsline {paragraph}{2D CNN}{14}}
+\pgfsyspdfmark {pgfid101}{9298551}{30169853}
+\pgfsyspdfmark {pgfid104}{36188921}{28957778}
+\pgfsyspdfmark {pgfid105}{38040312}{28738888}
+\@writefile{toc}{\contentsline {paragraph}{3D VoxNet Liveness Test}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Improvements}{14}}
 \@writefile{toc}{\contentsline {paragraph}{Representing 3D Attacks}{14}}
 \@writefile{toc}{\contentsline {paragraph}{Preventing Source-Quality Web Browser Attacks}{14}}
 \@writefile{toc}{\contentsline {paragraph}{Existing BIQI implementation}{14}}
 \@writefile{tdo}{\contentsline {todo}{ADD Calculations here for speed with hard drive, SSD, and memory}{14}}
-\pgfsyspdfmark {pgfid96}{8037158}{21389778}
-\pgfsyspdfmark {pgfid99}{36188921}{21387485}
-\pgfsyspdfmark {pgfid100}{38040312}{21168595}
-\@writefile{toc}{\contentsline {paragraph}{Privacy/Legal Considerations}{14}}
-\@writefile{tdo}{\contentsline {todo}{Find source}{14}}
-\pgfsyspdfmark {pgfid101}{19571016}{16695778}
-\pgfsyspdfmark {pgfid104}{36188921}{15492871}
-\pgfsyspdfmark {pgfid105}{38040312}{15273981}
-\@writefile{tdo}{\contentsline {todo}{Mention compliance of our current system (to some extent), and how it can be improved}{14}}
-\pgfsyspdfmark {pgfid106}{26790726}{15201562}
-\pgfsyspdfmark {pgfid109}{36188921}{14206087}
-\pgfsyspdfmark {pgfid110}{38040312}{13987197}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{14}}
+\pgfsyspdfmark {pgfid106}{8037158}{7765951}
+\pgfsyspdfmark {pgfid109}{36188921}{7763658}
+\pgfsyspdfmark {pgfid110}{38040312}{7544768}
+\bibstyle{abbrv}
+\bibdata{report}
+\bibcite{VideoQualityOriginal}{{1}{}{{}}{{}}}
 \bibcite{DeepNeuralNetworkDeployability}{{2}{}{{}}{{}}}
 \bibcite{ReplayAttackDataset}{{3}{}{{}}{{}}}
 \bibcite{SFMClassifier}{{4}{}{{}}{{}}}
@@ -220,6 +219,16 @@
 \bibcite{Patel2016CrossDatabaseFA}{{15}{}{{}}{{}}}
 \bibcite{GoogLeNet}{{16}{}{{}}{{}}}
 \bibcite{NUAADataset}{{17}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {paragraph}{Privacy/Legal Considerations}{15}}
+\@writefile{tdo}{\contentsline {todo}{Find source}{15}}
+\pgfsyspdfmark {pgfid111}{19571016}{47974386}
+\pgfsyspdfmark {pgfid114}{36188921}{47972093}
+\pgfsyspdfmark {pgfid115}{38040312}{47753203}
+\@writefile{tdo}{\contentsline {todo}{Mention compliance of our current system (to some extent), and how it can be improved}{15}}
+\pgfsyspdfmark {pgfid116}{26790726}{46480170}
+\pgfsyspdfmark {pgfid119}{36188921}{46477877}
+\pgfsyspdfmark {pgfid120}{38040312}{46258987}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{15}}
 \bibcite{LivenessTestFaceFlashing}{{18}{}{{}}{{}}}
 \bibcite{SGDBetterThanAdamForImageClassification}{{19}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers

@@ -115,9 +115,12 @@ class QualityLDAModel(AbstractModel):
 
         self._model.fit_transform(training_inputs, training_outputs)
 
-    def evaluate(self, input_img):
+    def evaluate(self, input_img, get_probability=False):
         training_inputs, _ = preprocessor(input_img, None, self._logger)
         
+        if get_probability:
+            return self._model.predict_proba(training_inputs)
+            
         return self._model.predict(training_inputs)
 
     def save(self, pickle_path):

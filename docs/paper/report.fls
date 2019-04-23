@@ -221,9 +221,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmbi7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
-INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/InceptionModule.png
-INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/InceptionModule.png
-INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/InceptionModule.png
 INPUT /usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
@@ -246,6 +243,9 @@ INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png
+INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png
+INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png
+INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf

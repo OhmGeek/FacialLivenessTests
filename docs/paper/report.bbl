@@ -37,6 +37,12 @@ J.~Galbally, S.~Marcel, and J.~Fierrez.
 \newblock {\em IEEE Transactions on Image Processing}, 23(2):710--724, Feb
   2014.
 
+\bibitem{DeepResidualNetworks}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
+\newblock Deep residual learning for image recognition.
+\newblock {\em 2016 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 770--778, June 2016.
+
 \bibitem{3DReconstructionMethod}
 A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.
 \newblock Large pose 3d face reconstruction from a single image via direct
@@ -76,10 +82,23 @@ D.~Maturana and S.~Scherer.
 OhmGeek.
 \newblock Ohmgeek/video-quality, Dec 2018.
 
+\bibitem{BlinkDetectionLivenessTest}
+G.~{Pan}, L.~{Sun}, Z.~{Wu}, and S.~{Lao}.
+\newblock Eyeblink-based anti-spoofing in face recognition from a generic
+  webcamera.
+\newblock In {\em 2007 IEEE 11th International Conference on Computer Vision},
+  pages 1--8, Oct 2007.
+
 \bibitem{Patel2016CrossDatabaseFA}
 K.~Patel, H.~Han, and A.~K. Jain.
 \newblock Cross-database face antispoofing with robust feature representation.
 \newblock In {\em CCBR}, October 2016.
+
+\bibitem{PointNet}
+C.~R. Qi, H.~Su, K.~Mo, and L.~J. Guibas.
+\newblock Pointnet: Deep learning on point sets for 3d classification and
+  segmentation.
+\newblock {\em arXiv preprint arXiv:1612.00593}, 2016.
 
 \bibitem{GoogLeNet}
 C.~Szegedy, W.~Liu, Y.~Jia, P.~Sermanet, S.~Reed, D.~Anguelov, D.~Erhan,

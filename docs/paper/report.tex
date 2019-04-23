@@ -79,12 +79,14 @@ Facial liveness, convolutional neural networks, image quality metrics
     % TODO might be worth explaining that we are focusing here on only images, rather than video. Explain why...
 
     In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
-    We also confirm the success of the Image Quality Assessment method for Facial Liveness, and provide an improve
+    We provide a promising new liveness test using ResNet based networks.
     % In this context, we propose 
+
 
 \section{Related Work}
     % LIT REVIEW GOES HERE!
     As defined in \cite{FaceSpoofingAttacksStudy}, the types of face spoofing attacks can be described under three sections: Photo Attack, Video Attack and Mask Attack.
+    Photo and Video attacks are both classed as 2D spoofing attacks, while mask attacks are 3D attacks.
 
     \subsection{2D Spoofing Attacks}
         Photo and Video Attacks are both 2D spoofing attacks, which involve using a previously retrieved photo/video, and holding it in front of a camera. In the case of photo attacks,
@@ -116,7 +118,9 @@ Facial liveness, convolutional neural networks, image quality metrics
         
         \subsubsection{General 2D image classification models}
         Outside of the facial liveness field, image classification on the ImageNet dataset has proven popular and yielded some fairly good
-        results. 
+        results. Since these models have already been deployed in the real world, and the goal of image classification is common with the
+        goal of liveness detection, these models could be a good fit for adapting to liveness applications. Since facial liveness testing is
+        an image classification problem, these models are of importance.
         
         \paragraph{AlexNet} 
         One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
@@ -128,7 +132,8 @@ Facial liveness, convolutional neural networks, image quality metrics
         The VGG16 model improved AlexNet by replacing larger filters by more smaller filters one after another.
         However, VGG requires a high amount of computational power, something that's not easily deployable due to
         the large number of parameters (128 million), which requires a high amount of memory and compute power compared
-        to other models. \cite{DeepNeuralNetworkDeployability}
+        to other models. \cite{DeepNeuralNetworkDeployability} In our application, high accuracy is important, but the high
+        memory and computational requirements mean this model isn't the most suitable.
 
         \paragraph{GoogLeNet Inception}
         GoogLeNet is an improved module that approximates a space Convolutional Network with a normal
@@ -138,27 +143,30 @@ Facial liveness, convolutional neural networks, image quality metrics
         However, to reduce the dimensionallity, and therefore improve performance, a 1x1 convolution is applied before
         each 3x3 and 5x5 convolution, and after the max pooling output. These inception modules can be used and stacked
         to improve performance without a huge increase in computation. \cite{GoogLeNet} 
-        This is shown in Figure \ref{InceptionArchitecture}.
+        % This is shown in Figure \ref{InceptionArchitecture}.
 
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.7\linewidth]{InceptionModule.png}
-            \caption{The Inception module with dimensionality reduction. Diagram taken from \cite{GoogLeNet}.}
-            \label{InceptionArchitecture}
-        \end{figure}
+        % \begin{figure}
+        %     \centering
+        %     \includegraphics[width=0.7\linewidth]{InceptionModule.png}
+        %     \caption{The Inception module with dimensionality reduction. Diagram taken from \cite{GoogLeNet}.}
+        %     \label{InceptionArchitecture}
+        % \end{figure}
 
         Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
         
         \paragraph{Residual Networks}
         Another key problem with deep convolutional networks on Image Classification is the vanishing gradient problem, where early layers have very small gradients during the training process and
         are therefore much more difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block. \todo{Explain Resnets better}.
-        The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficent than VGG in terms of computational power needed. \todo{Cite Residual Networks}
+        The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficent than VGG in terms of computational power needed. \cite{DeepResidualNetworks}
         While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
-        
+        This model is very ideal for our application, as it acts as an ideal compromise between accuracy and computational requirements, yielding fairly good accuracy for our security focused perspective, while also
+        ensuring that the operational cost (in terms of time, and cost for hardware) isn't too high, compared with other models such as VGG.
+
+
         In terms of Top-1\% accuracy (the accuracy with the top output in a multiclass problem) shown in Figure \ref{Top1AccuracyOverNetwork}, newer version of the Inception model perform the best,
         with ResNet based classifiers not too far behind. AlexNet performance was fairly poor. Now compare this with the operations (the required computational power for each model), which is shown in Figure \ref{Top1AccuracyOverOperations}.
-        AlexNet and GoogLeNet require fairly few operations, in the $<10 GOps$ range. The same is true for smaller ResNet based models (e.g. ResNet 50 and 34).
-        Meanwhile, VGG requires a fairly large amount of operations ($>30 GOps$), as do later versions of Inception.
+        AlexNet and GoogLeNet require fairly few operations, in the $<10$ G-Ops range. The same is true for smaller ResNet based models (e.g. ResNet 50 and 34).
+        Meanwhile, VGG requires a fairly large amount of operations ($>30$ G-Ops), as do later versions of Inception.
 
 
         \begin{figure}
@@ -177,25 +185,35 @@ Facial liveness, convolutional neural networks, image quality metrics
 
         \subsubsection{Datasets}
         %Datasets
-        While models exist, in order to test these models data is needed. One of the most common and earliest dataset for facial liveness is the NUAA dataset,
-        which consists of photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera. \cite{NUAADataset}
+        One of the most common datasets, and one of the earliest created, is the NUAA dataset.
+        The dataset contains photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera.
+        Each photo is stored in JPEG format, with a hierarchial structure to show whether the image was real or fake, and what type of
+        attack was used (in the case of faked images). One drawback with the NUAA dataset is with regards to licensing: the dataset is only available for
+        non-commercial use (i.e. research purposes). This implies that this dataset, and models trained with this dataset, would not themselves be able to be deployed
+        \cite{NUAADataset}
+        However, as this project is only researching into the feasibility of a web based liveness testing system, this project is for research purposes and hence meeting the
+        licensing objectives.
 
         In 2012, the Replay-Attack dataset was first released, which consists of 1,300 video clips of both photo and video attacks. Each
         set of videos/images are taken under different illumination conditions, and various different attack methods were collected: printed photo, low resolution and high resolution screens with both photos and 
         videos being displayed. The entire dataset consists of several 'subdatasets': the 'devel' dataset is designed as a validation set/training set, while
         the 'test' dataset is designed as a test dataset (and therefore must not be used in the training/validation process). \cite{ReplayAttackDataset}
+        Again, one drawba
+            \todo{Mask Attack Set}
 
+        These two datasets are ideal for testing 2D based liveness systems, since they contain enough samples to reasonable train/test our models. They shall be used
+        throughout this project for both training and testing the 2D based liveness models.
 
         \subsubsection{Temporal-based Liveness Tests}
         These liveness tests require a video input, rather than an image. Rather than looking directly at an image, they mostly look at the differences between the images in a video.
         
         % Blinking
         \paragraph{Blink Detection}
-
-        % Eye Tracking
-        \paragraph{Eye Tracking}
-
-
+        The blink detection liveness test analyses eye blink behaviour and determines whether the person is real/fake. This liveness test meets our critera for a web-based liveness service,
+        as the test doesn't require any extra hardware. Furthermore, a large amount of concious activity from the user isn't necessary, as the video analysed is natural behaviour.
+        One drawback of this method is testing: this model requires a video input, which isn't available with the NUAA dataset, and therefore testing this method might be more difficult.
+        \cite{BlinkDetectionLivenessTest} Furthermore, this method would be susceptable to a print-based attack where eye holes were cut, since natural eye movement is analysed.
+        
         % Face Flashing
         \paragraph{Face Flashing}
         One method, known as the "Face Flashing" liveness detection method, uses the light diffusing off a screen to determine that the input is in fact from the user, rather than from a spoofed recorded/simulated input.
@@ -215,17 +233,49 @@ Facial liveness, convolutional neural networks, image quality metrics
 
         % Explain the method shown in Choudhary et al., 1999 - SFM. Problem: depth information ahrd to obtain when still with SFM. Noise also problematic.
         % Which uses Structure From Motion.
-        In 2013, the Mask Attack Dataset (MAD dataset) was released. \cite{3DMadDataset}
+        In 2013, the 3D Mask Attack Dataset (MAD dataset) was released. This dataset contains 76500 frames of 17 people, recorded using a Kinect camera.
+        Each frame contains a depth image, an 2D RGB image with 8 bit colour and a size of 640x480 pixels. Each frame also contains eye positions.
+        Real Access samples are contained within the first and second session folders, while the third session contains the frames of mask attacks. The subjects contained
+        within each frame are denoted within the filename.
+        
+        \cite{3DMadDataset}
 
-        \todo{Improve this section, explaining 3D based measures, more about the MAD dataset and attacks, etc.}
-    % What are the different types of attacks that one would expect? 
-    % Then, explain the different methods that can be applied, including references.
-    % - image Quality assessment (different types of image quality metrics used ,and why they should be effective). Drawbacks of these
-    % - movement based assessment (requiring actions to be performed, and their problems).
-    % - Deep Learning methods (what methods exist, their performance)
-    % - 3D mask prevention methods (kinect based ones that require 3D input, or SFM, which isn't really valid here)
+        \subsubsection{Obtaining 3D data from 2D images/video}
+            One method of obtaining 3D data from a video is to use Structure From Motion (SFM). This method was previously utilised in \cite{SFMClassifier} to consider the depth data as a 2D liveness test,
+            but this method could potentially work as a solution for obtaining 3D data. However, SFM performs poorly when given a video with a small amount of motion. Furthermore, the 3D mask attack datasets
+            available for this project do not contain video but single images, which means such a method would be more difficult to test.
 
+            However, with improved machine learning models, there exist models that can reconstruct facial structure based on a single 2D image. One such model is the VRN model, proposed in \cite{3DReconstructionMethod}.
+            The paper, and the associated source code, contains a model that takes a 2D image as input (of size 192x192), and produces a voxel repesentation of the 3D face structure. This model is more suitable for our
+            application, since the use of a 2D image rather than a video works well with the datasets available. Furthermore, use of a single 2D image would require less user input as a SFM based method, since the user isn't required
+            to move in order to produce an adequate 3D reconstruction. An example of the 3D reconstruction obtained from this model can be seen in Figure \ref{3DReconstructionScreenshot}. The screenshot is obtained from the GitHub repository
+            of a Keras-based implementation of this method (since the initial implementation of the paper used the Torch library).
 
+            \begin{figure}
+                \centering
+                \includegraphics[width=.5\linewidth]{3DReconstructionFromSource}
+                \label{3DReconstructionScreenshot}
+                \caption{A screenshot from the VRN Torch to Keras version (a conversion of the VRN model to Keras). This screenshot is from \cite{VRNTorchToKeras}}
+            \end{figure}
+
+            \todo{VRN 3D reconstruction on MaskAttackDataset image}
+
+        \subsubsection{3D Classifiers}
+            In a similar approach to the 2D methods researched above, there are a variety of existing 3D classifiers that could be repurposed for the liveness classification approach.
+            While these methods don't yield the same accuracy figures as with ImageNet, further improvements in the field of 3D classification could lead to better liveness methods in the future.
+
+            \paragraph{PointNet}
+                PointNet is a model for classifying point clouds, represented as an unordered set of points. PointNet in total has 3.5 million parameters, with 440 million FLOPs per sample, which 
+                is a reasonable number considering other classifiers, but is on the upper end of what would be expected for a web based system. The classifier used within PointNet is a simple feed forward network.
+                \cite{PointNet}
+                While this model has performance benefits over CNN based models (since 3D convolution is computationally expensive),
+                the input is a point cloud structure which might not be the most ideal solution (since sparse data might not be captured, dependent on which reconstruction model is used).
+
+            \paragraph{VoxNet}
+                Unlike PointNet, this model uses a voxel representation. This is ideal due to the nature of existing 3D reconstruction models from a 2D image. The accuracy of this classifier isn't the most ideal,
+                but improvements could be made such as implementing a Residual network approach (something that worked well for 2D classifiers). As a proof of concept, this model would be ideal to test whether this model would work
+                in the real world. \cite{VoxNetModel}
+            
 \section{Solution}
     % Solution to the problem
 

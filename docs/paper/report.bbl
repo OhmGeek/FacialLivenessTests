@@ -1,8 +1,8 @@
 \begin{thebibliography}{10}
 
-\bibitem{VideoQualityOriginal}
-Aizvorski.
-\newblock aizvorski/video-quality, Mar 2015.
+\bibitem{GDPRDefinitions}
+Article. 4 gdpr - definitions.
+\newblock \url{https://gdpr.eu/article-4-definitions/}, Nov 2018.
 
 \bibitem{DeepNeuralNetworkDeployability}
 A.~Canziani, A.~Paszke, and E.~Culurciello.
@@ -20,9 +20,15 @@ T.~Choudhury, B.~Clarkson, T.~Jebara, and A.~Pentland.
 \newblock In {\em Proceedings, International Conference on Audio-and
   Video-Based Person Authentication}, pages 176--181. Citeseer, March 1999.
 
+\bibitem{VideoQualityUpdated}
+R.~Collins.
+\newblock Ohmgeek/video-quality.
+\newblock \url{https://github.com/OhmGeek/video-quality}, Dec 2018.
+
 \bibitem{BIQIImplementation}
 Cvley.
-\newblock cvley/imagequality, Apr 2016.
+\newblock Image quality.
+\newblock \url{https://github.com/cvley/ImageQuality}, Apr 2016.
 
 \bibitem{3DMadDataset}
 N.~Erdogmus and S.~Marcel.
@@ -42,6 +48,12 @@ K.~He, X.~Zhang, S.~Ren, and J.~Sun.
 \newblock Deep residual learning for image recognition.
 \newblock {\em 2016 IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, pages 770--778, June 2016.
+
+\bibitem{VideoQualityOriginal}
+A.~Izvorski.
+\newblock aizvorski/video-quality: Video quality metrics, reference
+  implementation in python.
+\newblock \url{https://github.com/aizvorski/video-quality}, Mar 2015.
 
 \bibitem{3DReconstructionMethod}
 A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.
@@ -78,9 +90,9 @@ D.~Maturana and S.~Scherer.
 \newblock In {\em 2015 IEEE/RSJ International Conference on Intelligent Robots
   and Systems (IROS)}, pages 922--928, Sep. 2015.
 
-\bibitem{VideoQualityUpdated}
-OhmGeek.
-\newblock Ohmgeek/video-quality, Dec 2018.
+\bibitem{GDPRForFacialRecognition}
+P.~Misra.
+\newblock Here's how face recognition tech can be gdpr compliant, Oct 2018.
 
 \bibitem{BlinkDetectionLivenessTest}
 G.~{Pan}, L.~{Sun}, Z.~{Wu}, and S.~{Lao}.

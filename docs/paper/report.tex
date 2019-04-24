@@ -7,6 +7,7 @@
 \usepackage{durhampaper}
 \usepackage{subfigure}
 \usepackage{todonotes}
+\usepackage{glossaries}
 \usepackage{booktabs}
 \usepackage[font=small,labelfont=bf, textfont=it]{caption}
 % \usepackage{harvard}
@@ -14,6 +15,7 @@
 \usepackage{url}
 \usepackage{amsmath}
 
+\makeglossaries
 \title{Facial Liveness Testing: an approach for the web}
 \author{} % leave; your name goes into \student{}
 \student{Ryan Collins}
@@ -22,58 +24,70 @@
 
 \date{\today}
 
+
+
+
+% Now the main body of the document.
 \begin{document}
 
 \maketitle
 \begin{abstract}
 % These instructions give you guidelines for preparing the final paper.  DO NOT change any settings, such as margins and font sizes.  Just use this as a template and modify the contents into your final paper.  Do not cite references in the abstract.
-
+% However, with facial recognition comes face spoofing: methods to fool the algorithms into thinking one is someone different to who they are.
 % The abstract must be a Structured Abstract with the headings {\bf Context/Background}, {\bf Aims}, {\bf Method}, {\bf Results}, and {\bf Conclusions}.  This section should not be longer than half of a page, and having no more than one or two sentences under each heading is advised.
 \paragraph{Context}
-    With password based authentication methods being subject to many attacks, facial recognition is an alternative, not relying on memory but instead
-    on biometrics. However, with facial recognition comes face spoofing: methods to fool the algorithms into thinking one is someone different to who they are.
-    In order for facial recognition to become more prevalent on the web, facial liveness is needed. With client side code comes the risk that the input could be tampered with,
-    so server side services are ideal for security, and this leaves a few questions: what metrics are suitable for deploying in such a service, and how feasible is the construction of such a service?
+    With password based authentication methods being subject to many attacks, facial recognition is an alternative, relying on biometrics rather than remembering an easily stolen string of characters.
+    While secure facial recongition methods have been developed, spoofing is still a concern. Spoofing is where someone tries to pretend they are someone else to gain access.
+    In order for facial recognition to become more prevalent on the web, facial liveness is needed. Facial liveness methods don't check identity, but aim to detect these impersonation methods.
+    The next step towards secure facial recognition systems are facial liveness services, which provide an indication of liveness and can be integrated into applications, through APIs on the internet.
+    This paper aims to understand which liveness tests are suitable for deploying in such a service, and explains next steps and architectures to the development of a facial liveness service for the modern web.
 
 \paragraph{Aims}
     % This might belong more in the method.
 
     \begin{itemize}
-        \item Verify the results of the Image Quality Assessment test.
-        \item Assess the outcome Convolutional Neural Networks on classifying real/spoofed images.
+        \item Verify the results of the proposed Whole-Image Quality Assessment (W-IQA) test.
+        \item Assess the outcome of a new ResNet based classifier on classifying real/spoofed images.
         \item Design and implement a new 3D based liveness test, aimed to prevent mask attacks.
-        \item Determine the outcome of fusing the three above methods together, and how successful this is.
+        % \item Determine the outcome of fusing the three above methods together, and how successful this is.
     \end{itemize}
 
 \paragraph{Method}
    \begin{itemize}
-        \item The image quality assessment test was implemented in Python to consider the image as a whole
+        \item The W-IQA liveness test was implemented in Python to consider the image as a whole.
         \item A CNN based 2D liveness test was implemented in Python to classify facial structure.
-        \item A 3D based liveness test was proposed and investigated as to its usefulness.
+        \item A 3D based liveness test to detect mask attacks was designed and implemented, and assessed based on practicality for the web.
    \end{itemize}
 \paragraph{Results}
     \begin{itemize}
-        \item Image Quality Assessment test performed well, yielding 87\% accuracy over the Replay-Attack test dataset.
+        \item W-IQA test performed well, yielding 87\% accuracy over the Replay-Attack test dataset.
         \item CNN based 2D test performed adequately, yielding 71\% accuracy over the Replay-Attack test dataset.
         \item The VoxNet based 3D liveness test performed poorly, and had various performance issues that means it's not currently practical to deploy.
     \end{itemize}
 \paragraph{Conclusions}
-    Overall, both the Image Quality assessment and CNN based 2D test are ideal in a web-based liveness test as a service system. Image Quality based metric individually yields
+    Overall, both the Whole Image Quality assessment and CNN based 2D test are metrics to include in a liveness-as-a-service system.  The W-IQA test individually yields
     impressive results, but the CNN based metric would perform well when working together with other metrics. The CNN based metric could be further improved by adjusting preprocessing,
     and using a deeper ResNet pretrained model. The VoxNet model has also shown that this method is a poor liveness test for the existing use case, due to high computational requirements.
     In addition, the speed at which queries can be answered shows that these can reasonably be used in a web system without extensive delays in processing, or without requiring any additional hardware (aside from a camera).
 \end{abstract}
 
 \begin{keywords}
-Facial liveness, convolutional neural networks, image quality metrics
+Facial liveness, convolutional neural networks, image quality metrics, residual networks, anti-spoofing
 \end{keywords}
 
 \section{Introduction}
     % What is the project about?
-    Currently, username and password authentication is commonplace throughout the web. However, username and password
-    based authentication systems have a number of problems. Some common passwords can be broken using dictionary attacks,
-    especially if they consist partially or entirely of a word in a standard dictionary. Furthermore, the process of shoulder surfing is possible (watching out
-    for someone's password, and how they type it).
+    % Currently, username and password authentication is commonplace throughout the web. However, username and password
+    % based authentication systems have a number of problems. Some common passwords can be broken using dictionary attacks,
+    % especially if they consist partially or entirely of a word in a standard dictionary. Furthermore, the process of shoulder surfing is possible (watching out
+    % for someone's password, and how they type it).
+    Currently, username and password authentication is commonplace throughout the web. However, this method has serious security concerns, being easily broken through dictionary attacks,
+    or shoulder surfing. Facial recognition authentication doesn't have either of these problems, but introduces the risk of stolen identity through face spoofing, more specifically expressed
+    in a quotation from Adam Schwartz, a lawyer with the Electronic Frontier Foundation speaking to NPR: "We can change our bank account numbers, we can even change our names, but we cannot change our faces.
+    And once the information is out there, it could be misused". \cite{NPRArticle} In order to reduce the risk of stolen identities, a system to detect potential spoofing attempts is needed.
+    Providing facial liveness systems work correctly, the ability for criminals to steal people's faces would be reduced, making facial recognition more ideal for authentication on the web. The next step
+    to making facial recognition more secure and mainstream, the implementation of a facial liveness service is necessary: that way developers won't need to worry about implementing their own liveness tests
+    and can instead focus on the process of building their software.
 
     % TODO this needs to be readjusted to make it sound more formal and clear.
    While there are different measures of detecting liveness, each method is specialized towards defending against a given attack. The aim of this project is to understand
@@ -83,7 +97,8 @@ Facial liveness, convolutional neural networks, image quality metrics
     % TODO might be worth explaining that we are focusing here on only images, rather than video. Explain why...
 
     In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
-    We provide a promising new liveness test using ResNet based networks.
+    We provide a promising new liveness test using ResNet based networks. We also adapt an existing Image Quality Assessment test for use with whole image classification, rather
+    than a face based method.
     % In this context, we propose 
 
 \section{Related Work}
@@ -776,6 +791,7 @@ Facial liveness, convolutional neural networks, image quality metrics
     In addition, the improvements to the existing system were shown, and potential GDPR considerations were shown on how to implement such a system to better comply with the regulation. In building of a system for commercial use, it's important
     to note that licensing on training and testing datasets would require new datasets be used.
 
+\printglossary
 \bibliographystyle{abbrv}
 \bibliography{report}
 

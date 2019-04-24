@@ -66,6 +66,14 @@ Keras-Team.
 \newblock Tensorflow backend - bug in model.\_make\_predict\_function(...),
   issue \#2397, keras-team/keras, Apr 2016.
 
+\bibitem{NPRArticle}
+A.~Khalid.
+\newblock Facial recognition may boost airport security but raises privacy
+  worries.
+\newblock
+  \url{https://www.npr.org/sections/alltechconsidered/2017/06/26/534131967/facial-recognition-may-boost-airport-security-but-raises-privacy-worries?t=1556103517110},
+  Jun 2017.
+
 \bibitem{AlexNet}
 A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
 \newblock Imagenet classification with deep convolutional neural networks.

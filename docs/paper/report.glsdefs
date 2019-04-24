@@ -1,0 +1,30 @@
+\ifglsentryexists{cnn}{}%
+{%
+\gls@defglossaryentry{cnn}%
+{%
+name={CNN},%
+sort={CNN},%
+type={main},%
+first={CNN},%
+firstplural={CNNs},%
+text={CNN},%
+plural={CNNs},%
+description={Convolutional Neural Network},%
+descriptionplural={Convolutional Neural Network},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

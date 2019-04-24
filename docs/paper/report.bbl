@@ -1,0 +1,150 @@
+\begin{thebibliography}{10}
+
+\bibitem{GDPRDefinitions}
+Article. 4 gdpr - definitions.
+\newblock \url{https://gdpr.eu/article-4-definitions/}, Nov 2018.
+
+\bibitem{DeepNeuralNetworkDeployability}
+A.~Canziani, A.~Paszke, and E.~Culurciello.
+\newblock An analysis of deep neural network models for practical applications.
+\newblock {\em arXiv preprint arXiv:1605.07678}, 2016.
+
+\bibitem{ReplayAttackDataset}
+I.~Chingovska, A.~Anjos, and S.~Marcel.
+\newblock On the effectiveness of local binary patterns in face anti-spoofing.
+\newblock september 2012.
+
+\bibitem{SFMClassifier}
+T.~Choudhury, B.~Clarkson, T.~Jebara, and A.~Pentland.
+\newblock Multimodal person recognition using unconstrained audio and video.
+\newblock In {\em Proceedings, International Conference on Audio-and
+  Video-Based Person Authentication}, pages 176--181. Citeseer, March 1999.
+
+\bibitem{VideoQualityUpdated}
+R.~Collins.
+\newblock Ohmgeek/video-quality.
+\newblock \url{https://github.com/OhmGeek/video-quality}, Dec 2018.
+
+\bibitem{BIQIImplementation}
+Cvley.
+\newblock Image quality.
+\newblock \url{https://github.com/cvley/ImageQuality}, Apr 2016.
+
+\bibitem{3DMadDataset}
+N.~Erdogmus and S.~Marcel.
+\newblock Spoofing in 2d face recognition with 3d masks and anti-spoofing with
+  kinect.
+\newblock september 2013.
+
+\bibitem{ImageQualityAssessmentTest}
+J.~Galbally, S.~Marcel, and J.~Fierrez.
+\newblock Image quality assessment for fake biometric detection: Application to
+  iris, fingerprint, and face recognition.
+\newblock {\em IEEE Transactions on Image Processing}, 23(2):710--724, Feb
+  2014.
+
+\bibitem{DeepResidualNetworks}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
+\newblock Deep residual learning for image recognition.
+\newblock {\em 2016 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 770--778, June 2016.
+
+\bibitem{VideoQualityOriginal}
+A.~Izvorski.
+\newblock aizvorski/video-quality: Video quality metrics, reference
+  implementation in python.
+\newblock \url{https://github.com/aizvorski/video-quality}, Mar 2015.
+
+\bibitem{3DReconstructionMethod}
+A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.
+\newblock Large pose 3d face reconstruction from a single image via direct
+  volumetric cnn regression.
+\newblock {\em International Conference on Computer Vision}, September 2017.
+
+\bibitem{KerasVoxNetBug}
+Keras-Team.
+\newblock Tensorflow backend - bug in model.\_make\_predict\_function(...),
+  issue \#2397, keras-team/keras, Apr 2016.
+
+\bibitem{NPRArticle}
+A.~Khalid.
+\newblock Facial recognition may boost airport security but raises privacy
+  worries.
+\newblock
+  \url{https://www.npr.org/sections/alltechconsidered/2017/06/26/534131967/facial-recognition-may-boost-airport-security-but-raises-privacy-worries?t=1556103517110},
+  Jun 2017.
+
+\bibitem{AlexNet}
+A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In F.~Pereira, C.~J.~C. Burges, L.~Bottou, and K.~Q. Weinberger,
+  editors, {\em Advances in Neural Information Processing Systems 25}, pages
+  1097--1105. Curran Associates, Inc., 2012.
+
+\bibitem{FaceSpoofingAttacksStudy}
+S.~Kumar, S.~Singh, and J.~Kumar.
+\newblock A comparative study on face spoofing attacks.
+\newblock 05 2017.
+
+\bibitem{VRNTorchToKeras}
+P.~Lorenz.
+\newblock Vrn torch to keras.
+\newblock \url{https://github.com/dezmoanded/vrn-torch-to-keras}, October 2018.
+
+\bibitem{VoxNetModel}
+D.~Maturana and S.~Scherer.
+\newblock Voxnet: A 3d convolutional neural network for real-time object
+  recognition.
+\newblock In {\em 2015 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems (IROS)}, pages 922--928, Sep. 2015.
+
+\bibitem{GDPRForFacialRecognition}
+P.~Misra.
+\newblock Here's how face recognition tech can be gdpr compliant, Oct 2018.
+
+\bibitem{BlinkDetectionLivenessTest}
+G.~{Pan}, L.~{Sun}, Z.~{Wu}, and S.~{Lao}.
+\newblock Eyeblink-based anti-spoofing in face recognition from a generic
+  webcamera.
+\newblock In {\em 2007 IEEE 11th International Conference on Computer Vision},
+  pages 1--8, Oct 2007.
+
+\bibitem{Patel2016CrossDatabaseFA}
+K.~Patel, H.~Han, and A.~K. Jain.
+\newblock Cross-database face antispoofing with robust feature representation.
+\newblock In {\em CCBR}, October 2016.
+
+\bibitem{PointNet}
+C.~R. Qi, H.~Su, K.~Mo, and L.~J. Guibas.
+\newblock Pointnet: Deep learning on point sets for 3d classification and
+  segmentation.
+\newblock {\em arXiv preprint arXiv:1612.00593}, 2016.
+
+\bibitem{GoogLeNet}
+C.~Szegedy, W.~Liu, Y.~Jia, P.~Sermanet, S.~Reed, D.~Anguelov, D.~Erhan,
+  V.~Vanhoucke, and A.~Rabinovich.
+\newblock Going deeper with convolutions.
+\newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, 2015.
+
+\bibitem{NUAADataset}
+X.~Tan, Y.~Li, J.~Liu, and L.~Jiang.
+\newblock Face liveness detection from a single image with sparse low rank
+  bilinear discriminative model.
+\newblock In {\em ECCV}, 2010.
+
+\bibitem{LivenessTestFaceFlashing}
+D.~Tang, Z.~Zhou, Y.~Zhang, and K.~Zhang.
+\newblock Face flashing: a secure liveness detection protocol based on light
+  reflections.
+\newblock In {\em 25th Annual Network and Distributed System Security
+  Symposium, {NDSS} 2018, San Diego, California, USA, February 18-21, 2018},
+  August 2018.
+
+\bibitem{SGDBetterThanAdamForImageClassification}
+A.~C. Wilson, R.~Roelofs, M.~Stern, N.~Srebro, and B.~Recht.
+\newblock The marginal value of adaptive gradient methods in machine learning.
+\newblock In I.~Guyon, U.~V. Luxburg, S.~Bengio, H.~Wallach, R.~Fergus,
+  S.~Vishwanathan, and R.~Garnett, editors, {\em Advances in Neural Information
+  Processing Systems 30}, pages 4148--4158. Curran Associates, Inc., 2017.
+
+\end{thebibliography}

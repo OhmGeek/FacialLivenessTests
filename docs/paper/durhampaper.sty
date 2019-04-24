@@ -1,0 +1,103 @@
+% ------------------------------------------------
+%
+% $durhampaper.sty, v1.0 nov 2008 $
+%
+% By David Budgen
+%
+% ------------------------------------------------
+%
+% This .sty file is intended for Durham University Computer Science
+% undergraduate papers
+%
+% Use with LaTeX2e
+%
+%
+% -------------------------------------------------
+
+\typeout{Durham CS undergraduate paper style 'durhampaper.sty'.}
+
+% set paper dimensions
+
+\addtolength{\textwidth}{2.5cm}
+\addtolength{\oddsidemargin}{-1.0cm}
+\addtolength{\topmargin}{-1.5cm}
+\addtolength{\textheight}{2.5cm}
+
+
+% Add student/supervisor fields
+
+\def\@student{\relax}
+\newcommand{\student}[1]{\gdef\@student{#1}}
+
+\def\@supervisor{\relax}
+\newcommand{\supervisor}[1]{\gdef\@supervisor{#1}}
+
+% Add degree programme
+
+\def\@degree{\relax}
+\newcommand{\degree}[1]{\gdef\@degree{#1}}
+
+%now redefine the title format
+
+\renewcommand{\maketitle}{\par
+  \begingroup
+  \begin{center}
+    {\LARGE \@title \par}%
+    \vskip 10pt%
+    \if\@student\relax\else\normalsize{Student Name: }\@student\par\fi
+    \vskip 3pt
+    \if\@supervisor\relax\else\normalsize{Supervisor Name: }\@supervisor\par\fi
+    \vskip 5pt
+    \if\@degree\relax\else\small{Submitted as part of the degree of }\@degree { to the} \par
+    \vskip 5pt
+    {Board of Examiners in the Department of Computer Sciences, Durham University} \par\fi
+    \normalsize\@date\par
+  \end{center}
+  \endgroup
+}
+
+% define the format for the abstract
+
+\def\abstract
+{%
+\vspace*{11pt}
+\noindent{\small\bf\em Abstract --- }%
+\small
+}
+
+\def\endabstract
+{
+% additional space
+\vspace*{11pt}
+}
+
+% define the format for the keywords
+
+\def\keywords
+{%
+\vspace*{6pt}
+\noindent{\bf\em Keywords --- }%
+\small
+}
+
+\def\endkeywords
+{
+\vspace{11pt}
+}
+
+
+% define the chosen form of section headings
+
+\def\section{\@startsection {section}{1}{\z@}
+{14pt plus 2pt minus 2pt}{14pt plus 2pt minus 2pt}{\centering\bf\uppercase}}
+
+\def\thesection{\Roman{section}}
+
+\def\subsection{\@startsection {subsection}{1}{\z@}
+{13pt plus 2pt minus 2pt}{13pt plus 2pt minus 2pt}{\bf\em}}
+
+\def\thesubsection{\Alph{subsection}}
+
+
+
+

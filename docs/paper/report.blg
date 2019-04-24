@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: report.aux
+The style file: abbrv.bst
+Database file #1: report.bib
+Warning--to sort, need author or key in GDPRDefinitions
+Warning--empty booktitle in ReplayAttackDataset
+Warning--empty booktitle in 3DMadDataset
+Warning--empty booktitle in FaceSpoofingAttacksStudy
+You've used 25 entries,
+            2118 wiz_defined-function locations,
+            660 strings with 8947 characters,
+and the built_in function-call counts, 8384 in all, are:
+= -- 759
+> -- 458
+< -- 6
++ -- 181
+- -- 153
+* -- 541
+:= -- 1364
+add.period$ -- 75
+call.type$ -- 25
+change.case$ -- 146
+chr.to.int$ -- 0
+cite$ -- 29
+duplicate$ -- 329
+empty$ -- 685
+format.name$ -- 153
+if$ -- 1794
+int.to.chr$ -- 0
+int.to.str$ -- 25
+missing$ -- 17
+newline$ -- 125
+num.names$ -- 52
+pop$ -- 225
+preamble$ -- 1
+purify$ -- 121
+quote$ -- 0
+skip$ -- 249
+stack$ -- 0
+substring$ -- 329
+swap$ -- 86
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 100
+warning$ -- 4
+while$ -- 66
+width$ -- 27
+write$ -- 253
+(There were 4 warnings)

@@ -658,6 +658,19 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         \label{ResultsTable}
     \end{table}
 
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}[t]{lcc}
+            \toprule
+             & \textbf{Image Quality Liveness Test} & \textbf{2D CNN Liveness Test}\\
+             \midrule
+            \textbf{Time to load (s)} & 0.00104 & 7.44\\
+            \textbf{Time to classify 1 image (s)} & 1.40 & 1.04\\
+            \bottomrule
+        \end{tabular}
+        \caption{Table of results, showing the wall clock time for the load and predict phases of both liveness tests.}
+        \label{WallClockResultsTime}
+    \end{table}
     % CNN table: 4317 & 83 & 1357 & 283
     \subsection{Image Quality Liveness Test}
         Overall, the Image Quality Test performed as expected with reference to the initial paper. Unlike the original paper however, instead of isolating the face
@@ -676,8 +689,9 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         % False Positives:  25
         % False Negatives:  1
         % True Positives:  99
-        \todo{Add time to conduct computation here (without multithreading) - for predictions only, not training}
-        \todo{show an example image of the system at work with image quality liveness}
+        While accuracy is important, the time taken for the model to classify a single image is also important. The LDA method took 1.40 seconds to classify a single 2D image, which is within the specified 2 seconds bound.
+        Also, the model itself is very small and therefore can be loaded in a very minute amount of time (0.001 seconds). The bulk of the time required is in the calculation of the metrics, rather than the classification process,
+        and therefore future speed optimisations could consider optimising the calculation of the metrics.
 
     \subsection{2D Convolutional Neural Network Liveness Test}
 
@@ -688,10 +702,8 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         false negatives, while potentially annoying to the end user, are an ideal result compared to false positives (which would imply that someone is real when they are fake). While false positives still exist, their number is small compared to the number of negatives.
         Furthermore, the number of positives is small, meaning that this model leans on the side of caution, something that is ideal. Therefore, this model would be secure and accurate enough with further training (and potentially replacing ResNet50 with a deeper ResNet model).
 
-        However, in order to be deployable, the processing time needs to be manageable. The processing time was measured on a standard desktop computer (the specifications of which were specified in the Solution section).
-        \todo{Insert time here to isolate face/preprocess}
-        \todo{Insert time here to conduct neural network prediction}
-        \todo{Insert system performance (specs of Lexo)}
+        The time taken to load the model from memory was the main bottleneck in terms of computational performance, as loading the model into memory for the first time took 7.44 seconds. However, once the model was loaded,
+        the time taken to predict a single image is very small, on average taking 1.04 seconds, which is even smaller than the W-IQA test, and almost half the specified 2 second time, which is ideal.        
         % Confusion Matrix = [[4317  283]
 %           [1357   83]]
 
@@ -729,8 +741,8 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             variable of the classifier (using a figure representing 'fakeness' rather than realness). This would hopefully lead to more false negatives,
             which are inconvenient but more secure for the system.
 
-            In terms of computational performance, the metric did take slightly longer than expected to process a single image, but this figure was still within
-            tolerences. In production, the computation of many metrics would be improved due to better implementations.
+            In terms of computational performance, a 1.40 second time for classifying a single image is within the limits of the expected 2 seconds, and could be improved further
+            with parallel based methods, and not relying on libsvm for the BIQI metric.
         \paragraph{2D CNN}
             The 2D CNN Test performed adequately. While the accuracy was lower than expected (at 71\%), the classifier itself still performed better than random.
             Furthermore, the model was very good at classifying true negatives, with a total percentage of 71.5\% being true negatives. While the model itself had
@@ -739,7 +751,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             some images without a detectable face would have been left to classify the entire image, just resized to the input size). The less noise in the input data, the better the potential
             results in the future. Furthermore, using a larger ResNet model, such as ResNet-101 could lead to better results.
 
-            In terms of performance, classifying an image is very quick, but the time taken to load the model is what takes the most time (due to memory needing to be allocated and written to).
+            In terms of performance, classifying an image is very quick, but the time taken to load the model is what took the most time (due to memory needing to be allocated and written to).
             In production, providing a model was preloaded and ready to accept input, the computation time of this metric would be very fast, and therefore be ideal for inclusion in a liveness web service.
         \paragraph{3D VoxNet Liveness Test}
             As seen from the results, this method of liveness test isn't feasible. With extra training, while the accuracy of the model could be improved, the

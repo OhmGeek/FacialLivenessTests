@@ -110,34 +110,39 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         Photo and Video Attacks are both 2D spoofing attacks, which involve using a previously retrieved photo/video, and holding it in front of a camera. In the case of photo attacks,
         a single photo is used, where in video, some video would be played back on a screen. \cite{FaceSpoofingAttacksStudy}.
 
-        With video-based facial recognition systems, motions of some form can be used to determine whether the person is real or spoofed, such as blinking, head movement and others.
+        With video-based facial recognition systems, user motion is used to determine whether the person is real or spoofed, such as blinking, head movement and others.
         % TODO "As shown in ..., a blinking method using ... yields ... results
         % Head movement methods shown in .... yield ... by using ...
         % Face flashing methods, recently proposed in ..., yield impressive results, but require a screen and the results vary based on screen size.
-        In the method defined in \cite{SFMClassifier}, structure from motion was used on the video to produce a 3D model of a user, with the depth channel being used to determine whether a person is real, or whether it's simply an image.
-        They also extended this by fusing this method with audio verification. The fusion of multiple methods provides greater reliability. However, while SFM works with video, it doesn't work with a single image,
-        and it also doesn't work if a video with little motion is provided. This fusion was completed using a Bayesian Network 
+        In the method defined in \cite{SFMClassifier}, structure from motion (SFM) was used on a video to produce a 3D model of a user, with the depth channel being used to determine whether a person is real, or whether it's simply an image.
+        This was extended further by fusing the SFM based method with audio verification. The fusion of multiple methods provides greater reliability. However, while SFM works with video, it doesn't work with a single image,
+        and it also doesn't work if a video with little motion is provided. This fusion was completed using a Bayesian Network.
 
-        While motion based methods are video-only, quality based methods are useful for both videos and images (either by extracting key video frames or using all video frames and combining the results).
+        While motion based methods require a video input, quality based methods can be used for both video and image input (either by extracting key video frames or using all video frames and combining the results).
         %TODO explain old image quality methods, and their results and how they work. What's bad/what's good?
 
-        While there are various quality metrics that have been used, combining a large number of them can yield some increased accuracy. By combining 25 different metrics,
-        yielding the resulting metric values into a large vector, and using that as input to a classifier (an LDA), this yields fairly high accuracy. \cite{ImageQualityAssessmentTest}.
+        Since image quality is a major factor in detecting 2D replay attacks, understanding the image quality with respect to different image quality metrics can yield a rough liveness estimate.
+        An extension of this basic method was discussed in \cite{ImageQualityAssessmentTest} by combining 25 different image quality metrics into a vector, and using this as input to a classifier (an LDA).
+        As shown from the work, the accuracy of such a metric is high, and the metric calculations aren't very computationally intensive. \cite{ImageQualityAssessmentTest}.
+        
         This is an example of combining many items to yield better results. While each metric on its own isn't that great, using them all together yields better results.
         
-        Recently, deep learning based approaches have been applied to facial liveness (both video and image based).
+        Recently, deep learning based approaches have been applied to the task of facial liveness classification.
 
-        In particular, Convolutional Neural Networks are a key approach to this to learn features (e.g. texture based methods).
-        Due to the existing datasets available, training CNNs has been difficult due to lack of data where over-fitting has been common.
+        In particular, Convolutional Neural Networks are a key approach, since they can be used to learn a variety of features including face structure,
+        texture, and other potential suspicious visual glitches which would be obtained with face spoofing.
         The method proposed in \cite{Patel2016CrossDatabaseFA} uses Caffe-Net, inputting both the full image along with the isolated face.
         The output yielded general texture differences, as well as specific facial texture differences. Another interesting idea proposed
         in this paper is the fusion of two algorithms together to produce an outcome, therefore reducing the false reject rate.
         %Cite above wiht http://vipl.ict.ac.cn/uploadfile/upload/2017020711382879.pdf
         
         \subsubsection{General 2D image classification models}
-        Outside of the facial liveness field, image classification on the ImageNet dataset has proven popular and yielded some fairly good
-        results. Since these models have already been deployed in the real world, and the goal of image classification is common with the
-        goal of liveness detection, these models could be a good fit for adapting to liveness applications. Since facial liveness testing is
+        One major problem with training CNNs in the past has been the risk of overfitting due to lack of data when training from scratch, but utilising pretrained models would help reduce this risk.
+        Facial liveness is an image classification problem, and therefore adapting an existing image classification model to the job of facial liveness might yield good results. 
+
+        One major research area has been the classification of objects based on a 2D image, which uses the well-known ImageNet dataset. The models produced for this purpose have improved in accuracy,
+        while also being reasonably efficient in terms of computation time to be deployable on the web. Since these models have already been deployed in the real world, and the goal of image classification
+        is common with the goal of liveness detection, these models could be a good fit for adapting to liveness applications. Since facial liveness testing is
         an image classification problem, these models are of importance.
         
         \paragraph{AlexNet} 
@@ -165,19 +170,20 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
         
         \paragraph{Residual Networks}
-        Another key problem with deep convolutional networks on Image Classification is the vanishing gradient problem, where early layers have very small gradients during the training process and
-        are therefore much more difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block.
+        Another key problem with deep convolutional networks on when used for image classification is the vanishing gradient problem. This occurs when early layers have very small gradients during the training process and
+        making the model very difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block.
         The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficent than VGG in terms of computational power needed. \cite{DeepResidualNetworks}
         While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
         This model is very ideal for our application, as it acts as an ideal compromise between accuracy and computational requirements, yielding fairly good accuracy for our security focused perspective, while also
         ensuring that the operational cost (in terms of time, and cost for hardware) isn't too high, compared with other models such as VGG.
-        \todo{Might want to explain how Residual Blocks work? Or maybe not.}
+        % \todo{Might want to explain how Residual Blocks work? Or maybe not.}
 
-        In terms of Top-1\% accuracy (the accuracy with the top output in a multiclass problem) shown in Figure \ref{Top1AccuracyOverNetwork}, newer version of the Inception model perform the best,
-        with ResNet based classifiers not too far behind. AlexNet performance was fairly poor. Now compare this with the operations (the required computational power for each model), which is shown in Figure \ref{Top1AccuracyOverOperations}.
-        AlexNet and GoogLeNet require fairly few operations, in the $<10$ G-Ops range. The same is true for smaller ResNet based models (e.g. ResNet 50 and 34).
-        Meanwhile, VGG requires a fairly large amount of operations ($>30$ G-Ops), as do later versions of Inception.
-
+        One important metric to analyse the performance of a model is the Top-1 accuracy figure. This metric represents the class with the highest probability in the model must be exactly the expected answer. 
+        The Top-1 accuracy scores for the models outlined above are shown in Figure \ref{Top1AccuracyOverNetwork}. These results show that a newer version of the Inception model perform the best,
+        with ResNet based classifiers performing fairly well too. AlexNet performance on the other hand was fairly poor. While accuracy was important, the number of operations is also important, as this will affect how easily the model can be used 
+        in a real-world system. Based on the results shown in Figure \ref{Top1AccuracyOverOperations}, AlexNet and GoogLeNet are shown to require very few operations ($<10$ G-Ops),
+        with a similar result being yielded for ResNet 50 and ResNet 34. On the other hand, VGG models require a large number of operations for a similar accuracy, requiring $>30$ G-Ops.
+        This fact is also true for Inception models.
 
         \begin{figure}
             \centering
@@ -318,7 +324,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         In addition to data normalisation, it also provided a method of reducing RAM usage, therefore allowing larger liveness test models to be created. This is because data is only fetched when needed
         from the hard drive, rather than loading the entire dataset into RAM at once.
 
-        \todo{Diagram of Dataset management?}
+        % \todo{Diagram of Dataset management?}
 
         \subsubsection{Neural Network Infrastructure}
             % Keras to simplify models, tensorflow as the underlying backend.

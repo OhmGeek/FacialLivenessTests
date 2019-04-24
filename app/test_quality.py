@@ -1,23 +1,20 @@
-from datasets.replayattack import ReplayAttackDataset
-from liveness.generic import DummyLivenessTest
-from liveness.quality.model import QualityLDAModel
-from testframework.tests import TestDummyCase
-from testframework.runner import TestRunner
-from liveness.quality.metrics.factory import metric_factory
-from liveness.quality.metric_vector import DefaultMetricVectorCreator
-import cv2
 import logging
+
 import numpy as np
 from sklearn.metrics import confusion_matrix
 
+from datasets.replayattack import ReplayAttackDataset
+from liveness.quality.model import QualityLDAModel
+
+
 def main():
     # first, set log level to display everything we want
-    # TODO: change this to warn for production.
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.WARN)
     logger = logging.getLogger()
 
     print("Running test.py")
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replay-attack/", mode='devel')
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replay-attack/",
+                                  mode='devel')
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")[:10]
@@ -45,6 +42,7 @@ def main():
     print("False Positives: ", fp)
     print("False Negatives: ", fn)
     print("True Positives: ", tp)
+
 
 if __name__ == "__main__":
     main()

@@ -1,18 +1,12 @@
-from datasets.replayattack import ReplayAttackDataset
-from liveness.generic import DummyLivenessTest
-from liveness.cnn.residual.model import ResidualNetwork
-from testframework.tests import TestDummyCase
-from testframework.runner import TestRunner
-from liveness.quality.model import QualityLDAModel
-from liveness.quality.metric_vector import DefaultMetricVectorCreator
-import cv2
 import logging
-import numpy as np
-from sklearn.metrics import confusion_matrix
-from keras.backend import manual_variable_initialization
-from train_cnn import pre_process_fn, preprocess_fn_all
-import matplotlib.pyplot as plt
 import time
+import numpy as np
+from keras.backend import manual_variable_initialization
+from datasets.replayattack import ReplayAttackDataset
+from liveness.cnn.residual.model import ResidualNetwork
+from liveness.quality.model import QualityLDAModel
+from preprocessing.face_extraction import pre_process_fn
+
 
 def main():
     times_str = ""
@@ -22,7 +16,8 @@ def main():
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger()
 
-    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replay-attack/", mode='test')
+    dataset = ReplayAttackDataset(logging.getLogger("c.o.datasets.replayattack"), "/home/ryan/datasets/replay-attack/",
+                                  mode='test')
     dataset.pre_process()
 
     imposter_set = dataset.read_dataset("attack")[:50]
@@ -35,10 +30,10 @@ def main():
     model.load('/home/ryan/Documents/dev/LivenessTests/models/cnn_v3.h5')
     stop_time = time.time()
     times_str += "time to load CNN model: " + str((stop_time - start_time)) + "\n"
-    
+
     # Merge the data together.
     input_x = np.concatenate((imposter_set, client_set))
-    
+
     resnet_times = []
     for img in input_x:
         start_time = time.time()
@@ -49,7 +44,7 @@ def main():
     # Now we get the average time.
     average_resnet_time = sum(resnet_times) / len(resnet_times)
     times_str += "ResNet 1 image classification time: " + str(average_resnet_time) + "\n"
-     
+
     ## Now do the same with the Quality Metric.
     model = None
     # Now we measure loading of LDA.
@@ -60,7 +55,7 @@ def main():
 
     time_to_load_lda = end_time - start_time
     times_str += "LDA load time: " + str(time_to_load_lda) + "\n"
-    
+
     lda_times = []
     for img in input_x:
         start_time = time.time()
@@ -72,13 +67,13 @@ def main():
     average_lda_time = sum(lda_times) / len(lda_times)
 
     times_str += "LDA predict time: " + str(average_lda_time) + "\n"
-    
 
-    dataset.close() # Important, to close the file.
+    dataset.close()  # Important, to close the file.
 
     print()
     print()
     print(times_str)
+
 
 if __name__ == "__main__":
     main()

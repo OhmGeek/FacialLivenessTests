@@ -1,17 +1,14 @@
-from datasets.replayattack import ReplayAttackDataset
-from liveness.generic import DummyLivenessTest
-from liveness.cnn.residual.model import ResidualNetwork
-from testframework.tests import TestDummyCase
-from testframework.runner import TestRunner
-from liveness.quality.model import QualityLDAModel
-from liveness.quality.metric_vector import DefaultMetricVectorCreator
-import cv2
 import logging
-import numpy as np
-from sklearn.metrics import confusion_matrix
-from keras.backend import manual_variable_initialization
-from train_cnn import pre_process_fn, preprocess_fn_all
+
 import matplotlib.pyplot as plt
+import numpy as np
+from keras.backend import manual_variable_initialization
+
+from datasets.replayattack import ReplayAttackDataset
+from liveness.cnn.residual.model import ResidualNetwork
+from liveness.quality.model import QualityLDAModel
+from preprocessing.face_extraction import preprocess_fn_all
+
 
 def main():
     manual_variable_initialization(True)

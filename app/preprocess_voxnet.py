@@ -8,7 +8,8 @@ import os
 import numpy as np
 import tensorflow as tf
 
-import helper
+from preprocessing import suod_helper
+
 # import utils.visualization as viewer
 
 FLAGS = tf.app.flags.FLAGS
@@ -53,12 +54,12 @@ if __name__=='__main__':
             file_path = data_dir + file_name
             print('processsing {}'.format(file_name))
 
-            cloud = helper.load_points_from_bin(file_path)
+            cloud = suod_helper.load_points_from_bin(file_path)
 
             # 12 perform better than 18
             aug_steps = 12
             # VoxelNet data augmentation make VoxNet perform better accuracy = 0.6762148 > 0.6769073
-            cloud_list = helper.aug_data(cloud, aug_steps)
+            cloud_list = suod_helper.aug_data(cloud, aug_steps)
             # cloud_list = helper.aug_data(cloud, aug_steps, uniform_rotate_only=True)
 
             # save pre-process pointcloud voxel
@@ -68,7 +69,7 @@ if __name__=='__main__':
 
             for points in cloud_list:
                 voxels, inside_points = \
-                    helper.voxelize(points, voxel_size=(24,24,24), padding_size=(32,32,32), resolution=0.1)
+                    suod_helper.voxelize(points, voxel_size=(24, 24, 24), padding_size=(32, 32, 32), resolution=0.1)
 
                 # if FLAGS.viz:
                 #     viewer.plot3DVoxel(voxels)

@@ -1,13 +1,13 @@
 """
 3D reconstruction of faces from 2D images: a test.
 """
-import visvis as vv
-import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-from liveness.vox.reconstruction.vrn import FaceVoxelBuilder
 import logging
 import time
+
+import cv2
+import matplotlib.pyplot as plt
+
+from liveness.vox.reconstruction.vrn import FaceVoxelBuilder
 
 builder = FaceVoxelBuilder(logging.Logger(""))
 

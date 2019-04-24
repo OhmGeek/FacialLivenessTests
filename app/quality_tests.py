@@ -1,8 +1,8 @@
-# from metric_vector import DefaultMetricVectorCreator
 from liveness.quality.metrics.factory import metric_factory
 from liveness.quality.metric_vector import DefaultMetricVectorCreator
 import cv2
 import logging
+
 
 def main():
     logger = logging.getLogger()
@@ -10,8 +10,8 @@ def main():
     image = cv2.imread('/home/ryan/datasets/nuaa/ClientRaw/0001/0001_00_00_02_2.jpg')
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    gaussian_image = cv2.GaussianBlur(image,(5,5),0)
-    
+    gaussian_image = cv2.GaussianBlur(image, (5, 5), 0)
+
     metrics_names = [
         "ad",
         "biqi",

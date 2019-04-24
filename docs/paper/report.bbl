@@ -86,6 +86,13 @@ S.~Kumar, S.~Singh, and J.~Kumar.
 \newblock A comparative study on face spoofing attacks.
 \newblock 05 2017.
 
+\bibitem{liu_liu_2017}
+D.~Liu and D.~Liu.
+\newblock A practical guide to relu.
+\newblock
+  \url{https://medium.com/tinymind/a-practical-guide-to-relu-b83ca804f1f7}, Nov
+  2017.
+
 \bibitem{VRNTorchToKeras}
 P.~Lorenz.
 \newblock Vrn torch to keras.

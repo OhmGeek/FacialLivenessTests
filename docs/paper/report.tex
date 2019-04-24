@@ -452,11 +452,14 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 Given a bounding box $B = (top, bottom, left, right)$, a new bounding box $B'$ which has square dimensions can be created by finding the square
                 side width $s$. Mathematically, this is defined as:
 
-                $$s = Max(bottom - top, right - left)$$
+                $$s = Max(bottom - top, right - left)$$\\
+
 
                 Using this, the new bounding box is defined as:
 
-                $$B' = (top, top + s, left, right + s)$$.
+
+                $$B' = (top, top + s, left, right + s)$$
+
 
                 By following this method, the model appeared to perform better overall, and produced non-skewed images.
 
@@ -505,12 +508,11 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
                 While all inputs were non-negative, weights could lead to these values becoming negative. There is a known problem called "dying ReLU", where some neurons output 0
                 due to having a negative input (the weights and inputs for all input neurons sum to a non-positive value). Therefore, the model was able to learn 0 (fake) easily, but
-                couldn't learn real (1.0) at all.
+                couldn't learn real (1.0) at all. \cite{liu_liu_2017}
 
                 This problem was counteracted by changing activation function from reLU to Leaky ReLU. Unlike reLU, leaky relu isn't zero when negative. It requires an input value $\alpha$, which is used
-                as the gradient of the line when less than zero. For this model, $\alpha=0.3$. The activation function is defined formally as:
+                as the gradient of the line when less than zero. \cite{liu_liu_2017} For this model, $\alpha=0.3$. The activation function is defined formally as:
                 
-                \todo{Find source for this, boht Relu and LeakyRELu}
                 \begin{equation}
                     Activation(x) =
                     \begin{cases}
@@ -551,7 +553,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                     Initially, while the model had a single neuron output, the binary cross entropy loss function was used as it's suitable for a single binary output.
                     However, when the two neuron output model was introduced, the loss function was changed to use categorical cross entropy as this was the most suitable
                     for a categorical one hot encoding method.
-                    \todo{Cite categorical cross entropy better for one hot encoding.}
 
                 \paragraph{Data Generators}
                     Due to the large amount of data being processed, it was necessary to use a data generator to conduct the preprocessing on the fly. While the preprocessing
@@ -718,7 +719,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         During the training process, with a variety of learning rates, the accuracy of the model didn't leave 50\% with a differing amount of batch sizes. This indicates that the model wasn't learning the features correctly (potentially due to the lack of filters in the Convolutional Layer).
         
         While the classifier itself didn't work and yield any meaningful results, it's also important to consider the time taken for a 2D image to be reconstructed. 
-        \todo{Figures for time to reconstruct a single image to 3D}
+        To reconstruct a single image from 2D to a 3D face structure, it took 5.39 seconds, which already exceeds the 2 second constraint set by the specification.
 
         Due to the poor accuracy with a low number of filters, the excessive amount of memory required for unknown accuracy results, and the large time taken to reconstruct the 3D structure (not including the added time to theoretically classify the result),
         this liveness test clearly isn't feasible for the purpose of a web liveness service.

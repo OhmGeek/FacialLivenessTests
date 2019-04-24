@@ -648,6 +648,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
              & \textbf{Image Quality Liveness Test} & \textbf{2D CNN Liveness Test}\\
              \midrule
             \textbf{Accuracy (\%)} & 87.0 & 71.2\\
+            \midrule
             \textbf{True Negatives (\%)} & 37.5 & 71.5\\
             \textbf{False Positives (\%)} & 12.5 & 1.37\\
             \textbf{False Negatives (\%)} & 0.5 & 22.5\\
@@ -691,7 +692,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         % True Positives:  99
         While accuracy is important, the time taken for the model to classify a single image is also important. The LDA method took 1.40 seconds to classify a single 2D image, which is within the specified 2 seconds bound.
         Also, the model itself is very small and therefore can be loaded in a very minute amount of time (0.001 seconds). The bulk of the time required is in the calculation of the metrics, rather than the classification process,
-        and therefore future speed optimisations could consider optimising the calculation of the metrics.
+        and therefore future speed optimisations could consider optimising the calculation of the metrics. These results can be seen in Table \ref{WallClockResultsTime}.
 
     \subsection{2D Convolutional Neural Network Liveness Test}
 
@@ -703,7 +704,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         Furthermore, the number of positives is small, meaning that this model leans on the side of caution, something that is ideal. Therefore, this model would be secure and accurate enough with further training (and potentially replacing ResNet50 with a deeper ResNet model).
 
         The time taken to load the model from memory was the main bottleneck in terms of computational performance, as loading the model into memory for the first time took 7.44 seconds. However, once the model was loaded,
-        the time taken to predict a single image is very small, on average taking 1.04 seconds, which is even smaller than the W-IQA test, and almost half the specified 2 second time, which is ideal.        
+        the time taken to predict a single image is very small, on average taking 1.04 seconds, which is even smaller than the W-IQA test, and almost half the specified 2 second time, which is ideal. These results can be seen in Table \ref{WallClockResultsTime}.     
         % Confusion Matrix = [[4317  283]
 %           [1357   83]]
 

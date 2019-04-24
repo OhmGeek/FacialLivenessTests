@@ -59,23 +59,11 @@
 \newlabel{3DReconstructionScreenshot}{{3}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}3D Spoofing Attacks}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Obtaining 3D data from 2D images/video}{5}}
-\@writefile{tdo}{\contentsline {todo}{VRN 3D reconstruction on MaskAttackDataset image}{5}}
-\pgfsyspdfmark {pgfid1}{4536471}{9613031}
-\pgfsyspdfmark {pgfid4}{38549143}{9610519}
-\pgfsyspdfmark {pgfid5}{40171159}{9370835}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}3D Classifiers}{5}}
 \citation{VoxNetModel}
 \@writefile{toc}{\contentsline {paragraph}{PointNet}{6}}
 \@writefile{toc}{\contentsline {paragraph}{VoxNet}{6}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Solution}{6}}
-\@writefile{tdo}{\contentsline {todo}{Refactor into functional and non functional requirements.}{6}}
-\pgfsyspdfmark {pgfid6}{4536471}{39817314}
-\pgfsyspdfmark {pgfid9}{38549143}{39814802}
-\pgfsyspdfmark {pgfid10}{40171159}{39575118}
-\@writefile{tdo}{\contentsline {todo}{insert diagram of the overall system design (e.g. data, consolidation layer, etc)}{6}}
-\pgfsyspdfmark {pgfid11}{4536471}{28809928}
-\pgfsyspdfmark {pgfid14}{38549143}{28807416}
-\pgfsyspdfmark {pgfid15}{40171159}{28567732}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Shared Services}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1}Dataset Managers}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2}Neural Network Infrastructure}{6}}
@@ -88,36 +76,29 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Image Processing and Computation Management}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Image Quality Assessment Liveness Test}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Overview}{7}}
-\@writefile{tdo}{\contentsline {todo}{Reference the specification above}{7}}
-\pgfsyspdfmark {pgfid16}{4536471}{29495268}
-\pgfsyspdfmark {pgfid19}{38549143}{29492756}
-\pgfsyspdfmark {pgfid20}{40171159}{29253072}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}The Metrics}{7}}
 \@writefile{toc}{\contentsline {paragraph}{The custom PyVideoQuality library}{7}}
 \citation{BIQIImplementation}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics. (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value is 1.0 for real, and 0.0 for fake, or in between.\relax }}{8}}
 \newlabel{ImageQualityLivenessTestDiagram}{{4}{8}}
 \@writefile{toc}{\contentsline {paragraph}{Blind Image Quality Index Code}{8}}
-\@writefile{tdo}{\contentsline {todo}{a big table showing each metric, and implementation details (library vs custom code)}{8}}
-\pgfsyspdfmark {pgfid21}{4536471}{7995942}
-\pgfsyspdfmark {pgfid24}{38549143}{7993430}
-\pgfsyspdfmark {pgfid25}{40171159}{7753746}
+\@writefile{toc}{\contentsline {paragraph}{The RRED Problem}{8}}
 \citation{ImageQualityAssessmentTest}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.3}Classifier}{9}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}2D based CNN Liveness Test}{9}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}Overview}{9}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}Data Preprocessing}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the liveness score as before).\relax }}{10}}
-\newlabel{2DCNNArchitecture}{{5}{10}}
 \citation{liu_liu_2017}
 \citation{liu_liu_2017}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}The Model}{11}}
-\@writefile{toc}{\contentsline {paragraph}{AlexNet}{11}}
-\@writefile{toc}{\contentsline {paragraph}{Residual Networks}{11}}
-\@writefile{toc}{\contentsline {paragraph}{Feed Forward Classifier}{11}}
-\@writefile{toc}{\contentsline {paragraph}{The Problem with Activation Functions}{11}}
-\@writefile{toc}{\contentsline {paragraph}{The Problem with a Single Neuron Output}{11}}
-\@writefile{toc}{\contentsline {paragraph}{Normalization and Dropout}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}The Model}{10}}
+\@writefile{toc}{\contentsline {paragraph}{AlexNet}{10}}
+\@writefile{toc}{\contentsline {paragraph}{Residual Networks}{10}}
+\@writefile{toc}{\contentsline {paragraph}{Feed Forward Classifier}{10}}
+\@writefile{toc}{\contentsline {paragraph}{The Problem with Activation Functions}{10}}
+\@writefile{toc}{\contentsline {paragraph}{The Problem with a Single Neuron Output}{10}}
+\@writefile{toc}{\contentsline {paragraph}{Normalization and Dropout}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the liveness score as before).\relax }}{11}}
+\newlabel{2DCNNArchitecture}{{5}{11}}
 \citation{SGDBetterThanAdamForImageClassification}
 \citation{3DReconstructionMethod}
 \citation{VRNTorchToKeras}

@@ -274,7 +274,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 \label{3DReconstructionScreenshot}
             \end{figure}
 
-            \todo{VRN 3D reconstruction on MaskAttackDataset image}
+            % \todo{VRN 3D reconstruction on MaskAttackDataset image}
 
         \subsubsection{3D Classifiers}
             In a similar approach to the 2D methods researched above, there are a variety of existing 3D classifiers that could be repurposed for the liveness classification approach.
@@ -295,7 +295,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 \section{Solution}
     % Solution to the problem
 
-    \todo{Refactor into functional and non functional requirements.}
+    % \todo{Refactor into functional and non functional requirements.}
     A system deployed to the Cloud would require a few important criteria be met. The liveness methods used should be output a liveness score after no more than 2 seconds
     to ensure that such a system doesn't become painful to use by users. The liveness methods should not require any additional hardware (only a normal camera) so that the number
     of devices it can be used by can be maximised. Furthermore, each liveness test must have a reasonable accuracy of over 70\%, to ensure that liveness predictions are fairly reliable.
@@ -307,7 +307,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
     and a novel 3D based classifer using 3D facial reconstruction models interlinked with the VoxNet 3D classification model. Each of these liveness tests have some common services that are needed; these include
     reading large datasets without causing resource availability problems.
 
-    \todo{insert diagram of the overall system design (e.g. data, consolidation layer, etc)}
+    % \todo{insert diagram of the overall system design (e.g. data, consolidation layer, etc)}
 
     \subsection{Shared Services}
         \subsubsection{Dataset Managers}
@@ -359,7 +359,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             will have some noticable differences, specifically in the high frequencies. There might also be some image compression visible in fake images, compared to real ones.
             This is the basis for this method.
 
-            \todo{Reference the specification above}.
+            % \todo{Reference the specification above}.
             More specifically, the implementation was based on the work contained in \cite{ImageQualityAssessmentTest}. 24 different image quality metrics were implemented,
             with metric values being used as an input to a classifier. From previous work, it has been shown that this metric is accurate (therefore detecting spoofing well), while
             also being fairly fast to compute in terms of time, making it ideal for our use-case.
@@ -409,7 +409,13 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             This was converted to Python 3 manually. A manual implementation would have taken more time as this model uses a pretrained classifier, so it would have been required to implement the required preprocessing, train a classifier to an appropriate level,
             and then include this as part of a wider system. Therefore, using this existing implementation seemed the most suitable option due to time available. This implementation required the use of the \emph{pywavelet} library, along with \emph{libsvm} tooling from the command line to train and get the output of the metric.
 
-            \todo{a big table showing each metric, and implementation details (library vs custom code)}
+            % \todo{a big table showing each metric, and implementation details (library vs custom code)}
+
+            \paragraph{The RRED Problem}
+            One of the metrics, the Reduced Reference Entropic Distance metric (RRED) was problematic to implement due to the lack of Python implementation available.
+            The only implementation available was written in Matlab, and relied on Matlab only libraries. While some had Python equivalents, the steerable pyramid
+            functions did not have a Python equivalent, therefore increasing the workload massively for this single metric. Therefore, the metric was ignored for the WIQA
+            test, since the test performance without the RRED metric was within the expected range. 
             
 
             Once these metrics were produced, testing needed to be done to ensure that these metrics were outputting sensible values that could be relied on.

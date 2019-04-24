@@ -6,7 +6,7 @@ from keras.backend import manual_variable_initialization
 
 from datasets.replayattack import ReplayAttackDataset
 from liveness.cnn.residual.model import ResidualNetwork
-from liveness.quality.model import QualityLDAModel
+from liveness.quality.classifiers.lda import QualityLDAModel
 from preprocessing.face_extraction import preprocess_fn_all
 
 

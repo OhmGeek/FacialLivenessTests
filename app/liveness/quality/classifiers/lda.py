@@ -1,17 +1,14 @@
 import pickle
 
-from sklearn.model_selection import GridSearchCV
-from sklearn.svm import SVC
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 
 from liveness.generic import AbstractModel
 from liveness.quality.metric_generator import preprocessor
 
 
-class QualitySVMModel(AbstractModel):
+class QualityLDAModel(AbstractModel):
     def __init__(self, logger):
-        parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
-        svm = SVC(C=0.7, gamma='auto')  # todo allow params to be set through constructor
-        self._model = GridSearchCV(svm, parameters, cv=5)
+        self._model = LDA(shrinkage='auto', solver='eigen')
 
         super().__init__(logger)
 
@@ -23,10 +20,15 @@ class QualitySVMModel(AbstractModel):
             training_outputs {[type]} -- Array of expected outputs (fake/real encoded)
         """
         training_inputs, training_outputs = preprocessor(training_inputs, training_outputs, self._logger)
-        self._model.fit(training_inputs, training_outputs)
 
-    def evaluate(self, input_img):
-        training_inputs = preprocessor(input_img, self._logger)
+        self._model.fit_transform(training_inputs, training_outputs)
+
+    def evaluate(self, input_img, get_probability=False):
+        training_inputs, _ = preprocessor(input_img, None, self._logger)
+
+        if get_probability:
+            return self._model.predict_proba(training_inputs)
+
         return self._model.predict(training_inputs)
 
     def save(self, pickle_path):
@@ -38,5 +40,8 @@ class QualitySVMModel(AbstractModel):
             self._model = pickle.load(f)
 
     def test(self, input_x, input_y):
-        training_inputs = preprocessor(input_x, self._logger)
+        print("Shape of test set:")
+        print("    input_x", input_x.shape)
+        print("    input_y", input_y.shape)
+        training_inputs, training_outputs = preprocessor(input_x, input_y, self._logger)
         return self._model.score(training_inputs, input_y)

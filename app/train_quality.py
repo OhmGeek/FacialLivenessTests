@@ -8,7 +8,7 @@ from sklearn.utils import shuffle
 from datasets.replayattack import ReplayAttackDataset
 from liveness.quality.metric_vector import DefaultMetricVectorCreator
 from liveness.quality.metrics.factory import metric_factory
-from liveness.quality.model import QualityLDAModel
+from liveness.quality.classifiers.lda import QualityLDAModel
 
 
 def main():

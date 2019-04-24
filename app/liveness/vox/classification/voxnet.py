@@ -3,18 +3,11 @@ This contains the VoxNet model used to classify the 3d structure.
 """
 
 import keras
-from keras import layers
-from keras.models import Model as keras_Model
-from keras.layers import Dense, Activation, Dropout, Flatten, Conv3D, MaxPooling3D, Lambda, LeakyReLU, Reshape
 from keras import Sequential
-from keras.layers.normalization import BatchNormalization
-from keras.applications.resnet50 import ResNet50
-from keras.optimizers import Adam
-from keras.engine.input_layer import Input
-from keras.backend import tf
-from liveness.cnn.residual.block import add_common_layers, residual_block
+from keras.layers import Dense, Flatten, Conv3D, MaxPooling3D, LeakyReLU
+
 from liveness.generic import AbstractModel
-import h5py
+
 
 class VoxNet(AbstractModel):
     def __init__(self, logger, default_img_dimensions=(224,224), nb_channels=3, cardinality=32, learning_rate=0.0001):

@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.metrics import confusion_matrix
 
 from datasets.replayattack import ReplayAttackDataset
-from liveness.quality.model import QualityLDAModel
+from liveness.quality.classifiers.lda import QualityLDAModel
 
 
 def main():

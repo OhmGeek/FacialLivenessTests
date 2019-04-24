@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.utils import shuffle
 
 from datasets.mad import MaskAttackDataset
-from image_data_generator import DataGenerator
+from datasets.generators.voxnet_data_generator import VoxNetGenerator
 from liveness.vox.classification.voxnet import VoxNet
 
 
@@ -42,7 +42,7 @@ def main():
 
     # Train the model on our training set.
     batch_size = 4
-    generator = DataGenerator(x, y, batch_size=batch_size)
+    generator = VoxNetGenerator(x, y, batch_size=batch_size)
 
     steps_per_epoch = len(x) / batch_size
     model.fit_generator(generator, steps_per_epoch=steps_per_epoch, epochs=5, shuffle=True, verbose=1)
@@ -72,7 +72,7 @@ def main():
 
     x, y = shuffle(x, y)
 
-    generator = gen.flow(x, y, batch_size=8)
+    generator = VoxNetGenerator(x, y, batch_size=batch_size)
     score = model.test_generator(generator)
     print("Final Accuracy is: " + str(score))
     dataset.close()  # Important, to close the file.

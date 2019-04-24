@@ -6,7 +6,7 @@ from sklearn.utils import shuffle
 
 from datasets.nuaa import NUAADataset
 from datasets.replayattack import ReplayAttackDataset
-from image_data_generator import ImageDataGenerator
+from datasets.generators.image_data_generator import ImageDataGenerator
 from liveness.cnn.residual.model import ResidualNetwork
 from preprocessing.face_extraction import pre_process_fn, preprocess_fn_all
 

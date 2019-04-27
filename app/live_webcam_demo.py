@@ -46,8 +46,8 @@ while(True):
     # Now do the same with the other model.
     ## TODO resize the frame to the size of Replayattack images (because i bet this is the problem, as we have strange aspect ratio).
     frame_resized = cv2.resize(frame, (320, 240))
-    output = model_wiqa.evaluate(np.array([frame_resized]))
-    classification_wiqa = output
+    output = int(model_wiqa.evaluate(np.array([frame_resized]))[0])
+    classification_wiqa = labels[output]
     wiqa_out_str = "WIQA Output: %s" % classification_wiqa
 
     cv2.putText(frame, wiqa_out_str, (0,30), cv2.FONT_HERSHEY_SIMPLEX, 1, 255)

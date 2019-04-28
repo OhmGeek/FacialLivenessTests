@@ -28,7 +28,12 @@ model_cnn.load('/home/ryan/Documents/dev/LivenessTests/models/cnn_v3.h5')
 model_wiqa = QualityLDAModel(logger)
 model_wiqa.load('/home/ryan/Documents/dev/LivenessTests/models/lda_model_v2.pkl')
 
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
+# Video for fake:
+# cap = cv2.VideoCapture('/home/ryan/datasets/replayAttackDB/replayattack-test/test/attack/fixed/attack_mobile_client031_session01_mobile_video_controlled.mov')
+
+# Video for real:
+cap = cv2.VideoCapture('/home/ryan/datasets/replayAttackDB/replayattack-test/test/real/client028_session01_webcam_authenticate_controlled_2.mov')
 labels = ['fake', 'real']
 
 while(True):
@@ -45,8 +50,8 @@ while(True):
 
     # Now do the same with the other model.
     ## TODO resize the frame to the size of Replayattack images (because i bet this is the problem, as we have strange aspect ratio).
-    frame_resized = cv2.resize(frame, (320, 240))
-    output = int(model_wiqa.evaluate(np.array([frame_resized]))[0])
+    # frame_resized = cv2.resize(frame, (320, 240))
+    output = int(model_wiqa.evaluate(np.array([frame]))[0])
     classification_wiqa = labels[output]
     wiqa_out_str = "WIQA Output: %s" % classification_wiqa
 
@@ -56,7 +61,7 @@ while(True):
     cv2.imshow('frame', frame)
     cv2.imshow('face region', preprocessed_frame)
 
-    if cv2.waitKey(255) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 # When everything done, release the capture

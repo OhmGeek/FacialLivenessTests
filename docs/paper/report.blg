@@ -7,45 +7,45 @@ Warning--to sort, need author or key in GDPRDefinitions
 Warning--empty booktitle in ReplayAttackDataset
 Warning--empty booktitle in 3DMadDataset
 Warning--empty booktitle in FaceSpoofingAttacksStudy
-You've used 25 entries,
+You've used 28 entries,
             2118 wiz_defined-function locations,
-            664 strings with 9051 characters,
-and the built_in function-call counts, 8781 in all, are:
-= -- 802
-> -- 486
+            681 strings with 9454 characters,
+and the built_in function-call counts, 9411 in all, are:
+= -- 862
+> -- 507
 < -- 8
-+ -- 193
-- -- 163
-* -- 587
-:= -- 1424
-add.period$ -- 76
-call.type$ -- 25
-change.case$ -- 151
++ -- 202
+- -- 169
+* -- 611
+:= -- 1529
+add.period$ -- 85
+call.type$ -- 28
+change.case$ -- 163
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 345
-empty$ -- 701
-format.name$ -- 163
-if$ -- 1876
+cite$ -- 32
+duplicate$ -- 366
+empty$ -- 767
+format.name$ -- 169
+if$ -- 2014
 int.to.chr$ -- 0
-int.to.str$ -- 25
+int.to.str$ -- 28
 missing$ -- 19
-newline$ -- 125
-num.names$ -- 52
-pop$ -- 222
+newline$ -- 140
+num.names$ -- 58
+pop$ -- 246
 preamble$ -- 1
-purify$ -- 126
+purify$ -- 135
 quote$ -- 0
-skip$ -- 256
+skip$ -- 277
 stack$ -- 0
-substring$ -- 366
-swap$ -- 93
+substring$ -- 381
+swap$ -- 96
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 112
 warning$ -- 4
-while$ -- 71
-width$ -- 27
-write$ -- 257
+while$ -- 77
+width$ -- 30
+write$ -- 287
 (There were 4 warnings)

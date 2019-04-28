@@ -20,6 +20,16 @@ T.~Choudhury, B.~Clarkson, T.~Jebara, and A.~Pentland.
 \newblock In {\em Proceedings, International Conference on Audio-and
   Video-Based Person Authentication}, pages 176--181. Citeseer, March 1999.
 
+\bibitem{VideoQualityUpdated}
+R.~Collins.
+\newblock Ohmgeek/video-quality.
+\newblock \url{https://github.com/OhmGeek/video-quality}, Dec 2018.
+
+\bibitem{BIQIImplementation}
+Cvley.
+\newblock Image quality.
+\newblock \url{https://github.com/cvley/ImageQuality}, Apr 2016.
+
 \bibitem{3DMadDataset}
 N.~Erdogmus and S.~Marcel.
 \newblock Spoofing in 2d face recognition with 3d masks and anti-spoofing with
@@ -43,6 +53,12 @@ K.~He, X.~Zhang, S.~Ren, and J.~Sun.
 \newblock Deep residual learning for image recognition.
 \newblock {\em 2016 IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, pages 770--778, June 2016.
+
+\bibitem{VideoQualityOriginal}
+A.~Izvorski.
+\newblock aizvorski/video-quality: Video quality metrics, reference
+  implementation in python.
+\newblock \url{https://github.com/aizvorski/video-quality}, Mar 2015.
 
 \bibitem{3DReconstructionMethod}
 A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.

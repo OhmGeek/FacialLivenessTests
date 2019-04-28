@@ -5,7 +5,8 @@
 \usepackage{graphicx}
 \usepackage{natbib}
 \usepackage{durhampaper}
-\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{caption}
 \usepackage{todonotes}
 \usepackage{glossaries}
 \usepackage{booktabs}
@@ -380,15 +381,36 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             \end{figure}
     
             \subsubsection{The Metrics}
-            The original paper proposed that 25 metrics were used. However, our implementation used only 24, due to some implementation problems (which shall be detailed below).
-                %TODO mention implementation details with RRED.
-           
+            The original paper proposed that 25 metrics were used. However, our implementation used only 24, due to some implementation problems. Most of the metrics were implemented manually as defined
+            either in \cite{ImageQualityAssessmentTest}, or utilising further sources to understand how they worked. In addition, the Matlab source code that was released with \cite{ImageQualityAssessmentTest}
+            was referred to, but written manually in Python using Numpy/OpenCV or in some cases other libraries.
+
             Each of these metrics requires an input image $I$. Non-Reference metrics only require $I$, while Full-Reference metrics require an additional image $I'$. $I' = Gaussian(I)$ in our implementation.
+            
+            \paragraph{PyVideoQuality Library}
+            As part of the implementation process, the NIQE metric required the use of a pretrained classifier which didn't exist for Python. As such, it was necessary to modify existing code.
+            The only Python source code available was \cite{VideoQualityOriginal}, which was written for Python 2 and consisted of single Python files that would be difficult to implement into the system.
+            As such, the Python 2 code was converted to Python 3 manually, and refactored to follow a python package by myself. This new library was shared-alike, and is now available on GitHub. \cite{VideoQualityUpdated}
+            
+
+
+                
 
             \paragraph{Absolute Difference (AD)}
                 This is a full reference metric, defined as $AD(I, I') = Mean(I - I')$. This calculation was implemented using numpy manually.
+
             \paragraph{Blind Image Quality Index (BIQI)}
-                \todo{INFO ABOUT BIQI}
+                BIQI is a no-reference metric. Rather like NIQE, there was no existing BIQI library implementation. It also consists of a pretrained classifier element, which
+                would be hard to replicate without the correct processing or training data. The training set used is the LIVE IQA dataset, which is public domain but requires 
+                permission to access which would take quite a bit of time for a small component of the project.
+
+                BIQI consists of two steps: the first is to assess image distortion, and the second is to analyse the quality.
+
+                As such, an existing implementation was found on GitHub but for Python 2. \cite{BIQIImplementation} This was refactored to work with Python 3, and the code included as part
+                of the existing GitHub repository. 
+
+                 \todo{More info from https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5432998 needed}
+                
             \paragraph{Gradient Mangitude Error (GME)}
                 GME is a full reference metric, and it calculates the error corresponding to the gradient magnitude between the two images. The gradients $\Delta I$ and $\Delta I'$
                 are calculated using a Sobel filter, kernel size 5 in both X and Y directions. The Sobel filter is calculated using OpenCV within our implementation.
@@ -421,7 +443,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 Based on this, the metric can be defined as $HLFI(I, I') = \frac{lfs - hfs}{\sum_{i,j = 1}^{i,j = (X, Y)} |M|}$.
                 
             \paragraph{JPEG Quality Index (JQI)}
-                \todo{CITE JQI PAPER TO EXPLAIN HOW WE IMPLEMENTED THIS.}
                 The JQI quality index is used to understand the nature of JPEG compression in an image, specifically with regards to JPEG images being blocky (a nature of the DCT based compression),
                 and blurring components (due to high frequency DCT coefficients being lost).
 
@@ -441,7 +462,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
                 Bringing the constants, and the above calculations together, this yields the overall definition of the metric:
 
-                $JQI(I, I') = \alpha + \beta \cdot B ^{\frac{\gamma_1}{10000}} \cdot A^{\frac{\gamma_2}{10000}} \cdot Z^{\frac{\gamma_3}{10000}}$.
+                $$JQI(I, I') = \alpha + \beta \cdot B ^{\frac{\gamma_1}{10000}} \cdot A^{\frac{\gamma_2}{10000}} \cdot Z^{\frac{\gamma_3}{10000}}$$
 
                 While other definitions of this can be utilised, this yielded good prediction performance in the paper \cite{JQIPaper}. In our implementation, this was implemented using 
                 Numpy.
@@ -478,6 +499,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 Using the values from T, the overall metric output is the mean value from T. $MAMS(I, I') = Mean(T)$.
                 
                 This implementation was done using numpy functions only.
+
             \paragraph{Mean Angle Similarity (MAS)}
                 This metric is almost identical to MAMS, being a full reference metric that considers the similarity of the angles. Unlike the above, we don't
                 consider the magitude of these similar angles.
@@ -679,7 +701,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 Given a bounding box $B = (top, bottom, left, right)$, a new bounding box $B'$ which has square dimensions can be created by finding the square
                 side width $s$. Mathematically, this is defined as:
 
-                $$s = Max(bottom - top, right - left)$$\\
+                $$s = Max(bottom - top, right - left)$$
 
 
                 Using this, the new bounding box is defined as:
@@ -691,8 +713,14 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 By following this method, the model appeared to perform better overall, and produced non-skewed images.
 
                 However, simply isolating the face isn't enough. A fixed size image was needed, in order to be fed into the network. After much experimentation, an image size of $(224, 224)$
-                was decided, as smaller dimensions failed to produce adequate results. The resizing was completed using OpenCV.
+                was decided, as smaller dimensions failed to produce adequate results. The resizing was completed using OpenCV. The output of this step is shown in Figure \ref{FaceExtraction}.
 
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=.5\linewidth]{FaceExtraction.png}
+                    \caption{This is the output produced from the preprocessing step of the ResNet based method.}
+                    \label{FaceExtraction}
+                \end{figure}
                 
             \subsubsection{The Model}
                     
@@ -861,13 +889,26 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             Subjects 1,2,3,4,5,6,7 were used for training purposes, and 8,9,10,11,12, 13 were used for testing purposes. Splitting up the dataset in this way was necessary to correctly assess the classifier,
             to ensure results give a true indication of how well the model learned the features, rather than how well the model learned the dataset.
 
+    \subsection{Consolidation Layer}
+        Each liveness test individually might have some degree of error. Merging the results of each metric together into some classifier to produce a more reliable outcome would be ideal.
+        While probability based methods (such as Bayesian calculations) would be feasible, this only works for a larger number of liveness tests. In some cases, very few liveness tests (minimum 2)
+        might be used. 
+
+        The solution proposed is to use a classifier, pretrained with the results yielded from the previous liveness tests. After training, this consolidation classifier would be able to spot patterns
+        between each liveness test, and hopefully yield a better result by fusing the results of each individual test together. 
+
+        \todo{Implementation DETAIL NEEDED!}
+        \todo{INSERT DIAGRAM SHOWING HOW THIS WORKS}
+
+
   
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     For both liveness tests, cross dataset validation/testing was conducted. Each model was trained using the entire NUAA dataset, and the Replay-Attack test set
     was used to measure the results shown below. In the case of the 2D Convolutional Neural Network (CNN), a validation set was required to ensure the model performed
     well, so in this case the Replay-Attack devel set was used. It must be noted that no overlap occurs between the Replay-Attack devel and test sets, to prevent the risk
-    of these results being invalid.
+    of these results being invalid. In order to visualise the result as a demonstration, a script was written using OpenCV calls to produce an overlay on top of the image.
+    The results of these models in a faux-production environment can be seen in Figure \ref{SystemWorkingScreenshots}. 
 
     \begin{table}[ht]
         \centering
@@ -900,6 +941,26 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         \caption{Table of results, showing the wall clock time for the load and predict phases of both liveness tests.}
         \label{WallClockResultsTime}
     \end{table}
+
+    \begin{figure}
+        \centering
+        \caption{Outputs from the \emph{live\_webcam\_output.py} file, being run on two different videos from the ReplayAttack test dataset. The model predicted the correct output here.}
+        \label{SystemWorkingScreenshots}
+        \begin{subfigure}[t]{.4\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{BothRealAndCorrect.png}
+            \caption{The system correctly predicting a real piece of data. Image is from a video in the ReplayAttack test dataset.}
+            \label{RealScreenshot}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[t]{.4\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{FakeOutputAndCorrect.png}
+            \caption{The system correctly predicting spoofing in the input video. Image is from a video in the ReplayAttack test dataset.}
+            \label{FakeScreenshot}
+        \end{subfigure}
+           
+   \end{figure}
     % CNN table: 4317 & 83 & 1357 & 283
     \subsection{Image Quality Liveness Test}
         Overall, the Image Quality Test performed as expected with reference to the initial paper. Unlike the original paper however, instead of isolating the face
@@ -923,8 +984,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         and therefore future speed optimisations could consider optimising the calculation of the metrics. These results can be seen in Table \ref{WallClockResultsTime}.
 
     \subsection{2D Convolutional Neural Network Liveness Test}
-
-
 
         The overall performance of our liveness test can be seen in Table \ref{ResultsTable}. While not as accurate as the previous model, the model still detects true negatives with a fairly high percentage.
         While the overall accuracy of this model could be improved with further training or by deepening, the results show that this basic architecture is feasible. In the security conscious environment of facial liveness,
@@ -951,6 +1010,26 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         Due to the poor accuracy with a low number of filters, the excessive amount of memory required for unknown accuracy results, and the large time taken to reconstruct the 3D structure (not including the added time to theoretically classify the result),
         this liveness test clearly isn't feasible for the purpose of a web liveness service.
 
+    \subsection{Consolidation Layer}
+        
+        \begin{figure}
+            \includegraphics[width=\linewidth]{LinearlySeparable.png}
+            \caption{Graph }
+            \label{LinearlySeparableGraph}
+        \end{figure}
+    
+        As shown in Figure \ref{LinearlySeparableGraph}, plotting the results together with the probability outcome (rather than the class outcome),
+        yield a plot where the two classes could approximately be divided up with a single line. Therefore, as expected, the relationship between predictions is
+        linearly separable.
+
+        While investigating this further, using an LDA as a consolidation layer yielded fairly ideal results: 75\% accuracy to be precise. 
+        \todo{LDA: confusion matrix}
+
+        However, it's important to note that while this works for two liveness tests, we can't test this method for a larger number of liveness tests. While accuracy was fairly reasonable,
+        using more metrics could yield improved accuracy.
+
+    \subsection{Live Application}
+    \todo{Details about the script we wrote to overlay. }
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...

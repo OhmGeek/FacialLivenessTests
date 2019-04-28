@@ -17,7 +17,7 @@
 \usepackage{savetrees}
   \usefonttheme[onlymath]{serif}
   \boldmath
-  \usepackage[orientation=portrait,size=a3,scale=1.4,debug]{beamerposter}                       
+  \usepackage[orientation=landscape,size=a3,scale=1.4,debug]{beamerposter}                       
 
   % e.g. for DIN-A0 poster
   % \usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}
@@ -39,67 +39,37 @@
     \begin{columns}[t]
       \begin{column}{.48\linewidth}
         \begin{block}{Introduction}
-            % \todo{Rewrite this for the poster, specifically.}
-            Currently, username and password authentication is commonplace throughout the web. However, this method has serious security concerns, being easily broken through dictionary attacks,
-            or shoulder surfing. Facial recognition authentication doesn't have either of these problems, but introduces the risk of stolen identity through face spoofing, more specifically expressed
-            in a quotation from Adam Schwartz, a lawyer with the Electronic Frontier Foundation speaking to NPR: "We can change our bank account numbers, we can even change our names, but we cannot change our faces.
-            And once the information is out there, it could be misused". In order to reduce the risk of stolen identities, a system to detect potential spoofing attempts is needed.
-            Providing facial liveness systems work correctly, the ability for criminals to steal people's faces would be reduced, making facial recognition more ideal for authentication on the web. The next step
-            to making facial recognition more secure and mainstream, the implementation of a facial liveness service is necessary: that way developers won't need to worry about implementing their own liveness tests
-            and can instead focus on the process of building their software.
-        
-                % TODO this needs to be readjusted to make it sound more formal and clear.
-            While there are different measures of detecting liveness, each method is specialized towards defending against a given attack. The aim of this project is to understand
-            the existing liveness detection methods, which type of attack they aim to prevent, and how effective they are. Once this has been achieved, the aim shall be to bring
-            each of these methods together, hopefully improving the effectiveness of such a system by incorporating multiple methods.
-            
-            % TODO might be worth explaining that we are focusing here on only images, rather than video. Explain why...
-        
-            In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
-            We provide a promising new liveness test using ResNet based networks. We also adapt an existing Image Quality Assessment test for use with whole image classification, rather
-            than a face based method.
+         
+            The goal of this project was to investigate facial liveness tests, and propose a small set of liveness tests to include in a facial liveness system. This project aimed to investigate
+            existing literature and produce liveness tests that are more designed for existing real-life applications, therefore not requiring any extra hardware (aside from what's available within
+            a modern day smartphone or computer). Furthermore, the liveness tests must also be fairly fast to compute, since a real world web system would be limited by users' attention spans.
+            It's important to explain the difference between recognition and liveness: recognition is the process of identifying whether someone is who they say they are, but liveness is
+            about detecting potential acts of spoofing within a given input (i.e. is the person alive, or are they simply a screen/piece of paper).
+
+            The first, and most common type of attack, is a 2D presentation attack. This occurs where an image, or video, is displayed in front of the camera (using either a screen or a piece of paper).
+            To combat these types of attacks, two different methods were developed: the first being an image quality based method called WIQA, and another being a Residual Network based classifier
+            to classify realness based on facial structure.
+
+            The other type of attack is a 3D based mask attack. This occurs where a mask is created and presented as input. Masks might have eye cutouts, and mouth cutouts. 
+            A new 3D-based liveness test was proposed based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification. However, results with
+            this method weren't within desired parameters, and it therefore wasn't suitable for a production grade system.
 
         \end{block}
 
         \begin{block}{Image Quality Assessment}
-            \todo{Cite the Image Quality Assessment paper}
-          One method of testing liveness is to analyse the quality of the image. A spoofed image has noticable quality differences compared to a real image of a person's face,
-          and therefore quantifying these differences is the first step towards testing liveness. The paper \cite{ImageQualityAssessment} proposed a method specifically for testing
-          quality on a user's face, but this can be extended to work with any image.
-
-          24 image quality metrics were calculated per image. Some metrics compared pixelwise error, signal to noise ratio, correlation and frequency analysis between an image I,
-          and the Gaussian Blurred image $I'$. With 24 values classifying the quality of a given image, these were then fed into a classifier. The classifier of choice here is
-          Linear Discriminant Analysis (LDA).
-
-          Some of the metrics utilised were fairly rare, and as such a custom library was created from existing Python 2 scripts. The original
-          scripts can be found in \cite{OriginalPython2ScriptsLib}. These pieces of Python 2 code were converted to Python 3,
-          with optimisations being created to be run in library form, and then a Python module was created to allow interfacing to the library wtih ease. This library is available
-          on GitHub. \cite{OurLibrary}
-
-          Other metrics were implemented using a mixture of OpenCV, Numpy and Scikit image, most of them with custom code.
-          
-          % TODO INSERT GRAPHIC 
-          The accuracy of this liveness test was fairly high, yielding an 89\% top-1 accuracy score on the Replay-Attack test dataset. When the confusion matrix was analysed,
-          a high number of true positives and true negatives were yielded. However, when the liveness test incorrectly predicted the realness value, often it would yield false positives
-          which is problematic in a security conscious system, but this could be improved in further training, or sensor fusion.
-
-          % TODO ADD RUNNING TIME DETAILS
+          \begin{figure}
+            \includegraphics[width=.5\linewidth]{ImageQualityLivenessTest.pdf}
+          \end{figure}
+    
         \end{block}
        
         \begin{block}{Residual Networks for Facial Liveness}
-            The above metric analyses the overall image quality, but another method of understanding liveness is to consider facial structure. A facial extractor can be used to produce
-            a 224x224 image of the isolated face, by using either a pretrained CNN or a HoG based method. In testing, the CNN method produced far greater accuracy and also yielded speed benefits.
-            Given this 224x224 image, a pretrained ResNet50 model was used, with all but the last layer being frozen to allow for training. This minimized the number of parameters, and allowed
-            the final component: the dense layers, to classify the liveness. Between the pretrained ResNet50 model and the Dense layers was a flatten layer. Batch Normalization was used to improve
-            network performance.
+          
 
-            The accuracy of this metric was adequate, yielding a 71\% top-1 accuracy score on the Replay-Attack test dataset. This shows that the model itself has promise, but it can certainly be improved.
-            When looking at the confusion matrix, the model was excellent at identifying spoofing attacks, but it would be cautious about classifying a specific face as real. The common errors yielded would be
-            false negatives, which while potentially annoying for an end user, yields a better security system. This accuracy figure could be improved by improving the preprocessing: not all the input data
-            contains a visible face to the classifier, and as such the full image is passed through the model yielding a poor result (as the labels and noisy data make training difficult). By improving this factor,
-            one might be able to improve the accuracy of the model. Furthermore, a larger ResNet model could be used to improve the classifier effectiveness.
-
-            % TODO ADD DETAILS ABOUT RUNNING TIME.
+          \begin{figure}
+            \includegraphics[height=450px]{2DCNNArchitecture.pdf}
+          \end{figure}
+    
         \end{block}
 
         \begin{block}{Facial reconstruction with classification from a 2D image}

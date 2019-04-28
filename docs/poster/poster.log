@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  26 APR 2019 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  28 APR 2019 14:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -752,7 +752,7 @@ Package beamerposter Info: the input a0\ 1\ was correct, we proceed. on input li
 Package beamerposter Info: finished size input check. on input line 128.
 Package beamerposter Info: myfontscale=1.0 on input line 128.
 Package beamerposter Info: checking orientation input, please wait. on input line 129.
-Package beamerposter Info: the input portrait\ 0\ was correct, we proceed. on input line 129.
+Package beamerposter Info: the input landscape\ 1\ was correct, we proceed. on input line 129.
 Package beamerposter Info: finished orientation check. on input line 129.
 Package beamerposter Info: checking size input, please wait. on input line 129.
 Package beamerposter Info: the input a3\ 4\ was correct, we proceed. on input line 129.
@@ -775,9 +775,8 @@ FP debug: upn: calculating "round(0.494974746000000000:2)"
 FP debug: upn: result      "0.49"
 FP debug: upn: +++ result of upn-expression is "(0.49)"
 )
-\tmp=\dimen266
-Package beamerposter Info: paperwidth=845.04675pt, paperheight=1194.44656pt on input line 172.
-Package beamerposter Info: textwidth=816.594pt, textwidth=1165.9938pt on input line 173.
+Package beamerposter Info: paperwidth=1194.44656pt, paperheight=845.04675pt on input line 172.
+Package beamerposter Info: textwidth=1165.9938pt, textwidth=816.594pt on input line 173.
 Package beamerposter Info: fontscale=0.35355339, myfontscale=0.49 on input line 174.
  ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
@@ -1285,12 +1284,12 @@ LaTeX Font Info:    ... okay on input line 35.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: includehead includefoot 
-* h-part:(L,W,R)=(28.45274pt, 788.14127pt, 28.45274pt)
-* v-part:(T,H,B)=(0.0pt, 1194.44656pt, 0.0pt)
-* \paperwidth=845.04675pt
-* \paperheight=1194.44656pt
-* \textwidth=788.14127pt
-* \textheight=1165.99384pt
+* h-part:(L,W,R)=(28.45274pt, 1137.54108pt, 28.45274pt)
+* v-part:(T,H,B)=(0.0pt, 845.04675pt, 0.0pt)
+* \paperwidth=1194.44656pt
+* \paperheight=845.04675pt
+* \textwidth=1137.54108pt
+* \textheight=816.59402pt
 * \oddsidemargin=-43.81725pt
 * \evensidemargin=-43.81725pt
 * \topmargin=-72.26999pt
@@ -1314,13 +1313,13 @@ LaTeX Font Info:    ... okay on input line 35.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count186
-\scratchdimen=\dimen267
+\scratchdimen=\dimen266
 \scratchbox=\box59
 \nofMPsegments=\count187
 \nofMParguments=\count188
 \everyMPshowfont=\toks52
 \MPscratchCnt=\count189
-\MPscratchDim=\dimen268
+\MPscratchDim=\dimen267
 \MPnumerator=\count190
 \makeMPintoPDFobject=\count191
 \everyMPtoPDFconversion=\toks53
@@ -1389,267 +1388,31 @@ Package microtype Info: Loading generic settings for font family
 File: logo.png Graphic file (type png)
  <use logo.png>
 Package pdftex.def Info: logo.png used on input line 35.
-(pdftex.def)             Requested size: 147.88252pt x 64.49269pt.
-
-Overfull \hbox (24.83356pt too wide) in paragraph at lines 201--201
-[][][][]\OT1/cmss/m/n/12.19/-25ls Cite 
- []
-
-
-Overfull \hbox (20.82176pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls the 
- []
-
-
-Overfull \hbox (19.75258pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Im- 
- []
-
-
-Overfull \hbox (22.0704pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls age 
- []
-
-
-Overfull \hbox (29.9207pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Qual- 
- []
-
-
-Overfull \hbox (17.05534pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ity 
- []
-
-
-Overfull \hbox (19.13719pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls As- 
- []
-
-
-Overfull \hbox (25.50328pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls sess- 
- []
-
-
-Overfull \hbox (29.96205pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ment 
- []
-
-
-Overfull \hbox (18.90608pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls pa- 
- []
-
-
-Overfull \hbox (20.69644pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls per  
- []
-
-
-Overfull \hbox (24.83356pt too wide) in paragraph at lines 201--201
-[][][][]\OT1/cmss/m/n/12.19/-25ls Cite 
- []
-
-
-Overfull \hbox (20.82176pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls the 
- []
-
-
-Overfull \hbox (19.75258pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Im- 
- []
-
-
-Overfull \hbox (22.0704pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls age 
- []
-
-
-Overfull \hbox (29.9207pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Qual- 
- []
-
-
-Overfull \hbox (17.05534pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ity 
- []
-
-
-Overfull \hbox (19.13719pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls As- 
- []
-
-
-Overfull \hbox (25.50328pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls sess- 
- []
-
-
-Overfull \hbox (29.96205pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ment 
- []
-
-
-Overfull \hbox (18.90608pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls pa- 
- []
-
-
-Overfull \hbox (20.69644pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls per  
- []
-
-
-Overfull \hbox (3.95642pt too wide) in paragraph at lines 201--201
-[][][] 
- []
-
-
-Overfull \hbox (24.83356pt too wide) in paragraph at lines 201--201
-[][][][]\OT1/cmss/m/n/12.19/-25ls Cite 
- []
-
-
-Overfull \hbox (20.82176pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls the 
- []
-
-
-Overfull \hbox (19.75258pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Im- 
- []
-
-
-Overfull \hbox (22.0704pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls age 
- []
-
-
-Overfull \hbox (29.9207pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Qual- 
- []
-
-
-Overfull \hbox (17.05534pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ity 
- []
-
-
-Overfull \hbox (19.13719pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls As- 
- []
-
-
-Overfull \hbox (25.50328pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls sess- 
- []
-
-
-Overfull \hbox (29.96205pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ment 
- []
-
-
-Overfull \hbox (18.90608pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls pa- 
- []
-
-
-Overfull \hbox (20.69644pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls per  
- []
-
-
-Overfull \hbox (24.83356pt too wide) in paragraph at lines 201--201
-[][][][]\OT1/cmss/m/n/12.19/-25ls Cite 
- []
-
-
-Overfull \hbox (20.82176pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls the 
- []
-
-
-Overfull \hbox (19.75258pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Im- 
- []
-
-
-Overfull \hbox (22.0704pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls age 
- []
-
-
-Overfull \hbox (29.9207pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls Qual- 
- []
-
-
-Overfull \hbox (17.05534pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ity 
- []
-
-
-Overfull \hbox (19.13719pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls As- 
- []
-
-
-Overfull \hbox (25.50328pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls sess- 
- []
-
-
-Overfull \hbox (29.96205pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls ment 
- []
-
-
-Overfull \hbox (18.90608pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls pa- 
- []
-
-
-Overfull \hbox (20.69644pt too wide) in paragraph at lines 201--201
-\OT1/cmss/m/n/12.19/-25ls per  
- []
-
-
-Overfull \hbox (3.95642pt too wide) in paragraph at lines 201--201
-[][][] 
- []
-
-
-LaTeX Warning: Citation `ImageQualityAssessment' on page 1 undefined on input line 201.
-
-LaTeX Font Info:    Calculating math sizes for size <12.19> on input line 201.
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-
-LaTeX Warning: Citation `OriginalPython2ScriptsLib' on page 1 undefined on input line 201.
-
-
-LaTeX Warning: Citation `OurLibrary' on page 1 undefined on input line 201.
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Missing number, treated as zero.
+(pdftex.def)             Requested size: 209.02722pt x 91.16122pt.
+ <ImageQualityLivenessTest.pdf, id=14, 470.7186pt x 451.6875pt>
+File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
+ <use ImageQualityLivenessTest.pdf>
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 171.
+(pdftex.def)             Requested size: 273.00742pt x 261.98581pt.
+ <2DCNNArchitecture.pdf, id=15, 305.22029pt x 741.73106pt>
+File: 2DCNNArchitecture.pdf Graphic file (type pdf)
+ <use 2DCNNArchitecture.pdf>
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 171.
+(pdftex.def)             Requested size: 185.8674pt x 451.68915pt.
+
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Illegal unit of measure (pt inserted).
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1658,19 +1421,19 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Missing number, treated as zero.
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Illegal unit of measure (pt inserted).
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1679,19 +1442,19 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Missing number, treated as zero.
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Illegal unit of measure (pt inserted).
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1700,19 +1463,19 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Missing number, treated as zero.
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Illegal unit of measure (pt inserted).
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1721,19 +1484,19 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Missing number, treated as zero.
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Illegal unit of measure (pt inserted).
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1742,19 +1505,19 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Missing number, treated as zero.
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: Illegal unit of measure (pt inserted).
+/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
 <to be read again> 
                    }
-l.201   \end{frame}
+l.171   \end{frame}
                    
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1764,28 +1527,22 @@ delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
 
-Overfull \vbox (714.49748pt too high) detected at line 201
+Overfull \vbox (931.87685pt too high) detected at line 171
  []
 
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png used on input line 201.
-(pdftex.def)             Requested size: 147.88252pt x 64.49269pt.
+Package pdftex.def Info: logo.png used on input line 171.
+(pdftex.def)             Requested size: 209.02722pt x 91.16122pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- </home/ryan/Documents/dev/LivenessTests/docs/poster/logo.png>]
+ </home/ryan/Documents/dev/LivenessTests/docs/poster/logo.png> </home/ryan/Documents/dev/LivenessTests/docs/poster/ImageQualityLivenessTest.pdf
 
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:201: LaTeX Error: Float(s) lost.
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/poster/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+> </home/ryan/Documents/dev/LivenessTests/docs/poster/2DCNNArchitecture.pdf
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.201   \end{frame}
-                   
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/poster/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -1795,11 +1552,11 @@ If that doesn't work, type  X <return>  to quit.
 \tf@snm=\write8
 \openout8 = `poster.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
-(/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 172.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 172.
+ (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 172.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 172.
 
 
 Package rerunfilecheck Warning: File `poster.out' has changed.
@@ -1809,26 +1566,20 @@ Package rerunfilecheck Warning: File `poster.out' has changed.
 Package rerunfilecheck Info: Checksums for `poster.out':
 (rerunfilecheck)             Before: <no file>
 (rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 23851 strings out of 493013
- 458446 string characters out of 6135681
- 863286 words of memory out of 5000000
- 26799 multiletter control sequences out of 15000+600000
- 18761 words of font info for 74 fonts, out of 8000000 for 9000
+ 23490 strings out of 493013
+ 450784 string characters out of 6135681
+ 835577 words of memory out of 5000000
+ 26487 multiletter control sequences out of 15000+600000
+ 8775 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,20n,78p,823b,1485s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.pdf (1 page, 65032 bytes).
+ 58i,20n,68p,823b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.pdf (1 page, 165689 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  3 named destinations out of 1000 (max. 500000)
- 14896 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 4154 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  24 APR 2019 18:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  28 APR 2019 19:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -568,19 +568,19 @@ Package glossaries Info: Writing glossary file report.glo on input line 18.
  (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 28.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -663,7 +663,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) ABD: EveryShipout initializing macros (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.glsdefs)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \microtypecontext on input line 31.
+LaTeX Info: Redefining \microtypecontext on input line 28.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -678,70 +678,199 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 34.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 30.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 48.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 44.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 74.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 70.
  [1
 
 \openout4 = `report.ist'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 178--178
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+Overfull \hbox (2.4324pt too wide) in paragraph at lines 178--178
+\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 178--178
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+Overfull \hbox (2.4324pt too wide) in paragraph at lines 178--178
+\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 178--178
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+Overfull \hbox (2.4324pt too wide) in paragraph at lines 178--178
+\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 178--178
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+Overfull \hbox (2.4324pt too wide) in paragraph at lines 178--178
+\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
+ []
+
+<ResidualBlock.png, id=16, 998.73125pt x 555.07375pt>
+File: ResidualBlock.png Graphic file (type png)
+ <use ResidualBlock.png>
+Package pdftex.def Info: ResidualBlock.png used on input line 180.
+(pdftex.def)             Requested size: 346.63303pt x 192.65253pt.
+ (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
-) <Top1AccuracyOverNetwork.png, id=16, 676.5275pt x 494.84875pt>
+) <Top1AccuracyOverNetwork.png, id=18, 676.5275pt x 494.84875pt>
 File: Top1AccuracyOverNetwork.png Graphic file (type png)
  <use Top1AccuracyOverNetwork.png>
-Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 190.
+Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 194.
 (pdftex.def)             Requested size: 346.63303pt x 253.555pt.
- <Top1AccuracyOverOperations.png, id=18, 667.49374pt x 460.72125pt>
+ <Top1AccuracyOverOperations.png, id=19, 667.49374pt x 460.72125pt>
 File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
-Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 197.
+Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 201.
 (pdftex.def)             Requested size: 346.63303pt x 239.26007pt.
- [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png>] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=30, 794.97pt x 748.7975pt>
+ [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png>] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=32, 794.97pt x 748.7975pt>
 File: 3DReconstructionFromSource.png Graphic file (type png)
  <use 3DReconstructionFromSource.png>
-Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 272.
+Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 274.
 (pdftex.def)             Requested size: 247.5961pt x 233.21027pt.
- [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>] [6] <ImageQualityLivenessTest.pdf, id=38, 470.7186pt x 451.6875pt>
+ [5] [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>] <ImageQualityLivenessTest.pdf, id=40, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 373.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 375.
 (pdftex.def)             Requested size: 495.19221pt x 475.19563pt.
  [7] [8 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 461--462
+Overfull \hbox (0.94493pt too wide) in paragraph at lines 424--424
+\OT1/ptm/m/n/10.95/-25ls (-50) MENTED 
+ []
+
+
+Overfull \hbox (0.94493pt too wide) in paragraph at lines 424--424
+\OT1/ptm/m/n/10.95/-25ls (-50) MENTED 
+ []
+
+
+Overfull \hbox (0.94493pt too wide) in paragraph at lines 424--424
+\OT1/ptm/m/n/10.95/-25ls (-50) MENTED 
+ []
+
+
+Overfull \hbox (0.94493pt too wide) in paragraph at lines 424--424
+\OT1/ptm/m/n/10.95/-25ls (-50) MENTED 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 428--428
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 428--428
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 428--428
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 428--428
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
+ []
+
+
+LaTeX Warning: Marginpar on page 9 moved.
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 431--431
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 431--431
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 431--431
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+Overfull \hbox (1.83951pt too wide) in paragraph at lines 431--431
+[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
+ []
+
+
+LaTeX Warning: Marginpar on page 9 moved.
+
+[9] [10]
+Overfull \hbox (16.30188pt too wide) in paragraph at lines 555--558
+[]\OT1/ptm/m/n/10.95/-25ls (-50) While the SME met-ric de-fined above uses mag-ni-tude, this met-ric utilises the phase. We de-fine a func-tion $\OML/cmm/m/it/10.95/-25ls FFTShift\OT1/cmr/m/n/10.95/-25ls (\OML/cmm/m/it/10.95/-25ls I; plane\OT1/cmr/m/n/10.95/-25ls )$\OT1/ptm/m/n/10.95/-25ls (-50) .
+ []
+
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
 
  []
 
-<2DCNNArchitecture.pdf, id=66, 305.22029pt x 741.73106pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 625--626
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 682--683
+
+ []
+
+<2DCNNArchitecture.pdf, id=87, 305.22029pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 480.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 701.
 (pdftex.def)             Requested size: 247.5961pt x 601.693pt.
- [9] [10] [11 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
+ [13] [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [12] <voxnet.pdf, id=99, 626.34pt x 210.7875pt>
+>] [15] <voxnet.pdf, id=117, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 605.
+Package pdftex.def Info: voxnet.pdf used on input line 826.
 (pdftex.def)             Requested size: 495.19221pt x 166.65538pt.
- [13 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+ [16] [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [14] [15]
+>] [18] [19]
 No file report.gls.
 (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 5.
@@ -752,45 +881,40 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [16]
-Underfull \hbox (badness 5189) in paragraph at lines 53--57
-[]\OT1/ptm/m/n/10.95/-25ls A. Izvorski.  aizvorski/video-quality: Video qual-ity met-rics, ref-er-ence im-ple-men-ta-tion in python.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--76
+ [20]
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 []\OT1/ptm/m/n/10.95/-25ls A. Khalid.  Fa-cial recog-ni-tion may boost air-port se-cu-rity but raises pri-vacy wor-ries.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--76
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 \OT1/pcr/m/n/10.95/-25ls https : / / www . npr . org / sections / alltechconsidered / 2017 / 06 / 26 / 534131967 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--76
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 \OT1/pcr/m/n/10.95/-25ls facial-[]recognition-[]may-[]boost-[]airport-[]security-[]but-[]raises-[]privacy-[]worries ?
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--95
+Underfull \hbox (badness 10000) in paragraph at lines 79--84
 []\OT1/ptm/m/n/10.95/-25ls D. Liu and D. Liu.  A prac-ti-cal guide to relu.  $\OT1/pcr/m/n/10.95/-25ls https : / / medium . com / tinymind /
  []
 
-[17]) [18] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+) [21] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 20821 strings out of 493013
- 385179 string characters out of 6135681
- 514535 words of memory out of 5000000
- 23591 multiletter control sequences out of 15000+600000
- 47827 words of font info for 301 fonts, out of 8000000 for 9000
+ 20988 strings out of 493013
+ 388843 string characters out of 6135681
+ 559424 words of memory out of 5000000
+ 23753 multiletter control sequences out of 15000+600000
+ 48113 words of font info for 304 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,92p,1990b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (18 pages, 852837 bytes).
+ 62i,9n,92p,1990b,739s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (21 pages, 978628 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 210 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 35371 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 35376 words of extra memory for PDF output out of 35830 (max. 10000000)
 

@@ -24,12 +24,8 @@
 
 \date{\today}
 
-
-
-
 % Now the main body of the document.
 \begin{document}
-
 \maketitle
 \begin{abstract}
 % These instructions give you guidelines for preparing the final paper.  DO NOT change any settings, such as margins and font sizes.  Just use this as a template and modify the contents into your final paper.  Do not cite references in the abstract.
@@ -130,7 +126,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         Recently, deep learning based approaches have been applied to the task of facial liveness classification.
 
         In particular, Convolutional Neural Networks are a key approach, since they can be used to learn a variety of features including face structure,
-        texture, and other potential suspicious visual glitches which would be obtained with face spoofing.
+        texture, and other potential suspicious visual glitches which would be obtained with face spoofing. Convolutional Neural Networks 
         The method proposed in \cite{Patel2016CrossDatabaseFA} uses Caffe-Net, inputting both the full image along with the isolated face.
         The output yielded general texture differences, as well as specific facial texture differences. Another interesting idea proposed
         in this paper is the fusion of two algorithms together to produce an outcome, therefore reducing the false reject rate.
@@ -176,7 +172,15 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
         This model is very ideal for our application, as it acts as an ideal compromise between accuracy and computational requirements, yielding fairly good accuracy for our security focused perspective, while also
         ensuring that the operational cost (in terms of time, and cost for hardware) isn't too high, compared with other models such as VGG.
-        % \todo{Might want to explain how Residual Blocks work? Or maybe not.}
+
+        Architecturally, Residual Networks consist of residual blocks, which can be seen in Figure \ref{ResidualBlock}. This solves the vanishing gradient problem by utilising shortcut
+        connections, which skip one or more layers. The outputs of these shortcut connections are added to the outputs of the stacked layers.
+        \todo{EXPLAIN MORE ABOUT RESNETS AND HOW THEY WORK TO OPTIMIZE. IN PRODUCTION, COMPARE THEM TO RAW CNNS}
+        \begin{figure}
+            \includegraphics[width=.7\linewidth]{ResidualBlock.png}
+            \caption{A Residual Block: this is the building block of the ResNet architecture. Source: \cite{DeepResidualNetworks}}
+            \label{ResidualBlock}
+        \end{figure}
 
         One important metric to analyse the performance of a model is the Top-1 accuracy figure. This metric represents the class with the highest probability in the model must be exactly the expected answer. 
         The Top-1 accuracy scores for the models outlined above are shown in Figure \ref{Top1AccuracyOverNetwork}. These results show that a newer version of the Inception model perform the best,
@@ -214,8 +218,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         set of videos/images are taken under different illumination conditions, and various different attack methods were collected: printed photo, low resolution and high resolution screens with both photos and 
         videos being displayed. The entire dataset consists of several 'subdatasets': the 'devel' dataset is designed as a validation set/training set, while
         the 'test' dataset is designed as a test dataset (and therefore must not be used in the training/validation process). \cite{ReplayAttackDataset}
-        % Again, one drawba
-            % \todo{Mask Attack Set}
 
         These two datasets are ideal for testing 2D based liveness systems, since they contain enough samples to reasonable train/test our models. They shall be used
         throughout this project for both training and testing the 2D based liveness models.
@@ -380,44 +382,263 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             \subsubsection{The Metrics}
             The original paper proposed that 25 metrics were used. However, our implementation used only 24, due to some implementation problems (which shall be detailed below).
                 %TODO mention implementation details with RRED.
-            There are various different classes of metrics, but each metric is either a full reference metric, or a no reference metric. With a full reference metric, image $I$, and image $I'$ are needed,
-            where image $I'$ is the gaussian blur of the original image $I$, with kernel size of $(5,5)$ and $\sigma = 0$. No reference metrics simply require a single image $I$.
+           
+            Each of these metrics requires an input image $I$. Non-Reference metrics only require $I$, while Full-Reference metrics require an additional image $I'$. $I' = Gaussian(I)$ in our implementation.
 
-            Under the full reference metrics, some methods are based on error sensitivity (image differences, image correlations, image edges, image gradients, and frequency based comparisons),
-            structural similarity between the images, or information theoretic based measures.
+            \paragraph{Absolute Difference (AD)}
+                This is a full reference metric, defined as $AD(I, I') = Mean(I - I')$. This calculation was implemented using numpy manually.
+            \paragraph{Blind Image Quality Index (BIQI)}
+                \todo{INFO ABOUT BIQI}
+            \paragraph{Gradient Mangitude Error (GME)}
+                GME is a full reference metric, and it calculates the error corresponding to the gradient magnitude between the two images. The gradients $\Delta I$ and $\Delta I'$
+                are calculated using a Sobel filter, kernel size 5 in both X and Y directions. The Sobel filter is calculated using OpenCV within our implementation.
 
-            Under the no reference metrics, some methods are based on training a classifier (more specifically, a support vector machine), some consider distortion, and the final metric considers the natural scene.
+                Using these gradients, the metric is calculated as $GME(I, I') = Mean((\Delta I - \Delta I')^2)$. In our implementation, numpy is again used to calculate both the mean and
+                also the squared difference.
+
+            \paragraph{Gradient Phase Error (GPE)}
+                \todo{look into this, because I think GME and GPE might have been switched during implementation for some reason.}
+                GPE is a full reference metric, which like GME uses the Sobel filter as a basis. Using four different Sobel filters, gradients in the x and y direction for both
+                $I$ and $I'$ are calculated. These are $\Delta I_x$, $\Delta I_y$, and $\Delta I'_x$, $\Delta I'_y$.
+
+                Using these direction gradients, $Mag_{I} = Magnitude(\Delta I_x, \Delta I_y)$ and $Mag_{I'} = Magnitude(\Delta I'_x, \Delta I'_y)$ is then calculated using the gradients shown above.
+
+                Using this, the metric is defined as: $GPE(I, I') = Mean((Mag_{I} - Mag_{I'})^2)$.
+
+            \paragraph{High Low Frequency Index (HLFI)}
+                This considers the frequency of specific low and high frequencies within a single image. It is therefore classed as a no-reference metric.
+                First, the image is put through a discrete fourier transform process using OpenCV. The frequency spectrum is then shifted and a final mangitude spectrum
+                is calculated using Numpy. This mangitude spectrum is defined as $M(i, j)$, where the shape of M corresponds to the image I.
+
+                Using this spectrum, a sum of the low frequencies, from $(1,1)$ up to $(i_l, j_l)$ is calculated by cycling through each pixel in the spectrum. These two upper constants for
+                the low frequency band are defined with respect to the shape of M. Given the shape of M is $(X, Y)$, $i_l = 0.15 \cdot X$ and $j_l = 0.15 \cdot Y$.
+                For each location (i, j) within the limits, the magnitude spectrum is summed to produce a final value called $lfs$ which is the low frequency sum.
+
+                A similar process is followed for the high frequencies. However, instead of starting at 1, we start from $i_h, j_h$ and finish at $(X, Y)$. The constants $i_h$ and $i_l$ are
+                calculated in a similar manner to before, only adding one to the result. Therefore $i_h = Ceiling(0.15 \cdot X + 1)$ and $j_h = Ceiling(0.15 \cdot Y + 1)$, where $Ceiling(x)$ rounds
+                a value $x$ up to an integer. The high frequency sum $hfs$ is calculated through this process.
+
+                Based on this, the metric can be defined as $HLFI(I, I') = \frac{lfs - hfs}{\sum_{i,j = 1}^{i,j = (X, Y)} |M|}$.
+                
+            \paragraph{JPEG Quality Index (JQI)}
+                \todo{CITE JQI PAPER TO EXPLAIN HOW WE IMPLEMENTED THIS.}
+                The JQI quality index is used to understand the nature of JPEG compression in an image, specifically with regards to JPEG images being blocky (a nature of the DCT based compression),
+                and blurring components (due to high frequency DCT coefficients being lost).
+
+                First the blockiness feature $B$ is calculated as average differences across block boundaries. \todo{EPXLIAN MORE}
+                
+                Two metrics are then used to define the activity of the image signal. The first is $A$, which calculates the average absolute difference between in block image samples.
+                Then, $Z$ is the zero crossing rate. \todo{EXPLAIN MORE WHAT THESE DO}.
+
+                As these above features were calculated individually for horizontal and vertical features, they can now be fused together. This is done simply by averaging them.
+
+                $$B = \frac{B_h + B_v}{2}$$
+                $$A = \frac{A_h + A_v}{2}$$
+                $$Z = \frac{Z_h + Z_v}{2}$$
+
+                The final calculation uses a number of constants which are defined as:
+                $\alpha = -245.8909$, $\beta = 261.9373$, $\gamma_1 = -239.8886$, $\gamma_2 = 160.1664$, $\gamma_3 = 64.2859$.
+
+                Bringing the constants, and the above calculations together, this yields the overall definition of the metric:
+
+                $JQI(I, I') = \alpha + \beta \cdot B ^{\frac{\gamma_1}{10000}} \cdot A^{\frac{\gamma_2}{10000}} \cdot Z^{\frac{\gamma_3}{10000}}$.
+
+                While other definitions of this can be utilised, this yielded good prediction performance in the paper \cite{JQIPaper}. In our implementation, this was implemented using 
+                Numpy.
+            \paragraph{Laplacian Mean Squared Metric (LMSE)}
+                LMSE is a full reference metric that considers the edge differences to measure quality. A high LMSE value implies that the input image is of poor quality. 
+                
+                This requires a Laplacian function, which is defined in \cite{LMSEPaper} as:
+
+                $$Laplacian(I(m, n)) = I(m+1, n) + I(m-1, n) + I(m, n+1) + I(m, n-1) - 4\cdot I(m, n)$$
+
+                This function is calculated for each $(m, n)$ in an image. The current implementation uses the above function written in numpy to produce the Laplacian output. 
+                \cite{LMSEPaper}
+
+                Once this operator has been defined, it can then be used to calculate the overall metric: 
+
+                $$LMSE(I, I') = \frac{\sum (Laplacian(I) - Laplacian(I'))^2}{\sum Laplacian(I)^2}$$
+                
+            \paragraph{Mean Angle Magnitude Similarity (MAMS)}
+                MAMS is a full reference metric that considers the similarity between magnitudes of the angles within the image. First, a matrix of scalar products are calculated, such that $S=I \cdot I'$.
+                
+                Then, a matrix of magnitude products are calculated $M = |I| \cdot |I'|$. All zero values within $M$ are then set to 1, in order to avoid divide by zero errors in a later step.
+
+                Using both $S$ and $M$, the angles at each position on the image were calculated. Each angle produced from the arccos operation is then subtracted from 1. The operation yields a matrix $\alpha$ of angles in radians:
+
+                $$\alpha = 1 - ((\frac{2}{\pi}) * \arccos(S / M))$$
             
-            Each of these metrics outputs a single floating point number. These numbers are assembled together into a vector. This vector is then later fed into the next stage (the classifier).
+                While the angles have been produced, the mangitudes are now needed. These magnitudes $N$ are calculated as follows:
 
-            Most of the error sensitivity metrics were implemented manually using a mixture of Numpy and OpenCV. These were implemented manually based on the implementation guidelines available in the paper.
+                $$N = 1 - \frac{|I - I'|}{255}$$
 
-            For the remaining metrics, some library implementations were used from scikit-image where possible, but in a majority of cases no existing library implementation existed, and as such a new library
-            was needed. These methods are outlined below.
+                Using this, the mean angle similarity for each part of the image can be calculated:
+                $T = 1 - \alpha \cdot N$.
 
-            \paragraph{The custom PyVideoQuality library}
-            For the SSIM, VIF, and other metrics, no existing implementation existed. Looking back at the original papers for these metrics, a single matlab based implementation existed, which wasn't well documented (due to no comments or
-            explanation). This was a problem, since without these metrics it would be difficult to implement this metric.
-            
-            However, after searching online, a Python 2 implementation was found on GitHub. \cite{VideoQualityOriginal} Therefore, this was forked, and code was converted to Python 3 ready for integration into the project, which included added docstrings to assist the development process. 
-            
-            In order to allow separation of concerns, it was decided to build a seperate Python package for this. A release on GitHub was created to allow for easy importing from GitHub using pip. The final library implementation can be found on GitHub. \cite{VideoQualityUpdated}
+                Using the values from T, the overall metric output is the mean value from T. $MAMS(I, I') = Mean(T)$.
+                
+                This implementation was done using numpy functions only.
+            \paragraph{Mean Angle Similarity (MAS)}
+                This metric is almost identical to MAMS, being a full reference metric that considers the similarity of the angles. Unlike the above, we don't
+                consider the magitude of these similar angles.
+
+                Using the calculations from the MAMS metric, the steps up to the calculation of $\alpha$ are needed only.
+
+                Then, MAMS can be defined as $MAMS(I, I') = 1.0 - Mean(\alpha)$.
+
+            \paragraph{Maximum Difference (MD)}
+                The maximum difference metric takes the maximum difference between $I$ and $I'$ (making it a full reference metric). It's defined as:
+                $$MD(I, I') = Max(|I - I'|)$$
+
+                This was implemented using Numpy functions.
+            \paragraph{Mean Squared Error (MSE)}
+                MSE is a refererence metric, calculating the mean squared error between $I$ and $I'$. More formally:
+
+                $MSE(I, I') = Mean((I - I')^ 2)$
+
+                Implementation was done using Numpy.
+            \paragraph{Normalised Absolute Error (NAE)}
+                NAE is a full reference metric, calculating the absolute error and normalising it with respect to $I$. It's defined as $NAE(I, I') = \frac{\sum |I - I'|}{\sum |I|}$.
+                Implementation was done using numpy.
+            \paragraph{Naturalness Estimator (NIQE)}
+                NIQE is a no-reference metric.
+                \todo{Explain the library implementation and roughly how it works.}
+
+            \paragraph{Normalized Cross Correlation (NXC)}
+                NXC is a full reference metric. It is defined as $NXC(I, I') = \frac{\sum (I \cdot I'_{transposed})}{\sum (I^2)}$.
+
+            \paragraph{Peak Signal to Noise Ratio (PSNR)}
+                PSNR is the peak signal to noise ratio achieved between $I$ and $I'$. It's classed as a full reference metric.
+                First, the mean squared error is calculated (as before). Using this, the metric is defined as:
+                $PSNR(I, I') = 10 * \log(\frac{\max(I^2)}{MSE(I, I')})$.
+
+            \paragraph{R-Averaged Metric (RAMD)}
+                RAMD is a full reference metric, which calculates the average of all differences that are smaller than a specific value $R$.
+                In our implementation, $R=10$.
+
+                We create a matrix $D = |I - I'|$.
+
+                With this, this function can be expressed: $$RAMD(I, I') = \frac{\sum_{D(x, y) <= R}^{(M, N)}(D(x, y))}{R}$$
+
+                In the above definition, $(M, N)$ is the shape of both $I$ and $I'$. $(x, y)$ is defined as the coordinates of each pixel. For this calculation,
+                the difference is calculated for each pixel location, with any value that's greater than $R$ being set to zero. Then, the remaining values are divided by R.
+
+            \paragraph{Structural Content (SC)}
+                SC is a full reference metric. It's calculated using the following equation: $SC(I, I') = \frac{\sum(I^2)}{\sum{I'^2}}$.
+                Since $I'$ is a Gaussian blurred version of $I$, this will yield a sum of the high frequencies.
+
+            \paragraph{Spectral Magnitude Error (SME)}
+                SME metric is a full reference metric that utilises Discrete Fourier Transform (DFT) to analyse the frequency.
+                We define a function $FourierMag(img)$ which calculates the DFT of the image $img$, shifts it, and produces the magnitude of the transform at each point in the x and y space.
+
+                For image $I$ and $I'$ respectively, the transformed mangitude $M$, and $M'$ is calculated, such that:
+                $M = 20*\log(FourierMag(I))$, and $M' = 20 * \log(FourierMag(I'))$.
+
+                Using this newly defined variable, the function definition can be easily defined as:
+
+                $$SME(I, I') = Mean((M - M')^2)$$
+
+                In the implementation, OpenCV was used to conduct the DFT process, with numpy providing additional fourier transform functionality to calculate the magnitude. In addition, Numpy
+                was utilised to easily conduct the remaining matrix operations (such as $Mean$, $log$, and subtractions).
+                \(\)todo{Mention REAL and COMPLEX planes}
+            \paragraph{Signal to Noise Ratio (SNR)}
+                SNR is a fairly standard reference metric. It requires the calculation of the Mean Squared Error, which has been defined above. This shall be referenced as a function $MSE(I, I')$.
+                In addition to this function, the shape dimensions of the images are defined as (M, N). It's assumed that both images have the same shape.
+
+                Therefore, the definition follows:
+
+                $$SNR(I, I') = 10 * \log(\frac{\sum I^2}{N * M * MSE(I, I')})$$
+
+            \paragraph{Spectral Phase Error (SPE)}
+                The SPE metric utilises DFT based transformations which were implemented using OpenCV, with Numpy being used to provide the fourier transform shift functionality.
+
+                While the SME metric defined above uses magnitude, this metric utilises the phase. We define a function $FFTShift(I, plane)$. When carrying out the DFT transform,
+                two planes are produced: the real plane, and the complex plane. The real plane is the x component of the image, while the complex plane is the y component of the image.
+                As such, we carry out 4 different calculations:
+
+                $I_{shiftX} = FFTShift(I, real)$
+                $I_{shiftY} = FFTShift(I, complex)$
+
+                $I'_{shiftX} = FFTShift(I', real)$
+                $I'_{shiftY} = FFTShift(I', complex)$.
+
+                These shift components can be used to produce the magnitude for both $I$ and $I'$. This can be considered a function $Magnitude(I)$, which yields the mangitude based on the
+                x and y components for each element in the matrix.
+
+                Using this function, the metric can be easily defined as:
+
+                $$SPE(I, I') = Mean((Magnitude(I) - Magnitude(I'))^2)$$.
+
+            \paragraph{Structural Similarity (SSIM)}
+                \todo{more info about what this metric does and how it works}
+                SSIM is a no-reference implementation. This metric was implemented using the \emph{skimage} library. The library implementation can be found as a function called \emph{compare\_ssim}.
+                Rather than implementing this from scratch, the library implementation was used. Into this function, $I$ and $I'$ are passed
+                in as arguments.
+
+            \paragraph{Total Corner Difference (TCD)}
+                TCD is a full reference based metric. 
+                
+                A function called $GetNumberOfCorners(I)$ was created, which counts the number of corners found in an input image. This function applies a corner Harris detector,
+                and counts the number of corners yielded from this detector. The Harris Detector used was the OpenCV \emph{cornerHarris} detector. 
+
+                \todo{More about how we used Corner Harris to make it work (because this function is weird)}
+
+                Using this function, we can define the final metric as: 
+                $$TCD(I, I') = \frac{|GetNumberOfCorners(I) - GetNumberOfCorners(I')|}{max({GetNumberOfCorners(I), GetNumberOfCorners(I')})}$$
+
+            \paragraph{Total Edge Difference (TED)}
+                TED is a full reference based metric. It's similar to the TCD metric, but instead considers the total edges.
+                Since edges aren't easily countable, it's easier to consider the edges which exist in $I$ but not in $I'$. 
+                Edges are isolated using a Sobel function as previously used. This yields the following definition for the metric:
+
+                $$TED(I, I') = Mean(|I - I'|)$$.
+
+                The Sobel filter is calculated using an OpenCV function, with the remaining operations using Numpy backed calculations.
+
+            \paragraph{Visual Information Fidelity (VIFD)}
+                VIFD is a full reference based metric that considers the quality at 5 different scales. The number of scales can be variable, but in our instance 5 was chosen.
+                \todo{Explain why we chose 5 vs others. e.g. look at the Matlab implementation of this}
+
+                The overall definition of this metric is:
+
+                $$VIFD(I, I') = \sum_{s = 1}^{s=5} \frac{
+                        \log_{10} 
+                        \frac{1 + g^2 * \sigma_{1}^2}
+                        {sv_{sq} + \sigma_{nsq}}
+                    }{
+                        \log_{10}
+                        \frac{1 + \sigma_{1}^2}
+                        {\sigma_{nsq}}
+                    }$$\\
+
+                Here, $s$ is the scale with $s=1$ being the input images, while $s=2$ means that each image has been Gaussian blurred $s-1$ times before having this calculation being done.
+                When this compounding Gaussian process is carried out on $I$, the result at a specific time step is called $ref$. With $I'$, it's called $dist$.
+                A few other values are necessary:
 
 
-            \paragraph{Blind Image Quality Index Code}
-            The Blind Image Quality index implementation followed a similar story to the PyVideoQuality library, as no library implementation existed. A manual implementation was considered, but in order to save time an existing Python 2 implementation was found as a gist \cite{BIQIImplementation}.
-            This was converted to Python 3 manually. A manual implementation would have taken more time as this model uses a pretrained classifier, so it would have been required to implement the required preprocessing, train a classifier to an appropriate level,
-            and then include this as part of a wider system. Therefore, using this existing implementation seemed the most suitable option due to time available. This implementation required the use of the \emph{pywavelet} library, along with \emph{libsvm} tooling from the command line to train and get the output of the metric.
+                $$g = \frac{\sigma_{12}}{\sigma_{1}^2 + \epsilon}$$
+                
+                $$sv_{sq} = \sigma_{2}^2 - g*\sigma_{12}$$
 
-            % \todo{a big table showing each metric, and implementation details (library vs custom code)}
+                $$\sigma_{1}^2 = Gaussian(ref * ref) - (GaussianBlur(ref))^2$$
+                $$\sigma_{2}^2 = Gaussian(dist * dist) - (GaussianBlur(dist))^2$$
+                $$\sigma_{12} = Gaussian(ref * dist) - (GaussianBlur(ref) * GaussianBlur(dist))$$\\
+
+
+                There are also several constants, which are:
+
+
+                $$\epsilon = 1 \times 10^{-10}$$
+                $$\sigma_{nsq} = 2$$
 
             \paragraph{The RRED Problem}
-            One of the metrics, the Reduced Reference Entropic Distance metric (RRED) was problematic to implement due to the lack of Python implementation available.
+            One of the metrics proposed in \cite{ImageQualityAssessmentTest}, Reduced Reference Entropic Distance metric (RRED), was problematic to implement due to the lack of Python implementation available.
             The only implementation available was written in Matlab, and relied on Matlab only libraries. While some had Python equivalents, the steerable pyramid
             functions did not have a Python equivalent, therefore increasing the workload massively for this single metric. Therefore, the metric was ignored for the WIQA
             test, since the test performance without the RRED metric was within the expected range. 
             
-
+            
+            \paragraph{Testing these metrics}
             Once these metrics were produced, testing needed to be done to ensure that these metrics were outputting sensible values that could be relied on.
             Two images were selected at random from the NUAA dataset (using the full image path, rather than the dataset manager created beforehand). These metrics
             were then carried out individually on these two images. The values were then compared, to see if they differed, and to detect any potential image quality difference. 

@@ -20,16 +20,6 @@ T.~Choudhury, B.~Clarkson, T.~Jebara, and A.~Pentland.
 \newblock In {\em Proceedings, International Conference on Audio-and
   Video-Based Person Authentication}, pages 176--181. Citeseer, March 1999.
 
-\bibitem{VideoQualityUpdated}
-R.~Collins.
-\newblock Ohmgeek/video-quality.
-\newblock \url{https://github.com/OhmGeek/video-quality}, Dec 2018.
-
-\bibitem{BIQIImplementation}
-Cvley.
-\newblock Image quality.
-\newblock \url{https://github.com/cvley/ImageQuality}, Apr 2016.
-
 \bibitem{3DMadDataset}
 N.~Erdogmus and S.~Marcel.
 \newblock Spoofing in 2d face recognition with 3d masks and anti-spoofing with
@@ -43,17 +33,16 @@ J.~Galbally, S.~Marcel, and J.~Fierrez.
 \newblock {\em IEEE Transactions on Image Processing}, 23(2):710--724, Feb
   2014.
 
+\bibitem{LMSEPaper}
+M.~Gulame, K.~Joshi, and R.~Kamthe.
+\newblock A full reference based objective image quality assessment.
+\newblock {\em Int. J. Adv. Electr. Electron. Eng}, 2(6):13--18, 2013.
+
 \bibitem{DeepResidualNetworks}
 K.~He, X.~Zhang, S.~Ren, and J.~Sun.
 \newblock Deep residual learning for image recognition.
 \newblock {\em 2016 IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, pages 770--778, June 2016.
-
-\bibitem{VideoQualityOriginal}
-A.~Izvorski.
-\newblock aizvorski/video-quality: Video quality metrics, reference
-  implementation in python.
-\newblock \url{https://github.com/aizvorski/video-quality}, Mar 2015.
 
 \bibitem{3DReconstructionMethod}
 A.~S. Jackson, A.~Bulat, V.~Argyriou, and G.~Tzimiropoulos.
@@ -146,6 +135,12 @@ D.~Tang, Z.~Zhou, Y.~Zhang, and K.~Zhang.
 \newblock In {\em 25th Annual Network and Distributed System Security
   Symposium, {NDSS} 2018, San Diego, California, USA, February 18-21, 2018},
   August 2018.
+
+\bibitem{JQIPaper}
+Z.~Wang, H.~R. Sheikh, and A.~C. Bovik.
+\newblock No-reference perceptual quality assessment of jpeg compressed images.
+\newblock In {\em Proceedings. International Conference on Image Processing},
+  volume~1, pages I--I. IEEE, 2002.
 
 \bibitem{SGDBetterThanAdamForImageClassification}
 A.~C. Wilson, R.~Roelofs, M.~Stern, N.~Srebro, and B.~Recht.

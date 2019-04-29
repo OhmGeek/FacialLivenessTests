@@ -3,49 +3,48 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
 Database file #1: report.bib
-Warning--to sort, need author or key in GDPRDefinitions
 Warning--empty booktitle in ReplayAttackDataset
 Warning--empty booktitle in 3DMadDataset
 Warning--empty booktitle in FaceSpoofingAttacksStudy
-You've used 28 entries,
+You've used 27 entries,
             2118 wiz_defined-function locations,
-            681 strings with 9454 characters,
-and the built_in function-call counts, 9411 in all, are:
-= -- 862
-> -- 507
-< -- 8
-+ -- 202
-- -- 169
-* -- 611
-:= -- 1529
-add.period$ -- 85
-call.type$ -- 28
-change.case$ -- 163
+            676 strings with 9405 characters,
+and the built_in function-call counts, 9567 in all, are:
+= -- 883
+> -- 517
+< -- 9
++ -- 205
+- -- 173
+* -- 626
+:= -- 1549
+add.period$ -- 84
+call.type$ -- 27
+change.case$ -- 162
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 366
-empty$ -- 767
-format.name$ -- 169
-if$ -- 2014
+cite$ -- 30
+duplicate$ -- 377
+empty$ -- 766
+format.name$ -- 173
+if$ -- 2051
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 19
-newline$ -- 140
+int.to.str$ -- 27
+missing$ -- 20
+newline$ -- 137
 num.names$ -- 58
-pop$ -- 246
+pop$ -- 238
 preamble$ -- 1
 purify$ -- 135
 quote$ -- 0
-skip$ -- 277
+skip$ -- 285
 stack$ -- 0
-substring$ -- 381
-swap$ -- 96
-text.length$ -- 8
+substring$ -- 416
+swap$ -- 107
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 112
-warning$ -- 4
-while$ -- 77
-width$ -- 30
-write$ -- 287
-(There were 4 warnings)
+type$ -- 108
+warning$ -- 3
+while$ -- 80
+width$ -- 29
+write$ -- 282
+(There were 3 warnings)

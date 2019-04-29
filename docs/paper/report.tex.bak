@@ -1,16 +1,23 @@
 \documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{times}
 \usepackage{graphics}
 \usepackage{graphicx}
 \usepackage{natbib}
 \usepackage{durhampaper}
-\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{caption}
 \usepackage{todonotes}
+\usepackage{glossaries}
+\usepackage{booktabs}
+\usepackage[font=small,labelfont=bf, textfont=it]{caption}
 % \usepackage{harvard}
 \usepackage[moderate]{savetrees}
 \usepackage{url}
+\usepackage{amsmath}
 
-\title{Facial Liveness Testing: For The Web}
+\makeglossaries
+\title{Facial Liveness Testing: an approach for the web}
 \author{} % leave; your name goes into \student{}
 \student{Ryan Collins}
 \supervisor{Prof A. Krokhin}
@@ -18,183 +25,210 @@
 
 \date{\today}
 
+% Now the main body of the document.
 \begin{document}
-
 \maketitle
-
 \begin{abstract}
 % These instructions give you guidelines for preparing the final paper.  DO NOT change any settings, such as margins and font sizes.  Just use this as a template and modify the contents into your final paper.  Do not cite references in the abstract.
-
+% However, with facial recognition comes face spoofing: methods to fool the algorithms into thinking one is someone different to who they are.
 % The abstract must be a Structured Abstract with the headings {\bf Context/Background}, {\bf Aims}, {\bf Method}, {\bf Results}, and {\bf Conclusions}.  This section should not be longer than half of a page, and having no more than one or two sentences under each heading is advised.
 \paragraph{Context}
-    With password based authentication methods being subject to many attacks, facial recognition is an alternative, not relying on memory but instead
-    on biometrics. However, with facial recognition comes face spoofing: methods to fool the algorithms into thinking one is someone different to who they are.
-    In order for facial recognition to become more prevalent on the web, facial liveness is needed. With client side code comes the risk that the input could be tampered with,
-    so server side services are ideal for security, and this leaves a few questions: what metrics are suitable for deploying in such a service, and how feasible is the construction of such a service?
+    With password based authentication methods being subject to many attacks, facial recognition is an alternative, relying on biometrics rather than remembering an easily stolen string of characters.
+    While secure facial recongition methods have been developed, spoofing is still a concern. Spoofing is where someone tries to pretend they are someone else to gain access.
+    In order for facial recognition to become more prevalent on the web, facial liveness is needed. Facial liveness methods don't check identity, but aim to detect these impersonation methods.
+    The next step towards secure facial recognition systems are facial liveness services, which provide an indication of liveness and can be integrated into applications, through APIs on the internet.
+    This paper aims to understand which liveness tests are suitable for deploying in such a service, and explains next steps and architectures to the development of a facial liveness service for the modern web.
 
 \paragraph{Aims}
     % This might belong more in the method.
+
     \begin{itemize}
-        \item Verify the results of the Image Quality Assessment test.
-        \item Assess the outcome Convolutional Neural Networks on classifying real/spoofed images.
+        \item Verify the results of the proposed Whole-Image Quality Assessment (W-IQA) test.
+        \item Assess the outcome of a new ResNet based classifier on classifying real/spoofed images.
         \item Design and implement a new 3D based liveness test, aimed to prevent mask attacks.
-        \item Determine the outcome of fusing the three above methods together, and how successful this is.
+        % \item Determine the outcome of fusing the three above methods together, and how successful this is.
     \end{itemize}
 
 \paragraph{Method}
    \begin{itemize}
-        \item The image quality assessment test was implemented in Python to consider the image as a whole
+        \item The W-IQA liveness test was implemented in Python to consider the image as a whole.
         \item A CNN based 2D liveness test was implemented in Python to classify facial structure.
-        \item A 3D based liveness test was proposed and investigated as to its usefulness.
+        \item A 3D based liveness test to detect mask attacks was designed and implemented, and assessed based on practicality for the web.
    \end{itemize}
 \paragraph{Results}
     \begin{itemize}
-        \item Image Quality Assessment test performed well, being in the 90\% accuracy range over ReplayAttack test.
-        \item CNN based 2D test performed adequately, yielding 76\% accuracy over the ReplayAttack test dataset.
+        \item W-IQA test performed well, yielding 87\% accuracy over the Replay-Attack test dataset.
+        \item CNN based 2D test performed adequately, yielding 71\% accuracy over the Replay-Attack test dataset.
         \item The VoxNet based 3D liveness test performed poorly, and had various performance issues that means it's not currently practical to deploy.
     \end{itemize}
 \paragraph{Conclusions}
-    Overall, both the Image Quality assessment and CNN based 2D test are ideal in a web-based liveness test as a service system. Image Quality based metric individually yields
-    impressive results, but the CNN based metric would perform well when working together with other metrics. In addition, the speed at which queries can be answered shows 
-    that these can reasonably be used in a web system without extensive delays in processing, or without requiring any additional hardware (aside from a camera).
+    Overall, both the Whole Image Quality assessment and CNN based 2D test are metrics to include in a liveness-as-a-service system.  The W-IQA test individually yields
+    impressive results, but the CNN based metric would perform well when working together with other metrics. The CNN based metric could be further improved by adjusting preprocessing,
+    and using a deeper ResNet pretrained model. The VoxNet model has also shown that this method is a poor liveness test for the existing use case, due to high computational requirements.
+    In addition, the speed at which queries can be answered shows that these can reasonably be used in a web system without extensive delays in processing, or without requiring any additional hardware (aside from a camera).
 \end{abstract}
 
 \begin{keywords}
-Facial liveness, convolutional neural networks, image quality metrics
+Facial liveness, convolutional neural networks, image quality metrics, residual networks, anti-spoofing
 \end{keywords}
 
 \section{Introduction}
     % What is the project about?
-    Currently, username and password authentication is commonplace throughout the web. However, username and password
-    based authentication systems have a number of problems. Some common passwords can be broken using dictionary attacks,
-    especially if they consist partially or entirely of a word in a standard dictionary. Furthermore, the process of shoulder surfing is possible (watching out
-    for someone's password, and how they type it).
+    % Currently, username and password authentication is commonplace throughout the web. However, username and password
+    % based authentication systems have a number of problems. Some common passwords can be broken using dictionary attacks,
+    % especially if they consist partially or entirely of a word in a standard dictionary. Furthermore, the process of shoulder surfing is possible (watching out
+    % for someone's password, and how they type it).
+    Currently, username and password authentication is commonplace throughout the web. However, this method has serious security concerns, being easily broken through dictionary attacks,
+    or shoulder surfing. Facial recognition authentication doesn't have either of these problems, but introduces the risk of stolen identity through face spoofing, more specifically expressed
+    in a quotation from Adam Schwartz, a lawyer with the Electronic Frontier Foundation speaking to NPR: "We can change our bank account numbers, we can even change our names, but we cannot change our faces.
+    And once the information is out there, it could be misused". \cite{NPRArticle} In order to reduce the risk of stolen identities, a system to detect potential spoofing attempts is needed.
+    Providing facial liveness systems work correctly, the ability for criminals to steal people's faces would be reduced, making facial recognition more ideal for authentication on the web. The next step
+    to making facial recognition more secure and mainstream, the implementation of a facial liveness service is necessary: that way developers won't need to worry about implementing their own liveness tests
+    and can instead focus on the process of building their software.
 
     % TODO this needs to be readjusted to make it sound more formal and clear.
-   While there are different measures of detecting liveness, each method is specialised towards defending against a given attack. The aim of this project is to understand
+   While there are different measures of detecting liveness, each method is specialized towards defending against a given attack. The aim of this project is to understand
    the existing liveness detection methods, which type of attack they aim to prevent, and how effective they are. Once this has been achieved, the aim shall be to bring
-   each of these methods together, hopefully improving the effectiveness of such a system by encorporating multiple methods.
+   each of these methods together, hopefully improving the effectiveness of such a system by incorporating multiple methods.
 
     % TODO might be worth explaining that we are focusing here on only images, rather than video. Explain why...
 
     In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
-    We also confirm the success of the Image Quality Assessment method for Facial Liveness, and provide an improve
+    We provide a promising new liveness test using ResNet based networks. We also adapt an existing Image Quality Assessment test for use with whole image classification, rather
+    than a face based method.
     % In this context, we propose 
 
 \section{Related Work}
     % LIT REVIEW GOES HERE!
     As defined in \cite{FaceSpoofingAttacksStudy}, the types of face spoofing attacks can be described under three sections: Photo Attack, Video Attack and Mask Attack.
+    Photo and Video attacks are both classed as 2D spoofing attacks, while mask attacks are 3D attacks.
 
     \subsection{2D Spoofing Attacks}
         Photo and Video Attacks are both 2D spoofing attacks, which involve using a previously retrieved photo/video, and holding it in front of a camera. In the case of photo attacks,
         a single photo is used, where in video, some video would be played back on a screen. \cite{FaceSpoofingAttacksStudy}.
 
-        With video-based facial recognition systems, motions of some form can be used to determine whether the person is real or spoofed, such as blinking, head movement and others.
-        % TODO "As shown in ..., a blinking method using ... yields ... results
-        % Head movement methods shown in .... yield ... by using ...
-        % Face flashing methods, recently proposed in ..., yield impressive results, but require a screen and the results vary based on screen size.
-        In the method defined in \cite{SFMClassifier}, structure from motion was used on the video to produce a 3D model of a user, with the depth channel being used to determine whether a person is real, or whether it's simply an image.
-        They also extended this by fusing this method with audio verification. The fusion of multiple methods provides greater reliablity. However, while SFM works with video, it doesn't work with a single image,
-        and it also doesn't work if a video with little motion is provided. This fusion was completed using a Bayesian Network 
+        With video-based facial recognition systems, user motion is used to determine whether the person is real or spoofed, such as blinking, head movement and others.
 
-        While motion based methods are video-only, quality based methods are useful for both videos and images (either by extracting key video frames or using all video frames and combining the results).
-        %TODO explain old image quality methods, and their results and how they work. What's bad/what's good?
+        In the method defined in \cite{SFMClassifier}, structure from motion (SFM) was used on a video to produce a 3D model of a user, with the depth channel being used to determine whether a person is real, or whether it's simply an image.
+        This was extended further by fusing the SFM based method with audio verification. The fusion of multiple methods provides greater reliability. However, while SFM works with video, it doesn't work with a single image,
+        and it also doesn't work if a video with little motion is provided. This fusion was completed using a Bayesian Network.
 
-        While there are various quality metrics that have been used, combining a large number of them can yield some increased accuracy. By combining 25 different metrics,
-        , yielding the resulting metric values into a large vector, and using that as input to a classifier (an LDA), this yields fairly high accuracy. \cite{ImageQualityAssessmentTest}.
+        While motion based methods require a video input, quality based methods can be used for both video and image input (either by extracting key video frames or using all video frames and combining the results).
+
+        Since image quality is a major factor in detecting 2D replay attacks, understanding the image quality with respect to different image quality metrics can yield a rough liveness estimate.
+        An extension of this basic method was discussed in \cite{ImageQualityAssessmentTest} by combining 25 different image quality metrics into a vector, and using this as input to a classifier (an LDA).
+        As shown from the work, the accuracy of such a metric is high, and the metric calculations aren't very computationally intensive. \cite{ImageQualityAssessmentTest}.
+        
         This is an example of combining many items to yield better results. While each metric on its own isn't that great, using them all together yields better results.
         
-        Recently, deep learning based approaches have been applied to facial liveness (both video and image based).
+        Recently, deep learning based approaches have been applied to the task of facial liveness classification.
 
-        In particular, Convolutional Neural Networks are a key approach to this to learn features (e.g. texture based methods).
-        Due to the existing datasets available, training CNNs has been difficult due to lack of data where overfitting has been common.
-        The method proposed in \cite{Patel2016CrossDatabaseFA} uses CaffeNet, inputting both the full image along with the isolated face.
+        In particular, Convolutional Neural Networks are a key approach, since they can be used to learn a variety of features including face structure,
+        texture, and other potential suspicious visual glitches which would be obtained with face spoofing. Convolutional Neural Networks 
+        The method proposed in \cite{Patel2016CrossDatabaseFA} uses Caffe-Net, inputting both the full image along with the isolated face.
         The output yielded general texture differences, as well as specific facial texture differences. Another interesting idea proposed
         in this paper is the fusion of two algorithms together to produce an outcome, therefore reducing the false reject rate.
-        %Cite above wiht http://vipl.ict.ac.cn/uploadfile/upload/2017020711382879.pdf
         
         \subsubsection{General 2D image classification models}
-        Outside of the facial liveness field, image classification on the imagenet dataset has proven popular and yielded some fairly good
-        results. 
+        One major problem with training CNNs in the past has been the risk of overfitting due to lack of data when training from scratch, but utilising pretrained models would help reduce this risk.
+        Facial liveness is an image classification problem, and therefore adapting an existing image classification model to the job of facial liveness might yield good results. 
+
+        One major research area has been the classification of objects based on a 2D image, which uses the well-known ImageNet dataset. The models produced for this purpose have improved in accuracy,
+        while also being reasonably efficient in terms of computation time to be deployable on the web. Since these models have already been deployed in the real world, and the goal of image classification
+        is common with the goal of liveness detection, these models could be a good fit for adapting to liveness applications. Since facial liveness testing is
+        an image classification problem, these models are of importance.
         
         \paragraph{AlexNet} 
         One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
         This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Overall deployability
-        with Alexnet is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
+        with Alex net is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
         as good as newer methods (such as the ones shown below), which all perform better in terms of accuracy. 
         
         \paragraph{VGG16 Network}
         The VGG16 model improved AlexNet by replacing larger filters by more smaller filters one after another.
         However, VGG requires a high amount of computational power, something that's not easily deployable due to
         the large number of parameters (128 million), which requires a high amount of memory and compute power compared
-        to other models. \cite{DeepNeuralNetworkDeployability}
+        to other models. \cite{DeepNeuralNetworkDeployability} In our application, high accuracy is important, but the high
+        memory and computational requirements mean this model isn't the most suitable.
 
         \paragraph{GoogLeNet Inception}
         GoogLeNet is an improved module that approximates a space Convolutional Network with a normal
         dense construction. One of the major features of GoogLeNet is the Inception module. The naive approach to this 
         is to take the input from the previous layer, calculate a 1x1, 3x3 and 5x5 convolution (all at the same time), along with
         a 3x3 max pooling before feeding this into an output, the output being the filter concatenation step.
-        However, to reduce the diemsnionality, and therefore improve performance, a 1x1 convolution is applied before
+        However, to reduce the dimensionallity, and therefore improve performance, a 1x1 convolution is applied before
         each 3x3 and 5x5 convolution, and after the max pooling output. These inception modules can be used and stacked
         to improve performance without a huge increase in computation. \cite{GoogLeNet} 
-        This is shown in Figure \ref{InceptionArchitecture}.
-
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.7\linewidth]{InceptionModule.png}
-            \caption{The Inception module with dimensionality reduction. Diagram taken from \cite{GoogLeNet}.}
-            \label{InceptionArchitecture}
-        \end{figure}
-
+ 
         Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
         
         \paragraph{Residual Networks}
-        Another key problem with deep convolutional networks on Image Classification is the vanishing gradient problem, where early layers have very small gradients during the training process and
-        are therefore much more difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block. \todo{Explain Resnets better}.
-        The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficent than VGG in terms of computational power needed. \todo{Cite Residual Networks}
+        Another key problem with deep convolutional networks on when used for image classification is the vanishing gradient problem. This occurs when early layers have very small gradients during the training process and
+        making the model very difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block.
+        The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficent than VGG in terms of computational power needed. \cite{DeepResidualNetworks}
         While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
-        
-        In terms of Top-1\% accuracy (the accuracy with the top output in a multiclass problem) shown in Figure \ref{Top1AccuracyOverNetwork}, newer version of the Inception model perform the best,
-        with ResNet based classifiers not too far behind. AlexNet performance was fairly poor. Now compare this with the operations (the required computational power for each model), which is shown in Figure \ref{Top1AccuracyOverOperations}.
-        AlexNet and GoogLeNet require fairly few operations, in the $<10 GOps$ range. The same is true for smaller ResNet based models (e.g. ResNet 50 and 34).
-        Meanwhile, VGG requires a fairly large amount of operations ($>30 GOps$), as do later versions of Inception.
+        This model is very ideal for our application, as it acts as an ideal compromise between accuracy and computational requirements, yielding fairly good accuracy for our security focused perspective, while also
+        ensuring that the operational cost (in terms of time, and cost for hardware) isn't too high, compared with other models such as VGG.
 
+        Architecturally, Residual Networks consist of residual blocks, which can be seen in Figure \ref{ResidualBlock}. This solves the vanishing gradient problem by utilising shortcut
+        connections, which skip one or more layers. The outputs of these shortcut connections are added to the outputs of the stacked layers.
+        \todo{EXPLAIN MORE ABOUT RESNETS AND HOW THEY WORK TO OPTIMIZE. IN PRODUCTION, COMPARE THEM TO RAW CNNS}
+        \begin{figure}
+            \includegraphics[width=.7\linewidth]{ResidualBlock.png}
+            \caption{A Residual Block: this is the building block of the ResNet architecture. Source: \cite{DeepResidualNetworks}}
+            \label{ResidualBlock}
+        \end{figure}
+
+        One important metric to analyse the performance of a model is the Top-1 accuracy figure. This metric represents the class with the highest probability in the model must be exactly the expected answer. 
+        The Top-1 accuracy scores for the models outlined above are shown in Figure \ref{Top1AccuracyOverNetwork}. These results show that a newer version of the Inception model perform the best,
+        with ResNet based classifiers performing fairly well too. AlexNet performance on the other hand was fairly poor. While accuracy was important, the number of operations is also important, as this will affect how easily the model can be used 
+        in a real-world system. Based on the results shown in Figure \ref{Top1AccuracyOverOperations}, AlexNet and GoogLeNet are shown to require very few operations ($<10$ G-Ops),
+        with a similar result being yielded for ResNet 50 and ResNet 34. On the other hand, VGG models require a large number of operations for a similar accuracy, requiring $>30$ G-Ops.
+        This fact is also true for Inception models.
 
         \begin{figure}
             \centering
             \includegraphics[width=.7\linewidth]{Top1AccuracyOverNetwork.png}
-            \label{Top1AccuracyOverNetwork}
             \caption{Top 1 accuracy vs network. Chart and results from \cite{DeepNeuralNetworkDeployability}}
+            \label{Top1AccuracyOverNetwork}
         \end{figure}
 
         \begin{figure}
             \centering
             \includegraphics[width=.7\linewidth]{Top1AccuracyOverOperations.png}
-            \label{Top1AccuracyOverOperations}
             \caption{Top 1 accuracy vs operations, where network size is proportional to parameters. Operations figures are for a single pass (e.g. predicting given a specific input). Chart and results from \cite{DeepNeuralNetworkDeployability}}
+            \label{Top1AccuracyOverOperations}
         \end{figure}
 
         \subsubsection{Datasets}
         %Datasets
-        While models exist, in order to test these models data is needed. One of the most common and earliest dataset for facial liveness is the NUAA dataset,
-        which consists of photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera. \cite{NUAADataset}
+        One of the most common datasets, and one of the earliest created, is the NUAA dataset.
+        The dataset contains photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera.
+        Each photo is stored in JPEG format, with a hierarchial structure to show whether the image was real or fake, and what type of
+        attack was used (in the case of faked images). One drawback with the NUAA dataset is with regards to licensing: the dataset is only available for
+        non-commercial use (i.e. research purposes). This implies that this dataset, and models trained with this dataset, would not themselves be able to be deployed
+        \cite{NUAADataset}
+        However, as this project is only researching into the feasibility of a web based liveness testing system, this project is for research purposes and hence meeting the
+        licensing objectives.
 
         In 2012, the Replay-Attack dataset was first released, which consists of 1,300 video clips of both photo and video attacks. Each
         set of videos/images are taken under different illumination conditions, and various different attack methods were collected: printed photo, low resolution and high resolution screens with both photos and 
         videos being displayed. The entire dataset consists of several 'subdatasets': the 'devel' dataset is designed as a validation set/training set, while
         the 'test' dataset is designed as a test dataset (and therefore must not be used in the training/validation process). \cite{ReplayAttackDataset}
 
+        These two datasets are ideal for testing 2D based liveness systems, since they contain enough samples to reasonable train/test our models. They shall be used
+        throughout this project for both training and testing the 2D based liveness models.
 
         \subsubsection{Temporal-based Liveness Tests}
         These liveness tests require a video input, rather than an image. Rather than looking directly at an image, they mostly look at the differences between the images in a video.
         
         % Blinking
         \paragraph{Blink Detection}
-
-        % Eye Tracking
-        \paragraph{Eye Tracking}
-
-
+        The blink detection liveness test analyses eye blink behaviour and determines whether the person is real/fake. This liveness test meets our critera for a web-based liveness service,
+        as the test doesn't require any extra hardware. Furthermore, a large amount of concious activity from the user isn't necessary, as the video analysed is natural behaviour.
+        One drawback of this method is testing: this model requires a video input, which isn't available with the NUAA dataset, and therefore testing this method might be more difficult.
+        \cite{BlinkDetectionLivenessTest} Furthermore, this method would be susceptable to a print-based attack where eye holes were cut, since natural eye movement is analysed.
+        
         % Face Flashing
         \paragraph{Face Flashing}
         One method, known as the "Face Flashing" liveness detection method, uses the light diffusing off a screen to determine that the input is in fact from the user, rather than from a spoofed recorded/simulated input.
@@ -214,175 +248,605 @@ Facial liveness, convolutional neural networks, image quality metrics
 
         % Explain the method shown in Choudhary et al., 1999 - SFM. Problem: depth information ahrd to obtain when still with SFM. Noise also problematic.
         % Which uses Structure From Motion.
-        In 2013, the Mask Attack Dataset (MAD dataset) was released. \cite{3DMadDataset}
+        In 2013, the 3D Mask Attack Dataset (MAD dataset) was released. This dataset contains 76500 frames of 17 people, recorded using a Kinect camera.
+        Each frame contains a depth image, an 2D RGB image with 8 bit colour and a size of 640x480 pixels. Each frame also contains eye positions.
+        Real Access samples are contained within the first and second session folders, while the third session contains the frames of mask attacks. The subjects contained
+        within each frame are denoted within the filename.
+        
+        \cite{3DMadDataset}
 
-        \todo{Improve this section, explaining 3D based measures, more about the MAD dataset and attacks, etc.}
-    % What are the different types of attacks that one would expect? 
-    % Then, explain the different methods that can be applied, including references.
-    % - image Quality assessment (different types of image quality metrics used ,and why they should be effective). Drawbacks of these
-    % - movement based assessment (requiring actions to be performed, and their problems).
-    % - Deep Learning methods (what methods exist, their performance)
-    % - 3D mask prevention methods (kinect based ones that require 3D input, or SFM, which isn't really valid here)
+        \subsubsection{Obtaining 3D data from 2D images/video}
+            One method of obtaining 3D data from a video is to use Structure From Motion (SFM). This method was previously utilised in \cite{SFMClassifier} to consider the depth data as a 2D liveness test,
+            but this method could potentially work as a solution for obtaining 3D data. However, SFM performs poorly when given a video with a small amount of motion. Furthermore, the 3D mask attack datasets
+            available for this project do not contain video but single images, which means such a method would be more difficult to test.
 
+            However, with improved machine learning models, there exist models that can reconstruct facial structure based on a single 2D image. One such model is the VRN model, proposed in \cite{3DReconstructionMethod}.
+            The paper, and the associated source code, contains a model that takes a 2D image as input (of size 192x192), and produces a voxel repesentation of the 3D face structure. This model is more suitable for our
+            application, since the use of a 2D image rather than a video works well with the datasets available. Furthermore, use of a single 2D image would require less user input as a SFM based method, since the user isn't required
+            to move in order to produce an adequate 3D reconstruction. An example of the 3D reconstruction obtained from this model can be seen in Figure \ref{3DReconstructionScreenshot}. The screenshot is obtained from the GitHub repository
+            of a Keras-based implementation of this method (since the initial implementation of the paper used the Torch library).
 
+            \begin{figure}
+                \centering
+                \includegraphics[width=.5\linewidth]{3DReconstructionFromSource}
+                \caption{A screenshot from the VRN Torch to Keras version (a conversion of the VRN model to Keras). This screenshot is from \cite{VRNTorchToKeras}}
+                \label{3DReconstructionScreenshot}
+            \end{figure}
+
+            % \todo{VRN 3D reconstruction on MaskAttackDataset image}
+
+        \subsubsection{3D Classifiers}
+            In a similar approach to the 2D methods researched above, there are a variety of existing 3D classifiers that could be repurposed for the liveness classification approach.
+            While these methods don't yield the same accuracy figures as with ImageNet, further improvements in the field of 3D classification could lead to better liveness methods in the future.
+
+            \paragraph{PointNet}
+                PointNet is a model for classifying point clouds, represented as an unordered set of points. PointNet in total has 3.5 million parameters, with 440 million FLOPs per sample, which 
+                is a reasonable number considering other classifiers, but is on the upper end of what would be expected for a web based system. The classifier used within PointNet is a simple feed forward network.
+                \cite{PointNet}
+                \todo{What are these parameters? Explain.}
+                While this model has performance benefits over CNN based models (since 3D convolution is computationally expensive),
+                the input is a point cloud structure which might not be the most ideal solution (since sparse data might not be captured, dependent on which reconstruction model is used).
+                
+            \paragraph{VoxNet}
+                Unlike PointNet, this model uses a voxel representation. This is ideal due to the nature of existing 3D reconstruction models from a 2D image. The accuracy of this classifier isn't the most ideal,
+                but improvements could be made such as implementing a Residual network approach (something that worked well for 2D classifiers). As a proof of concept, this model would be ideal to test whether this model would work
+                in the real world. \cite{VoxNetModel}
+                \todo{explain voxnet parameters and figure showing model structure.}
+            
 \section{Solution}
     % Solution to the problem
-    \subsection{Image Quality Assessment based liveness test}
-        For 2D spoofing attacks, spoofed images are typically lower quality than the real images, and thus by measuring the image quality
-        one can train a classifier to detect real and spoofed images respectively.
 
-        The method used, based on the work of \citet{ImageQualityAssessmentTest}, implements 24 different metrics with varying differences, and produces
-        a vector for each image. Initially, classification was done using a Support Vector Machine (SVM), but after experimentation this proved to be fairly
-        unreliable (yielding 70\% accuracy on the test set). The classifier was later changed to use Linear Discriminant Analysis (LDA) which yielded a much improved
-        accuracy (96\% accuracy on the test set). \todo[inline]{TODO: give more accuracy figures of accuracy here, I can't remember the exact numbers}.
-        A visual explanation of the method can be seen in Figure \ref{ImageQualityLivenessTestDiagram}. 
+    % \todo{Refactor into functional and non functional requirements.}
+    A system deployed to the Cloud would require a few important criteria be met. The liveness methods used should be output a liveness score after no more than 2 seconds
+    to ensure that such a system doesn't become painful to use by users. The liveness methods should not require any additional hardware (only a normal camera) so that the number
+    of devices it can be used by can be maximised. Furthermore, each liveness test must have a reasonable accuracy of over 70\%, to ensure that liveness predictions are fairly reliable.
 
-        \todo{Add more information here about each metric, the PyVideoQuality manual work that needed doing, and any custom code}
+    The solution built should be focused on the metrics to be used, and fusion of these metrics. While speed is important, network latency and transmission time shouldn't be factored in, 
+    since these are incredibly dependent on a client's internet speed/image sizes, and therefore cannot be reliably tested. For small images and reasonably fast internet, latency would be fairly small.
 
-        \begin{figure}
-            \centering
-            \includegraphics[width=\linewidth]{ImageQualityLivenessTest.pdf}
-            \label{ImageQualityLivenessTestDiagram}
-            \caption{The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics.
-            (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value
-            is 1.0 for real, and 0.0 for fake, or in between.}
-        \end{figure}
+    With these specifications in mind, the design focused on three different liveness tests: an Image Quality assessment based liveness test, a ResNet 50 based classifier (based on a pretrained ImageNet model),
+    and a novel 3D based classifer using 3D facial reconstruction models interlinked with the VoxNet 3D classification model. Each of these liveness tests have some common services that are needed; these include
+    reading large datasets without causing resource availability problems.
 
-        Originally, the source code accompanying this paper was written in Matlab, using some Matlab-based libraries for certain metrics. Scikit learn provided 
-        the necessary classifiers (LDA, SVM), OpenCV provided some simple image manipulation code (e.g. Gaussian Blur), and Numpy allowed for a large amount of
-        image-based calculations.
+    \todo{insert diagram of the overall system design (e.g. data, consolidation layer, etc)}
 
-        \paragraph{Numpy/OpenCV powered metrics, utilising image based calculations}
-        Several metrics simply required pixel based calculations between an image, and a gaussian blurred version of the same image. These were fairly easy to implement,
-        utilising numpy to manage the individual pixel calculations. In some cases (e.g. GradientMagnitudeErrorMetric), other image operations such as a Sobel filter were needed, and in this
-        instance OpenCV was used to carry out these operations. Some of these also relied on other linear algebra libraries built into Numpy for the calculations.
-        In some cases, further functions were written to work with these libraries.
+    \subsection{Shared Services}
+        \subsubsection{Dataset Managers}
+        In order to assess our liveness tests and train them, dataset managers are needed.
 
-        Metrics that are included here are: Average, Maximum Difference, Gradient Magnitude Error, Gradient Phase Error Metric, JPEGQualityIndexMetric, MSE (and the laplacian equivalent), Angle-based similarity metrics,
-        Absolute Error Metric, Normalised Cross Correlation, Signal to Noise Ratio based metrics, Corner and Edge based metrics, and Visual Information Fidelity metric (which uses gaussian blurs at various scales).
+        A generic implementation of a dataset was created as an Abstract Class, which was then extended by the NUAA, ReplayAttack and MaskAttack dataset managers.
+        This generic implementation allows for future datasets to be easily added, and also provides the class definition of what's needed, to help improve the software engineering process.
 
-        \paragraph{Fourier/wavelet based metrics}
-        In some cases, fourier transforms could be carried out with a combination of opencv and numpy metrics, this was the case with the HighLowFrequencyIndexMetric,
-        and SpectralPhaseErrorMetric.
+        The role of a dataset manager is to load in a dataset from a folder structure (which varies between dataset), conduct any basic preprocessing to convert the files into OpenCV images,
+        and produce two H5Py Datasets, one for real images, and one for fake images. The dataset manager also allows further customisation, to load specific subdatasets (such as 'devel' or 'test' in the case
+        of the ReplayAttack dataset), or load data regarding specific subjects (in the case of the Mask Attack Dataset). The role of the H5Py dataset is to normalise the datasets into a specific format,
+        to allow for easier dataset processing.
 
-        Some metrics required further wavelet transforms that weren't available within existing imported libraries. Rather than implementing these metrics completely
-        from scratch, a library was needed. Existing code had been written \cite{VideoQualityOriginal}, but it had two problems: it wasn't compatible with Python3, but only
-        with Python2, and also it wasn't in an easily importable/managable library form for integration into an existing app.
+        In addition to data normalisation, it also provided a method of reducing RAM usage, therefore allowing larger liveness test models to be created. This is because data is only fetched when needed
+        from the hard drive, rather than loading the entire dataset into RAM at once.
 
-        Therefore, the existing code was forked in order to be updated. The Python2 to Python3 upgrade was completed fairly easily, simply by correcting imports that were incorrect
-        for newer versions, and also version specific corrections (such as $== None$ being changed to $is$ $None$ in Python3).
-        
-        Once this was completed, the code was bundled into a package by creating a $setup.py$ file. This allows for code reuse, and also makes dependencies for the project
-        more managable by using a hosted version of the package, rather than a version on the local repository (as the underlying code for the metric will rarely be touched).
-        The setup file also requires a Makefile be created to install dependencies using pip. Once this was completed, a GitHub release was created for the package, which allows it to be
-        imported into an existing project using pip. \cite{VideoQualityUpdated}. This code implements the VIF, SSIM and NIQE metrics.\todo{Need to adjust how we specify metrics and what they are}
+        % \todo{Diagram of Dataset management?}
 
-        However, this didn't include all metrics, as the Blind Image Quality Index still wasn't implemented. Once again, there were no Python3 implementations, and only Python2 implementations existed.
-        The metric itself calls for running input through a pretrained SVM, using libsvm based libraries on the system. An updated version of pywavelet is used to conduct wavelet transforms, and rather than using sklearn for SVM classification
-        running a subprocess is the best solution (reading and writing to a file, and using the data this way). Performance wise this isn't ideal, and the libsvm-based classifier could in the future be
-        imported to Sklearn, but it performs adequately for a proof of concept.
-
-        Another final metric that's missing is the RRED metric, as this wasn't implemented. The metric requires the use of steerable pyramids, which have no existing Python implementation, only a Matlab one. In order to implement this metric, it would have required first implementing a steerable pyramid library
-        before continuing to implement the remaining metric using this library, for minimal performance benefits of the current system. Therefore, this metric was skipped. \cite{RRED}
-
-
-    \subsection{Residual Network based 2D liveness test}
-        Recently, 2D convolutional neural networks have had great success in image classification tasks. Therefore, it might be possible to train
-        a residual neural network (resnet) to classify for facial liveness tasks. The final architecture that was reached can be seen in Figure \ref{2DCNNArchitecture}.
-        These sections outline specific areas, namely preprocessing, the model, and training, in terms of the implementation detail.
-
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.5\linewidth]{2DCNNArchitecture.pdf}
-            \label{2DCNNArchitecture}
-            \caption{The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers
-            of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the
-            liveness score as before).}
-        \end{figure}
-
-        
-        \subsubsection{Preprocessing}
-            Initially, the entire image was fed directly into the Residual Network, but this yielded fairly poor performance and generalisation. As a result,
-            a HoG based face detector was used to find the largest bounding box in an image (of a person's face), and crop the image around this face structure. The HoG detector was
-            initially used due to performance benefits, since a neural network based face detector would require slightly more processing power, and therefore time, to both train and
-            predict with our model.
-
-            The image is then resized to the expected input size (required for the Keras image data generator), before again being resized to an image of shape (224, 224).
-            While this worked, the bounding box width and height ratio did differ a large amount, which could potentially have yielded slightly poorer performance.
-            Given a bounding box $B = (top, bottom, left, right)$, we can create a new bounding box $B'$ which retains square dimensions, by first finding the square
-            side width $s$. Mathematically, this is defined as:
-
-            $$s = Max(bottom - top, right - left)$$
-
-            Now we create a new bounding box, defined as:
-
-            $$B' = (top, top + s, left, right + s)$$.
-
-            By following this method, the model appeared to perform better overall, as rather than focusing on the overall image quality (which the previous model did),
-            it would focus on the facial region.
-
-            During the process of training, it was noted that the HoG detector was missing approximately one eighth of the faces, therefore outputting the entire image, which
-            could potentially have an impact on training and the accuracy of the model. Changing this to the CNN based classifier had surprising results: the computational performance increased,
-            due to the underlying GPU acceleration, and the accuracy also improved due to the lack of random noise in the training set (through the generators). One thing to note with the CNN based
-            face detector was to ensure upsampling was set to zero, otherwise memory issues would result (since the model and face detector model all need to be stored in GPU memory).
+        \subsubsection{Neural Network Infrastructure}
+            % Keras to simplify models, tensorflow as the underlying backend.
+            % Training machine on Google Cloud, using 64GB RAM, 8 x vCPUs, and an NVIDIA Tesla P100 GPU to improve performance of the training process through parallelism. 
             
-        \subsubsection{The Model}
+            \paragraph{Neural Network Framework} 
+            For the 2D and 3D based classifiers, neural networks were to be used. It was decided to use Keras, with the Tensorflow backend, as Keras provides a high level interface to Tensorflow
+            and also allows for other backends to be used in the future (which could potentially perform better in different scenarios). The tensorflow backend was used because of the easy configuration
+            with both GPUs and without (simply install tensorflow-gpu for GPU processing, and tensorflow for CPU only processing), depending on the machine being used. A high level interface was necessary
+            to avoid boilerplate too, since models would be regularly changed to find the best outcome for each classifer.
 
-            In order to simplify the process of training, an existing resnet model (ResNet50) was used, with only the final convolutional layer being
-            set to trainable. This is because the initial convolutional layers contain the standard features contained within images, while the final one
-            learns bundles of features. Internal feed forward activations use relu, while the external output uses the sigmoid activation function
+            \paragraph{Hardware for training}
+            Training the neural network required more processing power than was directly available. Google Cloud Compute Engine was used to provide this processing power, since it's easily accessible and has existing
+            deep learning environments with Intel-accelerated mathematics libraries. The Google Cloud instance also provided easy extensibility, since some of the liveness tests required additional tools that could not be easily installed
+            on NCC/Hamilton clusters at Durham University. Training was conducted on a VM with 64GB RAM, 8 virtual CPUs with an NVIDIA Tesla P100 GPU being used to accelerate the training process (through parallelism).
 
-            Batch Normalization was therefore added to help make the make the model generalise further.
+            \paragraph{Hardware for testing}
+            GPUs are expensive, and therefore if such a system were deployed the cost of GPUs would provide expensive to run. Therefore, a CPU only implementation for the testing was followed, using an Intel i7-7700K (at 4.2 GHz), with
+            16GB RAM. Performance metrics were yielded using this hardware to emulate the expected performance and understand which metrics performed best and whether they performed adequately.
 
-            Throughout the training process, a binary crossentropy loss function was used, since there are only two possible classes, being predicted with a single number output. 
-
-            The final architecture can be seen in Figure \ref{2DCNNArchitecture}. While normalization layers aren't visible, they are located in between each dense layer. The residual network
-            is also simplified.
-
-        \subsubsection{The Optimiser/Training}
-            Initially, I was using the Standard Gradient Descent optimiser, due to the findings of \cite{SGDBetterThanAdamForImageClassification} which stated
-            that SGD was better than Adam for generalisation. However, after experimenting further I found that using an Adam optimiser with a learning rate of 0.001
-            led to an improved validation accuracy. With SGD the validation accuracy fluctuated, peaking at around 0.75 without increasing further. With Adam, the
-            validation accuracy obtained in the results section was yielded, which was quite a large improvement.
-
-    \subsection{A system for preventing 3D spoofing attacks}
-        While the systems before might go partially towards preventing 3D spoofing attacks, though primarily considering the 2D image, we now propose a method
-        that is designed for classifying facial liveness based on a 3D point cloud. There are two distinct parts here: 2D to 3D, and 3D classifier. Each part shall be addressed
-        individually, and then the two components combined.
-
-        \subsubsection{2D to 3D Conversion}
-            In order to classify an image/video, the 2D image needs to be converted to a 3D representation of a user's face. While 3d reconstruction is easier with videos (using structure from motion or other multiview based methods),
-            there also exist image-based reconstruction methods such as vrn (\citealt{3DReconstructionMethod}) which are more specific and designed for reconstructing faces based on images. This also has benefits, as structure from motion
-            is unable to reconstruct 3D from a single image, or from videos with very little motion.
-
-            The image was converted by first applying a facial detection algorithm on the image, and cropping the image down to provide only the face. This cropped image was then resized to
-            be of size $(192, 192)$, still in colour. This cropped and resized image was then fed through the VRN network. After this, the network output was filtered and stacked to provide the voxel input required.
-
-            The code to operate this can be found under the \emph{liveness.vox.reconstruction} namespace within the code.
-
-        \subsubsection{3D point cloud classification}
-            Once the 3D reconstruction is obtained, one can then classify this using some model to produce the fake/real metric.
+        \subsubsection{Image Processing and Computation Management}
+            OpenCV was used to manage the processing of images, including the image loading components. This library was chosen for the wide support available, and for the large feature set that it provides (including Gaussian Blurring, some image metrics, and some fourier analysis).
+            For the rare occasions where OpenCV didn't have the required functionality, scikit-image provided some operations that were necessary.
             
-            VoxNet takes in a point cloud and converts this to an occupancy grid. This is then fed through two convolutional layers,
-            pooled, and then goes through a dense layer before reaching the classifier output (a dense layer with the k outcomes). 
+            Numpy was instrumental in most other computation operations (including image preprocessing, mathematical calculations), due to the large speed improvements provided by the C implementation (compared to Python's slower math libraries).
+            Since opencv interfaces well with numpy, no conversion was needed which improved the ease of implementation.
 
-            As a pretrained version of VoxNet wasn't readily available, the whole system was trained together from scratch.
 
-        \subsubsection{Linking everything together}
-            While each system is self-contained, linking them together took a little bit more work than expected. The models themselves couldn't be directly joined together,
-            as VRN required extra postprocessing steps which couldn't be implemented using tensors within tensorflow. As such, the initial 2D to 3D conversion was required to be run
-            as a preprocessing step.
+        \subsection{Image Quality Assessment Liveness Test}
+            \subsubsection{Overview}
+            One common way of detecting liveness is to consider the image quality of the camera input. When a printout/screen is held up to the camera, the facial image
+            will have some noticable differences, specifically in the high frequencies. There might also be some image compression visible in fake images, compared to real ones.
+            This is the basis for this method.
 
-            To assist in the training phase, a generator was written in Python to conduct the postprocessing on the fly for each batch, which didn't require the entire preprocessing step to be done before training, 
-            thus reducing the peak memory usage problems. While an ImageDataGenerator was used previously, this isn't compatible with 3D, and therefore a custom module needed to be written.
+            % \todo{Reference the specification above}.
+            More specifically, the implementation was based on the work contained in \cite{ImageQualityAssessmentTest}. 24 different image quality metrics were implemented,
+            with metric values being used as an input to a classifier. From previous work, it has been shown that this metric is accurate (therefore detecting spoofing well), while
+            also being fairly fast to compute in terms of time, making it ideal for our use-case.
 
-            Once the preprocessing had been completed, the preprocessed image was fed to the VoxNet. 
-            % tODO explain experiments.
+            The classifier being used for our implementation is Linear Discriminant Analysis (LDA).
+
+            A visual explanation of the method can be seen in Figure \ref{ImageQualityLivenessTestDiagram}. 
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{ImageQualityLivenessTest.pdf}
+                \caption{The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics.
+                (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value
+                is 1.0 for real, and 0.0 for fake, or in between.}
+                \label{ImageQualityLivenessTestDiagram}
+            \end{figure}
+    
+            \subsubsection{The Metrics}
+            The original paper proposed that 25 metrics were used. However, our implementation used only 24, due to some implementation problems. Most of the metrics were implemented manually as defined
+            either in \cite{ImageQualityAssessmentTest}, or utilising further sources to understand how they worked. In addition, the Matlab source code that was released with \cite{ImageQualityAssessmentTest}
+            was referred to, but written manually in Python using Numpy/OpenCV or in some cases other libraries.
+
+            Each of these metrics requires an input image $I$. Non-Reference metrics only require $I$, while Full-Reference metrics require an additional image $I'$. $I' = Gaussian(I)$ in our implementation.
+            
+            \paragraph{PyVideoQuality Library}
+            As part of the implementation process, the NIQE metric required the use of a pretrained classifier which didn't exist for Python. As such, it was necessary to modify existing code.
+            The only Python source code available was \cite{VideoQualityOriginal}, which was written for Python 2 and consisted of single Python files that would be difficult to implement into the system.
+            As such, the Python 2 code was converted to Python 3 manually, and refactored to follow a python package by myself. This new library was shared-alike, and is now available on GitHub. \cite{VideoQualityUpdated}
+            
+
+            \paragraph{Absolute Difference (AD)}
+                This is a full reference metric, defined as $AD(I, I') = Mean(I - I')$. This calculation was implemented using numpy manually.
+
+            \paragraph{Blind Image Quality Index (BIQI)}
+                BIQI is a no-reference metric. Rather like NIQE, there was no existing BIQI library implementation. It also consists of a pretrained classifier element, which
+                would be hard to replicate without the correct processing or training data. The training set used is the LIVE IQA dataset, which is public domain but requires 
+                permission to access which would take quite a bit of time for a small component of the project.
+
+                BIQI consists of two steps: the first is to assess image distortion, and the second is to analyse the quality. 
+
+                As such, an existing implementation was found on GitHub but for Python 2. \cite{BIQIImplementation} This was refactored to work with Python 3, and the code included as part
+                of the existing GitHub repository. 
+
+                
+            \paragraph{Gradient Mangitude Error (GME)}
+                GME is a full reference metric, and it calculates the error corresponding to the gradient magnitude between the two images. The gradients $\Delta I$ and $\Delta I'$
+                are calculated using a Sobel filter, kernel size 5 in both X and Y directions. The Sobel filter is calculated using OpenCV within our implementation.
+
+                Using these gradients, the metric is calculated as $GME(I, I') = Mean((\Delta I - \Delta I')^2)$. In our implementation, numpy is again used to calculate both the mean and
+                also the squared difference.
+
+            \paragraph{Gradient Phase Error (GPE)}
+                \todo{look into this, because I think GME and GPE might have been switched during implementation for some reason.}
+                GPE is a full reference metric, which like GME uses the Sobel filter as a basis. Using four different Sobel filters, gradients in the x and y direction for both
+                $I$ and $I'$ are calculated. These are $\Delta I_x$, $\Delta I_y$, and $\Delta I'_x$, $\Delta I'_y$.
+
+                Using these direction gradients, $Mag_{I} = Magnitude(\Delta I_x, \Delta I_y)$ and $Mag_{I'} = Magnitude(\Delta I'_x, \Delta I'_y)$ is then calculated using the gradients shown above.
+
+                Using this, the metric is defined as: $GPE(I, I') = Mean((Mag_{I} - Mag_{I'})^2)$.
+
+            \paragraph{High Low Frequency Index (HLFI)}
+                This considers the frequency of specific low and high frequencies within a single image. It is therefore classed as a no-reference metric.
+                First, the image is put through a discrete fourier transform process using OpenCV. The frequency spectrum is then shifted and a final mangitude spectrum
+                is calculated using Numpy. This mangitude spectrum is defined as $M(i, j)$, where the shape of M corresponds to the image I.
+
+                Using this spectrum, a sum of the low frequencies, from $(1,1)$ up to $(i_l, j_l)$ is calculated by cycling through each pixel in the spectrum. These two upper constants for
+                the low frequency band are defined with respect to the shape of M. Given the shape of M is $(X, Y)$, $i_l = 0.15 \cdot X$ and $j_l = 0.15 \cdot Y$.
+                For each location (i, j) within the limits, the magnitude spectrum is summed to produce a final value called $lfs$ which is the low frequency sum.
+
+                A similar process is followed for the high frequencies. However, instead of starting at 1, we start from $i_h, j_h$ and finish at $(X, Y)$. The constants $i_h$ and $i_l$ are
+                calculated in a similar manner to before, only adding one to the result. Therefore $i_h = Ceiling(0.15 \cdot X + 1)$ and $j_h = Ceiling(0.15 \cdot Y + 1)$, where $Ceiling(x)$ rounds
+                a value $x$ up to an integer. The high frequency sum $hfs$ is calculated through this process.
+
+                Based on this, the metric can be defined as $HLFI(I, I') = \frac{lfs - hfs}{\sum_{i,j = 1}^{i,j = (X, Y)} |M|}$.
+                
+            \paragraph{JPEG Quality Index (JQI)}
+                The JQI quality index is used to understand the nature of JPEG compression in an image, specifically with regards to JPEG images being blocky (a nature of the DCT based compression),
+                and blurring components (due to high frequency DCT coefficients being lost).
+
+                First the blockiness feature $B$ is calculated as average differences across block boundaries. \todo{EPXLIAN MORE}
+                
+                Two metrics are then used to define the activity of the image signal. The first is $A$, which calculates the average absolute difference between in block image samples.
+                Then, $Z$ is the zero crossing rate. \todo{EXPLAIN MORE WHAT THESE DO}.
+
+                As these above features were calculated individually for horizontal and vertical features, they can now be fused together. This is done simply by averaging them.
+
+                $$B = \frac{B_h + B_v}{2}$$
+                $$A = \frac{A_h + A_v}{2}$$
+                $$Z = \frac{Z_h + Z_v}{2}$$
+
+                The final calculation uses a number of constants which are defined as:
+                $\alpha = -245.8909$, $\beta = 261.9373$, $\gamma_1 = -239.8886$, $\gamma_2 = 160.1664$, $\gamma_3 = 64.2859$.
+
+                Bringing the constants, and the above calculations together, this yields the overall definition of the metric:
+
+                $$JQI(I, I') = \alpha + \beta \cdot B ^{\frac{\gamma_1}{10000}} \cdot A^{\frac{\gamma_2}{10000}} \cdot Z^{\frac{\gamma_3}{10000}}$$
+
+                While other definitions of this can be utilised, this yielded good prediction performance in the paper \cite{JQIPaper}. In our implementation, this was implemented using 
+                Numpy.
+            \paragraph{Laplacian Mean Squared Metric (LMSE)}
+                LMSE is a full reference metric that considers the edge differences to measure quality. A high LMSE value implies that the input image is of poor quality. 
+                
+                This requires a Laplacian function, which is defined in \cite{LMSEPaper} as:
+
+                $$Laplacian(I(m, n)) = I(m+1, n) + I(m-1, n) + I(m, n+1) + I(m, n-1) - 4\cdot I(m, n)$$
+
+                This function is calculated for each $(m, n)$ in an image. The current implementation uses the above function written in numpy to produce the Laplacian output. 
+                \cite{LMSEPaper}
+
+                Once this operator has been defined, it can then be used to calculate the overall metric: 
+
+                $$LMSE(I, I') = \frac{\sum (Laplacian(I) - Laplacian(I'))^2}{\sum Laplacian(I)^2}$$
+                
+            \paragraph{Mean Angle Magnitude Similarity (MAMS)}
+                MAMS is a full reference metric that considers the similarity between magnitudes of the angles within the image. First, a matrix of scalar products are calculated, such that $S=I \cdot I'$.
+                
+                Then, a matrix of magnitude products are calculated $M = |I| \cdot |I'|$. All zero values within $M$ are then set to 1, in order to avoid divide by zero errors in a later step.
+
+                Using both $S$ and $M$, the angles at each position on the image were calculated. Each angle produced from the arccos operation is then subtracted from 1. The operation yields a matrix $\alpha$ of angles in radians:
+
+                $$\alpha = 1 - ((\frac{2}{\pi}) * \arccos(S / M))$$
+            
+                While the angles have been produced, the mangitudes are now needed. These magnitudes $N$ are calculated as follows:
+
+                $$N = 1 - \frac{|I - I'|}{255}$$
+
+                Using this, the mean angle similarity for each part of the image can be calculated:
+                $T = 1 - \alpha \cdot N$.
+
+                Using the values from T, the overall metric output is the mean value from T. $MAMS(I, I') = Mean(T)$.
+                
+                This implementation was done using numpy functions only.
+
+            \paragraph{Mean Angle Similarity (MAS)}
+                This metric is almost identical to MAMS, being a full reference metric that considers the similarity of the angles. Unlike the above, we don't
+                consider the magitude of these similar angles.
+
+                Using the calculations from the MAMS metric, the steps up to the calculation of $\alpha$ are needed only.
+
+                Then, MAMS can be defined as $MAMS(I, I') = 1.0 - Mean(\alpha)$.
+
+            \paragraph{Maximum Difference (MD)}
+                The maximum difference metric takes the maximum difference between $I$ and $I'$ (making it a full reference metric). It's defined as:
+                $$MD(I, I') = Max(|I - I'|)$$
+
+                This was implemented using Numpy functions.
+            \paragraph{Mean Squared Error (MSE)}
+                MSE is a refererence metric, calculating the mean squared error between $I$ and $I'$. More formally:
+
+                $MSE(I, I') = Mean((I - I')^ 2)$
+
+                Implementation was done using Numpy.
+            \paragraph{Normalised Absolute Error (NAE)}
+                NAE is a full reference metric, calculating the absolute error and normalising it with respect to $I$. It's defined as $NAE(I, I') = \frac{\sum |I - I'|}{\sum |I|}$. \cite{ImageQualityAssessmentTest}
+                Implementation was done using numpy.
+            \paragraph{Naturalness Estimator (NIQE)}
+                NIQE is a no-reference metric.
+                \todo{Explain the library implementation and roughly how it works.}
+
+            \paragraph{Normalized Cross Correlation (NXC)}
+                NXC is a full reference metric. It is defined as $NXC(I, I') = \frac{\sum (I \cdot I'_{transposed})}{\sum (I^2)}$. \cite{ImageQualityAssessmentTest}
+
+            \paragraph{Peak Signal to Noise Ratio (PSNR)}
+                PSNR is the peak signal to noise ratio achieved between $I$ and $I'$. It's classed as a full reference metric.
+                First, the mean squared error is calculated (as before). Using this, the metric is defined as:
+                $PSNR(I, I') = 10 * \log(\frac{\max(I^2)}{MSE(I, I')})$. \cite{ImageQualityAssessmentTest}
+
+            \paragraph{R-Averaged Metric (RAMD)}
+                RAMD is a full reference metric, which calculates the average of all differences that are smaller than a specific value $R$.
+                In our implementation, $R=10$.
+
+                We create a matrix $D = |I - I'|$.
+
+                With this, this function can be expressed: $$RAMD(I, I') = \frac{\sum_{D(x, y) <= R}^{(M, N)}(D(x, y))}{R}$$
+
+                In the above definition, $(M, N)$ is the shape of both $I$ and $I'$. $(x, y)$ is defined as the coordinates of each pixel. For this calculation,
+                the difference is calculated for each pixel location, with any value that's greater than $R$ being set to zero. Then, the remaining values are divided by R.
+
+            \paragraph{Structural Content (SC)}
+                SC is a full reference metric. It's calculated using the following equation: $SC(I, I') = \frac{\sum(I^2)}{\sum{I'^2}}$.
+                Since $I'$ is a Gaussian blurred version of $I$, this will yield a sum of the high frequencies.
+
+            \paragraph{Spectral Magnitude Error (SME)}
+                SME metric is a full reference metric that utilises Discrete Fourier Transform (DFT) to analyse the frequency.
+                We define a function $FourierMag(img)$ which calculates the DFT of the image $img$, shifts it, and produces the magnitude of the transform at each point in the x and y space.
+
+                For image $I$ and $I'$ respectively, the transformed mangitude $M$, and $M'$ is calculated, such that:
+                $M = 20*\log(FourierMag(I))$, and $M' = 20 * \log(FourierMag(I'))$.
+
+                Using this newly defined variable, the function definition can be easily defined as:
+
+                $$SME(I, I') = Mean((M - M')^2)$$
+
+                In the implementation, OpenCV was used to conduct the DFT process, with numpy providing additional fourier transform functionality to calculate the magnitude. In addition, Numpy
+                was utilised to easily conduct the remaining matrix operations (such as $Mean$, $log$, and subtractions).
+                \todo{Mention REAL and COMPLEX planes}
+            \paragraph{Signal to Noise Ratio (SNR)}
+                SNR is a fairly standard reference metric. It requires the calculation of the Mean Squared Error, which has been defined above. This shall be referenced as a function $MSE(I, I')$.
+                In addition to this function, the shape dimensions of the images are defined as (M, N). It's assumed that both images have the same shape.
+
+                Therefore, the definition follows:
+
+                $$SNR(I, I') = 10 * \log(\frac{\sum I^2}{N * M * MSE(I, I')})$$
+
+            \paragraph{Spectral Phase Error (SPE)}
+                The SPE metric utilises DFT based transformations which were implemented using OpenCV, with Numpy being used to provide the fourier transform shift functionality.
+
+                While the SME metric defined above uses magnitude, this metric utilises the phase. We define a function $FFTShift(I, plane)$. When carrying out the DFT transform,
+                two planes are produced: the real plane, and the complex plane. The real plane is the x component of the image, while the complex plane is the y component of the image.
+                As such, we carry out 4 different calculations:
+
+                $I_{shiftX} = FFTShift(I, real)$
+                $I_{shiftY} = FFTShift(I, complex)$
+
+                $I'_{shiftX} = FFTShift(I', real)$
+                $I'_{shiftY} = FFTShift(I', complex)$.
+
+                These shift components can be used to produce the magnitude for both $I$ and $I'$. This can be considered a function $Magnitude(I)$, which yields the mangitude based on the
+                x and y components for each element in the matrix.
+
+                Using this function, the metric can be easily defined as:
+
+                $$SPE(I, I') = Mean((Magnitude(I) - Magnitude(I'))^2)$$.
+
+            \paragraph{Structural Similarity (SSIM)}
+                SSIM is a full-reference metric. This metric was implemented using the \emph{skimage} library. The library implementation can be found as a function called \emph{compare\_ssim}.
+                Rather than implementing this from scratch, the library implementation was used. Into this function, $I$ and $I'$ are passed
+                in as arguments.
+
+                SSIM is a perception based model, based on how a human would perceive a given image. One of the important factors in perceived human image quality is the structure.
+                The method proposed considers three elements of similarity between the two images: luminance similarity, contrast similarity, and structure similarity.
+                \cite{SSIMPaper}
+
+            \paragraph{Total Corner Difference (TCD)}
+                TCD is a full reference based metric. 
+                
+                A function called $GetNumberOfCorners(I)$ was created, which counts the number of corners found in an input image. This function applies a corner Harris detector,
+                and counts the number of corners yielded from this detector. The Harris Detector used was the OpenCV \emph{cornerHarris} detector. 
+
+                \todo{More about how we used Corner Harris to make it work (because this function is weird)}
+
+                Using this function, we can define the final metric as: 
+                $$TCD(I, I') = \frac{|GetNumberOfCorners(I) - GetNumberOfCorners(I')|}{max({GetNumberOfCorners(I), GetNumberOfCorners(I')})}$$
+
+            \paragraph{Total Edge Difference (TED)}
+                TED is a full reference based metric. It's similar to the TCD metric, but instead considers the total edges.
+                Since edges aren't easily countable, it's easier to consider the edges which exist in $I$ but not in $I'$. 
+                Edges are isolated using a Sobel function as previously used. This yields the following definition for the metric:
+
+                $$TED(I, I') = Mean(|I - I'|)$$.
+
+                The Sobel filter is calculated using an OpenCV function, with the remaining operations using Numpy backed calculations.
+
+            \paragraph{Visual Information Fidelity (VIFD)}
+                VIFD is a full reference based metric that considers the quality at 5 different scales. The number of scales can be variable, but in our instance 5 was chosen.
+                \todo{Explain why we chose 5 vs others. e.g. look at the Matlab implementation of this}
+
+                The overall definition of this metric is:
+
+                $$VIFD(I, I') = \sum_{s = 1}^{s=5} \frac{
+                        \log_{10} 
+                        \frac{1 + g^2 * \sigma_{1}^2}
+                        {sv_{sq} + \sigma_{nsq}}
+                    }{
+                        \log_{10}
+                        \frac{1 + \sigma_{1}^2}
+                        {\sigma_{nsq}}
+                    }$$\\
+
+                Here, $s$ is the scale with $s=1$ being the input images, while $s=2$ means that each image has been Gaussian blurred $s-1$ times before having this calculation being done.
+                When this compounding Gaussian process is carried out on $I$, the result at a specific time step is called $ref$. With $I'$, it's called $dist$.
+                A few other values are necessary:
+
+
+                $$g = \frac{\sigma_{12}}{\sigma_{1}^2 + \epsilon}$$
+                
+                $$sv_{sq} = \sigma_{2}^2 - g*\sigma_{12}$$
+
+                $$\sigma_{1}^2 = Gaussian(ref * ref) - (GaussianBlur(ref))^2$$
+                $$\sigma_{2}^2 = Gaussian(dist * dist) - (GaussianBlur(dist))^2$$
+                $$\sigma_{12} = Gaussian(ref * dist) - (GaussianBlur(ref) * GaussianBlur(dist))$$\\
+
+
+                There are also several constants, which are:
+
+
+                $$\epsilon = 1 \times 10^{-10}$$
+                $$\sigma_{nsq} = 2$$
+
+            \paragraph{The RRED Problem}
+            One of the metrics proposed in \cite{ImageQualityAssessmentTest}, Reduced Reference Entropic Distance metric (RRED), was problematic to implement due to the lack of Python implementation available.
+            The only implementation available was written in Matlab, and relied on Matlab only libraries. While some had Python equivalents, the steerable pyramid
+            functions did not have a Python equivalent, therefore increasing the workload massively for this single metric. Therefore, the metric was ignored for the WIQA
+            test, since the test performance without the RRED metric was within the expected range. 
+            
+            
+            \paragraph{Testing these metrics}
+            Once these metrics were produced, testing needed to be done to ensure that these metrics were outputting sensible values that could be relied on.
+            Two images were selected at random from the NUAA dataset (using the full image path, rather than the dataset manager created beforehand). These metrics
+            were then carried out individually on these two images. The values were then compared, to see if they differed, and to detect any potential image quality difference. 
+            Testing each of the metrics was slightly challenging as no ground truth data for each metric existed.
+
+
+        \subsubsection{Classifier}
+            Initially, a support vector machine was trialed to test whether a different classifier from the paper \cite{ImageQualityAssessmentTest} would work best. However,
+            the performance was fairly unreliable. Adding a grid search to find the optimal parameters still performed fairly pooly, yielding only 70\% accuracy when training and testing on the same dataset. This was poor compared to the expected results from the original paper. Therefore, the classifier was quickly switched to
+            use Linear Discriminant Analysis (LDA), which provided far better performance.
+
+            For both classifiers, existing SVM and LDA implementations from the \emph{sklearn} library were used for their performance. 
+            
+            The default sklearn LDA settings were initially used, but the results produced still weren't ideal. By using an eigenvector based solver, and automatic shrinkage, the LDA model performed far better, yielding the results
+            shown in the results section.
+
+            Once a model is trained, it needs to be saved to be used for the testing process. Saving was achieved using the Python \emph{pickle} package. For small models, pickle is ideal since it easily creates a Python object that can be loaded/written
+            without additional boilerplate. Since the sklearn classifier models aren't too deep, pickle works. If the models were deeper, then Python's recursion depth limit would hit, causing errors. 
+     
+            
+        \subsection{2D based CNN Liveness Test}
+        Recently, 2D convolutional neural networks have had great success in image classification tasks. Systems that use these technologies are currently deployed in real world systems.
+        Therefore, by adapting these models to classify facial liveness, it might be possible to obtain a new model, designed for the web (with both low latency and good accuracy).
+        
+            \subsubsection{Overview}
+                As discussed earlier in the paper, there are several different models available for image classification. Unlike imagenet based classifiers, we only have 2 output classes, which are \emph{real} and \emph{fake}.
+                Therefore, the final layer of the model would be different, but the remaining details would be identical. Unlike the image quality metric, this metric concerns itself with the facial data, to understand which faces
+                are real, and which ones are fake.
+
+            \subsubsection{Data Preprocessing}
+                As this metric concerns itself with the facial structure, it became necessary to isolate the face from the input image. Furthermore, as part of the CNN model a required input size was needed to be specified. 
+                The preprocessing step therefore needed to produce a facial image that had fixed dimensions.
+
+                This was achieved using the \emph{face\_recongition} package. Using this package, an image is input and a set of bounding boxes is yielded. The largest bounding box (by area) is found,
+                yielding the face. Initially, the bounding box was simply cropped and resized to be a square (even if it wasn't initially a square), before being passed to the model. This yielded very poor results,
+                due to the difficulty in learning the constantly changing dimensions. As a result, a new method of face isolation based on bounding boxes was designed:
+
+                Given a bounding box $B = (top, bottom, left, right)$, a new bounding box $B'$ which has square dimensions can be created by finding the square
+                side width $s$. Mathematically, this is defined as:
+
+                $$s = Max(bottom - top, right - left)$$
+
+
+                Using this, the new bounding box is defined as:
+
+
+                $$B' = (top, top + s, left, right + s)$$
+
+
+                By following this method, the model appeared to perform better overall, and produced non-skewed images.
+
+                However, simply isolating the face isn't enough. A fixed size image was needed, in order to be fed into the network. After much experimentation, an image size of $(224, 224)$
+                was decided, as smaller dimensions failed to produce adequate results. The resizing was completed using OpenCV. The output of this step is shown in Figure \ref{FaceExtraction}.
+
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=.5\linewidth]{FaceExtraction.png}
+                    \caption{This is the output produced from the preprocessing step of the ResNet based method.}
+                    \label{FaceExtraction}
+                \end{figure}
+                
+            \subsubsection{The Model}
+                    
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=0.5\linewidth]{2DCNNArchitecture.pdf}
+                    \caption{The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers
+                    of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the
+                    liveness score as before).}
+                    \label{2DCNNArchitecture}
+                \end{figure}
+
+
+                \paragraph{AlexNet}
+                Initially, an AlexNet based classifier was designed. While AlexNet performance on the ImageNet dataset isn't as high as other models, it provided an ideal starting point to understand the difficulty
+                of the classification. It was eventually found that AlexNet performed relatively poorly on facial liveness classification, and therefore a switch was made to a more complex and better performing model.
+
+                \paragraph{Residual Networks}
+                Residual Networks were chosen over VGG and Inception due to their better performance on ImageNet, coupled with their ability to be easily deployed without excessive memory/computation requirements.
+                A ResNet 50 architecture was decided upon, as 50 layers seemed reasonable in terms of the available computational power that was available for this proof of concept. It was deemed that if ResNet 50 works, then ResNet 101 might perform equally, if not
+                slightly better. A ResNet 50 architecture is an ideal proof of concept.
+
+                While training a model from scratch might have advantages for some applications, a pretrained ResNet50 model from the Keras standard library was used. This was done due to the fairly small amount of data
+                available (and therefore using a pretrained model can avoid overfitting), and also to save time learning the basic features that are present in all generic image classification models. Training the entire
+                ResNet50 model would require a large number of parameters to be adjusted, so to further reduce the complexity of the training process, only the last layer was set to trainable, with the other layers remaining static.
+
+
+                \paragraph{Feed Forward Classifier}
+                While a CNN is ideal for processing images, a fully convolutional approach to classification didn't seem appropriate. The output from the ResNet 50 model was flattened, and fed directly into a feed forward neural network.
+                While pooling layers were considered, these only take the maximum/minimum/average of specific sections, reducing the dimensionality, and the loss of data means the feed forward layer has less information to act upon. Therefore,
+                it was instead decided to use no pooling layers. The output from the ResNet is flattened, and fed into an 8 layer feed forward neural network directly. The first layer of this network has a very large number of nodes,
+                while the number of nodes is reduced towards the network output.
+                
+                With the initial experiment, the output layer consisted of a single node, with a sigmoid activation function. The entire network was trained using a binary crossentropy loss function. The network accuracy yielded was fairly reasonable,
+                but the confusion matrix showed that the model was outputting \emph{0.0} (fake) for each value, no matter the input. This was a problem, as the network wasn't suitably learning the dataset. As a result, three changes were made to solve the problem, which are outlined below.
+                
+                \paragraph{The Problem with Activation Functions}
+                Initially, the \emph{reLU} activation function was used on all internal nodes within the feed forward network component. While relu is very popular for improved speed over traditional activation functions such as tanh and sigmoid,
+                for negative values it has a problem. ReLU is positive for all positive values, but 0 for all negative values.
+
+                While all inputs were non-negative, weights could lead to these values becoming negative. There is a known problem called "dying ReLU", where some neurons output 0
+                due to having a negative input (the weights and inputs for all input neurons sum to a non-positive value). Therefore, the model was able to learn 0 (fake) easily, but
+                couldn't learn real (1.0) at all. \cite{liu_liu_2017}
+
+                This problem was counteracted by changing activation function from reLU to Leaky ReLU. Unlike reLU, leaky relu isn't zero when negative. It requires an input value $\alpha$, which is used
+                as the gradient of the line when less than zero. \cite{liu_liu_2017} For this model, $\alpha=0.3$. The activation function is defined formally as:
+                
+                \begin{equation}
+                    Activation(x) =
+                    \begin{cases}
+                    x, & \text{if}\ x>0 \\
+                    \alpha \cdot x, & \text{otherwise}
+                    \end{cases}
+                \end{equation}
+
+                \paragraph{The Problem with a Single Neuron Output}
+                In order to mitigate the problem of outputting all zeros, the output method of the network was changed. Instead of a single neuron, giving a realness value, two neurones were used.
+                These neurons would use the softmax activation function, rather than the sigmoid activation function, to ensure the sum of the neuron outputs would be zero (therefore giving a probability that can be used).
+                The use of two neurons to encode the realness means that the nature for a network to learn 0 is slightly removed, as there will always be a non-zero output for one of the neurons expected. The encoding method used here
+                is called one-hot encoding in the literature.
+
+                \paragraph{Normalization and Dropout}
+                Batch Normalization and dropout were both used within the feed forward network component to improve learning and reduce the risk of overfitting. Overfitting was a concern due to the small dataset that was used for training.
+                Batch Normalization layers were added between each dense layer, which resulted in increased accuracy of the model.
+
+                Throughout the experimentation process, the model was found to be overfitting. Therefore dropout was added (with a dropout level of 0.3) between each dense layer. This reduced the effects of overfitting.
+
+                The overall outcome is shown in Figure \ref{2DCNNArchitecture}. The normalization and dropout are not visible in the diagram, since they are only used for training.
+
+
+            \subsubsection{The Training Process}
+                \paragraph{Optimizer}
+                Initially, the Standard Gradient Descent was used as the optimizer. This was chosen due to the findings of \cite{SGDBetterThanAdamForImageClassification},
+                which advised that SGD was better than the Adam optimiser for producing models that generalise. However, after experimenting further the Adam optimiser appeared
+                to generalise better for this project. Using the SGD optimizer, the validation accuracy fluctuated with fairly poor accuracy results overall. The Adam optimizer
+                didn't fluctuate, and the accuracy yielded was much higher.
+
+                It's possible that SGD might perform better over longer periods of time with a very small learning rate, but due to time constraints and the need to experiment and show a proof of concept,
+                Adam proved better for the purposes of this project.
+
+
+                \paragraph{Loss Function}
+                    Initially, while the model had a single neuron output, the binary cross entropy loss function was used as it's suitable for a single binary output.
+                    However, when the two neuron output model was introduced, the loss function was changed to use categorical cross entropy as this was the most suitable
+                    for a categorical one hot encoding method.
+
+                \paragraph{Data Generators}
+                    Due to the large amount of data being processed, it was necessary to use a data generator to conduct the preprocessing on the fly. While the preprocessing
+                    could have been saved to disc, the preprocessing steps were changed throughout the project, therefore defeating the benefits of such an optimisation.
+
+                    Initially, Keras' built-in ImageDataGenerator was used, as it allowed for a preprocess function to be passed in. While this works for a preprocess function that yields the same shape image
+                    as was input, Keras' ImageDataGenerator does not support resizing images within the preprocess function (e.g. for cropping).
+
+                    Initially, a Lambda expression within the network was used to resize the image, but this led to problems with saving/loading models (due to Tensorflow being necessary).
+                    Therefore, a custom data generator was written from scratch. With this new generator, it wasn't necessary to follow this size constraint within the preprocess function.
+
+
+    \subsection{3D Face Reconstruction Liveness Test}
+        \subsubsection{Overview}
+            While 2D methods work well for traditional paper/screen based attacks, they are not designed for detecting the wearing of 3D masks. With 3D printing
+            becoming more common, and automatic mask generators also becoming available online, this type of attack is becoming more common.
+
+            The method proposed merged recent developments in facial reconstruction with recent deep learning models for classifying 3D data, to investigate a proposed
+            architecture for a 3D classifier. Unlike previous methods, face data is captured in 2D using a standard device camera, before being reconstructed and then classified.
+
+        \subsubsection{2D Image Preprocessing}
+            The 2D preprocessing step followed a similar process to the previous liveness test proposed. A CNN based face detector produced a set of bounding boxes, and a square face image was produced
+            following the same method as was proposed previously. Unlike the previous method, the image was resized to a fixed size of (192, 192) in colour. This size was necessary due to the requirements
+            of the pretrained model.
+
+        \subsubsection{3D Facial Reconstruction}
+            A method of obtaining facial structure from a 2D image was required. While video based methods such as Structure From Motion exist, they require a video input which has a large variety in motion, which might not be available/obtainable.
+            However, recent research has developed a method known as VRN, which is a neural network designed to produce 3D facial structure from a single 2D image. \cite{3DReconstructionMethod}
+            While the original work was built using the Torch deep learning framework, a pretrained model with appropriate source code exists for Keras. \cite{VRNTorchToKeras} This pretrained model
+            takes an image of size (192, 192) in, and produces a 3D voxel based representation. 
+
+            In order to correcly modularize the system, the \emph{FaceVoxelBuilder} class was produced to correctly load the pretrained model, and build the voxel structure for either 1 image, or multiple images (in the case of batch training).
+
+            While implementing this component of the system, there was a problem: Tensorflow didn't build the objects from the pretrained model correctly in some cases, as certain components of the model didn't exist on the graph. This was solved by manually creating the predict function by calling a private helper function (\emph{model.\_make\_predict\_function()}).
+            This was a known issue with the version of Keras that was being used, and the solution found was specified by the developers of the framework. \cite{KerasVoxNetBug}
+
+        \subsubsection{3D Classification}
+            While 2D image based classifiers exist, and perform well, this isn't the case with 3D image classifiers. A VoxNet based classifier was chosen due to the adequate performance on the SUOD dataset (of 69\%),
+            coupled with the relatively small model size. \cite{VoxNetModel} While this model can in future be improved and adjusted, this classifier was believed to produce results that could show a proof of concept,
+            and determine whether this method would be suitable for a web-based liveness system. The final architecture is shown in Figure \ref{3DClassifierArchitectureDiagram}.
 
             \begin{figure}
                 \centering
                 \includegraphics[width=\linewidth]{voxnet.pdf}
-                \label{3DClassifierArchitectureDiagram}
                 \caption{
                     This is an overview of the 3D classifier. \textbf{(A)} a high resolution image is input into the classifier. \textbf{(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. 
                     The image is then resized to be 192x192 pixels, which is what's required by the VRN process.
@@ -391,52 +855,106 @@ Facial liveness, convolutional neural networks, image quality metrics
                     \textbf{(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify.
                     \textbf{(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked.
                 }
+                \label{3DClassifierArchitectureDiagram}
             \end{figure}
 
-    \subsection{Datasets, and data management}
+        \subsubsection{The Training Process}
+            Training was conducted using a binary crossentropy loss function, with an Adam based optimizer. Binary cross entropy was used since there was only a single output node,
+            compared with a categorical approach. 
 
-        \subsection{Training/Test Split}
-            Using a single dataset is problematic due to the potential for overfitting, coupled with the risk that the classifier wouldn't generalise on the entire problem set, but rather the specific classifier.
-            
-            Therefore, it was decided to use one dataset for training, and one for testing.
-            With each of the above classifiers proposed, the NUAA dataset (the entire dataset) was used for training, and the testing was carried out using the Replay-Attack dataset.
-            If one was to use the ReplayAttack dataset for training, results were poor due to the lack of variation between the images (since we have a limited number of videos, with several frames from each video being similar, with a smaller number of subjects).
-            
-            With this approach, the overfitting was fixed but the model would now underfit due to lack of data. Furthermore, using NUAA just for training and Replay-Attack for testing had poor performance on its own, due to differences between the overall datasets (e.g. resolution issues, as well as subject specific attribute differences).
-            Therefore, cross-dataset validation was carried out. The entire NUAA dataset acted as training data, with the Replay-Attack devel dataset being used as the validation set. The test set was still seperate, as the Replay-Attack test set was used (which is seperate from the devel set, designed for testing).
-            This yielded optimum performance for the 2D CNN test.
+            In order to conduct training, a Data Generator was used to minimize memory constraints, since the entire dataset didn't need to be loaded into memory after being preprocessed. Instead,
+            only a single batch would be preprocessed on the fly, thus reducing memory usage considerably.
 
-            However, since an LDA doesn't have a validation set, the training set for the image quality metric was a merge between the NUAA and Replay-Attack devel datasets to improve performance.
+            While training, a problem with the built in data generators was encountered. While 2D images were being input, a 3D representation was required as output from the data generator,
+            something that the Keras ImageDataGenerator wasn't able to deal with. Initially, the VRN model was included as part of the classification model. This would see a 2D image being input into the model,
+            and the model would reconstruct to 3D and classify all in the same model. While this is a more monolithic approach, it would avoid the need to switch out the ImageDataGenerator. However,
+            when implemented this didn't work: the 3D reconstruction process required non-tensor operations (more specifically, the use of the stack command), which could not be included as a network layer.
 
-        \subsubsection{Optimising Dataset IO}
-            \todo{Dataset io using h5py}
-            Due to the large dataset sizes, memory is a limit to the performance of the system. As such, optimisation needs to be achieved to allow working with large datasets within the specified memory constraints.
-            This was achieved using \emph{h5py}, which caches the dataset to a file, and the associated fetch statements are called when necessary. By doing this, the large dataset doesn't need to be entirely loaded into memory,
-            but can instead use the hard disk drive. Some performance was sacrificed (due to the reduced read speeds of SSDs/HDDs compared to RAM), but this allowed for larger and better models to be produced on a smaller (and less expensive) machine. 
-       
-        \todo{Mention more detail here, and cite more information about our implementation e.g. with H5Py for caching, the use of generators for testing/training}
+            Therefore, the final solution was to instead conduct the 3D reconstruction as a preprocessing step, and led to the replacement of the Keras ImageDataGenerator with a custom generator, designed to output 3D from 2D input.
+            This custom generator would resize the images, reconstruct the 3D representation, and return the appropriate batch yielded. This solved the problem.
 
-    \subsection{Visualisation and Demonstration}
-        In order to visualise the overall outcome of facial liveness, a generic model 
+        \subsubsection{The Dataset}
+            Unlike the previous two liveness tests, this liveness test relied on a completely different dataset, the Mask Attack Dataset (MAD). \cite{3DMadDataset}
+            The goal of this liveness test was to detect mask based attacks (and more widely, 3D based attacks), and this dataset was used due to it being more repesentative of the problem
+            than the ReplayAttack and NUAA datasets (which are designed for 2D based attacks).
+
+            Unlike the 2D based methods, two datasets weren't used in a cross validation style assessment of the method, so instead the MAD dataset was split by subject (the person being spoofed):
+            half of the subjects were used for the training/validation sets, and the other half were left for training purposes.
+
+            Subjects 1,2,3,4,5,6,7 were used for training purposes, and 8,9,10,11,12, 13 were used for testing purposes. Splitting up the dataset in this way was necessary to correctly assess the classifier,
+            to ensure results give a true indication of how well the model learned the features, rather than how well the model learned the dataset.
+
+    \subsection{Consolidation Layer}
+        Each liveness test individually might have some degree of error. Merging the results of each metric together into some classifier to produce a more reliable outcome would be ideal.
+        While probability based methods (such as Bayesian calculations) would be feasible, this only works for a larger number of liveness tests. In some cases, very few liveness tests (minimum 2)
+        might be used. 
+
+        The solution proposed is to use a classifier, pretrained with the results yielded from the previous liveness tests. After training, this consolidation classifier would be able to spot patterns
+        between each liveness test, and hopefully yield a better result by fusing the results of each individual test together. 
+
+        \todo{Implementation DETAIL NEEDED!}
+
+
+  
 \section{Results}
     % based on the solution, what results did we yield? What did we find out?
     For both liveness tests, cross dataset validation/testing was conducted. Each model was trained using the entire NUAA dataset, and the Replay-Attack test set
     was used to measure the results shown below. In the case of the 2D Convolutional Neural Network (CNN), a validation set was required to ensure the model performed
     well, so in this case the Replay-Attack devel set was used. It must be noted that no overlap occurs between the Replay-Attack devel and test sets, to prevent the risk
-    of these results being invalid.
+    of these results being invalid. In order to visualise the result as a demonstration, a script was written using OpenCV calls to produce an overlay on top of the image.
+    The results of these models in a faux-production environment can be seen in Figure \ref{SystemWorkingScreenshots}. 
 
-
-    \begin{table}
+    \begin{table}[ht]
         \centering
-        \begin{tabular}{| l | l | l | l | l | l |}
-            \hline
-            \textbf{Liveness Test} & \textbf{Accuracy (\%)} & \textbf{True Negatives (\%)} & \textbf{False Positives (\%)} & \textbf{False Negatives (\%)} & \textbf{True Positives (\%)}\\
-            Image Quality & 87 & 37.5 & 12.5 & 0.5 & 49.5\\
-            2D CNN & 71.2 & 71.5 & 1.37 & 22.5 & 4.69\\
+        \begin{tabular}[t]{lcc}
+            \toprule
+             & \textbf{Image Quality Liveness Test} & \textbf{2D CNN Liveness Test}\\
+             \midrule
+            \textbf{Accuracy (\%)} & 87.0 & 71.2\\
+            \midrule
+            \textbf{True Negatives (\%)} & 37.5 & 71.5\\
+            \textbf{False Positives (\%)} & 12.5 & 1.37\\
+            \textbf{False Negatives (\%)} & 0.5 & 22.5\\
+            \textbf{True Positives (\%)} & 49.5 & 4.69\\
+            \bottomrule
         \end{tabular}
-        \label{ResultsTable}
         \caption{Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).}
+        \label{ResultsTable}
     \end{table}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}[t]{lcc}
+            \toprule
+             & \textbf{Image Quality Liveness Test} & \textbf{2D CNN Liveness Test}\\
+             \midrule
+            \textbf{Time to load (s)} & 0.00104 & 7.44\\
+            \textbf{Time to classify 1 image (s)} & 1.40 & 1.04\\
+            \bottomrule
+        \end{tabular}
+        \caption{Table of results, showing the wall clock time for the load and predict phases of both liveness tests.}
+        \label{WallClockResultsTime}
+    \end{table}
+
+    \begin{figure}
+        \centering
+        \caption{Outputs from the \emph{live\_webcam\_output.py} file, being run on two different videos from the ReplayAttack test dataset. The model predicted the correct output here.}
+        \label{SystemWorkingScreenshots}
+        \begin{subfigure}[t]{.4\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{BothRealAndCorrect.png}
+            \caption{The system correctly predicting a real piece of data. Image is from a video in the ReplayAttack test dataset.}
+            \label{RealScreenshot}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[t]{.4\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{FakeOutputAndCorrect.png}
+            \caption{The system correctly predicting spoofing in the input video. Image is from a video in the ReplayAttack test dataset.}
+            \label{FakeScreenshot}
+        \end{subfigure}
+           
+   \end{figure}
     % CNN table: 4317 & 83 & 1357 & 283
     \subsection{Image Quality Liveness Test}
         Overall, the Image Quality Test performed as expected with reference to the initial paper. Unlike the original paper however, instead of isolating the face
@@ -449,33 +967,64 @@ Facial liveness, convolutional neural networks, image quality metrics
         The level of true negatives and true positives respectively are fairly high, but the number of false positives was slightly higher than expected (i.e. where the model predicts someone to be real where they are actually not).
         What's interesting to note is the low number of false negatives (indicating someone is fake where they are real), which in our security concious case isn't wanted (since inconvenience isn't as much of a problem as security).
         However, the overall performance was better than expected.
-        \todo{Look into false positives/negatives, to see if we can get an outcome that performs better}
         % Total results - the RAW data in case people need it.
         % 0.87
         % True Negatives:  75
         % False Positives:  25
         % False Negatives:  1
         % True Positives:  99
-        \todo{Add time to conduct computation here (without multithreading) - for predictions only, not training}
-        \todo{show an example image of the system at work with image quality liveness}
+        While accuracy is important, the time taken for the model to classify a single image is also important. The LDA method took 1.40 seconds to classify a single 2D image, which is within the specified 2 seconds bound.
+        Also, the model itself is very small and therefore can be loaded in a very minute amount of time (0.001 seconds). The bulk of the time required is in the calculation of the metrics, rather than the classification process,
+        and therefore future speed optimisations could consider optimising the calculation of the metrics. These results can be seen in Table \ref{WallClockResultsTime}.
 
     \subsection{2D Convolutional Neural Network Liveness Test}
-        \todo{Insert time here to isolate face/preprocess}
-        \todo{Insert time here to conduct neural network prediction}
-        \todo{Insert system performance (specs of Lexo)}
-        The overall performance of our liveness test can be seen in Table \ref{ResultsTable}. While not as accurate as the previous model, the model still detects true negatives with a fairly high percentage
+
+        The overall performance of our liveness test can be seen in Table \ref{ResultsTable}. While not as accurate as the previous model, the model still detects true negatives with a fairly high percentage.
+        While the overall accuracy of this model could be improved with further training or by deepening, the results show that this basic architecture is feasible. In the security conscious environment of facial liveness,
+        false negatives, while potentially annoying to the end user, are an ideal result compared to false positives (which would imply that someone is real when they are fake). While false positives still exist, their number is small compared to the number of negatives.
+        Furthermore, the number of positives is small, meaning that this model leans on the side of caution, something that is ideal. Therefore, this model would be secure and accurate enough with further training (and potentially replacing ResNet50 with a deeper ResNet model).
+
+        The time taken to load the model from memory was the main bottleneck in terms of computational performance, as loading the model into memory for the first time took 7.44 seconds. However, once the model was loaded,
+        the time taken to predict a single image is very small, on average taking 1.04 seconds, which is even smaller than the W-IQA test, and almost half the specified 2 second time, which is ideal. These results can be seen in Table \ref{WallClockResultsTime}.     
         % Confusion Matrix = [[4317  283]
 %           [1357   83]]
-        While these results might not appear to be as ideal, this is partly due to the nature of the Replay-Attack dataset as each 20th frame was taken from the dataset.
-        Due to this, when there is movement and where the face isn't visible by the camera, the image can't be correctly processed and therefore the entire image is used
-        as the input to the network, thus yielding poorer performance than expected. This is only encountered with this metric due to the requirement that the facial extraction is successful. 
-        
-    \subsection{3D VoxNet Liveness Test}
-            As discussed in the method, this metric had several performance challenges. Applying VoxNet caused memory issues, in addition to yielding very poor performance
-            (50\% accuracy with a single dense layer output), indicating that the features weren't being learnt correctly. 69\% accuracy was expected, as specified in the
-            VoxNet paper \cite{VoxNetModel}. There are a few reasons why this wasn't matched: firstly, the voxnet model we needed required large inputs: (192 x 192 x 192 x 3),
-            which is far too high for easy and real-time computation. 
 
+    \subsection{3D VoxNet Liveness Test}
+        This method had some major performance challenges. The 3D facial reconstruction worked well, producing the desired outcome. However, the 3D classifier (VoxNet), had numerous problems.
+        The original VoxNet model, proposed in \cite{VoxNetModel}, used 32 filters for the Conv3D layers (with a 32x32x32 input). However, using 32 filters in our model for each Convolutional Layer (alongside the larger data input than expected),
+        led to memory errors and wasn't able to be trained on the training hardware.  Reducing the 3D reconstruction resolution wasn't an option, since the entire model would require retraining (which would take lots of time, resources, and wasn't feasible).
+        Furthermore, as seen with the 2D CNN method, reducing the resolution might also reduce the accuracy. Therefore, the remaining solution was to reduce the number of filters down to a small 12 filters per convolution layer.
+
+        During the training process, with a variety of learning rates, the accuracy of the model didn't leave 50\% with a differing amount of batch sizes. This indicates that the model wasn't learning the features correctly (potentially due to the lack of filters in the Convolutional Layer).
+        
+        While the classifier itself didn't work and yield any meaningful results, it's also important to consider the time taken for a 2D image to be reconstructed. 
+        To reconstruct a single image from 2D to a 3D face structure, it took 5.39 seconds, which already exceeds the 2 second constraint set by the specification.
+
+        Due to the poor accuracy with a low number of filters, the excessive amount of memory required for unknown accuracy results, and the large time taken to reconstruct the 3D structure (not including the added time to theoretically classify the result),
+        this liveness test clearly isn't feasible for the purpose of a web liveness service.
+
+    \subsection{Consolidation Layer}
+        
+        \begin{figure}
+            \centering
+            \includegraphics[width=.5\linewidth]{LinearlySeparable.png}
+            \caption{A plot of ResNet output against WIQA output. As one can see, for two metrics a perceptron could be used due to the linearly separable nature of the data (that is, a single line could be used to
+            seperate the real and fake classifications in some cases). Effectively, with two metrics this would be acting as an OR gate (with fuzzy calculations).}
+            \label{LinearlySeparableGraph}
+        \end{figure}
+    
+        As shown in Figure \ref{LinearlySeparableGraph}, plotting the results together with the probability outcome (rather than the class outcome),
+        yield a plot where the two classes could approximately be divided up with a single line. Therefore, as expected, the relationship between predictions is
+        linearly separable.
+
+        While investigating this further, using an LDA as a consolidation layer yielded fairly ideal results: 75\% accuracy to be precise. 
+        \todo{LDA: confusion matrix}
+
+        However, it's important to note that while this works for two liveness tests, we can't test this method for a larger number of liveness tests. While accuracy was fairly reasonable,
+        using more metrics could yield improved accuracy.
+
+    \subsection{Live Application}
+    \todo{Details about the script we wrote to overlay. }
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...
@@ -487,7 +1036,30 @@ Facial liveness, convolutional neural networks, image quality metrics
         % There is an argument that one could steal your likeness and use it elsewhere on the internet. However, providing liveness tests
         % are suitable, there is no other way of stealing ones face. There would be a need to ensure furhter development of such a system.
         % Developing a single component as a service would mean developers could focus on developing their applications. 
+        \paragraph{Quality Test}
+            The Quality Test performed well, and is suitable for a web based liveness service due to the high 87\% accuracy achieved.
+            True positives and true negatives (that is, correct predictions for both real and fake) were high which means that the classifier
+            is classifying correctly. However, the high false positive rate shows a slight cause for concern, since the model in 12.5\% of cases
+            classified a fake image as real, which isn't ideal for our security focused solution. This could potentially be solved by adjusting output
+            variable of the classifier (using a figure representing 'fakeness' rather than realness). This would hopefully lead to more false negatives,
+            which are inconvenient but more secure for the system.
 
+            In terms of computational performance, a 1.40 second time for classifying a single image is within the limits of the expected 2 seconds, and could be improved further
+            with parallel based methods, and not relying on libsvm for the BIQI metric.
+        \paragraph{2D CNN}
+            The 2D CNN Test performed adequately. While the accuracy was lower than expected (at 71\%), the classifier itself still performed better than random.
+            Furthermore, the model was very good at classifying true negatives, with a total percentage of 71.5\% being true negatives. While the model itself had
+            a higher than expected false negative percentage, this is just inconvenient for the user rather than a security problem. The model showed it could classify true
+            positives, but this figure was fairly low. This could be improved by improving the training process: ensuring each input image has a correctly identified face (as
+            some images without a detectable face would have been left to classify the entire image, just resized to the input size). The less noise in the input data, the better the potential
+            results in the future. Furthermore, using a larger ResNet model, such as ResNet-101 could lead to better results.
+
+            In terms of performance, classifying an image is very quick, but the time taken to load the model is what took the most time (due to memory needing to be allocated and written to).
+            In production, providing a model was preloaded and ready to accept input, the computation time of this metric would be very fast, and therefore be ideal for inclusion in a liveness web service.
+        \paragraph{3D VoxNet Liveness Test}
+            As seen from the results, this method of liveness test isn't feasible. With extra training, while the accuracy of the model could be improved, the
+            real time memory requirements don't seem feasible. Based on the VoxNet paper, the accuracy achieved with a 32x32 VoxNet classifier on the SUOD dataset (a 3D dataset of objects)
+            is 69\%. While this accuracy could be justified with reasonable computational and memory characteristics, this further proves that this method isn't feasible in the current state. In the future, a new approach of detecting 3D attacks is necessary.
     \subsection{Improvements}
         \paragraph{Representing 3D Attacks}
         While our system works fairly well for 2D based attacks, performance for 3D based attacks definitely needs work.
@@ -510,25 +1082,37 @@ Facial liveness, convolutional neural networks, image quality metrics
         \paragraph{Existing BIQI implementation}
         Currently, the BIQI implementation requires the use of a subprocess to call libsvm based commands on the system. Instead of using standard output, files are used which
         cause a reduction in speed.
-        \todo{ADD Calculations here for speed with hard drive, SSD, and memory}.
         Speed isn't the only problem here, as scaling would become a problem due to the existing implementation. 
 
         To fix this problem, a reader would be needed to import a trained libsvm model into sklearn, and the code would then need to be refactored to use the updated sklearn model. 
 
-        \paragraph{Privacy/Legal Considerations}
-            While the security of a facial liveness cloud service is reasonable, there would be some legal concerns to consider in the deployment of an actual application.
-            Face data, as with all biometric data, is classed as sensitive personal data under GDPR \todo{Find source}. As such, care would need to be taken in the development of such a system
-            to ensure the data is transferred back and forth with encryption, and if data is at rest that it is encrypted (although storing a large amount of data wouldn't necessarily be ideal).
-            \todo{Mention compliance of our current system (to some extent), and how it can be improved}
+        % \paragraph{Privacy/Legal Considerations}
+        %     While the security of a facial liveness cloud service is reasonable, there would be some legal concerns to consider in the deployment of an actual application.
+        %     Face data, as with all biometric data, is classed as sensitive personal data. This can be found in the GDPR definitions, from \cite{GDPRDefinitions}. As such, care would need to be taken in the development of such a system
+        %     to ensure compliance. While the details below are not legal advice, these would be the starting point to building a liveness service that's more compliant.
 
-            Furthermore, before deploying our current system, one major problem would be dataset licenses. The Replay-Attack dataset is licensed on condition of research, rather than for commercial use.
-            As such, the deployed version of such a liveness based system would need to use a network trained with a new dataset that has the appropriate licensing (either a bespoke one, or one that is public domain).
+        %     % Source: https://thenextweb.com/contributors/2018/10/29/heres-how-face-recognition-tech-can-be-gdpr-compliant/
+        %     When designing such a service, collecting user consent is necessary through a positive opt-in (without any prefilled tick boxes). In addition to collecting consent, users must be able to withdraw their consent too.
+        %     Naming any third parties might be necessary too, especially if using a Cloud-based service. Furthermore, some anonymisation process would need to be implemented to ensure that the image isn't easily identifiable (therefore names
+        %     must not be recorded). Therefore, no user accounts of persistent storage tieing people to their faces would be ideal, to ensure anonymisation. While a facial liveness web system would be securing a facial recongition system, the 
+        %     liveness system itself would need to be secure in order to meet GDPR regulations. \cite{GDPRForFacialRecognition} Encrypting data in transit is fairly easy, using SSL is a modern standard
+        %     and certain browsers require the use of SSL for accessing certain media APIs. Encryption of data at rest might be necessary, but since the image wouldn't necessarily be stored that might not be required. 
+            
+
+        %     Aside from GDPR, licensing of datasets is another concern. The Replay-Attack dataset is licensed on condition of research, rather than for commercial use. 
+        %     As such, the deployed version of such a liveness based system would need to use a network trained with a new dataset that has the appropriate licensing (either a bespoke one, or one that is public domain).
 
 \section{Conclusions}
     % overall, what did the project show?
-    This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks. The consolidation layer provides
-    an ideal point of extension, allowing for multiple tests to work together and allow confirmation to prevent false positives (which would lead to security problems).
+    % TODO this needs to probably be reworded.
+    This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks, with adequate accuracy and computational requirements.
+    The image quality liveness test is accurate and fast, while the ResNet based method is a feasible idea and performs adequately, and could be improved further to improve the accuracy. For 3D attacks however, the
+    proposed VoxNet based model performed badly and is not recommended for inclusion in a liveness test web service.
 
+    % In addition, the improvements to the existing system were shown, and potential GDPR considerations were shown on how to implement such a system to better comply with the regulation. In building of a system for commercial use, it's important
+    % to note that licensing on training and testing datasets would require new datasets be used.
+
+\printglossary
 \bibliographystyle{abbrv}
 \bibliography{report}
 

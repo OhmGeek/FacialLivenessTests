@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  28 APR 2019 22:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  29 APR 2019 12:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -9,8 +9,8 @@ LaTeX2e <2017/01/01> patch level 3
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -583,12 +583,12 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \topmargin=-65.22534pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=11.0pt
+* \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=50.0pt
-* \marginparsep=10.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -663,255 +663,128 @@ Package microtype Info: No adjustment of character kerning.
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 31.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 31.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 45.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 71.
  [1
 
 \openout4 = `report.ist'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 179--179
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-Overfull \hbox (2.4324pt too wide) in paragraph at lines 179--179
-\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 179--179
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-Overfull \hbox (2.4324pt too wide) in paragraph at lines 179--179
-\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 179--179
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-Overfull \hbox (2.4324pt too wide) in paragraph at lines 179--179
-\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 179--179
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-Overfull \hbox (2.4324pt too wide) in paragraph at lines 179--179
-\OT1/ptm/m/n/10.95/-25ls (-50) RESNETS 
- []
-
-<ResidualBlock.png, id=16, 998.73125pt x 555.07375pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] <ResidualBlock.png, id=16, 998.73125pt x 555.07375pt>
 File: ResidualBlock.png Graphic file (type png)
  <use ResidualBlock.png>
-Package pdftex.def Info: ResidualBlock.png used on input line 181.
+Package pdftex.def Info: ResidualBlock.png used on input line 177.
 (pdftex.def)             Requested size: 346.63303pt x 192.65253pt.
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) <Top1AccuracyOverNetwork.png, id=18, 676.5275pt x 494.84875pt>
 File: Top1AccuracyOverNetwork.png Graphic file (type png)
  <use Top1AccuracyOverNetwork.png>
-Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 195.
+Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 191.
 (pdftex.def)             Requested size: 346.63303pt x 253.555pt.
  <Top1AccuracyOverOperations.png, id=19, 667.49374pt x 460.72125pt>
 File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
-Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 202.
+Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 198.
 (pdftex.def)             Requested size: 346.63303pt x 239.26007pt.
- [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png>] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=32, 794.97pt x 748.7975pt>
+ [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png>] [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=32, 794.97pt x 748.7975pt>
 File: 3DReconstructionFromSource.png Graphic file (type png)
  <use 3DReconstructionFromSource.png>
-Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 275.
+Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 271.
 (pdftex.def)             Requested size: 247.5961pt x 233.21027pt.
- [5] [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>] <ImageQualityLivenessTest.pdf, id=40, 470.7186pt x 451.6875pt>
+ [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>] [6] <ImageQualityLivenessTest.pdf, id=40, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 376.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 374.
 (pdftex.def)             Requested size: 495.19221pt x 475.19563pt.
- [7] [8 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
+ [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-Overfull \hbox (208.23564pt too wide) in paragraph at lines 412--412
-\OT1/ptm/m/n/10.95/-25ls (-50) https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5432998 
- []
 
+LaTeX Warning: Marginpar on page 8 moved.
 
-Overfull \hbox (208.23564pt too wide) in paragraph at lines 412--412
-\OT1/ptm/m/n/10.95/-25ls (-50) https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5432998 
- []
-
-
-Overfull \hbox (208.23564pt too wide) in paragraph at lines 412--412
-\OT1/ptm/m/n/10.95/-25ls (-50) https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5432998 
- []
-
-
-Overfull \hbox (208.23564pt too wide) in paragraph at lines 412--412
-\OT1/ptm/m/n/10.95/-25ls (-50) https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5432998 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 449--449
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 449--449
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 449--449
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 449--449
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EPXLIAN 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 452--452
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 452--452
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 452--452
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-Overfull \hbox (1.83951pt too wide) in paragraph at lines 452--452
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) EXPLAIN 
- []
-
-
-LaTeX Warning: Marginpar on page 9 moved.
-
-[9] [10]
-Overfull \hbox (16.30188pt too wide) in paragraph at lines 577--580
-[]\OT1/ptm/m/n/10.95/-25ls (-50) While the SME met-ric de-fined above uses mag-ni-tude, this met-ric utilises the phase. We de-fine a func-tion $\OML/cmm/m/it/10.95/-25ls FFTShift\OT1/cmr/m/n/10.95/-25ls (\OML/cmm/m/it/10.95/-25ls I; plane\OT1/cmr/m/n/10.95/-25ls )$\OT1/ptm/m/n/10.95/-25ls (-50) .
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 634--635
+[8] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 631--632
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 647--648
+Underfull \hbox (badness 10000) in paragraph at lines 644--645
 
  []
 
-[12] <FaceExtraction.png, id=87, 371.3875pt x 310.15875pt>
+[11] <FaceExtraction.png, id=85, 371.3875pt x 310.15875pt>
 File: FaceExtraction.png Graphic file (type png)
  <use FaceExtraction.png>
-Package pdftex.def Info: FaceExtraction.png used on input line 720.
+Package pdftex.def Info: FaceExtraction.png used on input line 717.
 (pdftex.def)             Requested size: 247.5961pt x 206.77829pt.
- <2DCNNArchitecture.pdf, id=88, 305.22029pt x 741.73106pt>
+ <2DCNNArchitecture.pdf, id=86, 305.22029pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 729.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 726.
 (pdftex.def)             Requested size: 247.5961pt x 601.693pt.
- [13] [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] [15 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
+ [12 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] [13 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [16] <voxnet.pdf, id=122, 626.34pt x 210.7875pt>
+>] [14] <voxnet.pdf, id=117, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 854.
+Package pdftex.def Info: voxnet.pdf used on input line 849.
 (pdftex.def)             Requested size: 495.19221pt x 166.65538pt.
- [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
-
-pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->]
-Overfull \hbox (21.40602pt too wide) in paragraph at lines 900--900
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) Implementation 
+ [15]
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 895--895
+[][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (2.05037pt too wide) in paragraph at lines 900--900
-\OT1/ptm/m/n/10.95/-25ls (-50) NEEDED!  
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 895--895
+[][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (21.40602pt too wide) in paragraph at lines 900--900
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) Implementation 
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 895--895
+[][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (2.05037pt too wide) in paragraph at lines 900--900
-\OT1/ptm/m/n/10.95/-25ls (-50) NEEDED!  
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 895--895
+[][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
-
-Overfull \hbox (21.40602pt too wide) in paragraph at lines 900--900
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) Implementation 
- []
-
-
-Overfull \hbox (2.05037pt too wide) in paragraph at lines 900--900
-\OT1/ptm/m/n/10.95/-25ls (-50) NEEDED!  
- []
-
-
-Overfull \hbox (21.40602pt too wide) in paragraph at lines 900--900
-[][][][]\OT1/ptm/m/n/10.95/-25ls (-50) Implementation 
- []
-
-
-Overfull \hbox (2.05037pt too wide) in paragraph at lines 900--900
-\OT1/ptm/m/n/10.95/-25ls (-50) NEEDED!  
- []
-
-
-LaTeX Warning: Marginpar on page 18 moved.
-
-<BothRealAndCorrect.png, id=145, 371.3875pt x 326.21875pt>
+<BothRealAndCorrect.png, id=121, 371.3875pt x 326.21875pt>
 File: BothRealAndCorrect.png Graphic file (type png)
  <use BothRealAndCorrect.png>
-Package pdftex.def Info: BothRealAndCorrect.png used on input line 951.
+Package pdftex.def Info: BothRealAndCorrect.png used on input line 945.
 (pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
- <FakeOutputAndCorrect.png, id=146, 371.3875pt x 326.21875pt>
+ <FakeOutputAndCorrect.png, id=122, 371.3875pt x 326.21875pt>
 File: FakeOutputAndCorrect.png Graphic file (type png)
  <use FakeOutputAndCorrect.png>
-Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 958.
+Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 952.
 (pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
- [18] [19 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] <LinearlySeparable.png, id=156, 500.8311pt x 346.896pt>
+ [16 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>] [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] <LinearlySeparable.png, id=150, 500.8311pt x 346.896pt>
 File: LinearlySeparable.png Graphic file (type png)
  <use LinearlySeparable.png>
-Package pdftex.def Info: LinearlySeparable.png used on input line 1016.
-(pdftex.def)             Requested size: 495.19221pt x 342.99934pt.
- [20 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>] [21]
+Package pdftex.def Info: LinearlySeparable.png used on input line 1010.
+(pdftex.def)             Requested size: 247.5961pt x 171.49437pt.
+ [18 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>]
 No file report.gls.
 (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 5.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 22.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -920,44 +793,44 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 5189) in paragraph at lines 58--62
-[]\OT1/ptm/m/n/10.95/-25ls A. Izvorski.  aizvorski/video-quality: Video qual-ity met-rics, ref-er-ence im-ple-men-ta-tion in python.
+Underfull \hbox (badness 4366) in paragraph at lines 54--58
+[]\OT1/ptm/m/n/10/-25ls A. Izvorski.  aizvorski/video-quality: Video qual-ity met-rics, ref-er-ence im-ple-men-ta-tion in python.  $\OT1/pcr/m/n/10/-25ls https :
  []
 
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 75--81
-[]\OT1/ptm/m/n/10.95/-25ls A. Khalid.  Fa-cial recog-ni-tion may boost air-port se-cu-rity but raises pri-vacy wor-ries.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--81
-\OT1/pcr/m/n/10.95/-25ls https : / / www . npr . org / sections / alltechconsidered / 2017 / 06 / 26 / 534131967 /
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 71--77
+[]\OT1/ptm/m/n/10/-25ls A. Khalid.  Fa-cial recog-ni-tion may boost air-port se-cu-rity but raises pri-vacy wor-ries.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--81
-\OT1/pcr/m/n/10.95/-25ls facial-[]recognition-[]may-[]boost-[]airport-[]security-[]but-[]raises-[]privacy-[]worries ?
+Underfull \hbox (badness 10000) in paragraph at lines 71--77
+\OT1/pcr/m/n/10/-25ls https : / / www . npr . org / sections / alltechconsidered / 2017 / 06 / 26 / 534131967 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--100
-[]\OT1/ptm/m/n/10.95/-25ls D. Liu and D. Liu.  A prac-ti-cal guide to relu.  $\OT1/pcr/m/n/10.95/-25ls https : / / medium . com / tinymind /
+Underfull \hbox (badness 10000) in paragraph at lines 71--77
+\OT1/pcr/m/n/10/-25ls facial-[]recognition-[]may-[]boost-[]airport-[]security-[]but-[]raises-[]privacy-[]worries ? t =
  []
 
-) [23] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--96
+[]\OT1/ptm/m/n/10/-25ls D. Liu and D. Liu.  A prac-ti-cal guide to relu.  $\OT1/pcr/m/n/10/-25ls https : / / medium . com / tinymind /
+ []
+
+) [20] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 20964 strings out of 493013
- 389246 string characters out of 6135681
- 555530 words of memory out of 5000000
- 23719 multiletter control sequences out of 15000+600000
- 48886 words of font info for 312 fonts, out of 8000000 for 9000
+ 20962 strings out of 493013
+ 389053 string characters out of 6135681
+ 560542 words of memory out of 5000000
+ 23715 multiletter control sequences out of 15000+600000
+ 46590 words of font info for 308 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,78p,1990b,739s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (23 pages, 1394865 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (20 pages, 1397823 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 219 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  35396 words of extra memory for PDF output out of 35830 (max. 10000000)
 

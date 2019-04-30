@@ -50,19 +50,29 @@
     \end{itemize}
 
 \paragraph{Method}
-   \begin{itemize}
-        \item The W-IQA liveness test was implemented in Python to consider the image as a whole.
-        \item A CNN based 2D liveness test was implemented in Python to classify facial structure.
-        \item A 3D based liveness test to detect mask attacks was designed and implemented, and assessed based on practicality for the web.
-   \end{itemize}
+    Design, train and test three different innovative liveness tests.
+    
+    The first is the W-IQA liveness test, which analyses image quality across the entire image. This is achieved by
+    calculating 24 different quality metrics for each image, and using output obtained using a Linear Discriminant Analysis classifier (LDA).
+
+    The second is a CNN based 2D liveness test. This model used a CNN-based face extraction process to obtain the input face, before feeding this through a ResNet50 based model
+    to classify whether a specific face is real or spoofed.
+
+    The third is a 3D based liveness test to detect mask attacks. This process combined existing techniques for reconstructing a face in 3D from a 2D image, and fed this reconstruction
+    through a VoxNet classifier to detect whether the 3D data contains spoofed input or real input.
+
+    Using these liveness tests, an LDA based classifier was then trained to fuse the results of the above metrics together, to improve accuracy and allow for future expansion with further
+    liveness tests.
+  
 \paragraph{Results}
     \begin{itemize}
         \item W-IQA test performed well, yielding 87\% accuracy over the Replay-Attack test dataset.
         \item CNN based 2D test performed adequately, yielding 71\% accuracy over the Replay-Attack test dataset.
         \item The VoxNet based 3D liveness test performed poorly, and had various performance issues that means it's not currently practical to deploy.
+        \item The LDA-based consolidation layer performed reasonably, but requires more liveness tests be included before the accuracy in production can be assertained.
     \end{itemize}
 \paragraph{Conclusions}
-    Overall, both the Whole Image Quality assessment and CNN based 2D test are metrics to include in a liveness-as-a-service system.  The W-IQA test individually yields
+    Overall, both the Whole Image Quality assessment and CNN based 2D test are metrics to include in a liveness-as-a-service system. The W-IQA test individually yields
     impressive results, but the CNN based metric would perform well when working together with other metrics. The CNN based metric could be further improved by adjusting preprocessing,
     and using a deeper ResNet pretrained model. The VoxNet model has also shown that this method is a poor liveness test for the existing use case, due to high computational requirements.
     In addition, the speed at which queries can be answered shows that these can reasonably be used in a web system without extensive delays in processing, or without requiring any additional hardware (aside from a camera).
@@ -86,16 +96,15 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
     to making facial recognition more secure and mainstream, the implementation of a facial liveness service is necessary: that way developers won't need to worry about implementing their own liveness tests
     and can instead focus on the process of building their software.
 
-    % TODO this needs to be readjusted to make it sound more formal and clear.
-   While there are different measures of detecting liveness, each method is specialized towards defending against a given attack. The aim of this project is to understand
-   the existing liveness detection methods, which type of attack they aim to prevent, and how effective they are. Once this has been achieved, the aim shall be to bring
-   each of these methods together, hopefully improving the effectiveness of such a system by incorporating multiple methods.
+    While different methods of detecting liveness are available, these are specialized towards defending against a different type of attack. Some existing liveness tests require use of
+    special hardware or sensor configurations that are not available in most smartphones/computers. The aim of this work is to design and highlight liveness tests that only require a camera,
+    can yield an output in near-real time, and give adequate accuracy. Once these methods are developed, future works can further develop these methods, or build a facial liveness system
+    designed for the web.
 
-    % TODO might be worth explaining that we are focusing here on only images, rather than video. Explain why...
 
     In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
-    We provide a promising new liveness test using ResNet based networks. We also adapt an existing Image Quality Assessment test for use with whole image classification, rather
-    than a face based method.
+    We provide a promising new liveness test using ResNet based networks, used to analyse facial structure. We also adapt an existing Image Quality Assessment test for use with whole image classification, rather
+    than a face based method, to classify an image regardless of whether it contains facial information.
     % In this context, we propose 
 
 \section{Related Work}
@@ -123,7 +132,29 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         
         Recently, deep learning based approaches have been applied to the task of facial liveness classification.
 
-        In particular, Convolutional Neural Networks are a key approach, since they can be used to learn a variety of features including face structure,
+
+        \subsubsection{Neural Networks, and their structure}
+        Deep learning approaches are focused around the concept of neural networks. Neural networks consist of several layers, each of which are linked by weights.
+        Traditional neural networks have very few layers (shallow), but recently the trend of using a large number of layers (deep) has become popular, yielding
+        better performing classifiers as a result.
+
+        There are many types of layers, but the two most commonly used are outlined below:
+
+        \paragraph{Fully connected layers} Fully connected (or dense) layers consist of neurones. Given two layers $l_1$ and $l_2$, each
+        neuron $n_i$ in $l_1$ is linked to each neuron $n_j$ in $l_2$ with a weight $w_{i, j}$. For each neuron in the previous layer, the output of that neuron is multiplied by a weight, the total is summed,
+        and the sum is put through a function $t(x)$ which is the activation function. Examples of activation functions include \emph{reLU}, \emph{sigmoid}, and \emph{hyperbolic tangent}.
+        $$n_j = t(\sum_{i \in PrevLayer}(n_i * w_{i, j}))$$
+
+        \paragraph{Convolutional layers} Designed primarily for images, these convolve over an image with a kernel. For each location over an image, the weights are multiplied by the image input at that particular location. These are then fed through an activation function.
+        The overall output of a convolutional layer would be a 2D image (in the case of images). While 2D images will be primarily used for image input, 3D convolutional layers follow this same process for 3D representations. 
+        Convolutional layers are better used for images compared to fully connected layers, since fewer weights (also known as parameters) are required, thus reducing the required computation and storage. 
+
+        \paragraph{A note about performance metrics}
+            Throughout this paper, the number of parameters acts as a metric of performance. The more parameters (weights) that a model contains, the more computation that needs to be completed, thus requiring more time/better performing hardware.
+            While operations per second is possibly the best metric, number of parameters gives a good indication without the requirement to count the number of operations that occur. Furthermore, counting the number of operations per second also depends on the hardware
+            being used, and as such it's more difficult to compare unless benchmarking is conducted on a single type of machine.
+        
+        I believe Convolutional Neural Networks are a key approach to facial liveness, since they can be used to learn a variety of features including face structure,
         texture, and other potential suspicious visual glitches which would be obtained with face spoofing. Convolutional Neural Networks 
         The method proposed in \cite{Patel2016CrossDatabaseFA} uses Caffe-Net, inputting both the full image along with the isolated face.
         The output yielded general texture differences, as well as specific facial texture differences. Another interesting idea proposed
@@ -137,67 +168,73 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         while also being reasonably efficient in terms of computation time to be deployable on the web. Since these models have already been deployed in the real world, and the goal of image classification
         is common with the goal of liveness detection, these models could be a good fit for adapting to liveness applications. Since facial liveness testing is
         an image classification problem, these models are of importance.
-        
-        \paragraph{AlexNet} 
-        One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
-        This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Overall deployability
-        with Alex net is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
-        as good as newer methods (such as the ones shown below), which all perform better in terms of accuracy. 
-        
-        \paragraph{VGG16 Network}
-        The VGG16 model improved AlexNet by replacing larger filters by more smaller filters one after another.
-        However, VGG requires a high amount of computational power, something that's not easily deployable due to
-        the large number of parameters (128 million), which requires a high amount of memory and compute power compared
-        to other models. \cite{DeepNeuralNetworkDeployability} In our application, high accuracy is important, but the high
-        memory and computational requirements mean this model isn't the most suitable.
+            
+            \paragraph{AlexNet} 
+            One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
+            This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Overall deployability
+            with Alex net is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
+            as good as newer methods (such as the ones shown below), which all perform better in terms of accuracy. 
+            
+            \paragraph{VGG16 Network}
+            The VGG16 model improved AlexNet by replacing larger filters by more smaller filters one after another.
+            However, VGG requires a high amount of computational power, something that's not easily deployable due to
+            the large number of parameters (128 million), which requires a high amount of memory and compute power compared
+            to other models. \cite{DeepNeuralNetworkDeployability} In our application, high accuracy is important, but the high
+            memory and computational requirements mean this model isn't the most suitable.
 
-        \paragraph{GoogLeNet Inception}
-        GoogLeNet is an improved module that approximates a space Convolutional Network with a normal
-        dense construction. One of the major features of GoogLeNet is the Inception module. The naive approach to this 
-        is to take the input from the previous layer, calculate a 1x1, 3x3 and 5x5 convolution (all at the same time), along with
-        a 3x3 max pooling before feeding this into an output, the output being the filter concatenation step.
-        However, to reduce the dimensionallity, and therefore improve performance, a 1x1 convolution is applied before
-        each 3x3 and 5x5 convolution, and after the max pooling output. These inception modules can be used and stacked
-        to improve performance without a huge increase in computation. \cite{GoogLeNet} 
- 
-        Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
-        
-        \paragraph{Residual Networks}
-        Another key problem with deep convolutional networks on when used for image classification is the vanishing gradient problem. This occurs when early layers have very small gradients during the training process and
-        making the model very difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block.
-        The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficient than VGG in terms of computational power needed. \cite{DeepResidualNetworks}
-        While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
-        This model is very ideal for our application, as it acts as an ideal compromise between accuracy and computational requirements, yielding fairly good accuracy for our security focused perspective, while also
-        ensuring that the operational cost (in terms of time, and cost for hardware) isn't too high, compared with other models such as VGG.
+            \paragraph{GoogLeNet Inception}
+            GoogLeNet is an improved module that approximates a space Convolutional Network with a normal
+            dense construction. One of the major features of GoogLeNet is the Inception module. The naive approach to this 
+            is to take the input from the previous layer, calculate a 1x1, 3x3 and 5x5 convolution (all at the same time), along with
+            a 3x3 max pooling before feeding this into an output, the output being the filter concatenation step.
+            However, to reduce the dimensionallity, and therefore improve performance, a 1x1 convolution is applied before
+            each 3x3 and 5x5 convolution, and after the max pooling output. These inception modules can be used and stacked
+            to improve performance without a huge increase in computation. \cite{GoogLeNet} 
+    
+            Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
+            
+            \paragraph{Residual Networks}
+            Another key problem with deep convolutional networks on when used for image classification is the vanishing gradient problem. This occurs when early layers have very small gradients during the training process and
+            making the model very difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block.
+            The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficient than VGG in terms of computational power needed. \cite{DeepResidualNetworks}
+            While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
+            This model is very ideal for our application, as it acts as an ideal compromise between accuracy and computational requirements, yielding fairly good accuracy for our security focused perspective, while also
+            ensuring that the operational cost (in terms of time, and cost for hardware) isn't too high, compared with other models such as VGG.
 
-        Architecturally, Residual Networks consist of residual blocks, which can be seen in Figure \ref{ResidualBlock}. This solves the vanishing gradient problem by utilizing shortcut
-        connections, which skip one or more layers. The outputs of these shortcut connections are added to the outputs of the stacked layers.
-        \todo{EXPLAIN MORE ABOUT RESNETS AND HOW THEY WORK TO OPTIMIZE. IN PRODUCTION, COMPARE THEM TO RAW CNNS}
-        \begin{figure}
-            \includegraphics[width=.7\linewidth]{ResidualBlock.png}
-            \caption{A Residual Block: this is the building block of the ResNet architecture. Source: \cite{DeepResidualNetworks}}
-            \label{ResidualBlock}
-        \end{figure}
+            Architecturally, Residual Networks consist of residual blocks, which can be seen in Figure \ref{ResidualBlock}. This solves the vanishing gradient problem by utilizing shortcut
+            connections, which skip one or more layers. The outputs of these shortcut connections are added to the outputs of the stacked layers.
+            \todo{EXPLAIN MORE ABOUT RESNETS AND HOW THEY WORK TO OPTIMIZE. IN PRODUCTION, COMPARE THEM TO RAW CNNS}
+            \begin{figure}
+                \centering
+                \includegraphics[width=.7\linewidth]{ResidualBlock.png}
+                \caption{A Residual Block: this is the building block of the ResNet architecture. Source: \cite{DeepResidualNetworks}}
+                \label{ResidualBlock}
+            \end{figure}
 
-        One important metric to analyze the performance of a model is the Top-1 accuracy figure. This metric represents the class with the highest probability in the model must be exactly the expected answer. 
-        The Top-1 accuracy scores for the models outlined above are shown in Figure \ref{Top1AccuracyOverNetwork}. These results show that a newer version of the Inception model perform the best,
-        with ResNet based classifiers performing fairly well too. AlexNet performance on the other hand was fairly poor. While accuracy was important, the number of operations is also important, as this will affect how easily the model can be used 
-        in a real-world system. Based on the results shown in Figure \ref{Top1AccuracyOverOperations}, AlexNet and GoogLeNet are shown to require very few operations ($<10$ G-Ops),
-        with a similar result being yielded for ResNet 50 and ResNet 34. On the other hand, VGG models require a large number of operations for a similar accuracy, requiring $>30$ G-Ops.
-        This fact is also true for Inception models.
+            One important metric to analyze the performance of a model is the Top-1 accuracy figure. This metric represents the class with the highest probability in the model must be exactly the expected answer. 
+            The Top-1 accuracy scores for the models outlined above are shown in Figure \ref{Top1AccuracyOverNetwork}. These results show that a newer version of the Inception model perform the best,
+            with ResNet based classifiers performing fairly well too. AlexNet performance on the other hand was fairly poor. While accuracy was important, the number of operations is also important, as this will affect how easily the model can be used 
+            in a real-world system. Based on the results shown in Figure \ref{Top1AccuracyOverOperations}, AlexNet and GoogLeNet are shown to require very few operations ($<10$ G-Ops),
+            with a similar result being yielded for ResNet 50 and ResNet 34. On the other hand, VGG models require a large number of operations for a similar accuracy, requiring $>30$ G-Ops.
+            This fact is also true for Inception models.
 
-        \begin{figure}
-            \centering
-            \includegraphics[width=.7\linewidth]{Top1AccuracyOverNetwork.png}
-            \caption{Top 1 accuracy vs network. Chart and results from \cite{DeepNeuralNetworkDeployability}}
-            \label{Top1AccuracyOverNetwork}
-        \end{figure}
-
-        \begin{figure}
-            \centering
-            \includegraphics[width=.7\linewidth]{Top1AccuracyOverOperations.png}
-            \caption{Top 1 accuracy vs operations, where network size is proportional to parameters. Operations figures are for a single pass (e.g. predicting given a specific input). Chart and results from \cite{DeepNeuralNetworkDeployability}}
-            \label{Top1AccuracyOverOperations}
+            \begin{figure}
+                \centering
+                \begin{subfigure}[t]{.4\textwidth}
+                    \centering
+                    \includegraphics[width=.7\linewidth]{Top1AccuracyOverNetwork.png}
+                    \caption{Top 1 accuracy vs network. Chart and results from \cite{DeepNeuralNetworkDeployability}}
+                    \label{Top1AccuracyOverNetwork}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}[t]{.4\textwidth}
+                    \centering
+                    \includegraphics[width=.7\linewidth]{Top1AccuracyOverOperations.png}
+                    \caption{Top 1 accuracy vs operations, where network size is proportional to number of parameters. Operations figures are for a single pass (e.g. predicting given a specific input). Chart and results from \cite{DeepNeuralNetworkDeployability}}
+                    \label{Top1AccuracyOverOperations}
+                \end{subfigure}
+                \label{ComparisonsOfDifferentModels}
+                \caption{These two charts, from \cite{DeepNeuralNetworkDeployability}, show the accuracy and computational requirements of each type of classifier.}
         \end{figure}
 
         \subsubsection{Datasets}
@@ -222,26 +259,26 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         \subsubsection{Temporal-based Liveness Tests}
         These liveness tests require a video input, rather than an image. Rather than looking directly at an image, they mostly look at the differences between the images in a video.
         
-        % Blinking
-        \paragraph{Blink Detection}
-        The blink detection liveness test analyses eye blink behavior and determines whether the person is real/fake. This liveness test meets our criteria for a web-based liveness service,
-        as the test doesn't require any extra hardware. Furthermore, a large amount of conscious activity from the user isn't necessary, as the video analyzed is natural behavior.
-        One drawback of this method is testing: this model requires a video input, which isn't available with the NUAA dataset, and therefore testing this method might be more difficult.
-        \cite{BlinkDetectionLivenessTest} Furthermore, this method would be susceptible to a print-based attack where eye holes were cut, since natural eye movement is analyzed.
-        
-        % Face Flashing
-        \paragraph{Face Flashing}
-        One method, known as the "Face Flashing" liveness detection method, uses the light diffusing off a screen to determine that the input is in fact from the user, rather than from a spoofed recorded/simulated input.
-        The method also considers how the light is diffused, as light would diffuse differently based on a face compared to a piece of paper/a screen. \cite{LivenessTestFaceFlashing}
-        While this metrics seems very promising at avoiding replay attacks, testing it to a larger degree is more difficult due to the lack of data available for testing, and therefore not implemented for this project.
-        One potential drawback though would be with devices that don't have screens but do have cameras, such as with IoT devices. Since a screen isn't present on these, the liveness test wouldn't work. However, for traditional mobile phones/computers
-        this would work better.
+            % Blinking
+            \paragraph{Blink Detection}
+            The blink detection liveness test analyses eye blink behavior and determines whether the person is real/fake. This liveness test meets our criteria for a web-based liveness service,
+            as the test doesn't require any extra hardware. Furthermore, a large amount of conscious activity from the user isn't necessary, as the video analyzed is natural behavior.
+            One drawback of this method is testing: this model requires a video input, which isn't available with the NUAA dataset, and therefore testing this method might be more difficult.
+            \cite{BlinkDetectionLivenessTest} Furthermore, this method would be susceptible to a print-based attack where eye holes were cut, since natural eye movement is analyzed.
+            
+            % Face Flashing
+            \paragraph{Face Flashing}
+            One method, known as the "Face Flashing" liveness detection method, uses the light diffusing off a screen to determine that the input is in fact from the user, rather than from a spoofed recorded/simulated input.
+            The method also considers how the light is diffused, as light would diffuse differently based on a face compared to a piece of paper/a screen. \cite{LivenessTestFaceFlashing}
+            While this metrics seems very promising at avoiding replay attacks, testing it to a larger degree is more difficult due to the lack of data available for testing, and therefore not implemented for this project.
+            One potential drawback though would be with devices that don't have screens but do have cameras, such as with IoT devices. Since a screen isn't present on these, the liveness test wouldn't work. However, for traditional mobile phones/computers
+            this would work better.
 
-        Overall, these metrics would be fairly useful on video input, since they take into account the movement/differences between frames, but for implementation purposes they are difficult to test due to lack of datasets available for them
-        (since they require special information that isn't available from existing sets). 
+            Overall, these metrics would be fairly useful on video input, since they take into account the movement/differences between frames, but for implementation purposes they are difficult to test due to lack of datasets available for them
+            (since they require special information that isn't available from existing sets). 
 
-        In a web-based approach, the face flashing approach would be particularly useful at determining whether a source-quality image was being fed into the algorithm, since the random face flashing colors would be able to be detected.
-        
+            In a web-based approach, the face flashing approach would be particularly useful at determining whether a source-quality image was being fed into the algorithm, since the random face flashing colors would be able to be detected.
+            
     \subsection{3D Spoofing Attacks}
         Mask Attacks are a 3D spoofing attack, which involve creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy} These are much less prevalent, but with 3D printing becoming more mainstream, this
         could potentially get more prevalent in the future.
@@ -283,20 +320,23 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 PointNet is a model for classifying point clouds, represented as an unordered set of points. PointNet in total has 3.5 million parameters, with 440 million FLOPs per sample, which 
                 is a reasonable number considering other classifiers, but is on the upper end of what would be expected for a web based system. The classifier used within PointNet is a simple feed forward network.
                 \cite{PointNet}
-                \todo{What are these parameters? Explain.}
                 While this model has performance benefits over CNN based models (since 3D convolution is computationally expensive),
                 the input is a point cloud structure which might not be the most ideal solution (since sparse data might not be captured, dependent on which reconstruction model is used).
                 
             \paragraph{VoxNet}
                 Unlike PointNet, this model uses a voxel representation. This is ideal due to the nature of existing 3D reconstruction models from a 2D image. The accuracy of this classifier isn't the most ideal,
                 but improvements could be made such as implementing a Residual network approach (something that worked well for 2D classifiers). As a proof of concept, this model would be ideal to test whether this model would work
-                in the real world. \cite{VoxNetModel}
-                \todo{explain VoxNet parameters and figure showing model structure.}
-            
+                in the real world. This model was developed to identify objects based on their 3D representation.\cite{VoxNetModel} This is very similar to the process of identifying liveness based on the 3D face structure input.
+                The overall architecture of the classifier can be seen in Figure \ref{OriginalVoxNetArchitecture}. Convolutional layers are used to learn the 3D feature space, while a dense layer is used to produce the output. 
+                \begin{figure}[]
+                    \centering
+                    \includegraphics[width=0.5\linewidth]{VoxNetArchitecture.png}
+                    \caption{The original VoxNet architecture. While point cloud input is available, voxel based representation can also be used. Diagram obtained from \cite{VoxNetModel}}
+                    \label{OriginalVoxNetArchitecture}
+                \end{figure}
 \section{Solution}
     % Solution to the problem
-
-    % \todo{Refactor into functional and non functional requirements.}
+    \todo{FRs and NFRs?}
     A system deployed to the Cloud would require a few important criteria be met. The liveness methods used should be output a liveness score after no more than 2 seconds
     to ensure that such a system doesn't become painful to use by users. The liveness methods should not require any additional hardware (only a normal camera) so that the number
     of devices it can be used by can be maximized. Furthermore, each liveness test must have a reasonable accuracy of over 70\%, to ensure that liveness predictions are fairly reliable.
@@ -307,8 +347,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
     With these specifications in mind, the design focused on three different liveness tests: an Image Quality assessment based liveness test, a ResNet 50 based classifier (based on a pretrained ImageNet model),
     and a novel 3D based classifier using 3D facial reconstruction models interlinked with the VoxNet 3D classification model. Each of these liveness tests have some common services that are needed; these include
     reading large datasets without causing resource availability problems.
-
-    \todo{insert diagram of the overall system design (e.g. data, consolidation layer, etc)}
 
     \subsection{Shared Services}
         \subsubsection{Dataset Managers}
@@ -324,8 +362,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
         In addition to data normalization, it also provided a method of reducing RAM usage, therefore allowing larger liveness test models to be created. This is because data is only fetched when needed
         from the hard drive, rather than loading the entire dataset into RAM at once.
-
-        % \todo{Diagram of Dataset management?}
 
         \subsubsection{Neural Network Infrastructure}
             % Keras to simplify models, tensorflow as the underlying backend.
@@ -545,7 +581,8 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             \paragraph{Spectral Magnitude Error (SME)}
                 SME metric is a full reference metric that utilizes Discrete Fourier Transform (DFT) to analyze the frequency.
-                We define a function $FourierMag(img)$ which calculates the DFT of the image $img$, shifts it, and produces the magnitude of the transform at each point in the x and y space.
+                We define a function $FourierMag(img)$ which calculates the DFT of the image $img$, shifts it, and produces the magnitude of the transform. The magnitude image produced
+                is a 2D array of shape (X, Y), where X represents the real plane and Y represents the complex plane.
 
                 For image $I$ and $I'$ respectively, the transformed magnitude $M$, and $M'$ is calculated, such that:
                 $M = 20*\log(FourierMag(I))$, and $M' = 20 * \log(FourierMag(I'))$.
@@ -556,7 +593,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
                 In the implementation, OpenCV was used to conduct the DFT process, with Numpy providing additional fourier transform functionality to calculate the magnitude. In addition, Numpy
                 was utilized to easily conduct the remaining matrix operations (such as $Mean$, $log$, and subtractions).
-                \todo{Mention REAL and COMPLEX planes}
+
             \paragraph{Signal to Noise Ratio (SNR)}
                 SNR is a fairly standard reference metric. It requires the calculation of the Mean Squared Error, which has been defined above. This shall be referenced as a function $MSE(I, I')$.
                 In addition to this function, the shape dimensions of the images are defined as (M, N). It's assumed that both images have the same shape.
@@ -587,8 +624,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             \paragraph{Structural Similarity (SIM)}
                 SSIM is a full-reference metric. This metric was implemented using the \emph{skimage} library. The library implementation can be found as a function called \emph{compare\_ssim}.
-                Rather than implementing this from scratch, the library implementation was used. Into this function, $I$ and $I'$ are passed
-                in as arguments.
+                Rather than implementing this from scratch, the library implementation was used. Into this function, $I$ and $I'$ are passed in as arguments.
 
                 SSIM is a perception based model, based on how a human would perceive a given image. One of the important factors in perceived human image quality is the structure.
                 The method proposed considers three elements of similarity between the two images: luminance similarity, contrast similarity, and structure similarity.
@@ -903,7 +939,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
     well, so in this case the Replay-Attack devel set was used. It must be noted that no overlap occurs between the Replay-Attack devel and test sets, to prevent the risk
     of these results being invalid. In order to visualize the result as a demonstration, a script was written using OpenCV calls to produce an overlay on top of the image.
     The results of these models in a faux-production environment can be seen in Figure \ref{SystemWorkingScreenshots}. 
-
     \begin{table}[ht]
         \centering
         \begin{tabular}[t]{lcc}
@@ -955,6 +990,39 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         \end{subfigure}
            
    \end{figure}
+    \subsection{Testing Process}
+        \subsubsection{Datasets}
+            The Replay-Attack test dataset was used to access the results of each liveness test. This dataset contains no overlap with the set that was trained on, therefore ensuring that
+            the results are a true indication of the generalised performance.
+
+        \subsubsection{Accuracy}
+            Top-1 accuracy is an ideal metric to judge the performance of the system, since a high Top-1 accuracy in the results would show how often the liveness test yields the correct results.
+            
+            A Top-1 accuracy figure of 50\% implies that the model is simply randomly yielding output (since there are two cases), which isn't ideal. A figure of 70\% implies that the model
+            is reasonably yielding the correct result and is feasible, but might need minor changes or more training to yield a better result. A figure of over 85\% implies that the model
+            is yielding the correct results most of the time. The higher the accuracy figure, the better, when being run on an unseen dataset.
+
+        \subsubsection{Confusion Matrix}
+            While accuracy is a reasonable metric, it's also important to visualise how often each model selects each case (fake/real), and whether the selection is correct or incorrect.
+            There are four important terms with the confusion matrix. These are:
+
+            \paragraph{True Positives}
+                This is the percentage where the model predicts that an input is real, where the input is real. Therefore, the liveness test has identified a user as real correctly.
+                This figure should be above zero, and a reasonable figure. 
+
+            \paragraph{False Positives}
+                This is the percentage where a model predicts an input is real, where the input actually contains a spoofing attack. This is a concern, since for a security focused
+                liveness test, this should be mitigated as much as possible.
+
+            \paragraph{True Negatives}
+                This is the percentage where a model predicts an input is fake, where the input contains a spoofed image. This is an indication of how often a model predicts that an input is faked.
+                This again should be reasonably high.
+
+            \paragraph{False Negatives}
+                This is the percentage where a model predicts an input is fake where it's actually real. This isn't ideal, but this is the preferred option when a liveness test performs poorly, since
+                this would only cause inconvenience for the user, rather than a potential security breach.
+            
+   
     % CNN table: 4317 & 83 & 1357 & 283
     \subsection{Image Quality Liveness Test}
         Overall, the Image Quality Test performed as expected with reference to the initial paper. Unlike the original paper however, instead of isolating the face
@@ -1024,7 +1092,37 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         using more metrics could yield improved accuracy.
 
     \subsection{Live Application}
-    \todo{Details about the script we wrote to overlay. }
+        While numerical figures are useful to measure the results, it's also important to show performance on a completely unseen subject (through the use of a webcam). An OpenCV based script was
+        written to, in real time, access the output of the liveness tests and overlay the results on the screen with their predictions. 
+
+        The successful results can be seen in Figure \ref{SystemWorkingScreenshots}. While not numerical, it yielded a large number of useful insights into the real time nature of such a system,
+        and it's practical deployment.
+
+        \paragraph{Benefits of CNN facial isolation}
+        The CNN facial isolation was found to be very good at selecting the facial area ready for preprocessing. Even with part of the face covered up, it still yielded a reasonable
+        facial crop, which could then be fed into the network. Also, the head being placed at different angles also yielded a reasonable face isolated image that could be used for the
+        CNN metric.
+    
+        \paragraph{Resolution problems with WIQA test}
+            While the test datasets contain a small number of different resolutions, the differences in resolutions are minimal. Therefore, using a completely different image resolution
+            of 1280x720, which was completely unseen by the classifier previously. This led to the model predicting each input as real, which was incorrect.
+
+            The solution taken was to resize this image down to a more reasonable 640x480, which yielded far better performance in real time. However, in future iterations, resolution is
+            a factor that needs to be considered, and potentially the resolution should be included in the classified vector. Furthermore, more resolutions should be tested to yield a reasonable
+            classification.
+
+        \paragraph{Uncertainty of the CNN liveness test}
+            While the CNN liveness test could correctly classify a specific facial input, it would occasionally change the prediction to an incorrect prediction
+            as frames were stepped through. This was even observed with minimal change in the input image. Since the prediction of 1 image takes minimal time,
+            it might be ideal in future to take a set of 8 frames, and output the mode classification from this batch, this way smoothing out the prediction.
+            Alternatively, the CNN liveness test might need more training to assert the difference between real/fake in a more varied set of lighting conditions and resolutions.
+            \todo{Show uncertainty here somehow}
+
+        \paragraph{Problem in running liveness tests in series}
+            Since we have two liveness tests, the script runs the WIQA test first, before running the CNN based liveness test. This is fairly slow, as each liveness test requires their
+            own resources and time to complete. It might be more ideal to parallelise this in future, to yield better performance. While single-computer parallelisation might not be the best option
+            (since each classifier requires some degree of multithreading), multiple systems could be used to speed up this process.
+
 \section{Evaluation}
     % How well our system works, how well did it assess stuff, and how it can be improved.
     % what are the uses of our research? e.g. influence and improve the design of xyz...
@@ -1056,10 +1154,12 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             In terms of performance, classifying an image is very quick, but the time taken to load the model is what took the most time (due to memory needing to be allocated and written to).
             In production, providing a model was preloaded and ready to accept input, the computation time of this metric would be very fast, and therefore be ideal for inclusion in a liveness web service.
+        
         \paragraph{3D VoxNet Liveness Test}
             As seen from the results, this method of liveness test isn't feasible. With extra training, while the accuracy of the model could be improved, the
             real time memory requirements don't seem feasible. Based on the VoxNet paper, the accuracy achieved with a 32x32 VoxNet classifier on the SUOD dataset (a 3D dataset of objects)
             is 69\%. While this accuracy could be justified with reasonable computational and memory characteristics, this further proves that this method isn't feasible in the current state. In the future, a new approach of detecting 3D attacks is necessary.
+    
     \subsection{Improvements}
         \paragraph{Representing 3D Attacks}
         While our system works fairly well for 2D based attacks, performance for 3D based attacks definitely needs work.

@@ -10,7 +10,7 @@ from liveness.quality.classifiers.lda import QualityLDAModel
 from preprocessing.face_extraction import preprocess_fn_all, pre_process_fn
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.utils import shuffle
-
+from sklearn.metrics import confusion_matrix
 def main():
     manual_variable_initialization(True)
     # first, set log level to display everything we want
@@ -63,8 +63,10 @@ def main():
     score = consolidation_classifier.score(consolidation_input[:200], consolidation_output[:200])
     print(score)
 
-
-
+    test_input = consolidation_classifier.predict(consolidation_input[:200])
+    mat = confusion_matrix(consolidation_output[:200], test_input)
+    print("Confusion Matrix")
+    print(mat)
 
     dataset.close()  # Important, to close the file.
 

@@ -178,83 +178,87 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {D.2}Data Preprocessing}{13}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {D.3}The Model}{13}}
 \@writefile{toc}{\contentsline {paragraph}{AlexNet}{13}}
+\citation{liu_liu_2017}
+\citation{liu_liu_2017}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The 2D CNN test architecture. We take the face image, resize to a fixed size, and put through ResNet50. The two last CNN layers of this ResNet are trainable. The output of this network is flattened and fed through a deep feed forward network, yielding one output (which is the liveness score as before).\relax }}{14}}
 \newlabel{2DCNNArchitecture}{{7}{14}}
-\citation{liu_liu_2017}
-\citation{liu_liu_2017}
+\@writefile{toc}{\contentsline {paragraph}{Residual Networks}{14}}
+\@writefile{toc}{\contentsline {paragraph}{Feed Forward Classifier}{14}}
+\@writefile{toc}{\contentsline {paragraph}{The Problem with Activation Functions}{14}}
 \citation{SGDBetterThanAdamForImageClassification}
-\@writefile{toc}{\contentsline {paragraph}{Residual Networks}{15}}
-\@writefile{toc}{\contentsline {paragraph}{Feed Forward Classifier}{15}}
-\@writefile{toc}{\contentsline {paragraph}{The Problem with Activation Functions}{15}}
+\citation{3DReconstructionMethod}
+\citation{VRNTorchToKeras}
 \@writefile{toc}{\contentsline {paragraph}{The Problem with a Single Neuron Output}{15}}
 \@writefile{toc}{\contentsline {paragraph}{Normalization and Dropout}{15}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {D.4}The Training Process}{15}}
 \@writefile{toc}{\contentsline {paragraph}{Optimizer}{15}}
 \@writefile{toc}{\contentsline {paragraph}{Loss Function}{15}}
-\citation{3DReconstructionMethod}
-\citation{VRNTorchToKeras}
+\@writefile{toc}{\contentsline {paragraph}{Data Generators}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}3D Face Reconstruction Liveness Test}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.1}Overview}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2}2D Image Preprocessing}{15}}
 \citation{KerasVoxNetBug}
 \citation{VoxNetModel}
 \citation{3DMadDataset}
-\@writefile{toc}{\contentsline {paragraph}{Data Generators}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E}3D Face Reconstruction Liveness Test}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.1}Overview}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2}2D Image Preprocessing}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some preprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. \relax }}{16}}
+\newlabel{3DClassifierArchitectureDiagram}{{8}{16}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {E.3}3D Facial Reconstruction}{16}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {E.4}3D Classification}{16}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {E.5}The Training Process}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  This is an overview of the 3D classifier. \textbf  {(A)} a high resolution image is input into the classifier. \textbf  {(B)} The image goes through a HoG based face detector. The bounding box of the face is extracted, and the image is cropped. The image is then resized to be 192x192 pixels, which is what's required by the VRN process. \textbf  {(C)} The pretrained VRN face reconstruction model takes an image input, and outputs a voxel representation. Some preprocessing from the VRN model is necessary to convert an occupancy grid into a voxel representation (this is done here rather than in the VoxNet model). \textbf  {(D)} The VoxNet classifier uses several 3D convolutional layers, along with a couple of Dense layers to classify. \textbf  {(E)} The output of the last dense layer is simply a single number defined as the certainty of realness. 1.0 implies the model is certain that the input is real, while 0.0 implies the model is certain that the input is faked. \relax }}{17}}
-\newlabel{3DClassifierArchitectureDiagram}{{8}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.6}The Dataset}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.6}The Dataset}{16}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {F}Consolidation Layer}{17}}
 \@writefile{tdo}{\contentsline {todo}{Implementation DETAIL NEEDED!}{17}}
-\pgfsyspdfmark {pgfid36}{4474211}{20301260}
-\pgfsyspdfmark {pgfid39}{38844054}{20298967}
-\pgfsyspdfmark {pgfid40}{40695445}{20080077}
+\pgfsyspdfmark {pgfid36}{4474211}{40807751}
+\pgfsyspdfmark {pgfid39}{38844054}{40805458}
+\pgfsyspdfmark {pgfid40}{40695445}{40586568}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{17}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).\relax }}{17}}
 \newlabel{ResultsTable}{{1}{17}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Table of results, showing the wall clock time for the load and predict phases of both liveness tests.\relax }}{18}}
-\newlabel{WallClockResultsTime}{{2}{18}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Table of results, showing the wall clock time for the load and predict phases of both liveness tests.\relax }}{17}}
+\newlabel{WallClockResultsTime}{{2}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Testing Process}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1}Datasets}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2}Accuracy}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Confusion Matrix}{17}}
+\citation{ImageQualityAssessmentTest}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Outputs from the \emph  {live\_webcam\_output.py} file, being run on two different videos from the Replay-Attack test dataset. The model predicted the correct output here.\relax }}{18}}
 \newlabel{SystemWorkingScreenshots}{{9}{18}}
 \newlabel{RealScreenshot}{{9a}{18}}
 \newlabel{sub@RealScreenshot}{{a}{18}}
 \newlabel{FakeScreenshot}{{9b}{18}}
 \newlabel{sub@FakeScreenshot}{{b}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Testing Process}{18}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1}Datasets}{18}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2}Accuracy}{18}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Confusion Matrix}{18}}
 \@writefile{toc}{\contentsline {paragraph}{True Positives}{18}}
 \@writefile{toc}{\contentsline {paragraph}{False Positives}{18}}
 \@writefile{toc}{\contentsline {paragraph}{True Negatives}{18}}
 \@writefile{toc}{\contentsline {paragraph}{False Negatives}{18}}
-\citation{ImageQualityAssessmentTest}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Image Quality Liveness Test}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}2D Convolutional Neural Network Liveness Test}{18}}
 \citation{VoxNetModel}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Image Quality Liveness Test}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C}2D Convolutional Neural Network Liveness Test}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A plot of ResNet output against WIQA output. As one can see, for two metrics a perceptron could be used due to the linearly separable nature of the data (that is, a single line could be used to separate the real and fake classifications in some cases). Effectively, with two metrics this would be acting as an OR gate (with fuzzy calculations).\relax }}{19}}
+\newlabel{LinearlySeparableGraph}{{10}{19}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {D}3D VoxNet Liveness Test}{19}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {E}Consolidation Layer}{19}}
 \@writefile{tdo}{\contentsline {todo}{LDA: confusion matrix}{19}}
-\pgfsyspdfmark {pgfid41}{35984220}{11556747}
-\pgfsyspdfmark {pgfid44}{38844054}{11554454}
-\pgfsyspdfmark {pgfid45}{40695445}{11335564}
+\pgfsyspdfmark {pgfid41}{35984220}{16956374}
+\pgfsyspdfmark {pgfid44}{38844054}{16954081}
+\pgfsyspdfmark {pgfid45}{40695445}{16735191}
 \@writefile{toc}{\contentsline {subsection}{\numberline {F}Live Application}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A plot of ResNet output against WIQA output. As one can see, for two metrics a perceptron could be used due to the linearly separable nature of the data (that is, a single line could be used to separate the real and fake classifications in some cases). Effectively, with two metrics this would be acting as an OR gate (with fuzzy calculations).\relax }}{20}}
-\newlabel{LinearlySeparableGraph}{{10}{20}}
-\@writefile{toc}{\contentsline {paragraph}{Benefits of CNN facial isolation}{20}}
+\@writefile{toc}{\contentsline {paragraph}{Benefits of CNN facial isolation}{19}}
 \@writefile{toc}{\contentsline {paragraph}{Resolution problems with WIQA test}{20}}
 \@writefile{toc}{\contentsline {paragraph}{Uncertainty of the CNN liveness test}{20}}
 \@writefile{tdo}{\contentsline {todo}{Show uncertainty here somehow}{20}}
-\pgfsyspdfmark {pgfid46}{30776584}{25171298}
-\pgfsyspdfmark {pgfid49}{38844054}{25169005}
-\pgfsyspdfmark {pgfid50}{40695445}{24950115}
+\pgfsyspdfmark {pgfid46}{30776584}{43631542}
+\pgfsyspdfmark {pgfid49}{38844054}{43629249}
+\pgfsyspdfmark {pgfid50}{40695445}{43410359}
 \@writefile{toc}{\contentsline {paragraph}{Problem in running liveness tests in series}{20}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{20}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Usefulness of our system}{20}}
 \@writefile{toc}{\contentsline {paragraph}{Quality Test}{20}}
 \@writefile{toc}{\contentsline {paragraph}{2D CNN}{20}}
+\@writefile{toc}{\contentsline {paragraph}{3D VoxNet Liveness Test}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Improvements}{20}}
+\@writefile{toc}{\contentsline {paragraph}{Representing 3D Attacks}{20}}
+\@writefile{toc}{\contentsline {paragraph}{Preventing Source-Quality Web Browser Attacks}{20}}
 \bibstyle{abbrv}
 \bibdata{report}
 \bibcite{DeepNeuralNetworkDeployability}{{1}{}{{}}{{}}}
@@ -268,12 +272,6 @@
 \bibcite{DeepResidualNetworks}{{9}{}{{}}{{}}}
 \bibcite{VideoQualityOriginal}{{10}{}{{}}{{}}}
 \bibcite{3DReconstructionMethod}{{11}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {paragraph}{3D VoxNet Liveness Test}{21}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Improvements}{21}}
-\@writefile{toc}{\contentsline {paragraph}{Representing 3D Attacks}{21}}
-\@writefile{toc}{\contentsline {paragraph}{Preventing Source-Quality Web Browser Attacks}{21}}
-\@writefile{toc}{\contentsline {paragraph}{Existing BIQI implementation}{21}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{21}}
 \bibcite{KerasVoxNetBug}{{12}{}{{}}{{}}}
 \bibcite{NPRArticle}{{13}{}{{}}{{}}}
 \bibcite{AlexNet}{{14}{}{{}}{{}}}
@@ -285,6 +283,8 @@
 \bibcite{Patel2016CrossDatabaseFA}{{20}{}{{}}{{}}}
 \bibcite{PointNet}{{21}{}{{}}{{}}}
 \bibcite{GoogLeNet}{{22}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {paragraph}{Existing BIQI implementation}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{21}}
 \bibcite{NUAADataset}{{23}{}{{}}{{}}}
 \bibcite{LivenessTestFaceFlashing}{{24}{}{{}}{{}}}
 \bibcite{JQIPaper}{{25}{}{{}}{{}}}

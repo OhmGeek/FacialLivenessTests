@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  30 APR 2019 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  30 APR 2019 17:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -669,14 +669,14 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 31.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 45.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 44.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 81.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 91.
  [1
 
 \openout4 = `report.ist'.
@@ -686,37 +686,37 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 ) [2] <ResidualBlock.png, id=24, 998.73125pt x 555.07375pt>
 File: ResidualBlock.png Graphic file (type png)
  <use ResidualBlock.png>
-Package pdftex.def Info: ResidualBlock.png used on input line 209.
+Package pdftex.def Info: ResidualBlock.png used on input line 217.
 (pdftex.def)             Requested size: 346.63303pt x 192.65253pt.
- [3 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png>] <Top1AccuracyOverNetwork.png, id=30, 676.5275pt x 494.84875pt>
+ [3] <Top1AccuracyOverNetwork.png, id=29, 676.5275pt x 494.84875pt>
 File: Top1AccuracyOverNetwork.png Graphic file (type png)
  <use Top1AccuracyOverNetwork.png>
-Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 225.
+Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 233.
 (pdftex.def)             Requested size: 138.65108pt x 101.41444pt.
- <Top1AccuracyOverOperations.png, id=31, 667.49374pt x 460.72125pt>
+ <Top1AccuracyOverOperations.png, id=30, 667.49374pt x 460.72125pt>
 File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
-Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 232.
+Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 240.
 (pdftex.def)             Requested size: 138.65108pt x 95.69981pt.
- [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=37, 794.97pt x 748.7975pt>
+ [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=37, 794.97pt x 748.7975pt>
 File: 3DReconstructionFromSource.png Graphic file (type png)
  <use 3DReconstructionFromSource.png>
-Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 308.
+Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 316.
 (pdftex.def)             Requested size: 247.5961pt x 233.21027pt.
-
+ [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 331.
+               Default added (so using `tbp') on input line 339.
 
-<VoxNetArchitecture.png, id=38, 152.2488pt x 157.0668pt>
+<VoxNetArchitecture.png, id=42, 152.2488pt x 157.0668pt>
 File: VoxNetArchitecture.png Graphic file (type png)
  <use VoxNetArchitecture.png>
-Package pdftex.def Info: VoxNetArchitecture.png used on input line 333.
+Package pdftex.def Info: VoxNetArchitecture.png used on input line 341.
 (pdftex.def)             Requested size: 247.5961pt x 255.4534pt.
- [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>] [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/VoxNetArchitecture.png>] <ImageQualityLivenessTest.pdf, id=47, 470.7186pt x 451.6875pt>
+ [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/VoxNetArchitecture.png>] <ImageQualityLivenessTest.pdf, id=47, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 410.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 436.
 (pdftex.def)             Requested size: 495.19221pt x 475.19563pt.
  [7] [8 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
@@ -725,73 +725,73 @@ pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper
 
 LaTeX Warning: Marginpar on page 9 moved.
 
-[9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 667--668
+[9] [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 680--681
+Underfull \hbox (badness 10000) in paragraph at lines 706--707
 
  []
 
-[11] <FaceExtraction.png, id=87, 371.3875pt x 310.15875pt>
+[12] <FaceExtraction.png, id=90, 371.3875pt x 310.15875pt>
 File: FaceExtraction.png Graphic file (type png)
  <use FaceExtraction.png>
-Package pdftex.def Info: FaceExtraction.png used on input line 753.
+Package pdftex.def Info: FaceExtraction.png used on input line 779.
 (pdftex.def)             Requested size: 247.5961pt x 206.77829pt.
- <2DCNNArchitecture.pdf, id=88, 305.22029pt x 741.73106pt>
+ <2DCNNArchitecture.pdf, id=91, 305.22029pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 762.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 788.
 (pdftex.def)             Requested size: 247.5961pt x 601.693pt.
- [12] [13 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
+ [13 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >] [15] <voxnet.pdf, id=122, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 885.
+Package pdftex.def Info: voxnet.pdf used on input line 911.
 (pdftex.def)             Requested size: 495.19221pt x 166.65538pt.
- [16 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
-
-pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->]
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 931--931
+ [16]
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 957--957
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 931--931
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 957--957
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 931--931
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 957--957
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 931--931
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 957--957
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
-<BothRealAndCorrect.png, id=145, 371.3875pt x 326.21875pt>
+<BothRealAndCorrect.png, id=126, 371.3875pt x 326.21875pt>
 File: BothRealAndCorrect.png Graphic file (type png)
  <use BothRealAndCorrect.png>
-Package pdftex.def Info: BothRealAndCorrect.png used on input line 980.
+Package pdftex.def Info: BothRealAndCorrect.png used on input line 1006.
 (pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
- <FakeOutputAndCorrect.png, id=146, 371.3875pt x 326.21875pt>
+ <FakeOutputAndCorrect.png, id=127, 371.3875pt x 326.21875pt>
 File: FakeOutputAndCorrect.png Graphic file (type png)
  <use FakeOutputAndCorrect.png>
-Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 987.
+Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 1013.
 (pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
- [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] [18] <LinearlySeparable.png, id=155, 500.8311pt x 346.896pt>
+ [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>] [18 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] <LinearlySeparable.png, id=155, 500.8311pt x 346.896pt>
 File: LinearlySeparable.png Graphic file (type png)
  <use LinearlySeparable.png>
-Package pdftex.def Info: LinearlySeparable.png used on input line 1078.
+Package pdftex.def Info: LinearlySeparable.png used on input line 1104.
 (pdftex.def)             Requested size: 247.5961pt x 171.49437pt.
- [19 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>] [20]
+ [19] [20 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>]
 No file report.gls.
 (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 22.
@@ -807,7 +807,7 @@ Underfull \hbox (badness 4366) in paragraph at lines 54--58
 []\OT1/ptm/m/n/10/-25ls A. Izvorski.  aizvorski/video-quality: Video qual-ity met-rics, ref-er-ence im-ple-men-ta-tion in python.  $\OT1/pcr/m/n/10/-25ls https :
  []
 
-
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 71--77
 []\OT1/ptm/m/n/10/-25ls A. Khalid.  Fa-cial recog-ni-tion may boost air-port se-cu-rity but raises pri-vacy wor-ries.
  []
@@ -827,17 +827,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--96
 []\OT1/ptm/m/n/10/-25ls D. Liu and D. Liu.  A prac-ti-cal guide to relu.  $\OT1/pcr/m/n/10/-25ls https : / / medium . com / tinymind /
  []
 
-[21]) [22] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+) [22] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 20955 strings out of 493013
- 388838 string characters out of 6135681
- 547341 words of memory out of 5000000
- 23699 multiletter control sequences out of 15000+600000
- 47048 words of font info for 314 fonts, out of 8000000 for 9000
+ 20976 strings out of 493013
+ 388977 string characters out of 6135681
+ 547567 words of memory out of 5000000
+ 23698 multiletter control sequences out of 15000+600000
+ 48027 words of font info for 331 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,78p,1990b,739s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (22 pages, 1566300 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (22 pages, 1568715 bytes).
 PDF statistics:
  227 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams

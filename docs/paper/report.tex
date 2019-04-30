@@ -41,16 +41,17 @@
 
 \paragraph{Aims}
     % This might belong more in the method.
-
     \begin{itemize}
-        \item Verify the results of the proposed Whole-Image Quality Assessment (W-IQA) test.
-        \item Assess the outcome of a new ResNet based classifier on classifying real/spoofed images.
-        \item Design and implement a new 3D based liveness test, aimed to prevent mask attacks.
-        % \item Determine the outcome of fusing the three above methods together, and how successful this is.
+        \item To design, implement, train, and test a new quality based facial liveness test for classifying a whole image.
+        \item To design, implement, train, and test a new facial feature based liveness test, using Residual Networks.
+        \item To design, implement, train and test a new 3D based mask attack detection liveness test using 2D to 3D reconstruction methods.
+        \item To design and test a method for combining multiple liveness tests into one single metric to measure liveness, that can be used to include further liveness tests.
+        \item To only consider liveness tests that can be used on a mobile device, containing a camera of varying quality, and other IoT devices. No special hardware must be necessary to collect the required data.
+        \item To develop liveness tests that can classify liveness for a single image in a maximum of 2 seconds.
     \end{itemize}
 
 \paragraph{Method}
-    Design, train and test three different innovative liveness tests.
+    Design, train and test three different innovative liveness tests. Train using the NUAA and Replay-Attack devel datasets.
     
     The first is the W-IQA liveness test, which analyses image quality across the entire image. This is achieved by
     calculating 24 different quality metrics for each image, and using output obtained using a Linear Discriminant Analysis classifier (LDA).
@@ -61,16 +62,25 @@
     The third is a 3D based liveness test to detect mask attacks. This process combined existing techniques for reconstructing a face in 3D from a 2D image, and fed this reconstruction
     through a VoxNet classifier to detect whether the 3D data contains spoofed input or real input.
 
-    Using these liveness tests, an LDA based classifier was then trained to fuse the results of the above metrics together, to improve accuracy and allow for future expansion with further
+    Using the classification probabilities from liveness tests, an LDA based classifier was then trained to fuse the results of the above metrics together, to improve accuracy and allow for future expansion with further
     liveness tests.
   
 \paragraph{Results}
-    \begin{itemize}
-        \item W-IQA test performed well, yielding 87\% accuracy over the Replay-Attack test dataset.
-        \item CNN based 2D test performed adequately, yielding 71\% accuracy over the Replay-Attack test dataset.
-        \item The VoxNet based 3D liveness test performed poorly, and had various performance issues that means it's not currently practical to deploy.
-        \item The LDA-based consolidation layer performed reasonably, but requires more liveness tests be included before the accuracy in production can be assertained.
-    \end{itemize}
+    All tests for 2D attacks were carried out over the Replay-Attack test dataset. Top-1 accuracy was measured to determine how accurate the predictions were,
+    and a confusion matrix was produced to analyse what errors the models give.
+
+    The W-IQA test performed well, yielding 87\% top-1 accuracy. The levels of true positives and true negatives were very high. However, when this test made incorrect predictions,
+    it would often yield false positives which in a real world liveness system would lead to spoofed images yielding a rating of 'real', which isn't ideal.
+
+    The CNN based 2D liveness test performed adequately, yielding a 71\% accuracy. The model yielded several false negatives, but very few false positives, which is more desirable since
+    false positives lead to a security concern, while false negatives are annoying for the end user, could be potentially filtered out by using a sample of images, and don't yield any security concern.
+
+    The 3D based liveness test for detecting mask attacks performed poorly and had various performance issues due to the amount of resources needed to train, and the time taken for a prediction to be made.
+    As such, the accuracy of this model cannot be obtained, but the performance in production can be explained.
+
+    Combining the results from the W-IQA and CNN liveness tests yielded a partially linearly separable graph. The LDA used for combining the two metrics worked reasonably well, but more liveness test data is required
+    to assertain the accuracy in production.
+
 \paragraph{Conclusions}
     Overall, both the Whole Image Quality assessment and CNN based 2D test are metrics to include in a liveness-as-a-service system. The W-IQA test individually yields
     impressive results, but the CNN based metric would perform well when working together with other metrics. The CNN based metric could be further improved by adjusting preprocessing,
@@ -105,10 +115,8 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
     In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
     We provide a promising new liveness test using ResNet based networks, used to analyse facial structure. We also adapt an existing Image Quality Assessment test for use with whole image classification, rather
     than a face based method, to classify an image regardless of whether it contains facial information.
-    % In this context, we propose 
 
 \section{Related Work}
-    % LIT REVIEW GOES HERE!
     As defined in \cite{FaceSpoofingAttacksStudy}, the types of face spoofing attacks can be described under three sections: Photo Attack, Video Attack and Mask Attack.
     Photo and Video attacks are both classed as 2D spoofing attacks, while mask attacks are 3D attacks.
 
@@ -336,17 +344,36 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 \end{figure}
 \section{Solution}
     % Solution to the problem
-    \todo{FRs and NFRs?}
-    A system deployed to the Cloud would require a few important criteria be met. The liveness methods used should be output a liveness score after no more than 2 seconds
-    to ensure that such a system doesn't become painful to use by users. The liveness methods should not require any additional hardware (only a normal camera) so that the number
-    of devices it can be used by can be maximized. Furthermore, each liveness test must have a reasonable accuracy of over 70\%, to ensure that liveness predictions are fairly reliable.
+    \subsection{Specification, and design requirements}
+        \begin{enumerate}
+            \item \label{SpecPoint1} Any liveness test produced must be able to predict a single image in under 2 seconds on a standard i7-7700k powered machine
+            \item \label{SpecPoint2} Any liveness test must only require the use of a 2D image input from a standard built in camera. No other external hardware is allowed.
+            \item \label{SpecPoint3} The Top-1 accuracy figure of each liveness test should be greater than 70\%.
+            \item \label{SpecPoint4} The liveness test consolidation layer must allow for future inclusion of further liveness tests,.
+            \item \label{SpecPoint5} A liveness test should be developed to classify the entire image, to detect spoofing given a specific input.
+            \item \label{SpecPoint6} A liveness test should be developed to detect liveness based on the 2D input of a facial area from a camera.
+            \item \label{SpecPoint7} A liveness test should be developed to specifically detect 3D based attacks (mask attacks).
+        \end{enumerate}
 
-    The solution built should be focused on the metrics to be used, and fusion of these metrics. While speed is important, network latency and transmission time shouldn't be factored in, 
-    since these are incredibly dependent on a client's internet speed/image sizes, and therefore cannot be reliably tested. For small images and reasonably fast internet, latency would be fairly small.
+        \ref{SpecPoint1} is important to ensure that the liveness tests that are built don't take too long to execute and yield a result. While in practice an Intel i7-7700k machine might have a
+        slightly higher clock speed than a standard cloud-based processor, the results would still be reasonable in practice.
 
-    With these specifications in mind, the design focused on three different liveness tests: an Image Quality assessment based liveness test, a ResNet 50 based classifier (based on a pretrained ImageNet model),
-    and a novel 3D based classifier using 3D facial reconstruction models interlinked with the VoxNet 3D classification model. Each of these liveness tests have some common services that are needed; these include
-    reading large datasets without causing resource availability problems.
+        Some of the liveness tests proposed in previous works require the use of specialised hardware which won't be available on many devices. The most common device capable of taking in facial input is a
+        webcam, and since these are found in many laptops, IoT devices, and smartphones, this is an ideal limiting factor. While screens could also be considered useful, certain IoT devices might not necessarily have them either.
+        This is what \ref{SpecPoint2} aims to address.
+
+        The results of the liveness tests produced are also important, since a random prediction of liveness yields a 50\% accuracy, so therefore a 70\% accuracy yields a reasonable performance over this, and might require extension to improve it further,
+        while a higher accuracy indicates that the liveness test performs better and might have been refined more. This is what \ref{SpecPoint4} addresses.
+
+        \ref{SpecPoint5}, \ref{SpecPoint6} and \ref{SpecPoint7} propose the method which each liveness test uses and how they work functionally. Whole image detection is necessary due to the potentially poor performance of a model to extract a face,
+        since it might be ideal to still be able to obtain a liveness value based on the estimate of the image quality itself. Furthermore, while quality is one factor, analysing the facial structure and texture to determine whether spoofing has occured
+        is also an important factor. Finally, mask attacks are still not that common, but with the rise in 3D printing technology we could see an increase in them in the future. As such, a method of preventing 3D based mask attacks is necessary.
+
+
+        With these specifications in mind, the design focused on three different liveness tests: an Image Quality assessment based liveness test, a ResNet 50 based classifier (based on a pretrained ImageNet model),
+        and a novel 3D based classifier using 3D facial reconstruction models interlinked with the VoxNet 3D classification model. Each of these liveness tests have some common services that are needed; these include
+        reading large datasets without causing resource availability problems.
+
 
     \subsection{Shared Services}
         \subsubsection{Dataset Managers}
@@ -396,10 +423,9 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             will have some noticeable differences, specifically in the high frequencies. There might also be some image compression visible in fake images, compared to real ones.
             This is the basis for this method.
 
-            % \todo{Reference the specification above}.
             More specifically, the implementation was based on the work contained in \cite{ImageQualityAssessmentTest}. 24 different image quality metrics were implemented,
             with metric values being used as an input to a classifier. From previous work, it has been shown that this metric is accurate (therefore detecting spoofing well), while
-            also being fairly fast to compute in terms of time, making it ideal for our use-case.
+            also being fairly fast to compute in terms of time, meeting \ref{SpecPoint3} and \ref{SpecPoint1}.
 
             The classifier being used for our implementation is Linear Discriminant Analysis (LDA).
 

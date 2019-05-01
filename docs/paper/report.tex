@@ -92,53 +92,61 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 \end{keywords}
 
 \section{Introduction}
-    % What is the project about?
-    % Currently, username and password authentication is commonplace throughout the web. However, username and password
-    % based authentication systems have a number of problems. Some common passwords can be broken using dictionary attacks,
-    % especially if they consist partially or entirely of a word in a standard dictionary. Furthermore, the process of shoulder surfing is possible (watching out
-    % for someone's password, and how they type it).
-    Currently, username and password authentication is commonplace throughout the web. However, this method has serious security concerns, being easily broken through dictionary attacks,
-    or shoulder surfing. Facial recognition authentication doesn't have either of these problems, but introduces the risk of stolen identity through face spoofing, more specifically expressed
-    in a quotation from Adam Schwartz, a lawyer with the Electronic Frontier Foundation speaking to NPR: "We can change our bank account numbers, we can even change our names, but we cannot change our faces.
-    And once the information is out there, it could be misused". \cite{NPRArticle} In order to reduce the risk of stolen identities, a system to detect potential spoofing attempts is needed.
-    Providing facial liveness systems work correctly, the ability for criminals to steal people's faces would be reduced, making facial recognition more ideal for authentication on the web. The next step
-    to making facial recognition more secure and mainstream, the implementation of a facial liveness service is necessary: that way developers won't need to worry about implementing their own liveness tests
-    and can instead focus on the process of building their software.
+    Facial recognition is becoming an increasingly popular method for authentication. However, these methods still have opponents. Adam Schwartz, a lawyer with the Electronic Frontier Foundation,  criticized these methods by saying "We can change our bank account numbers, we can even change our names, but we cannot change our faces.
+    And once the information is out there, it could be misused". \cite{NPRArticle}
 
-    While different methods of detecting liveness are available, these are specialized towards defending against a different type of attack. Some existing liveness tests require use of
-    special hardware or sensor configurations that are not available in most smartphones/computers. The aim of this work is to design and highlight liveness tests that only require a camera,
-    can yield an output in near-real time, and give adequate accuracy. Once these methods are developed, future works can further develop these methods, or build a facial liveness system
-    designed for the web.
+    For facial recognition to become more widespread, methods of detecting spoofing are necessary, to ensure stolen identities can't easily yield security problems. Liveness systems are the answer to this problem. 
 
+    While different methods of detecting liveness are available, these are specialized towards defending against a different type of attack.
+    Some existing liveness tests require the use of specialized hardware or sensor configurations that are not available in most smartphones/computers. 
+    This work aimed to develop liveness tests requiring a single camera as input. The proposed liveness tests were required to produce predictions in near-real time (2 seconds) with sufficient accuracy.
+    This work also proposed a method of fusing liveness test results to produce an absolute liveness value, for use within recognition applications.
+    Future extensions could apply the tests proposed here for applications within web-based or internet of things (IoT) applications. 
 
-    In this context, we propose a novel new 3D-based liveness test, based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
-    We provide a promising new liveness test using ResNet based networks, used to analyse facial structure. We also adapt an existing Image Quality Assessment test for use with whole image classification, rather
-    than a face based method, to classify an image regardless of whether it contains facial information.
+    In this context, a new 2D CNN based liveness test was proposed, used to analyze 2D facial images for liveness. An existing quality-based test was also modified to provide liveness scoring based on image quality. For 3D based mask attacks, a new liveness test was also developed based on a 2 part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification.
 
 \section{Related Work}
-    As defined in \cite{FaceSpoofingAttacksStudy}, the types of face spoofing attacks can be described under three sections: Photo Attack, Video Attack and Mask Attack.
+    As defined in \cite{FaceSpoofingAttacksStudy}, there are three common types of spoofing attack: Photo Attack, Video Attack, and Mask Attack.
     Photo and Video attacks are both classed as 2D spoofing attacks, while mask attacks are 3D attacks.
 
     \subsection{2D Spoofing Attacks}
-        Photo and Video Attacks are both 2D spoofing attacks, which involve using a previously retrieved photo/video, and holding it in front of a camera. In the case of photo attacks,
-        a single photo is used, where in video, some video would be played back on a screen. \cite{FaceSpoofingAttacksStudy}.
+        2D based attacks rely on presenting a previously retrieved photo/video, on some medium, to the camera input. Photo attacks rely on a single printed photo being presented. Video attacks consist of a video being played back on a screen. \cite{FaceSpoofingAttacksStudy}
+        
+        The different methods of liveness tests are shown the the following sections.
 
-        With video-based facial recognition systems, user motion is used to determine whether the person is real or spoofed, such as blinking, head movement and others.
+        \subsubsection{Video-based tests}
+        
 
-        In the method defined in \cite{SFMClassifier}, structure from motion (SFM) was used on a video to produce a 3D model of a user, with the depth channel being used to determine whether a person is real, or whether it's simply an image.
-        This was extended further by fusing the SFM based method with audio verification. The fusion of multiple methods provides greater reliability. However, while SFM works with video, it doesn't work with a single image,
-        and it also doesn't work if a video with little motion is provided. This fusion was completed using a Bayesian Network.
+        Since video consists of multiple frames, motion can be used to determine liveness. 
 
-        While motion based methods require a video input, quality based methods can be used for both video and image input (either by extracting key video frames or using all video frames and combining the results).
+        \paragraph{Depth-based liveness}
 
+        The method proposed in \cite{SFMClassifier} uses a structure from motion (SFM) process to reconstruct a person's face in 3D and uses depth information to consider whether the person is real. The process then extended this by fusing depth information with audio verification to improve the prediction results, using a Bayesian network. \cite{SFMClassifier} While this worked with large amounts of motion, running SFM on a video with little motion yields a result with little depth. Another drawback was the requirement for video input since video capture is more time consuming and more challenging.
+        
+        \paragraph{Blink Detection}
+        The blink detection test analyses natural video input to determine whether blinking has occurred. Unlike other video-based methods, this looks for natural behavior rather meaning the user isn't required to carry out any motion. \cite{BlinkDetectionLivenessTest} 
+        However, this test can be easily defeated by making eye holes within a printed picture. 
+        Furthermore, investigating this liveness method is difficult due to the shortage of video data available.
+    
+        % Face Flashing
+        \paragraph{Face Flashing}
+        Possibly the most promising video-based liveness detection test, this method relies on a screen acting as a light source and considering the color and reflective properties of light. Light reflects differently off a face compared to a piece of paper/mask, and therefore the light reflections can give an indication into liveness. Different colors can also be used to add an element of randomness, requiring specific color patterns to be detected. Flashes also occur with different temporal patterns, yielding an additional expected metric.
+
+        While incredibly promising, this method requires the use of a screen. While screens are a common component in smartphones and computers, they are less commonplace in some IoT devices. 
+
+        Furthermore, testing this method would be difficult, as existing datasets don't contain any flashing information required. 
+
+        However, in the future, this method could be implemented to add further security into a facial liveness system on the web, where video input is available.
+        
+        \subsubsection{Quality-based tests}
         Since image quality is a major factor in detecting 2D replay attacks, understanding the image quality with respect to different image quality metrics can yield a rough liveness estimate.
         An extension of this basic method was discussed in \cite{ImageQualityAssessmentTest} by combining 25 different image quality metrics into a vector, and using this as input to a classifier (an LDA).
         As shown from the work, the accuracy of such a metric is high, and the metric calculations aren't very computationally intensive. \cite{ImageQualityAssessmentTest}.
         
         This is an example of combining many items to yield better results. While each metric on its own isn't that great, using them all together yields better results.
         
-        Recently, deep learning based approaches have been applied to the task of facial liveness classification.
-
+        \subsubsection{Deep Learning Liveness Tests}
+        \todo{Fill in.}
 
         \subsubsection{Neural Networks, and their structure}
         Deep learning approaches are focused around the concept of neural networks. Neural networks consist of several layers, each of which are linked by weights.
@@ -263,28 +271,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         These two datasets are ideal for testing 2D based liveness systems, since they contain enough samples to reasonable train/test our models. They shall be used
         throughout this project for both training and testing the 2D based liveness models.
 
-        \subsubsection{Temporal-based Liveness Tests}
-        These liveness tests require a video input, rather than an image. Rather than looking directly at an image, they mostly look at the differences between the images in a video.
-        
-            % Blinking
-            \paragraph{Blink Detection}
-            The blink detection liveness test analyses eye blink behavior and determines whether the person is real/fake. This liveness test meets our criteria for a web-based liveness service,
-            as the test doesn't require any extra hardware. Furthermore, a large amount of conscious activity from the user isn't necessary, as the video analyzed is natural behavior.
-            One drawback of this method is testing: this model requires a video input, which isn't available with the NUAA dataset, and therefore testing this method might be more difficult.
-            \cite{BlinkDetectionLivenessTest} Furthermore, this method would be susceptible to a print-based attack where eye holes were cut, since natural eye movement is analyzed.
-            
-            % Face Flashing
-            \paragraph{Face Flashing}
-            One method, known as the "Face Flashing" liveness detection method, uses the light diffusing off a screen to determine that the input is in fact from the user, rather than from a spoofed recorded/simulated input.
-            The method also considers how the light is diffused, as light would diffuse differently based on a face compared to a piece of paper/a screen. \cite{LivenessTestFaceFlashing}
-            While this metrics seems very promising at avoiding replay attacks, testing it to a larger degree is more difficult due to the lack of data available for testing, and therefore not implemented for this project.
-            One potential drawback though would be with devices that don't have screens but do have cameras, such as with IoT devices. Since a screen isn't present on these, the liveness test wouldn't work. However, for traditional mobile phones/computers
-            this would work better.
-
-            Overall, these metrics would be fairly useful on video input, since they take into account the movement/differences between frames, but for implementation purposes they are difficult to test due to lack of datasets available for them
-            (since they require special information that isn't available from existing sets). 
-
-            In a web-based approach, the face flashing approach would be particularly useful at determining whether a source-quality image was being fed into the algorithm, since the random face flashing colors would be able to be detected.
             
     \subsection{3D Spoofing Attacks}
         Mask Attacks are a 3D spoofing attack, which involve creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy} These are much less prevalent, but with 3D printing becoming more mainstream, this

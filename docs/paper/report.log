@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  1 MAY 2019 13:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  1 MAY 2019 14:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -681,42 +681,42 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 
 \openout4 = `report.ist'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
-) [2] <ResidualBlock.png, id=24, 998.73125pt x 555.07375pt>
+) [3] <ResidualBlock.png, id=27, 998.73125pt x 555.07375pt>
 File: ResidualBlock.png Graphic file (type png)
  <use ResidualBlock.png>
-Package pdftex.def Info: ResidualBlock.png used on input line 216.
+Package pdftex.def Info: ResidualBlock.png used on input line 224.
 (pdftex.def)             Requested size: 346.63303pt x 192.65253pt.
- [3] <Top1AccuracyOverNetwork.png, id=29, 676.5275pt x 494.84875pt>
+ <Top1AccuracyOverNetwork.png, id=29, 676.5275pt x 494.84875pt>
 File: Top1AccuracyOverNetwork.png Graphic file (type png)
  <use Top1AccuracyOverNetwork.png>
-Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 232.
+Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 240.
 (pdftex.def)             Requested size: 138.65108pt x 101.41444pt.
  <Top1AccuracyOverOperations.png, id=30, 667.49374pt x 460.72125pt>
 File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
-Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 239.
+Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 247.
 (pdftex.def)             Requested size: 138.65108pt x 95.69981pt.
  [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=37, 794.97pt x 748.7975pt>
 File: 3DReconstructionFromSource.png Graphic file (type png)
  <use 3DReconstructionFromSource.png>
-Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 315.
+Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 301.
 (pdftex.def)             Requested size: 247.5961pt x 233.21027pt.
  [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 338.
+               Default added (so using `tbp') on input line 324.
 
 <VoxNetArchitecture.png, id=42, 152.2488pt x 157.0668pt>
 File: VoxNetArchitecture.png Graphic file (type png)
  <use VoxNetArchitecture.png>
-Package pdftex.def Info: VoxNetArchitecture.png used on input line 340.
+Package pdftex.def Info: VoxNetArchitecture.png used on input line 326.
 (pdftex.def)             Requested size: 247.5961pt x 255.4534pt.
  [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/VoxNetArchitecture.png>] <ImageQualityLivenessTest.pdf, id=47, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 435.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 421.
 (pdftex.def)             Requested size: 495.19221pt x 475.19563pt.
  [7] [8 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
@@ -726,70 +726,70 @@ pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper
 LaTeX Warning: Marginpar on page 9 moved.
 
 [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 692--693
+Underfull \hbox (badness 10000) in paragraph at lines 678--679
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 705--706
+Underfull \hbox (badness 10000) in paragraph at lines 691--692
 
  []
 
 [12] <FaceExtraction.png, id=90, 371.3875pt x 310.15875pt>
 File: FaceExtraction.png Graphic file (type png)
  <use FaceExtraction.png>
-Package pdftex.def Info: FaceExtraction.png used on input line 778.
+Package pdftex.def Info: FaceExtraction.png used on input line 764.
 (pdftex.def)             Requested size: 247.5961pt x 206.77829pt.
  <2DCNNArchitecture.pdf, id=91, 305.22029pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 787.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 773.
 (pdftex.def)             Requested size: 148.55917pt x 361.01805pt.
  [13 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [15] <voxnet.pdf, id=122, 626.34pt x 210.7875pt>
+>] <voxnet.pdf, id=119, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 910.
+Package pdftex.def Info: voxnet.pdf used on input line 896.
 (pdftex.def)             Requested size: 495.19221pt x 166.65538pt.
- [16 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+ [15] [16 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 956--956
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 942--942
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 956--956
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 942--942
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 956--956
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 942--942
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 
-Overfull \hbox (8.29762pt too wide) in paragraph at lines 956--956
+Overfull \hbox (8.29762pt too wide) in paragraph at lines 942--942
 [][][][]\OT1/ptm/m/n/10/-25ls (-50) Implementation 
  []
 
 <BothRealAndCorrect.png, id=145, 371.3875pt x 326.21875pt>
 File: BothRealAndCorrect.png Graphic file (type png)
  <use BothRealAndCorrect.png>
-Package pdftex.def Info: BothRealAndCorrect.png used on input line 1005.
+Package pdftex.def Info: BothRealAndCorrect.png used on input line 991.
 (pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
  <FakeOutputAndCorrect.png, id=146, 371.3875pt x 326.21875pt>
 File: FakeOutputAndCorrect.png Graphic file (type png)
  <use FakeOutputAndCorrect.png>
-Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 1012.
+Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 998.
 (pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
- [17] [18 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] <LinearlySeparable.png, id=155, 500.8311pt x 346.896pt>
+ [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] [18] <LinearlySeparable.png, id=155, 500.8311pt x 346.896pt>
 File: LinearlySeparable.png Graphic file (type png)
  <use LinearlySeparable.png>
-Package pdftex.def Info: LinearlySeparable.png used on input line 1103.
+Package pdftex.def Info: LinearlySeparable.png used on input line 1089.
 (pdftex.def)             Requested size: 247.5961pt x 171.49437pt.
  [19 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>] [20]
 No file report.gls.
@@ -829,15 +829,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--96
 
 [21]) [22] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 20968 strings out of 493013
- 388788 string characters out of 6135682
- 540686 words of memory out of 5000000
- 23690 multiletter control sequences out of 15000+600000
+ 20973 strings out of 493013
+ 388877 string characters out of 6135682
+ 548005 words of memory out of 5000000
+ 23695 multiletter control sequences out of 15000+600000
  48027 words of font info for 331 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,9n,78p,1990b,737s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (22 pages, 1568531 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (22 pages, 1566810 bytes).
 PDF statistics:
  227 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams

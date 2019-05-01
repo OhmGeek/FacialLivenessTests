@@ -6,45 +6,45 @@ Database file #1: report.bib
 Warning--empty booktitle in ReplayAttackDataset
 Warning--empty booktitle in 3DMadDataset
 Warning--empty booktitle in FaceSpoofingAttacksStudy
-You've used 27 entries,
+You've used 26 entries,
             2118 wiz_defined-function locations,
-            676 strings with 9405 characters,
-and the built_in function-call counts, 9567 in all, are:
-= -- 883
-> -- 517
+            670 strings with 9094 characters,
+and the built_in function-call counts, 9231 in all, are:
+= -- 856
+> -- 494
 < -- 9
-+ -- 205
-- -- 173
-* -- 626
-:= -- 1549
-add.period$ -- 84
-call.type$ -- 27
-change.case$ -- 162
++ -- 196
+- -- 165
+* -- 602
+:= -- 1492
+add.period$ -- 81
+call.type$ -- 26
+change.case$ -- 155
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 377
-empty$ -- 766
-format.name$ -- 173
-if$ -- 2051
+cite$ -- 29
+duplicate$ -- 363
+empty$ -- 738
+format.name$ -- 165
+if$ -- 1982
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 20
-newline$ -- 137
-num.names$ -- 58
-pop$ -- 238
+int.to.str$ -- 26
+missing$ -- 19
+newline$ -- 132
+num.names$ -- 56
+pop$ -- 227
 preamble$ -- 1
-purify$ -- 135
+purify$ -- 129
 quote$ -- 0
-skip$ -- 285
+skip$ -- 278
 stack$ -- 0
-substring$ -- 416
-swap$ -- 107
+substring$ -- 411
+swap$ -- 105
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
+type$ -- 104
 warning$ -- 3
-while$ -- 80
-width$ -- 29
-write$ -- 282
+while$ -- 78
+width$ -- 28
+write$ -- 272
 (There were 3 warnings)

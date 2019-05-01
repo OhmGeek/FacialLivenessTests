@@ -136,14 +136,6 @@ X.~Tan, Y.~Li, J.~Liu, and L.~Jiang.
   bilinear discriminative model.
 \newblock In {\em ECCV}, 2010.
 
-\bibitem{LivenessTestFaceFlashing}
-D.~Tang, Z.~Zhou, Y.~Zhang, and K.~Zhang.
-\newblock Face flashing: a secure liveness detection protocol based on light
-  reflections.
-\newblock In {\em 25th Annual Network and Distributed System Security
-  Symposium, {NDSS} 2018, San Diego, California, USA, February 18-21, 2018},
-  August 2018.
-
 \bibitem{JQIPaper}
 Z.~Wang, H.~R. Sheikh, and A.~C. Bovik.
 \newblock No-reference perceptual quality assessment of jpeg compressed images.

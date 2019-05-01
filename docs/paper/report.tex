@@ -33,11 +33,14 @@
 % However, with facial recognition comes face spoofing: methods to fool the algorithms into thinking one is someone different to who they are.
 % The abstract must be a Structured Abstract with the headings {\bf Context/Background}, {\bf Aims}, {\bf Method}, {\bf Results}, and {\bf Conclusions}.  This section should not be longer than half of a page, and having no more than one or two sentences under each heading is advised.
 \paragraph{Context}
-    With password based authentication methods being subject to many attacks, facial recognition is an alternative, relying on biometrics rather than remembering an easily stolen string of characters.
-    While secure facial recognition methods have been developed, spoofing is still a concern. Spoofing is where someone tries to pretend they are someone else to gain access.
-    In order for facial recognition to become more prevalent on the web, facial liveness is needed. Facial liveness methods don't check identity, but aim to detect these impersonation methods.
-    The next step towards secure facial recognition systems are facial liveness services, which provide an indication of liveness and can be integrated into applications, through APIs on the internet.
-    This paper aims to understand which liveness tests are suitable for deploying in such a service, and explains next steps and architectures to the development of a facial liveness service for the modern web.
+With password-based authentication methods being subject to many attacks, facial recognition is an alternative, relying on biometrics rather than remembering an easily stolen string of characters.
+Existing facial recognition systems remain vulnerable to spoofing attacks, which compromise the security of the system. The solution is to use liveness tests, to determine whether the person behind the camera is real, and not an image or video. The future of face recognition is dependent upon facial liveness tests, to detect impersonation. 
+
+The liveness tests of the future require a standardized input, which can use existing hardware. Furthermore, these liveness tests need to be fast to execute.
+
+In addition, a module is needed to allow multiple liveness tests to work together to yield a single liveness value.
+
+This project developed several new liveness tests to meet these requirements. A module to fuse liveness tests together is also produced, with more testing on more liveness tests required.
 
 \paragraph{Aims}
     % This might belong more in the method.
@@ -51,41 +54,37 @@
     \end{itemize}
 
 \paragraph{Method}
-    Design, train and test three different innovative liveness tests. Train using the NUAA and Replay-Attack devel datasets.
+    This project involved the design, training, and testing of three different innovative liveness tests. 
+    The NUAA and Replay-Attack devel datasets were used for training, with the Replay-Attack test dataset being used for testing.
     
-    The first is the W-IQA liveness test, which analyses image quality across the entire image. This is achieved by
-    calculating 24 different quality metrics for each image, and using output obtained using a Linear Discriminant Analysis classifier (LDA).
+    The first test developed was the W-IQA liveness test. This analysed image quality across the entire image, using
+    a combination of 24 different image quality metrics with a Linear Discriminant Analysis classifier (LDA) to predict liveness.
 
-    The second is a CNN based 2D liveness test. This model used a CNN-based face extraction process to obtain the input face, before feeding this through a ResNet50 based model
-    to classify whether a specific face is real or spoofed.
+    The second test developed was the CNN based 2D liveness test. This model used a CNN-based face extraction process to obtain the input face, before feeding this through a ResNet50 based model to classify whether a specific face was real or spoofed.
 
-    The third is a 3D based liveness test to detect mask attacks. This process combined existing techniques for reconstructing a face in 3D from a 2D image, and fed this reconstruction
-    through a VoxNet classifier to detect whether the 3D data contains spoofed input or real input.
+    The third was a 3D based liveness test to detect mask attacks. This process combined existing techniques for reconstructing a face in 3D from a 2D image, and fed this reconstruction through a VoxNet classifier to detect whether the 3D data contained spoofed input or real input.
 
-    Using the classification probabilities from liveness tests, an LDA based classifier was then trained to fuse the results of the above metrics together, to improve accuracy and allow for future expansion with further
-    liveness tests.
+    Using the classification probabilities from liveness tests, an LDA based classifier was then trained to fuse the results of the above metrics together, to improve accuracy and allow for future expansion with further liveness tests. this layer also would allow easier access by external systems, dealing with a single definitive liveness metric, rather than many.
   
 \paragraph{Results}
-    All tests for 2D attacks were carried out over the Replay-Attack test dataset. Top-1 accuracy was measured to determine how accurate the predictions were,
-    and a confusion matrix was produced to analyse what errors the models give.
+2D attacks were tested using the Replay Attack test dataset. Top-1 accuracy was measured to determine overall performance. 
 
-    The W-IQA test performed well, yielding 87\% top-1 accuracy. The levels of true positives and true negatives were very high. However, when this test made incorrect predictions,
-    it would often yield false positives which in a real world liveness system would lead to spoofed images yielding a rating of 'real', which isn't ideal.
+The W-IQA test performed admirably, producing an 87\% accuracy. When this test produced errors, false positives were more common. As a result, spoofed images were classed as real.
 
-    The CNN based 2D liveness test performed adequately, yielding a 71\% accuracy. The model yielded several false negatives, but very few false positives, which is more desirable since
-    false positives lead to a security concern, while false negatives are annoying for the end user, could be potentially filtered out by using a sample of images, and don't yield any security concern.
+The CNN based 2D liveness test performed adequately, yielding a 71\% top-1 accuracy. When this test produced errors, false negatives were far more common. As a result, fewer security concerns were generated by incorrect predictions.
 
-    The 3D based liveness test for detecting mask attacks performed poorly and had various performance issues due to the amount of resources needed to train, and the time taken for a prediction to be made.
-    As such, the accuracy of this model cannot be obtained, but the performance in production can be explained.
+The 3D based liveness test performed poorly. Real-time performance of the model far exceeded the 2-second requirement. The model also required large amounts of memory, leading to training problems. This liveness test is not feasible for use in a real-time liveness system.
 
-    Combining the results from the W-IQA and CNN liveness tests yielded a partially linearly separable graph. The LDA used for combining the two metrics worked reasonably well, but more liveness test data is required
-    to assertain the accuracy in production.
+A consolidation layer was designed, based on the LDA classifier. Liveness tests yielded linearly separable properties when combined, resulting in improved LDA performance. Future work is needed to test this consolidation layer on more liveness tests, as two metrics isn't enough to justify the benefits of an LDA.
 
 \paragraph{Conclusions}
-    Overall, both the Whole Image Quality assessment and CNN based 2D test are metrics to include in a liveness-as-a-service system. The W-IQA test individually yields
-    impressive results, but the CNN based metric would perform well when working together with other metrics. The CNN based metric could be further improved by adjusting preprocessing,
-    and using a deeper ResNet pretrained model. The VoxNet model has also shown that this method is a poor liveness test for the existing use case, due to high computational requirements.
-    In addition, the speed at which queries can be answered shows that these can reasonably be used in a web system without extensive delays in processing, or without requiring any additional hardware (aside from a camera).
+W-IQA and 2D CNN liveness tests showed promising results for inclusion in a real-time liveness system. Prediction time for both tests was within a 2-second limit. Both tests required no special hardware.
+
+The W-IQA test produced excellent accuracy scores but was let down by false classification of spoofed images as real. Resolution differences also led to performance problems. This model would be improved by utilizing data with different resolutions.
+
+The 2D CNN test produced satisfactory accuracy scores but showed impressive caution at classifying faces correctly. Future work should improve the datasets used, to guarantee each image has a detectable face.
+
+The 3D mask attack detection test performed poorly due to tremendous memory requirements. 2D to 3D reconstruction time also took longer than the required time for a single prediction. This liveness test is not suitable for real-time liveness prediction.
 \end{abstract}
 
 \begin{keywords}

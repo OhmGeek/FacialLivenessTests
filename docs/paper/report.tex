@@ -139,11 +139,13 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         However, in the future, this method could be implemented to add further security into a facial liveness system on the web, where video input is available.
         
         \subsubsection{Quality-based tests}
-        Since image quality is a major factor in detecting 2D replay attacks, understanding the image quality with respect to different image quality metrics can yield a rough liveness estimate.
-        An extension of this basic method was discussed in \cite{ImageQualityAssessmentTest} by combining 25 different image quality metrics into a vector, and using this as input to a classifier (an LDA).
-        As shown from the work, the accuracy of such a metric is high, and the metric calculations aren't very computationally intensive. \cite{ImageQualityAssessmentTest}.
+        When presenting another medium to a camera, there will be a loss in the resultant image, since printers can't replicate all details, and neither can screens. Therefore, by measuring the image quality of an input image, one could train a classifier to predict liveness.
+
+        One existing method utilized this premise by using the result of 25 different image quality metrics to classify realness using a Linear Discriminant Analysis (LDA) classifier. The results were impressive, 
+        yielding very little error (3\% on the iris dataset, no error was given for the facial liveness attempt). The overall method was applied to multiple different types of biometric data, but with facial information the facial data was used, containing very little background information. \cite{ImageQualityAssessmentTest}
+        By adding background information, it might be possible to detect further quality differences elsewhere. 
         
-        This is an example of combining many items to yield better results. While each metric on its own isn't that great, using them all together yields better results.
+        Overall, there is a benefit of fusing results together using a classifier. This same method could be adapted to combine the results of multiple liveness tests together.
         
         \subsubsection{Deep Learning Liveness Tests}
         \todo{Fill in.}

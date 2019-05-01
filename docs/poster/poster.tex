@@ -37,22 +37,15 @@
     \begin{columns}[t]
       \begin{column}{.48\linewidth}
         \begin{block}{What are Facial Liveness Tests?}
-            Liveness tests are a method of testing whether an input image has been spoofed for malicious intent.
-            Methods such as holding a piece of paper in front of a camera, holding a video of a subject in front of a camera,
-            or wearing a mask of the subject are a few ways that existing facial recognition systems can be fooled into unlocking
-            a device/system for a malicious third party. Facial liveness tests are the answer, aimed at detecting these attacks, based on
-            a variety of different methods including analysis of quality, texture, or facial structure.  
-        \end{block}
-        \begin{block}{Why are Facial Liveness Tests important?}
-          One of the common arguments against facial recognition systems is that while a password can be changed, your face cannot.
-          This implies that someone could steal the facial likeness, and use it to break into accounts/systems. Providing a facial liveness system does a good enough job,
-          this argument is massively reduced by preventing spoofing attacks from happening, thus reducing the risk of someone stealing another person's likeness.
-        \end{block}
+          Facial liveness tests are methods of detecting whether the person in front of the camera is, in fact, a real person. 
+          Common methods of fooling existing recognition systems include displaying a printed piece of paper to a camera. Alternative methods involving high-resolution screens, or video playback are highly successful variants of these spoofing methods.
+          As the facial liveness testing field becomes more innovative and better and detecting liveness, facial recognition systems can become more secure.  
+          While spoofing attacks might appear realistic, there are numerous methods of detecting them. On a single image, one can consider the image quality, as spoofing attacks will contain fewer high frequencies. Furthermore, texture differences and facial structure differences can also be detected. With videos, movement between frames can be used to determine the depth or analyze movement.
+          
+          Differences between a spoofing attack (using the paper-based attack method), and a real input, can be seen in the images below.
 
-        \begin{block}{What does facial spoofing look like?}
-          Here is an example. The aim here is to obtain a realness factor from our liveness tests that considers a mixture of
-          the image quality differences between real fake images (specifically in the more detailed high frequencies within an image),
-          analysis of facial stucture differences.
+          To the untrained eye, the below example is obvious. However, in cases which only show the face, this classification can become much more difficult. 
+
           \begin{figure}[!tbp]
             \centering
             \begin{minipage}[b]{0.3\textwidth}
@@ -68,6 +61,10 @@
           \end{figure}
         
         \end{block}
+        \begin{block}{Why is my work important?}
+          Facial recognition systems are only as good as the liveness systems that they employ. Better liveness systems lead to more secure facial recognition systems. Throughout this project, the aim was to develop liveness tests that can work with standard hardware available and allow use in real time. By doing this, future recognition systems will become more secure, while also not being too burdensome on the users. 
+        \end{block}
+
         \begin{block}{Method 1: CNN based liveness detector}
           \begin{wrapfigure}{l}{100px}
             \includegraphics[width=100px]{2DCNNArchitecture.pdf}
@@ -124,6 +121,17 @@
           Currently, a libsvm based classifier is used, which is called by accessing the file system. This is very slow.
 
         \end{block}
+        % \begin{block}{What about Mask Attacks?}
+        %   3D based mask attacks were also considered, where a spoofer is wearing the mask of a victim. This was deemed harder to detect, due to the requirement of 3D data.
+        %   As a result, a new 3D based liveness test was designed. This model used an existing model to reconstruct a face from 2D into a 3D based voxel structure.
+
+        %   Once this 3D reconstruction was obtained, the idea was to classify liveness based on this 3D structure, using a 3D convolutional network called VoxNet. While the idea was sound, in practice this didn't work out
+        %   due to the 5 second time requirement to reconstruct a 2D face image in 3D, coupled with the very high memory requirements of the model for training and prediction purposes. A model that yielded an accuracy above 50\% (which is the same as random predictions),
+        %   could not be obtained, since a model containing enough filters and dimensions could not be trained due to memory constrains. As a result, this model was deemed not to be feasible
+        %   for a real-time prediction system.
+          
+        %   In future, a ResNet50 based 2D classifier could be tried to determine whether mask attacks could be detected from a 2D image.
+        % \end{block}
      
 
 

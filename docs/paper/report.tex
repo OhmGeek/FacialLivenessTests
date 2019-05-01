@@ -174,36 +174,34 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         more easily learned. The drawback with this method however is the large amount of convolutional layers that are required. 
         
         \subsubsection{General 2D image classification models}
-        One major problem with training CNNs in the past has been the risk of over-fitting due to lack of data when training from scratch, but utilizing pretrained models would help reduce this risk.
-        Facial liveness is an image classification problem, and therefore adapting an existing image classification model to the job of facial liveness might yield good results. 
-
-        One major research area has been the classification of objects based on a 2D image, which uses the well-known ImageNet dataset. The models produced for this purpose have improved in accuracy,
-        while also being reasonably efficient in terms of computation time to be deployable on the web. Since these models have already been deployed in the real world, and the goal of image classification
-        is common with the goal of liveness detection, these models could be a good fit for adapting to liveness applications. Since facial liveness testing is
-        an image classification problem, these models are of importance.
+        The process of facial liveness can be considered an image classification problem. 
+        While previous works have focused on developing new methods to solve the liveness problem, a prudent approach might be to apply an existing image classification model to the problem. 
+        Recent research into visual object recognition has led to the development of different neural network architectures, which have gained excellent results in solving this problem.
+        Many of these architectures also operate with reasonable computational requirements.
+        These models use a dataset called the ImageNet dataset, which contains images separated into 20,000 categories. However, some variations exist with fewer categories.
+        These different models include:
             
             \paragraph{AlexNet} 
-            One of the initial models was AlexNet, which has 5 convolutional layers (with some max pooling layers), and two globally connected layers.
-            This model was used to classify 1.3 million high resolution images into 1000 classes. \cite{AlexNet} Overall deployability
-            with Alex net is fairly good due to a fairly low number of compute operations (meaning faster compute time). \cite{DeepNeuralNetworkDeployability} However, the accuracy of AlexNet isn't
-            as good as newer methods (such as the ones shown below), which all perform better in terms of accuracy. 
+            This model contains 5 convolutional layers and 2 fully-connected layers, with additional max-pooling layers to reduce dimensionality. 
+            This model was used to classify 1.3 million high-resolution images into 1000 classes. \cite{AlexNet} 
+            With a low number of parameters, AlexNet is fairly easily deployed (since fewer computation resources are required). 
+            One drawback to AlexNet is the functionality: top-1 classification accuracy isn't as high as more recent methods. As a result, this isn't the most suitable model to use.
+            \cite{DeepNeuralNetworkDeployability}
             
             \paragraph{VGG16 Network}
-            The VGG16 model improved AlexNet by replacing larger filters by more smaller filters one after another.
-            However, VGG requires a high amount of computational power, something that's not easily deployable due to
-            the large number of parameters (128 million), which requires a high amount of memory and compute power compared
-            to other models. \cite{DeepNeuralNetworkDeployability} In our application, high accuracy is important, but the high
-            memory and computational requirements mean this model isn't the most suitable.
+            VGG consists of blocks containing two convolutional layers with fewer filters, and a max pooling layer.  This yields greater liveness prediction results as opposed to AlexNet but requires far more processing power.
+            In total, VGG contains 128 million parameters (weights), therefore requiring a large amount of memory and processing power to train, and make a single prediction. 
+            \cite{DeepNeuralNetworkDeployability} 
+            Due to these high computational requirements, this model isn't the most suitable for a real-time system.
+            \todo{CITE something for VGG.}
 
             \paragraph{GoogLeNet Inception}
-            GoogLeNet is an improved module that approximates a space Convolutional Network with a normal
-            dense construction. One of the major features of GoogLeNet is the Inception module. The naive approach to this 
-            is to take the input from the previous layer, calculate a 1x1, 3x3 and 5x5 convolution (all at the same time), along with
-            a 3x3 max pooling before feeding this into an output, the output being the filter concatenation step.
-            However, to reduce the dimensionallity, and therefore improve performance, a 1x1 convolution is applied before
-            each 3x3 and 5x5 convolution, and after the max pooling output. These inception modules can be used and stacked
-            to improve performance without a huge increase in computation. \cite{GoogLeNet} 
+            GoogLeNet is an improved module that approximates a space Convolutional Network with a feed-forward construction. One of the major features of GoogLeNet is the Inception module.
+            Naively, this inception module requires input from the previous layer, and calculates a 1x1, 3x3 and 5x5 convolution simultaneously, along with a 3x3 max pooling, before feeding all of these outputs into the filter concatenation step. 
+            This naive implementation isn't as efficient. Efficiency can be improved by reducing dimensionality. The solution is to apply a 1x1 convolution before each 3x3 and 5x5 convolution, after the max-pooling output. 
+            These inception modules can be used and stacked to improve performance without a huge increase in computation. \cite{GoogLeNet} 
     
+            Comparatively, this model has reduced computational requirements compared to VGG, while increasing prediction accuracy. \cite{DeepNeuralNetworkDeployability} Therefore, this is more suitable for a real-time system.
             Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
             
             \paragraph{Residual Networks}

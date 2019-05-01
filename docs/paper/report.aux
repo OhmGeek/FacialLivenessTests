@@ -73,17 +73,20 @@
 \citation{VRNTorchToKeras}
 \citation{PointNet}
 \citation{VoxNetModel}
-\citation{VoxNetModel}
-\citation{VoxNetModel}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A screenshot from the VRN Torch to Keras version (a conversion of the VRN model to Keras). This screenshot is from \cite  {VRNTorchToKeras}\relax }}{5}}
 \newlabel{3DReconstructionScreenshot}{{3}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}3D Spoofing Attacks}{5}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Obtaining 3D data from 2D images/video}{5}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}3D Classifiers}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Dataset}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}Obtaining 3D data from 2D images/video}{5}}
+\@writefile{toc}{\contentsline {paragraph}{Structure from Motion (SFM)}{5}}
+\@writefile{toc}{\contentsline {paragraph}{Single Image 3D Face Reconstruction (VRN)}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}3D Classifiers}{5}}
 \@writefile{toc}{\contentsline {paragraph}{PointNet}{5}}
-\@writefile{toc}{\contentsline {paragraph}{VoxNet}{5}}
+\citation{VoxNetModel}
+\citation{VoxNetModel}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The original VoxNet architecture. While point cloud input is available, voxel based representation can also be used. Diagram obtained from \cite  {VoxNetModel}\relax }}{6}}
 \newlabel{OriginalVoxNetArchitecture}{{4}{6}}
+\@writefile{toc}{\contentsline {paragraph}{VoxNet}{6}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Solution}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Specification, and design requirements}{6}}
 \newlabel{SpecPoint1}{{1}{6}}
@@ -96,8 +99,6 @@
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
-\citation{VideoQualityOriginal}
-\citation{VideoQualityUpdated}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Shared Services}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Dataset Managers}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}Neural Network Infrastructure}{7}}
@@ -107,32 +108,34 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.3}Image Processing and Computation Management}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}Image Quality Assessment Liveness Test}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}Overview}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}The Metrics}{7}}
-\citation{BIQIImplementation}
+\citation{VideoQualityOriginal}
+\citation{VideoQualityUpdated}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics. (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value is 1.0 for real, and 0.0 for fake, or in between.\relax }}{8}}
 \newlabel{ImageQualityLivenessTestDiagram}{{5}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}The Metrics}{8}}
 \@writefile{toc}{\contentsline {paragraph}{PyVideoQuality Library}{8}}
 \@writefile{toc}{\contentsline {paragraph}{Absolute Difference (AD)}{8}}
-\@writefile{toc}{\contentsline {paragraph}{Blind Image Quality Index (BIQI)}{8}}
+\citation{BIQIImplementation}
 \citation{JQIPaper}
 \citation{LMSEPaper}
 \citation{LMSEPaper}
+\@writefile{toc}{\contentsline {paragraph}{Blind Image Quality Index (BIQI)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Gradient Magnitude Error (GME)}{9}}
 \@writefile{tdo}{\contentsline {todo}{look into this, because I think GME and GPE might have been switched during implementation for some reason.}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Gradient Phase Error (GPE)}{9}}
-\pgfsyspdfmark {pgfid6}{12172401}{47366303}
-\pgfsyspdfmark {pgfid9}{38844054}{47364010}
-\pgfsyspdfmark {pgfid10}{40695445}{47145120}
+\pgfsyspdfmark {pgfid6}{12172401}{41189919}
+\pgfsyspdfmark {pgfid9}{38844054}{41187626}
+\pgfsyspdfmark {pgfid10}{40695445}{40968736}
 \@writefile{toc}{\contentsline {paragraph}{High Low Frequency Index (HLFI)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{JPEG Quality Index (JQI)}{9}}
 \@writefile{tdo}{\contentsline {todo}{EXPLAIN MORE}{9}}
-\pgfsyspdfmark {pgfid11}{27097247}{29344514}
-\pgfsyspdfmark {pgfid14}{38844054}{29342221}
-\pgfsyspdfmark {pgfid15}{40695445}{29123331}
+\pgfsyspdfmark {pgfid11}{27097247}{23179962}
+\pgfsyspdfmark {pgfid14}{38844054}{23177669}
+\pgfsyspdfmark {pgfid15}{40695445}{22958779}
 \@writefile{tdo}{\contentsline {todo}{EXPLAIN MORE WHAT THESE DO}{9}}
-\pgfsyspdfmark {pgfid16}{20649729}{27850298}
-\pgfsyspdfmark {pgfid19}{38844054}{27315859}
-\pgfsyspdfmark {pgfid20}{40695445}{27096969}
+\pgfsyspdfmark {pgfid16}{20649729}{21685746}
+\pgfsyspdfmark {pgfid19}{38844054}{21151307}
+\pgfsyspdfmark {pgfid20}{40695445}{20932417}
 \@writefile{toc}{\contentsline {paragraph}{Laplacian Mean Squared Metric (LMSE)}{9}}
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
@@ -144,9 +147,9 @@
 \@writefile{toc}{\contentsline {paragraph}{Normalized Absolute Error (NAE)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Naturalness Estimator (NIQE)}{10}}
 \@writefile{tdo}{\contentsline {todo}{Explain the library implementation and roughly how it works.}{10}}
-\pgfsyspdfmark {pgfid21}{20485939}{25957254}
-\pgfsyspdfmark {pgfid24}{38844054}{25954961}
-\pgfsyspdfmark {pgfid25}{40695445}{25736071}
+\pgfsyspdfmark {pgfid21}{20485939}{22078864}
+\pgfsyspdfmark {pgfid24}{38844054}{22076571}
+\pgfsyspdfmark {pgfid25}{40695445}{21857681}
 \@writefile{toc}{\contentsline {paragraph}{Normalized Cross Correlation (NXC)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Peak Signal to Noise Ratio (PSNR)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{R-Averaged Metric (RAMD)}{10}}

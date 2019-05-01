@@ -263,28 +263,28 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             
     \subsection{3D Spoofing Attacks}
-        Mask Attacks are a 3D spoofing attack, which involve creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy} These are much less prevalent, but with 3D printing becoming more mainstream, this
-        could potentially get more prevalent in the future.
+        Mask Attacks are a 3D spoofing attack, which involves creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy}
+        While these are currently much less prevalent, the improvement in 3D printing technologies could lead to this becoming more common in the future.
 
-        % Explain the method shown in Choudhary et al., 1999 - SFM. Problem: depth information ahrd to obtain when still with SFM. Noise also problematic.
-        % Which uses Structure From Motion.
-        In 2013, the 3D Mask Attack Dataset (MAD dataset) was released. This dataset contains 76500 frames of 17 people, recorded using a Kinect camera.
-        Each frame contains a depth image, an 2D RGB image with 8 bit color and a size of 640x480 pixels. Each frame also contains eye positions.
-        Real Access samples are contained within the first and second session folders, while the third session contains the frames of mask attacks. The subjects contained
-        within each frame are denoted within the filename.
+        \subsection{Dataset}
+        Released in 2013, the 3D Mask Attack Dataset (MAD dataset) contains 76500 frames of 17 people, recorded using an Xbox Kinect camera.
+        Each frame contained a depth image, a 2D RGB image with 8-bit color and a size of 640x480 pixels. Each frame also contained eye positions.
+        All data samples were stored in an h5 file. The first two sessions contained occurrences of real accesses, while the third session contained data relating to attacks.
+        The filename also contained information regarding the subject present in the set of images. 
         
         \cite{3DMadDataset}
 
         \subsubsection{Obtaining 3D data from 2D images/video}
-            One method of obtaining 3D data from a video is to use Structure From Motion (SFM). This method was previously utilized in \cite{SFMClassifier} to consider the depth data as a 2D liveness test,
-            but this method could potentially work as a solution for obtaining 3D data. However, SFM performs poorly when given a video with a small amount of motion. Furthermore, the 3D mask attack datasets
-            available for this project do not contain video but single images, which means such a method would be more difficult to test.
 
-            However, with improved machine learning models, there exist models that can reconstruct facial structure based on a single 2D image. One such model is the VRN model, proposed in \cite{3DReconstructionMethod}.
-            The paper, and the associated source code, contains a model that takes a 2D image as input (of size 192x192), and produces a voxel representation of the 3D face structure. This model is more suitable for our
-            application, since the use of a 2D image rather than a video works well with the datasets available. Furthermore, use of a single 2D image would require less user input as a SFM based method, since the user isn't required
-            to move in order to produce an adequate 3D reconstruction. An example of the 3D reconstruction obtained from this model can be seen in Figure \ref{3DReconstructionScreenshot}. The screenshot is obtained from the GitHub repository
-            of a Keras-based implementation of this method (since the initial implementation of the paper used the Torch library).
+            \paragraph{Structure from Motion (SFM)}
+            A well-known 2D to 3D conversion method, SFM obtained depth data from movement available within multiple images (a video). Depth is obtained by utilising a calibrated camera and conducting point matches between images
+            to determine an appropriate transform to world-space. This method was used previously in \cite{SFMClassifier} to consider depth information for 2D based attacks to much success.
+            However, when presented with a small amount of motion, depth information would be harder to obtain. Furthermore, since this requires a video input, this would not work as a single image liveness test. Therefore, SFM isn't as useful for this project.
+
+            \paragraph{Single Image 3D Face Reconstruction (VRN)}
+            The method proposed in \cite{3DReconstructionMethod} produces a 3D model from a single 2D image. The model utilizes a pre-trained neural network, implemented in Torch, which turns a 192x192 sized image into a voxel-based representation.
+            This model appears suitable for our purposes since it requires only a 2D image rather than a video. Another benefit is the reduced amount of input required from the user. Figure \ref{3DReconstructionScreenshot} shows an example of a 3D facial reconstruction. 
+            This screenshot was obtained from the Keras port (since this is more suitable for our project).
 
             \begin{figure}
                 \centering
@@ -293,24 +293,22 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 \label{3DReconstructionScreenshot}
             \end{figure}
 
-            % \todo{VRN 3D reconstruction on MaskAttackDataset image}
-
         \subsubsection{3D Classifiers}
             In a similar approach to the 2D methods researched above, there are a variety of existing 3D classifiers that could be re-purposed for the liveness classification approach.
             While these methods don't yield the same accuracy figures as with ImageNet, further improvements in the field of 3D classification could lead to better liveness methods in the future.
 
             \paragraph{PointNet}
-                PointNet is a model for classifying point clouds, represented as an unordered set of points. PointNet in total has 3.5 million parameters, with 440 million FLOPs per sample, which 
-                is a reasonable number considering other classifiers, but is on the upper end of what would be expected for a web based system. The classifier used within PointNet is a simple feed forward network.
-                \cite{PointNet}
-                While this model has performance benefits over CNN based models (since 3D convolution is computationally expensive),
-                the input is a point cloud structure which might not be the most ideal solution (since sparse data might not be captured, dependent on which reconstruction model is used).
-                
+            PointNet is a model for classifying point clouds, represented as an unordered set of points. This model has a total of 3.5 million parameters, yielding 440 million operations per sample. 
+            While this is still rather high, it's a reasonable number of 3D-based classifiers. This network relies on a sparse input, given as a point cloud, and utilizes a feed-forward network to classify the input.
+            Performance is slightly better than VoxNet, with slightly improved computational performance, but both elements don't yield massive differences. \cite{PointNet}
             \paragraph{VoxNet}
-                Unlike PointNet, this model uses a voxel representation. This is ideal due to the nature of existing 3D reconstruction models from a 2D image. The accuracy of this classifier isn't the most ideal,
-                but improvements could be made such as implementing a Residual network approach (something that worked well for 2D classifiers). As a proof of concept, this model would be ideal to test whether this model would work
-                in the real world. This model was developed to identify objects based on their 3D representation.\cite{VoxNetModel} This is very similar to the process of identifying liveness based on the 3D face structure input.
-                The overall architecture of the classifier can be seen in Figure \ref{OriginalVoxNetArchitecture}. Convolutional layers are used to learn the 3D feature space, while a dense layer is used to produce the output. 
+            VoxNet requires a voxel representation as input. While point clouds and voxels are equivalent, utilizing this model with the VRN reconstruction method would require less data augmentation. Accuracy of this model isn't that great, yielding 72\% accuracy on the SUOD dataset. \cite{VoxNetModel} However, when investigating this model personally, an accuracy of 68\% was obtained, using the SUOD dataset. 
+
+            The model itself was developed to identify objects based on their 3D representation, which is fairly similar to the ImageNet models from before, only in 3D instead of 2D. 
+            Figure \ref{OriginalVoxNetArchitecture} shows the architecture of this classifier. 3D convolutional layers are used to learn the 3D feature space, with a feed-forward layer
+            being used to produce the prediction (either of which object has been detected, or whether a spoofed image or real image has been detected).
+
+            While not necessarily being the best model for the job, this provides an ideal proof of concept to this liveness test.
                 \begin{figure}[]
                     \centering
                     \includegraphics[width=0.5\linewidth]{VoxNetArchitecture.png}

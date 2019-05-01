@@ -184,7 +184,8 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             \paragraph{AlexNet} 
             This model contains 5 convolutional layers and 2 fully-connected layers, with additional max-pooling layers to reduce dimensionality. 
             This model was used to classify 1.3 million high-resolution images into 1000 classes. \cite{AlexNet} 
-            With a low number of parameters, AlexNet is fairly easily deployed (since fewer computation resources are required). 
+            With a low number of parameters, AlexNet is fairly easily deployed (since fewer computation resources are required). Figure \ref{Top1AccuracyOverOperations}
+            shows that AlexNet requires very few operations, in the range of $<10$ G-Ops. 
             One drawback to AlexNet is the functionality: top-1 classification accuracy isn't as high as more recent methods. As a result, this isn't the most suitable model to use.
             \cite{DeepNeuralNetworkDeployability}
             
@@ -192,28 +193,33 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             VGG consists of blocks containing two convolutional layers with fewer filters, and a max pooling layer.  This yields greater liveness prediction results as opposed to AlexNet but requires far more processing power.
             In total, VGG contains 128 million parameters (weights), therefore requiring a large amount of memory and processing power to train, and make a single prediction. 
             \cite{DeepNeuralNetworkDeployability} 
+            
             Due to these high computational requirements, this model isn't the most suitable for a real-time system.
-            \todo{CITE something for VGG.}
 
             \paragraph{GoogLeNet Inception}
+            
             GoogLeNet is an improved module that approximates a space Convolutional Network with a feed-forward construction. One of the major features of GoogLeNet is the Inception module.
             Naively, this inception module requires input from the previous layer, and calculates a 1x1, 3x3 and 5x5 convolution simultaneously, along with a 3x3 max pooling, before feeding all of these outputs into the filter concatenation step. 
             This naive implementation isn't as efficient. Efficiency can be improved by reducing dimensionality. The solution is to apply a 1x1 convolution before each 3x3 and 5x5 convolution, after the max-pooling output. 
             These inception modules can be used and stacked to improve performance without a huge increase in computation. \cite{GoogLeNet} 
-    
-            Comparatively, this model has reduced computational requirements compared to VGG, while increasing prediction accuracy. \cite{DeepNeuralNetworkDeployability} Therefore, this is more suitable for a real-time system.
-            Therefore, this model has improved computational performance over VGG, making it a more suitable model for the web compared to VGG. \cite{DeepNeuralNetworkDeployability}
+            
+            Comparatively, GoogLeNet produces improved top-1 accuracy scores compared to AlexNet, as shown in Figure \ref{Top1AccuracyOverNetwork}. 
+            GoogLeNet also produces similar results to the VGG model.
+
+            There have been several different version of GoogLeNet. Analyzing the data shown in Figure \ref{Top1AccuracyOverOperations}, more recent versions 
+            have yielded improved accuracy characteristics; the Inception-4 model produced the best accuracy scores out of all the ImageNet classifiers. However, 
+            this improved accuracy increases the number of operations required. Older versions of GoogLeNet required $<10$ G-Ops, while Inception v-4 required $~18$ G-Ops.
+            Compared to VGG, this model performs well, but Residual Network models arguably provide a better balance between accuracy and computational requirements.
             
             \paragraph{Residual Networks}
-            Another key problem with deep convolutional networks on when used for image classification is the vanishing gradient problem. This occurs when early layers have very small gradients during the training process and
-            making the model very difficult to train. Residual Networks avoid this problem by allowing a direct path in links between the input and output of a building block.
-            The overall outcome is far better accuracy than VGG and GoogLeNet while being more efficient than VGG in terms of computational power needed. \cite{DeepResidualNetworks}
-            While these aren't directly associated with facial liveness, the nature of image classification is fairly similar to facial liveness (since the image is simply a classifier with two outputs instead of 1000).
-            This model is very ideal for our application, as it acts as an ideal compromise between accuracy and computational requirements, yielding fairly good accuracy for our security focused perspective, while also
-            ensuring that the operational cost (in terms of time, and cost for hardware) isn't too high, compared with other models such as VGG.
+            Residual Networks (ResNets) aim to improve traditional convolutional networks by reducing the vanishing gradient problem, therefore decreasing training time.
+            This problem occurs when early layers have a small gradient, which yields even smaller gradients during later layers. 
 
-            Architecturally, Residual Networks consist of residual blocks, which can be seen in Figure \ref{ResidualBlock}. This solves the vanishing gradient problem by utilizing shortcut
-            connections, which skip one or more layers. The outputs of these shortcut connections are added to the outputs of the stacked layers.
+            Residual blocks, shown in Figure \ref{ResidualBlock}, solve this problem by utilizing shortcut connections during training, allowing gradients to skip layers if necessary. 
+            These connectors work by adding their outputs to the stacked layers.
+
+            Figure \ref{Top1AccuracyOverNetwork} shows that this method yields better accuracy than both VGG and GoogLeNet. In terms of computational performance, 
+            Figure \ref{Top1AccuracyOverOperations} shows that ResNet50 requires fewer than 10 G-Ops, whilst yielding 76\% accuracy.
 
             \begin{figure}
                 \centering
@@ -221,13 +227,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 \caption{A Residual Block: this is the building block of the ResNet architecture. Source: \cite{DeepResidualNetworks}}
                 \label{ResidualBlock}
             \end{figure}
-
-            One important metric to analyze the performance of a model is the Top-1 accuracy figure. This metric represents the class with the highest probability in the model must be exactly the expected answer. 
-            The Top-1 accuracy scores for the models outlined above are shown in Figure \ref{Top1AccuracyOverNetwork}. These results show that a newer version of the Inception model perform the best,
-            with ResNet based classifiers performing fairly well too. AlexNet performance on the other hand was fairly poor. While accuracy was important, the number of operations is also important, as this will affect how easily the model can be used 
-            in a real-world system. Based on the results shown in Figure \ref{Top1AccuracyOverOperations}, AlexNet and GoogLeNet are shown to require very few operations ($<10$ G-Ops),
-            with a similar result being yielded for ResNet 50 and ResNet 34. On the other hand, VGG models require a large number of operations for a similar accuracy, requiring $>30$ G-Ops.
-            This fact is also true for Inception models.
 
             \begin{figure}
                 \centering
@@ -250,22 +249,17 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
         \subsubsection{Datasets}
         %Datasets
-        One of the most common datasets, and one of the earliest created, is the NUAA dataset.
-        The dataset contains photos of 15 subjects, with faked photos (both flat and warped) being placed in front of the camera.
-        Each photo is stored in JPEG format, with a hierarchical structure to show whether the image was real or fake, and what type of
-        attack was used (in the case of faked images). One drawback with the NUAA dataset is with regards to licensing: the dataset is only available for
-        non-commercial use (i.e. research purposes). This implies that this dataset, and models trained with this dataset, would not themselves be able to be deployed
-        \cite{NUAADataset}
-        However, as this project is only researching into the feasibility of a web based liveness testing system, this project is for research purposes and hence meeting the
-        licensing objectives.
+        One of the earliest datasets available for facial liveness was the NUAA dataset. This contained photographs of 15 different subjects, both real and fake images.
+         Spoofed images were of paper replay attacks, with the displayed images being both warped and flat. 
+         The dataset contained JPEG images with a hierarchical structure. One drawback with this dataset is licensing: the dataset is only available for non-commercial use, 
+         such as research purposes. Future, more commercial works, would, therefore, require a different dataset be used in order to meet the licensing objectives. \cite{NUAADataset}
 
-        In 2012, the Replay-Attack dataset was first released, which consists of 1,300 video clips of both photo and video attacks. Each
-        set of videos/images are taken under different illumination conditions, and various different attack methods were collected: printed photo, low resolution and high resolution screens with both photos and 
-        videos being displayed. The entire dataset consists of several 'sub-datasets': the 'devel' dataset is designed as a validation set/training set, while
-        the 'test' dataset is designed as a test dataset (and therefore must not be used in the training/validation process). \cite{ReplayAttackDataset}
+        In 2012, the Replay-Attack dataset was first released, consisting of 1,300 video clips. These video clips contain both real and spoofed data. Spoofed data contains a mixture of different attack methods,
+        including printed photograph, video, with both high and low-resolution media. To facilitate training, testing, and validation, the dataset also contains sub-datasets.
+        The 'devel' dataset was designed for training and validation purposes, while the 'test' dataset was designed for testing the trained model.  \cite{ReplayAttackDataset}
 
-        These two datasets are ideal for testing 2D based liveness systems, since they contain enough samples to reasonable train/test our models. They shall be used
-        throughout this project for both training and testing the 2D based liveness models.
+        While individually, these datasets might not contain enough data, together they provide enough samples to reasonably train and test our models.
+        They shall be used throughout this project for both training and testing the 2D based liveness models.
 
             
     \subsection{3D Spoofing Attacks}

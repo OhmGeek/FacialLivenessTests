@@ -30,9 +30,6 @@
 \citation{DeepNeuralNetworkDeployability}
 \citation{DeepNeuralNetworkDeployability}
 \citation{GoogLeNet}
-\citation{DeepNeuralNetworkDeployability}
-\citation{DeepNeuralNetworkDeployability}
-\citation{DeepResidualNetworks}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Deep Learning Liveness Tests}{3}}
 \@writefile{tdo}{\contentsline {todo}{Fill in.}{3}}
 \pgfsyspdfmark {pgfid1}{3818850}{50870829}
@@ -46,10 +43,6 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {A.5}General 2D image classification models}{3}}
 \@writefile{toc}{\contentsline {paragraph}{AlexNet}{3}}
 \@writefile{toc}{\contentsline {paragraph}{VGG16 Network}{3}}
-\@writefile{tdo}{\contentsline {todo}{CITE something for VGG.}{3}}
-\pgfsyspdfmark {pgfid6}{30546532}{13825669}
-\pgfsyspdfmark {pgfid9}{38844054}{13823376}
-\pgfsyspdfmark {pgfid10}{40695445}{13604486}
 \@writefile{toc}{\contentsline {paragraph}{GoogLeNet Inception}{3}}
 \citation{DeepResidualNetworks}
 \citation{DeepResidualNetworks}
@@ -61,6 +54,7 @@
 \citation{DeepNeuralNetworkDeployability}
 \citation{NUAADataset}
 \citation{ReplayAttackDataset}
+\citation{FaceSpoofingAttacksStudy}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A Residual Block: this is the building block of the ResNet architecture. Source: \cite  {DeepResidualNetworks}\relax }}{4}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{ResidualBlock}{{1}{4}}
@@ -68,29 +62,28 @@
 \newlabel{sub@Top1AccuracyOverNetwork}{{a}{4}}
 \newlabel{Top1AccuracyOverOperations}{{2b}{4}}
 \newlabel{sub@Top1AccuracyOverOperations}{{b}{4}}
-\newlabel{ComparisonsOfDifferentModels}{{\caption@xref {ComparisonsOfDifferentModels}{ on input line 247}}{4}}
+\newlabel{ComparisonsOfDifferentModels}{{\caption@xref {ComparisonsOfDifferentModels}{ on input line 246}}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces These two charts, from \cite  {DeepNeuralNetworkDeployability}, show the accuracy and computational requirements of each type of classifier.\relax }}{4}}
 \@writefile{toc}{\contentsline {paragraph}{Residual Networks}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {A.6}Datasets}{4}}
-\citation{FaceSpoofingAttacksStudy}
 \citation{3DMadDataset}
 \citation{SFMClassifier}
 \citation{3DReconstructionMethod}
 \citation{VRNTorchToKeras}
 \citation{VRNTorchToKeras}
 \citation{PointNet}
+\citation{VoxNetModel}
+\citation{VoxNetModel}
+\citation{VoxNetModel}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A screenshot from the VRN Torch to Keras version (a conversion of the VRN model to Keras). This screenshot is from \cite  {VRNTorchToKeras}\relax }}{5}}
 \newlabel{3DReconstructionScreenshot}{{3}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}3D Spoofing Attacks}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Obtaining 3D data from 2D images/video}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}3D Classifiers}{5}}
 \@writefile{toc}{\contentsline {paragraph}{PointNet}{5}}
-\citation{VoxNetModel}
-\citation{VoxNetModel}
-\citation{VoxNetModel}
+\@writefile{toc}{\contentsline {paragraph}{VoxNet}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The original VoxNet architecture. While point cloud input is available, voxel based representation can also be used. Diagram obtained from \cite  {VoxNetModel}\relax }}{6}}
 \newlabel{OriginalVoxNetArchitecture}{{4}{6}}
-\@writefile{toc}{\contentsline {paragraph}{VoxNet}{6}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Solution}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Specification, and design requirements}{6}}
 \newlabel{SpecPoint1}{{1}{6}}
@@ -103,6 +96,8 @@
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
+\citation{VideoQualityOriginal}
+\citation{VideoQualityUpdated}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Shared Services}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Dataset Managers}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}Neural Network Infrastructure}{7}}
@@ -112,34 +107,32 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.3}Image Processing and Computation Management}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}Image Quality Assessment Liveness Test}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}Overview}{7}}
-\citation{VideoQualityOriginal}
-\citation{VideoQualityUpdated}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}The Metrics}{7}}
+\citation{BIQIImplementation}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics. (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value is 1.0 for real, and 0.0 for fake, or in between.\relax }}{8}}
 \newlabel{ImageQualityLivenessTestDiagram}{{5}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}The Metrics}{8}}
 \@writefile{toc}{\contentsline {paragraph}{PyVideoQuality Library}{8}}
 \@writefile{toc}{\contentsline {paragraph}{Absolute Difference (AD)}{8}}
-\citation{BIQIImplementation}
+\@writefile{toc}{\contentsline {paragraph}{Blind Image Quality Index (BIQI)}{8}}
 \citation{JQIPaper}
 \citation{LMSEPaper}
 \citation{LMSEPaper}
-\@writefile{toc}{\contentsline {paragraph}{Blind Image Quality Index (BIQI)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Gradient Magnitude Error (GME)}{9}}
 \@writefile{tdo}{\contentsline {todo}{look into this, because I think GME and GPE might have been switched during implementation for some reason.}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Gradient Phase Error (GPE)}{9}}
-\pgfsyspdfmark {pgfid11}{12172401}{41189919}
-\pgfsyspdfmark {pgfid14}{38844054}{41187626}
-\pgfsyspdfmark {pgfid15}{40695445}{40968736}
+\pgfsyspdfmark {pgfid6}{12172401}{47366303}
+\pgfsyspdfmark {pgfid9}{38844054}{47364010}
+\pgfsyspdfmark {pgfid10}{40695445}{47145120}
 \@writefile{toc}{\contentsline {paragraph}{High Low Frequency Index (HLFI)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{JPEG Quality Index (JQI)}{9}}
 \@writefile{tdo}{\contentsline {todo}{EXPLAIN MORE}{9}}
-\pgfsyspdfmark {pgfid16}{27097247}{23179962}
-\pgfsyspdfmark {pgfid19}{38844054}{23177669}
-\pgfsyspdfmark {pgfid20}{40695445}{22958779}
+\pgfsyspdfmark {pgfid11}{27097247}{29344514}
+\pgfsyspdfmark {pgfid14}{38844054}{29342221}
+\pgfsyspdfmark {pgfid15}{40695445}{29123331}
 \@writefile{tdo}{\contentsline {todo}{EXPLAIN MORE WHAT THESE DO}{9}}
-\pgfsyspdfmark {pgfid21}{20649729}{21685746}
-\pgfsyspdfmark {pgfid24}{38844054}{21151307}
-\pgfsyspdfmark {pgfid25}{40695445}{20932417}
+\pgfsyspdfmark {pgfid16}{20649729}{27850298}
+\pgfsyspdfmark {pgfid19}{38844054}{27315859}
+\pgfsyspdfmark {pgfid20}{40695445}{27096969}
 \@writefile{toc}{\contentsline {paragraph}{Laplacian Mean Squared Metric (LMSE)}{9}}
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
@@ -151,9 +144,9 @@
 \@writefile{toc}{\contentsline {paragraph}{Normalized Absolute Error (NAE)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Naturalness Estimator (NIQE)}{10}}
 \@writefile{tdo}{\contentsline {todo}{Explain the library implementation and roughly how it works.}{10}}
-\pgfsyspdfmark {pgfid26}{20485939}{22078864}
-\pgfsyspdfmark {pgfid29}{38844054}{22076571}
-\pgfsyspdfmark {pgfid30}{40695445}{21857681}
+\pgfsyspdfmark {pgfid21}{20485939}{25957254}
+\pgfsyspdfmark {pgfid24}{38844054}{25954961}
+\pgfsyspdfmark {pgfid25}{40695445}{25736071}
 \@writefile{toc}{\contentsline {paragraph}{Normalized Cross Correlation (NXC)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Peak Signal to Noise Ratio (PSNR)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{R-Averaged Metric (RAMD)}{10}}
@@ -165,17 +158,17 @@
 \@writefile{toc}{\contentsline {paragraph}{Structural Similarity (SIM)}{11}}
 \@writefile{toc}{\contentsline {paragraph}{Total Corner Difference (TCD)}{11}}
 \@writefile{tdo}{\contentsline {todo}{More about how we used Corner Harris to make it work (because this function is weird)}{11}}
-\pgfsyspdfmark {pgfid31}{4474211}{16830512}
-\pgfsyspdfmark {pgfid34}{38844054}{16828219}
-\pgfsyspdfmark {pgfid35}{40695445}{16609329}
+\pgfsyspdfmark {pgfid26}{4474211}{16830512}
+\pgfsyspdfmark {pgfid29}{38844054}{16828219}
+\pgfsyspdfmark {pgfid30}{40695445}{16609329}
 \@writefile{toc}{\contentsline {paragraph}{Total Edge Difference (TED)}{11}}
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
 \@writefile{toc}{\contentsline {paragraph}{Visual Information Fidelity (VIFD)}{12}}
 \@writefile{tdo}{\contentsline {todo}{Explain why we chose 5 vs others. e.g. look at the Matlab implementation of this}{12}}
-\pgfsyspdfmark {pgfid36}{20621296}{51313195}
-\pgfsyspdfmark {pgfid39}{38844054}{51310902}
-\pgfsyspdfmark {pgfid40}{40695445}{51092012}
+\pgfsyspdfmark {pgfid31}{20621296}{51313195}
+\pgfsyspdfmark {pgfid34}{38844054}{51310902}
+\pgfsyspdfmark {pgfid35}{40695445}{51092012}
 \@writefile{toc}{\contentsline {paragraph}{The RRED Problem}{12}}
 \@writefile{toc}{\contentsline {paragraph}{Testing these metrics}{12}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}Classifier}{12}}
@@ -222,9 +215,9 @@
 \newlabel{FakeScreenshot}{{9b}{17}}
 \newlabel{sub@FakeScreenshot}{{b}{17}}
 \@writefile{tdo}{\contentsline {todo}{Implementation DETAIL NEEDED!}{17}}
-\pgfsyspdfmark {pgfid41}{4474211}{33252458}
-\pgfsyspdfmark {pgfid44}{38844054}{33250165}
-\pgfsyspdfmark {pgfid45}{40695445}{33031275}
+\pgfsyspdfmark {pgfid36}{4474211}{33252458}
+\pgfsyspdfmark {pgfid39}{38844054}{33250165}
+\pgfsyspdfmark {pgfid40}{40695445}{33031275}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{17}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).\relax }}{17}}
 \newlabel{ResultsTable}{{1}{17}}
@@ -247,17 +240,17 @@
 \newlabel{LinearlySeparableGraph}{{10}{19}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {E}Consolidation Layer}{19}}
 \@writefile{tdo}{\contentsline {todo}{LDA: confusion matrix}{19}}
-\pgfsyspdfmark {pgfid46}{35984220}{23890066}
-\pgfsyspdfmark {pgfid49}{38844054}{23887773}
-\pgfsyspdfmark {pgfid50}{40695445}{23668883}
+\pgfsyspdfmark {pgfid41}{35984220}{23890066}
+\pgfsyspdfmark {pgfid44}{38844054}{23887773}
+\pgfsyspdfmark {pgfid45}{40695445}{23668883}
 \@writefile{toc}{\contentsline {subsection}{\numberline {F}Live Application}{19}}
 \@writefile{toc}{\contentsline {paragraph}{Benefits of CNN facial isolation}{19}}
 \@writefile{toc}{\contentsline {paragraph}{Resolution problems with WIQA test}{19}}
 \@writefile{toc}{\contentsline {paragraph}{Uncertainty of the CNN liveness test}{19}}
 \@writefile{tdo}{\contentsline {todo}{Show uncertainty here somehow}{20}}
-\pgfsyspdfmark {pgfid51}{30776584}{51313195}
-\pgfsyspdfmark {pgfid54}{38844054}{51310902}
-\pgfsyspdfmark {pgfid55}{40695445}{51092012}
+\pgfsyspdfmark {pgfid46}{30776584}{51313195}
+\pgfsyspdfmark {pgfid49}{38844054}{51310902}
+\pgfsyspdfmark {pgfid50}{40695445}{51092012}
 \@writefile{toc}{\contentsline {paragraph}{Problem in running liveness tests in series}{20}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{20}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Usefulness of our system}{20}}

@@ -70,17 +70,12 @@
             \includegraphics[width=100px]{2DCNNArchitecture.pdf}
           \end{wrapfigure}
           % TODO redo this making it more left-right compared to down. This way it'll fit properly and wrap ideally.
-          Recently, Convolutional Neural Networks have played a major part in image classification. Specifically,
-          Residual Networks have performed very well on the ImageNet dataset, classifying types of objects based on a
-          2D photo. Since facial liveness detection is also an image classification problem, an ImageNet based classifier could
-          be adapted to the role of liveness detection. This model can be used to analyse facial structure and textural information
-          to classify liveness. The architecture of our model can be seen on the left.
+          Recently, Convolutional Neural Networks have played a major part in image classification. Residual Networks have performed very well on the ImageNet dataset, classifying types of objects based on a 2D image. Since liveness detection is an image classification problem, this can be adapted to predict spoofing, specifically within a facial region.
+     
+          The facial area was obtained using a pre-trained CNN, which returned a bounding box containing the face. The 224x224 size image obtained was used to classify the liveness.
 
-          Within the preprocessing step, a CNN based face detector is used to produce the bounding box of the face. This is then cropped
-          into a square image (224x224), which contains just the facial area. This image is what's used to be classified. The ResNet50 model
-          is mostly pretrained, with the last layer being trainable, since image classification features between ImageNet and facial liveness will
-          likely be similar. Then, a standard feed forward network is used to produce the final output of realness (either 0 or 1), using the softmax
-          activation function. 
+          Training a 50 layer ResNet would take a very long time, and therefore a pre-trained model was used to improve results and reduce training time. The first 49 layers were left frozen, while the last layer was allowed to be modified. Attached to the ResNet 50 model was a feedforward neural network, used to obtain a metric of 'realness': how real the subject in the image is.
+
 
           \begin{figure}
             \centering

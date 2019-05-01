@@ -315,6 +315,8 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                     \caption{The original VoxNet architecture. While point cloud input is available, voxel based representation can also be used. Diagram obtained from \cite{VoxNetModel}}
                     \label{OriginalVoxNetArchitecture}
                 \end{figure}
+
+
 \section{Solution}
     % Solution to the problem
     \subsection{Specification, and design requirements}
@@ -328,59 +330,47 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             \item \label{SpecPoint7} A liveness test should be developed to specifically detect 3D based attacks (mask attacks).
         \end{enumerate}
 
-        \ref{SpecPoint1} is important to ensure that the liveness tests that are built don't take too long to execute and yield a result. While in practice an Intel i7-7700k machine might have a
-        slightly higher clock speed than a standard cloud-based processor, the results would still be reasonable in practice.
+        \ref{SpecPoint1} was important to ensure that the liveness tests that are built didn't take too long to execute and yield a result. While in practice an Intel i7-7700k machine might possess a
+        slightly higher clock speed than a standard cloud-based processor, the results yielded would still be reasonable in practice since it acts as a benchmark to compare against.
 
-        Some of the liveness tests proposed in previous works require the use of specialised hardware which won't be available on many devices. The most common device capable of taking in facial input is a
+        Some of the liveness tests proposed in previous works require the use of specialized hardware which won't be available on many devices. The most common device capable of taking in facial input is a
         webcam, and since these are found in many laptops, IoT devices, and smartphones, this is an ideal limiting factor. While screens could also be considered useful, certain IoT devices might not necessarily have them either.
         This is what \ref{SpecPoint2} aims to address.
 
-        The results of the liveness tests produced are also important, since a random prediction of liveness yields a 50\% accuracy, so therefore a 70\% accuracy yields a reasonable performance over this, and might require extension to improve it further,
+        The results of the liveness tests produced are also important, since a random prediction of liveness yields a 50\% accuracy, so, therefore, a 70\% accuracy yields a reasonable performance over this, and might require extension to improve it further,
         while a higher accuracy indicates that the liveness test performs better and might have been refined more. This is what \ref{SpecPoint4} addresses.
 
-        \ref{SpecPoint5}, \ref{SpecPoint6} and \ref{SpecPoint7} propose the method which each liveness test uses and how they work functionally. Whole image detection is necessary due to the potentially poor performance of a model to extract a face,
-        since it might be ideal to still be able to obtain a liveness value based on the estimate of the image quality itself. Furthermore, while quality is one factor, analysing the facial structure and texture to determine whether spoofing has occured
-        is also an important factor. Finally, mask attacks are still not that common, but with the rise in 3D printing technology we could see an increase in them in the future. As such, a method of preventing 3D based mask attacks is necessary.
+        \ref{SpecPoint5}, \ref{SpecPoint6} and \ref{SpecPoint7} propose the required features that are used for each liveness test. Whole image detection is necessary to allow a liveness value to be produced even if no face is found through facial extraction methods. Facial structure and texture is necessary since this features isn't covered by a quality metric and could yield better results where quality is hard to distinguish. Finally, a method of predicting mask attacks would be ideal, since 3D attacks could become more common in the future with recent developments in 3D printing technology.
 
-
-        With these specifications in mind, the design focused on three different liveness tests: an Image Quality assessment based liveness test, a ResNet 50 based classifier (based on a pretrained ImageNet model),
-        and a novel 3D based classifier using 3D facial reconstruction models interlinked with the VoxNet 3D classification model. Each of these liveness tests have some common services that are needed; these include
-        reading large datasets without causing resource availability problems.
+        With these specifications in mind, the design focused on three different liveness tests: an Image Quality assessment based liveness test, a ResNet 50 based classifier (based on a pre-trained ImageNet model),
+        and a novel 3D based classifier using 3D facial reconstruction models interlinked with the VoxNet 3D classification model.
 
 
     \subsection{Shared Services}
+        Each liveness test, and the training and testing process, required some shared subroutines and functions. This section outlines these, and how they were designed and built.
         \subsubsection{Dataset Managers}
-        In order to assess our liveness tests and train them, dataset managers are needed.
+        Dataset managers were required to read datasets, and to load them into memory. Programmatically, an abstract class was created to represent an abstract dataset, containing functions to read the dataset and conduct any necessary preprocessing. This class was then extended by implementing dataset managers for the NUAA, Replay-Attack, and Mask-Attack datasets. This generic implementation allowed for datasets to be easily added, providing a class definition as an implementation guideline. 
 
-        A generic implementation of a dataset was created as an Abstract Class, which was then extended by the NUAA, Replay-Attack and Mask-Attack dataset managers.
-        This generic implementation allows for future datasets to be easily added, and also provides the class definition of what's needed, to help improve the software engineering process.
-
-        The role of a dataset manager is to load in a dataset from a folder structure (which varies between dataset), conduct any basic preprocessing to convert the files into OpenCV images,
-        and produce two H5Py Datasets, one for real images, and one for fake images. The dataset manager also allows further customization, to load specific sub-datasets (such as 'devel' or 'test' in the case
-        of the Replay-Attack dataset), or load data regarding specific subjects (in the case of the Mask Attack Dataset). The role of the H5Py dataset is to normalize the datasets into a specific format,
-        to allow for easier dataset processing.
-
-        In addition to data normalization, it also provided a method of reducing RAM usage, therefore allowing larger liveness test models to be created. This is because data is only fetched when needed
-        from the hard drive, rather than loading the entire dataset into RAM at once.
+        On the lower level, a dataset manager was designed to load a dataset from a folder structure, conduct any basic preprocessing to convert the files and their representations into OpenCV based images, and produce a single H5py file containing two datasets: one for spoofed images, and one for real images. H5py was used to produce a single normalized format between datasets which otherwise varied massively in structure. The use of H5Py also reduced the amount of main memory utilized, by caching images on the hard disk and only loading into main memory when required. This was a far more efficient method compared to loading an entire dataset into RAM at once.
 
         \subsubsection{Neural Network Infrastructure}
             % Keras to simplify models, tensorflow as the underlying backend.
             % Training machine on Google Cloud, using 64GB RAM, 8 x vCPUs, and an NVIDIA Tesla P100 GPU to improve performance of the training process through parallelism. 
-            
+            While neural networks can be implemented from scratch, libraries were necessary to reduce the amount of code needed and to improve performance of the models fetched.
+            Furthermore, specific hardware was necessary to train and test all models, and these details are outlined in this section.
+
             \paragraph{Neural Network Framework} 
-            For the 2D and 3D based classifiers, neural networks were to be used. It was decided to use Keras, with the Tensorflow backend, as Keras provides a high level interface to Tensorflow
-            and also allows for other backends to be used in the future (which could potentially perform better in different scenarios). The Tensorflow backend was used because of the easy configuration
-            with both GPUs and without (simply install tensorflow-gpu for GPU processing, and tensorflow for CPU only processing), depending on the machine being used. A high level interface was necessary
-            to avoid boilerplate too, since models would be regularly changed to find the best outcome for each classifier.
+            Where neural networks were necessary, Keras was used to provide a high-level interface to create, train and test new models. A high-level interface was chosen to allow for easy modification of models and to allow for portability since backends could be changed in the future if necessary without requiring a complete code rewrite.
+
+            A backend was necessary, and therefore Tensorflow was chosen due to a large amount of support available, coupled with the ease of switching between GPU and CPU training. During the model creation process, the \emph{tensorflow} package was used to provide CPU based training. Once a model was to be properly tested, \emph{tensorflow-gpu} was used to train on GPU, reducing training time through parallelism.  
 
             \paragraph{Hardware for training}
-            Training the neural network required more processing power than was directly available. Google Cloud Compute Engine was used to provide this processing power, since it's easily accessible and has existing
-            deep learning environments with Intel-accelerated mathematics libraries. The Google Cloud instance also provided easy extensibility, since some of the liveness tests required additional tools that could not be easily installed
-            on NCC/Hamilton clusters at Durham University. Training was conducted on a VM with 64GB RAM, 8 virtual CPUs with an NVIDIA Tesla P100 GPU being used to accelerate the training process (through parallelism).
+            Training the neural network required more processing power than was directly available. Google Cloud Compute Engine was used to provide this processing power since it was easily accessible and had existing deep learning environments with Intel-accelerated mathematics libraries. 
+            The Google Cloud instance also provided easy extensibility, since some of the liveness tests required additional tools that could not be easily installed on NCC/Hamilton clusters at Durham University. The training was conducted on a virtual machine with 64GB RAM, 8 virtual CPUs
+            with an NVIDIA Tesla P100 GPU being used to accelerate the training process (through parallelism).
 
             \paragraph{Hardware for testing}
-            GPUs are expensive, and therefore if such a system were deployed the cost of GPUs would provide expensive to run. Therefore, a CPU only implementation for the testing was followed, using an Intel i7-7700K (at 4.2 GHz), with
-            16GB RAM. Performance metrics were yielded using this hardware to emulate the expected performance and understand which metrics performed best and whether they performed adequately.
+            GPUs are expensive, and therefore if such a system were deployed the cost of GPUs would provide expensive to run. Therefore, a CPU-only implementation for the testing was followed, using an Intel i7-7700K (at 4.2 GHz), with 16GB RAM, and a SATA SSD. Performance metrics were yielded using this hardware to emulate the expected performance and understand which metrics performed best and whether they performed adequately.
 
         \subsubsection{Image Processing and Computation Management}
             OpenCV was used to manage the processing of images, including the image loading components. This library was chosen for the wide support available, and for the large feature set that it provides (including Gaussian Blurring, some image metrics, and some fourier analysis).
@@ -389,20 +379,18 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             Numpy was instrumental in most other computation operations (including image preprocessing, mathematical calculations), due to the large speed improvements provided by the C implementation (compared to Python's slower math libraries).
             Since OpenCV interfaces well with Numpy, no conversion was needed which improved the ease of implementation.
 
-
         \subsection{Image Quality Assessment Liveness Test}
             \subsubsection{Overview}
-            One common way of detecting liveness is to consider the image quality of the camera input. When a printout/screen is held up to the camera, the facial image
+            A common way of detecting liveness is to consider the image quality of the camera input. When a printout/screen is held up to the camera, the facial image
             will have some noticeable differences, specifically in the high frequencies. There might also be some image compression visible in fake images, compared to real ones.
-            This is the basis for this method.
+            This is the basis for the method used.
 
             More specifically, the implementation was based on the work contained in \cite{ImageQualityAssessmentTest}. 24 different image quality metrics were implemented,
-            with metric values being used as an input to a classifier. From previous work, it has been shown that this metric is accurate (therefore detecting spoofing well), while
-            also being fairly fast to compute in terms of time, meeting \ref{SpecPoint3} and \ref{SpecPoint1}.
+            with metric values being used as an input to a classifier. From previous work, it has been shown that this liveness test is accurate (therefore detecting spoofing well), while also being fairly fast to compute in terms of time, meeting \ref{SpecPoint3} and \ref{SpecPoint1}.
 
-            The classifier being used for our implementation is Linear Discriminant Analysis (LDA).
+            The classifier used for our implementation was Linear Discriminant Analysis (LDA).
 
-            A visual explanation of the method can be seen in Figure \ref{ImageQualityLivenessTestDiagram}. 
+            A visual explanation of the method used is shown in Figure \ref{ImageQualityLivenessTestDiagram}.
 
             \begin{figure}
                 \centering
@@ -414,79 +402,74 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             \end{figure}
     
             \subsubsection{The Metrics}
-            The original paper proposed that 25 metrics were used. However, our implementation used only 24, due to some implementation problems. Most of the metrics were implemented manually as defined
-            either in \cite{ImageQualityAssessmentTest}, or utilizing further sources to understand how they worked. In addition, the Matlab source code that was released with \cite{ImageQualityAssessmentTest}
-            was referred to, but written manually in Python using Numpy/OpenCV or in some cases other libraries.
+            The original paper proposed that 25 metrics be used to measure quality. However, our implementation used only 24, due to some implementation problems (explained later).
 
-            Each of these metrics requires an input image $I$. Non-Reference metrics only require $I$, while Full-Reference metrics require an additional image $I'$. $I' = Gaussian(I)$ in our implementation.
+            Each of these metrics required an input image $I$. Non-reference metrics only required $I$, while full-reference metrics required an additional image $I'$. $I' = Gaussian(I)$ in our implementation.
             
             \paragraph{PyVideoQuality Library}
-            As part of the implementation process, the NIQE metric required the use of a pretrained classifier which didn't exist for Python. As such, it was necessary to modify existing code.
-            The only Python source code available was \cite{VideoQualityOriginal}, which was written for Python 2 and consisted of single Python files that would be difficult to implement into the system.
-            As such, the Python 2 code was converted to Python 3 manually, and refactored to follow a python package by myself. This new library was shared-alike, and is now available on GitHub. \cite{VideoQualityUpdated}
+            As part of the implementation process, the Naturalness metric (NIQE) required the use of a pre-trained classifier which didn't exist for Python. As such, it was necessary to modify the existing code.
+            The only Python source code available was \cite{VideoQualityOriginal}, which was written for Python 2 and consisted of single Python files that would be difficult to merge into our system.
+            As such, the Python 2 code was converted to Python 3 manually and refactored to follow a python package by myself. This new library was shared-alike and is now available on GitHub. \cite{VideoQualityUpdated} This also had a benefit of separating the metric calculation from the liveness test code.
             
+
+
+
+            The metrics that were implemented are outlined below:
 
             \paragraph{Absolute Difference (AD)}
                 This is a full reference metric, defined as $AD(I, I') = Mean(I - I')$. This calculation was implemented using Numpy manually.
 
             \paragraph{Blind Image Quality Index (BIQI)}
-                BIQI is a no-reference metric. Rather like NIQE, there was no existing BIQI library implementation. It also consists of a pretrained classifier element, which
-                would be hard to replicate without the correct processing or training data. The training set used is the LIVE IQA dataset, which is public domain but requires 
-                permission to access which would take quite a bit of time for a small component of the project.
+                BIQI is a no-reference metric. BIQI consists of two steps: the first is to assess image distortion, and the second is to analyze the quality.  Rather like NIQE, there was no existing BIQI library implementation. The metric takes various different features using wavelet functions and fed them into a classifier component. This element itself would be hard to replicate without the correct processing or training data. The training set used for this quality metric was the LIVE IQA dataset. While this dataset is in the public domain, it required permission to access. This would have taken far too long, for such a small piece of the system.
 
-                BIQI consists of two steps: the first is to assess image distortion, and the second is to analyze the quality. 
-
-                As such, an existing implementation was found on GitHub but for Python 2. \cite{BIQIImplementation} This was refactored to work with Python 3, and the code included as part
-                of the existing GitHub repository. 
+                As such, it was easier to adapt an existing implementation. A version was found on Github that utilised Python 2 focused code. This was manually ported to Python 3. \cite{BIQIImplementation} This ported version is available as part of the project implementation.
 
                 
             \paragraph{Gradient Magnitude Error (GME)}
-                GME is a full reference metric, and it calculates the error corresponding to the gradient magnitude between the two images. The gradients $\Delta I$ and $\Delta I'$
-                are calculated using a Sobel filter, kernel size 5 in both X and Y directions. The Sobel filter is calculated using OpenCV within our implementation.
+            GME is a full reference metric, and it calculates the error corresponding to the gradient magnitude between the two images. The gradients $\Delta I$ and $\Delta I'$
+            were calculated using a Sobel filter with kernel size 5 in both X and Y directions. In our implementation, the Sobel filter was calculated using the built-in OpenCV functionality.
 
-                Using these gradients, the metric is calculated as $GME(I, I') = Mean((\Delta I - \Delta I')^2)$. In our implementation, Numpy is again used to calculate both the mean and
+                Using these gradients, the metric was calculated using the equation $GME(I, I') = Mean((\Delta I - \Delta I')^2)$. In our implementation, Numpy was again used to calculate both the mean and
                 also the squared difference.
 
             \paragraph{Gradient Phase Error (GPE)}
-                \todo{look into this, because I think GME and GPE might have been switched during implementation for some reason.}
-                GPE is a full reference metric, which like GME uses the Sobel filter as a basis. Using four different Sobel filters, gradients in the x and y direction for both
-                $I$ and $I'$ are calculated. These are $\Delta I_x$, $\Delta I_y$, and $\Delta I'_x$, $\Delta I'_y$.
+                GPE is a full reference metric, which like GME used the Sobel filter as a basis. Using four different Sobel filters, gradients in the x and y direction for both
+                $I$ and $I'$ were calculated. These were $\Delta I_x$, $\Delta I_y$, and $\Delta I'_x$, $\Delta I'_y$.
 
-                Using these direction gradients, $Mag_{I} = Magnitude(\Delta I_x, \Delta I_y)$ and $Mag_{I'} = Magnitude(\Delta I'_x, \Delta I'_y)$ is then calculated using the gradients shown above.
+                Using these direction gradients, $Mag_{I} = Magnitude(\Delta I_x, \Delta I_y)$ and $Mag_{I'} = Magnitude(\Delta I'_x, \Delta I'_y)$ was then calculated using the gradients shown above.
 
-                Using this, the metric is defined as: $GPE(I, I') = Mean((Mag_{I} - Mag_{I'})^2)$.
+                Using this, the metric was defined as: $GPE(I, I') = Mean((Mag_{I} - Mag_{I'})^2)$.
 
             \paragraph{High Low Frequency Index (HLFI)}
                 This considers the frequency of specific low and high frequencies within a single image. It is therefore classed as a no-reference metric.
-                First, the image is put through a discrete fourier transform process using OpenCV. The frequency spectrum is then shifted and a final magnitude spectrum
-                is calculated using Numpy. This magnitude spectrum is defined as $M(i, j)$, where the shape of M corresponds to the image I.
+                First, the image was fed through a discrete Fourier transform process using OpenCV. The frequency spectrum was then shifted and a final magnitude spectrum calculated using Numpy. This magnitude spectrum was defined as $M(i, j)$, where the shape of M corresponds to the image I.
 
-                Using this spectrum, a sum of the low frequencies, from $(1,1)$ up to $(i_l, j_l)$ is calculated by cycling through each pixel in the spectrum. These two upper constants for
-                the low frequency band are defined with respect to the shape of M. Given the shape of M is $(X, Y)$, $i_l = 0.15 \cdot X$ and $j_l = 0.15 \cdot Y$.
-                For each location (i, j) within the limits, the magnitude spectrum is summed to produce a final value called $lfs$ which is the low frequency sum.
+                Using this spectrum, a sum of the low frequencies, from $(1,1)$ up to $(i_l, j_l)$ was calculated by cycling through each pixel in the spectrum. These two upper constants for
+                the low-frequency band was determined with respect to the shape of M. Given the shape of M was $(X, Y)$, it can be stated that $i_l = 0.15 \cdot X$ and $j_l = 0.15 \cdot Y$.
+                For each location (i, j) within the limits, the magnitude spectrum was summed to produce a final value called $lfs$ which was the low-frequency sum.
 
-                A similar process is followed for the high frequencies. However, instead of starting at 1, we start from $i_h, j_h$ and finish at $(X, Y)$. The constants $i_h$ and $i_l$ are
+                A similar process is followed for the high frequency spectrum. However, instead of starting at 1, the starting point is $i_h, j_h$, finishing at $(X, Y)$. The constants $i_h$ and $i_l$ were
                 calculated in a similar manner to before, only adding one to the result. Therefore $i_h = Ceiling(0.15 \cdot X + 1)$ and $j_h = Ceiling(0.15 \cdot Y + 1)$, where $Ceiling(x)$ rounds
-                a value $x$ up to an integer. The high frequency sum $hfs$ is calculated through this process.
+                a value $x$ up to an integer. The high frequency sum $hfs$ was calculated through this process.
 
                 Based on this, the metric can be defined as $HLFI(I, I') = \frac{lfs - hfs}{\sum_{i,j = 1}^{i,j = (X, Y)} |M|}$.
                 
             \paragraph{JPEG Quality Index (JQI)}
-                The JQI quality index is used to understand the nature of JPEG compression in an image, specifically with regards to JPEG images being blocky (a nature of the DCT based compression),
-                and blurring components (due to high frequency DCT coefficients being lost).
+                The JQI quality index is used to understand the nature of JPEG compression in an image, specifically with regards to JPEG images being blocky (caused by DCT based compression),
+                and blurring components (due to high-frequency DCT coefficients being lost).
 
-                First the blockiness feature $B$ is calculated as average differences across block boundaries. \todo{EXPLAIN MORE}
+                First, the blockiness features $B$ were calculated as average differences across block boundaries. 
                 
-                Two metrics are then used to define the activity of the image signal. The first is $A$, which calculates the average absolute difference between in block image samples.
-                Then, $Z$ is the zero crossing rate. \todo{EXPLAIN MORE WHAT THESE DO}.
+                Two metrics were then used to define the activity of the image signal. The first is $A$, which calculates the average absolute difference between in block image samples.
+                Then, $Z$ is the zero crossing rate, where a signal changes from positive to negative.
 
-                As these above features were calculated individually for horizontal and vertical features, they can now be fused together. This is done simply by averaging them.
+                As these above features were calculated individually for horizontal and vertical features, they can now be fused together. This was done simply by averaging them:
 
                 $$B = \frac{B_h + B_v}{2}$$
                 $$A = \frac{A_h + A_v}{2}$$
                 $$Z = \frac{Z_h + Z_v}{2}$$
 
-                The final calculation uses a number of constants which are defined as:
+                The final calculation used a number of constants which can be defined as:
                 $\alpha = -245.8909$, $\beta = 261.9373$, $\gamma_1 = -239.8886$, $\gamma_2 = 160.1664$, $\gamma_3 = 64.2859$.
 
                 Bringing the constants, and the above calculations together, this yields the overall definition of the metric:
@@ -497,12 +480,12 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 Numpy.
             \paragraph{Laplacian Mean Squared Metric (LMSE)}
                 LMSE is a full reference metric that considers the edge differences to measure quality. A high LMSE value implies that the input image is of poor quality. 
-                
+                    
                 This requires a Laplacian function, which is defined in \cite{LMSEPaper} as:
 
                 $$Laplacian(I(m, n)) = I(m+1, n) + I(m-1, n) + I(m, n+1) + I(m, n-1) - 4\cdot I(m, n)$$
 
-                This function is calculated for each $(m, n)$ in an image. The current implementation uses the above function written in Numpy to produce the Laplacian output. 
+                This function is calculated for each pixel location $(m, n)$ in an image. The current implementation uses the Laplacian function defined above, written in Numpy, to produce the Laplacian output. 
                 \cite{LMSEPaper}
 
                 Once this operator has been defined, it can then be used to calculate the overall metric: 
@@ -510,38 +493,32 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 $$LMSE(I, I') = \frac{\sum (Laplacian(I) - Laplacian(I'))^2}{\sum Laplacian(I)^2}$$
                 
             \paragraph{Mean Angle Magnitude Similarity (MAMS)}
-                MAMS is a full reference metric that considers the similarity between magnitudes of the angles within the image. First, a matrix of scalar products are calculated, such that $S=I \cdot I'$.
+            LMSE is a full reference metric that considers the edge differences to measure quality. A high LMSE value implies that the input image is of poor quality. 
                 
-                Then, a matrix of magnitude products are calculated $M = |I| \cdot |I'|$. All zero values within $M$ are then set to 1, in order to avoid divide by zero errors in a later step.
+            This requires a Laplacian function, which is defined in \cite{LMSEPaper} as:
 
-                Using both $S$ and $M$, the angles at each position on the image were calculated. Each angle produced from the arccos operation is then subtracted from 1. The operation yields a matrix $\alpha$ of angles in radians:
+            $$Laplacian(I(m, n)) = I(m+1, n) + I(m-1, n) + I(m, n+1) + I(m, n-1) - 4\cdot I(m, n)$$
 
-                $$\alpha = 1 - ((\frac{2}{\pi}) * \arccos(S / M))$$
-            
-                While the angles have been produced, the magnitudes are now needed. These magnitudes $N$ are calculated as follows:
+            This function was calculated for each pixel location $(m, n)$ in an image. The project implementation used the Laplacian function defined above, written in Numpy, to produce the Laplacian output. 
+            \cite{LMSEPaper}
 
-                $$N = 1 - \frac{|I - I'|}{255}$$
+            Once this operator had been defined, it was then used to determine the overall metric value, using the equation below:
 
-                Using this, the mean angle similarity for each part of the image can be calculated:
-                $T = 1 - \alpha \cdot N$.
-
-                Using the values from T, the overall metric output is the mean value from T. $MAMS(I, I') = Mean(T)$.
-                
-                This implementation was done using Numpy functions only.
+            $$MAMS(I, I') = \frac{\sum (Laplacian(I) - Laplacian(I'))^2}{\sum Laplacian(I)^2}$$
 
             \paragraph{Mean Angle Similarity (MAS)}
-                This metric is almost identical to MAMS, being a full reference metric that considers the similarity of the angles. Unlike the above, we don't
-                consider the magnitude of these similar angles.
+            This metric is almost identical to MAMS, being a full reference metric that considers the similarity of the angles. Unlike the above, the magnitude of the angles is not considered.
 
-                Using the calculations from the MAMS metric, the steps up to the calculation of $\alpha$ are needed only.
+            Using the calculations from the MAMS metric, only the steps up to and including the calculation of $\alpha$ are necessary. 
 
-                Then, MAMS can be defined as $MAMS(I, I') = 1.0 - Mean(\alpha)$.
+            Then, MAS can be defined as $MAS(I, I') = 1.0 - Mean(\alpha)$.
 
             \paragraph{Maximum Difference (MD)}
                 The maximum difference metric takes the maximum difference between $I$ and $I'$ (making it a full reference metric). It's defined as:
                 $$MD(I, I') = Max(|I - I'|)$$
 
                 This was implemented using Numpy functions.
+
             \paragraph{Mean Squared Error (MSE)}
                 MSE is a reference metric, calculating the mean squared error between $I$ and $I'$. More formally:
 
@@ -553,14 +530,15 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 Implementation was done using Numpy.
             \paragraph{Naturalness Estimator (NIQE)}
                 NIQE is a no-reference metric.
-                \todo{Explain the library implementation and roughly how it works.}
+                A custom library called PyVideoQuality was developed (which was explained above), from existing implementations. This metric uses the output of a pretrained classifier
+                to measure naturalness, with reference to the human visual system.
 
             \paragraph{Normalized Cross Correlation (NXC)}
                 NXC is a full reference metric. It is defined as $NXC(I, I') = \frac{\sum (I \cdot I'_{transposed})}{\sum (I^2)}$. \cite{ImageQualityAssessmentTest}
 
             \paragraph{Peak Signal to Noise Ratio (PSNR)}
                 PSNR is the peak signal to noise ratio achieved between $I$ and $I'$. It's classed as a full reference metric.
-                First, the mean squared error is calculated (as before). Using this, the metric is defined as:
+                First, the mean squared error was calculated (as before). Using this, the metric can be defined as:
                 $PSNR(I, I') = 10 * \log(\frac{\max(I^2)}{MSE(I, I')})$. \cite{ImageQualityAssessmentTest}
 
             \paragraph{R-Averaged Metric (RAMD)}
@@ -687,56 +665,45 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             \paragraph{The RRED Problem}
             One of the metrics proposed in \cite{ImageQualityAssessmentTest}, Reduced Reference Entropic Distance metric (RRED), was problematic to implement due to the lack of Python implementation available.
-            The only implementation available was written in Matlab, and relied on Matlab only libraries. While some had Python equivalents, the steerable pyramid
-            functions did not have a Python equivalent, therefore increasing the workload massively for this single metric. Therefore, the metric was ignored for the WIQA
+            The only implementation available was written in Matlab and relied on Matlab only libraries. While some had Python equivalents, the steerable pyramid functions did not have a Python equivalent, therefore increasing the workload massively for this single metric. Therefore, the metric was ignored for the W-IQA
             test, since the test performance without the RRED metric was within the expected range. 
             
-            
             \paragraph{Testing these metrics}
-            Once these metrics were produced, testing needed to be done to ensure that these metrics were outputting sensible values that could be relied on.
-            Two images were selected at random from the NUAA dataset (using the full image path, rather than the dataset manager created beforehand). These metrics
-            were then carried out individually on these two images. The values were then compared, to see if they differed, and to detect any potential image quality difference. 
-            Testing each of the metrics was slightly challenging as no ground truth data for each metric existed.
+            Once these metrics were produced, testing was required to ensure these metrics were outputting sensible values that could be relied on.
+            Two images were selected at random from the NUAA dataset (using the full image path, rather than the dataset manager created beforehand). These metrics were then carried out individually on these two images. The values were then compared, to see if they differed, and to detect any potential image quality difference. 
+            Testing the metrics was slightly challenging as no ground truth data for each metric existed, but viewing the metric values provided a manual testing process.
 
 
         \subsubsection{Classifier}
-            Initially, a support vector machine was trialed to test whether a different classifier from the paper \cite{ImageQualityAssessmentTest} would work best. However,
-            the performance was fairly unreliable. Adding a grid search to find the optimal parameters still performed fairly poorly, yielding only 70\% accuracy when training and testing on the same dataset. This was poor compared to the expected results from the original paper. Therefore, the classifier was quickly switched to
-            use Linear Discriminant Analysis (LDA), which provided far better performance.
+            Initially, a support vector machine (SVM) was used as the base classifier for this liveness test. Grid search was applied to find optimal parameters for the SVM, but despite this, the performance was unreliable. The best SVM results yielded only 70\% accuracy when training and testing on the same dataset, a rather poor result compared to the original paper \cite{ImageQualityAssessmentTest}. Therefore, the classifier was quickly switched to use Linear Discriminant Analysis (LDA), which provided far better performance. This was the classifier specified in \cite{ImageQualityAssessmentTest}.
 
-            For both classifiers, existing SVM and LDA implementations from the \emph{sklearn} library were used for their performance. 
+            For both classifiers, existing SVM and LDA implementations from the \emph{sci-kit learn} Python library were used for their performance. 
             
-            The default sklearn LDA settings were initially used, but the results produced still weren't ideal. By using an eigenvector based solver, and automatic shrinkage, the LDA model performed far better, yielding the results
+            The default sklearn LDA settings was initially used, but the results produced still weren't ideal. By using an eigenvector-based solver, and automatic shrinkage, the LDA model performed far better, yielding the results
             shown in the results section.
 
-            Once a model is trained, it needs to be saved to be used for the testing process. Saving was achieved using the Python \emph{pickle} package. For small models, pickle is ideal since it easily creates a Python object that can be loaded/written
-            without additional boilerplate. Since the sklearn classifier models aren't too deep, pickle works. If the models were deeper, then Python's recursion depth limit would hit, causing errors. 
-     
+            Once a model was trained, it needed to be saved for future use. Saving was achieved using the Python \emph{pickle} package. For small models, pickle is ideal since it produces a Python object that can be loaded/written without additional boilerplate. Since the sci-kit learn classifier models don't contain a deep object structure, pickle easily writes the object without recursion issues. With later, larger models (neural network based), pickle wasn't acceptable as Python's version depth limit was reached.
+    
             
         \subsection{2D based CNN Liveness Test}
-        Recently, 2D convolutional neural networks have had great success in image classification tasks. Systems that use these technologies are currently deployed in real world systems.
-        Therefore, by adapting these models to classify facial liveness, it might be possible to obtain a new model, designed for the web (with both low latency and good accuracy).
-        
             \subsubsection{Overview}
-                As discussed earlier in the paper, there are several different models available for image classification. Unlike ImageNet based classifiers, we only have 2 output classes, which are \emph{real} and \emph{fake}.
-                Therefore, the final layer of the model would be different, but the remaining details would be identical. Unlike the image quality metric, this metric concerns itself with the facial data, to understand which faces
-                are real, and which ones are fake.
+            As discussed earlier in the paper, there are several different models available for image classification. Unlike ImageNet based classifiers, there are only 2 output classes, which are \emph{real} and \emph{fake}.
+            Therefore, the final layer of the model would be different from an ImageNet classifier, but the remaining details would be identical. Unlike the image quality metric, this metric concerns itself with the facial data, to understand which faces
+            are real, and which ones are fake.
 
             \subsubsection{Data Preprocessing}
-                As this metric concerns itself with the facial structure, it became necessary to isolate the face from the input image. Furthermore, as part of the CNN model a required input size was needed to be specified. 
-                The preprocessing step therefore needed to produce a facial image that had fixed dimensions.
+            As this liveness test concerned itself with facial structure, it became necessary to isolate the face from the input image. Furthermore, as part of the CNN model, a required input size was needed to be specified. 
+            The preprocessing step, therefore, needed to produce a facial image that had fixed dimensions.
 
-                This was achieved using the \emph{face\_recongition} package. Using this package, an image is input and a set of bounding boxes is yielded. The largest bounding box (by area) is found,
-                yielding the face. Initially, the bounding box was simply cropped and resized to be a square (even if it wasn't initially a square), before being passed to the model. This yielded very poor results,
-                due to the difficulty in learning the constantly changing dimensions. As a result, a new method of face isolation based on bounding boxes was designed:
-
-                Given a bounding box $B = (top, bottom, left, right)$, a new bounding box $B'$ which has square dimensions can be created by finding the square
-                side width $s$. Mathematically, this is defined as:
+            This was achieved using the \emph{face\_recongition} package. Using this package, a set of bounding boxes of faces is yielded. The largest bounding box (by area) is found, which is taken as the location of the face. Initially, the bounding box was simply cropped and resized to be a square, regardless of its shape. This yielded very poor results  since the dimensions might have been rectangular, yielding the model to incorrectly learn spatial data. As a result, a new method of face isolation based on bounding boxes was designed:
+            
+            Given a bounding box $B = (top, bottom, left, right)$, a new bounding box $B'$ which has square dimensions can be created by finding the square
+            side width $s$. Mathematically, this is defined as:
 
                 $$s = Max(bottom - top, right - left)$$
 
 
-                Using this, the new bounding box is defined as:
+                The new bounding box can be defined as:
 
 
                 $$B' = (top, top + s, left, right + s)$$
@@ -766,39 +733,34 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 \end{figure}
 
 
-                \paragraph{AlexNet}
-                Initially, an AlexNet based classifier was designed. While AlexNet performance on the ImageNet dataset isn't as high as other models, it provided an ideal starting point to understand the difficulty
-                of the classification. It was eventually found that AlexNet performed relatively poorly on facial liveness classification, and therefore a switch was made to a more complex and better performing model.
+                \paragraph{Early attempts with AlexNet}
+                Initially, an AlexNet based classifier was designed. While AlexNet performance on the ImageNet dataset isn't as high as other models, it provided an ideal starting point to understand the difficulty of the classification. It was eventually found that AlexNet performed relatively poorly on facial liveness classification, and therefore a switch was made to a more complex and better-performing model.
 
                 \paragraph{Residual Networks}
                 Residual Networks were chosen over VGG and Inception due to their better performance on ImageNet, coupled with their ability to be easily deployed without excessive memory/computation requirements.
-                A ResNet 50 architecture was decided upon, as 50 layers seemed reasonable in terms of the available computational power that was available for this proof of concept. It was deemed that if ResNet 50 works, then ResNet 101 might perform equally, if not
-                slightly better. A ResNet 50 architecture is an ideal proof of concept.
+                A ResNet 50 architecture was decided upon, as 50 layers seemed reasonable in terms of the available computational power that was available for this proof of concept. It was deemed that if ResNet 50 works, then ResNet 101 might perform equally, if not slightly better. A ResNet 50 architecture acts as an ideal proof of concept.
 
-                While training a model from scratch might have advantages for some applications, a pretrained ResNet50 model from the Keras standard library was used. This was done due to the fairly small amount of data
-                available (and therefore using a pretrained model can avoid overfitting), and also to save time learning the basic features that are present in all generic image classification models. Training the entire
-                ResNet50 model would require a large number of parameters to be adjusted, so to further reduce the complexity of the training process, only the last layer was set to trainable, with the other layers remaining static.
+                While training a model from scratch might have advantages for some applications, a pre-trained ResNet50 model from the Keras standard library was used. This was done due to work with the small amount of training data available, and also to save time learning the basic features that are present in all generic image classification models. Furthermore, training the entire ResNet50 model would require a large number of parameters to be adjusted, so to further reduce the complexity of the training process, only the last layer was set to trainable, with the other layers remaining static. This method also reduced the risk of overfitting, since there were fewer parameters that required training. This was beneficial due to the small amount of data available from liveness datasets.
 
 
                 \paragraph{Feed Forward Classifier}
-                While a CNN is ideal for processing images, a fully convolutional approach to classification didn't seem appropriate. The output from the ResNet 50 model was flattened, and fed directly into a feed forward neural network.
-                While pooling layers were considered, these only take the maximum/minimum/average of specific sections, reducing the dimensionality, and the loss of data means the feed forward layer has less information to act upon. Therefore,
-                it was instead decided to use no pooling layers. The output from the ResNet is flattened, and fed into an 8 layer feed forward neural network directly. The first layer of this network has a very large number of nodes,
+                While a CNN is ideal for processing images, a fully convolutional approach to classification didn't seem appropriate. The output from the ResNet 50 model was flattened and fed directly into a feed-forward neural network.
+                While pooling layers were considered, these only take the maximum/minimum/average of specific sections, reducing the dimensionality, and the loss of data means the feed-forward layer has less information to act upon. Therefore,
+                it was instead decided to use no pooling layers. The output from the ResNet is flattened and fed into an 8 layer feed forward neural network directly. The first layer of this network has a very large number of nodes,
                 while the number of nodes is reduced towards the network output.
                 
                 With the initial experiment, the output layer consisted of a single node, with a sigmoid activation function. The entire network was trained using a binary cross-entropy loss function. The network accuracy yielded was fairly reasonable,
                 but the confusion matrix showed that the model was outputting \emph{0.0} (fake) for each value, no matter the input. This was a problem, as the network wasn't suitably learning the dataset. As a result, three changes were made to solve the problem, which are outlined below.
                 
                 \paragraph{The Problem with Activation Functions}
-                Initially, the \emph{reLU} activation function was used on all internal nodes within the feed forward network component. While reLU is very popular for improved speed over traditional activation functions such as tanh and sigmoid,
+                Initially, the \emph{reLU} activation function was used on all internal nodes within the feed-forward network component. While reLU is very popular for improved speed over traditional activation functions such as hyperbolic tangent and sigmoid,
                 for negative values it has a problem. ReLU is positive for all positive values, but 0 for all negative values.
 
-                While all inputs were non-negative, weights could lead to these values becoming negative. There is a known problem called "dying ReLU", where some neurons output 0
-                due to having a negative input (the weights and inputs for all input neurons sum to a non-positive value). Therefore, the model was able to learn 0 (fake) easily, but
-                couldn't learn real (1.0) at all. \cite{liu_liu_2017}
+                While all inputs were non-negative, weights could lead to these values becoming negative. There is a known problem called \emph{dying ReLU}, where some neurons output 0
+                due to having a negative input (the weights and inputs for all input neurons sum to a non-positive value). Therefore, the model was able to learn 0 (fake) easily, but couldn't learn real (1.0) at all. \cite{liu_liu_2017}
 
-                This problem was counteracted by changing activation function from reLU to Leaky ReLU. Unlike reLU, leaky reLU isn't zero when negative. It requires an input value $\alpha$, which is used
-                as the gradient of the line when less than zero. \cite{liu_liu_2017} For this model, $\alpha=0.3$. The activation function is defined formally as:
+                This problem was counteracted by changing activation function from reLU to Leaky ReLU. Unlike reLU, leaky reLU isn't zero when negative. It requires an input value of $\alpha$, which is used as the gradient of the line when less than zero. \cite{liu_liu_2017} For this model, $\alpha=0.3$. The activation function is defined formally as:
+                
                 
                 \begin{equation}
                     Activation(x) =
@@ -809,45 +771,42 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 \end{equation}
 
                 \paragraph{The Problem with a Single Neuron Output}
-                In order to mitigate the problem of outputting all zeros, the output method of the network was changed. Instead of a single neuron, giving a realness value, two neurons were used.
-                These neurons would use the softmax activation function, rather than the sigmoid activation function, to ensure the sum of the neuron outputs would be zero (therefore giving a probability that can be used).
-                The use of two neurons to encode the realness means that the nature for a network to learn 0 is slightly removed, as there will always be a non-zero output for one of the neurons expected. The encoding method used here
-                is called one-hot encoding in the literature.
+                In order to mitigate the problem of the model outputting zero for each input, the output encoding method was changed. Instead of a single neuron, giving a realness value, two neurons were used.
+                These neurons would use the softmax activation function, rather than the sigmoid activation function, to ensure the sum of the neuron outputs would be one (therefore giving a probability that can be used).
+                The use of two neurons to encode the realness suggested that the nature for a network to learn 0 is slightly reduced since at least one of the neurons in the output layer must output 1. The encoding method used here
+                is called known as one-hot encoding.
 
                 \paragraph{Normalization and Dropout}
-                Batch Normalization and dropout were both used within the feed forward network component to improve learning and reduce the risk of overfitting. Overfitting was a concern due to the small dataset that was used for training.
+                Batch Normalization and dropout were both used within the feed-forward network component to improve learning and to reduce the risk of overfitting. Overfitting was a concern due to the small dataset that was used for training.
                 Batch Normalization layers were added between each dense layer, which resulted in increased accuracy of the model.
 
                 Throughout the experimentation process, the model was found to be overfitting. Therefore dropout was added (with a dropout level of 0.3) between each dense layer. This reduced the effects of overfitting.
 
-                The overall outcome is shown in Figure \ref{2DCNNArchitecture}. The normalization and dropout are not visible in the diagram, since they are only used for training.
+                The overall outcome is shown in Figure \ref{2DCNNArchitecture}. The normalization and dropout are not visible in the diagram since they are only used for training.
 
 
             \subsubsection{The Training Process}
                 \paragraph{Optimizer}
-                Initially, the Standard Gradient Descent was used as the optimizer. This was chosen due to the findings of \cite{SGDBetterThanAdamForImageClassification},
-                which advised that SGD was better than the Adam optimizer for producing models that generalize. However, after experimenting further the Adam optimizer appeared
-                to generalize better for this project. Using the SGD optimizer, the validation accuracy fluctuated with fairly poor accuracy results overall. The Adam optimizer
-                didn't fluctuate, and the accuracy yielded was much higher.
+                Initially, the Standard Gradient Descent (SGD) was used as the optimizer. This was chosen due to the findings of \cite{SGDBetterThanAdamForImageClassification},
+                which advised that SGD was better than the Adam optimizer for producing models that generalize. However, after experimenting further the Adam optimizer appeared to generalize better for this project. Using the SGD optimizer, the validation accuracy fluctuated with fairly poor accuracy results overall. The Adam optimizer didn't fluctuate, and the accuracy yielded was much higher.
 
-                It's possible that SGD might perform better over longer periods of time with a very small learning rate, but due to time constraints and the need to experiment and show a proof of concept,
-                Adam proved better for the purposes of this project.
+                It's possible that SGD might perform better over longer periods of time with a very small learning rate, but for small time intervals, Adam appeared to perform better.
 
 
                 \paragraph{Loss Function}
-                    Initially, while the model had a single neuron output, the binary cross entropy loss function was used as it's suitable for a single binary output.
-                    However, when the two neuron output model was introduced, the loss function was changed to use categorical cross entropy as this was the most suitable
-                    for a categorical one hot encoding method.
+                Initially, while the model had a single neuron output, the binary cross entropy loss function was used as it's suitable for a single binary output.
+                However, when the two neuron output model was introduced, the loss function was changed to use categorical cross-entropy as this was the most suitable
+                for a categorical one hot encoding method.
 
                 \paragraph{Data Generators}
-                    Due to the large amount of data being processed, it was necessary to use a data generator to conduct the preprocessing on the fly. While the preprocessing
-                    could have been saved to disc, the preprocessing steps were changed throughout the project, therefore defeating the benefits of such an optimization.
+                Due to a large amount of data being processed, it was necessary to use a data generator to conduct the preprocessing on the fly. While the preprocessing could have been saved to disc, the preprocessing steps were changed throughout the project making this solution obsolete.
 
-                    Initially, Keras' built-in ImageDataGenerator was used, as it allowed for a preprocess function to be passed in. While this works for a preprocess function that yields the same shape image
-                    as was input, Keras' ImageDataGenerator does not support resizing images within the preprocess function (e.g. for cropping).
+                Initially, Keras' built-in ImageDataGenerator was used, since it allowed for a preprocess function to be passed in. While this worked for a preprocess function that yields the same shape image
+                as was input, Keras' ImageDataGenerator does not support resizing images within the preprocess function (e.g. for cropping).
 
-                    Initially, a Lambda expression within the network was used to resize the image, but this led to problems with saving/loading models (due to Tensorflow being necessary).
-                    Therefore, a custom data generator was written from scratch. With this new generator, it wasn't necessary to follow this size constraint within the preprocess function.
+                One solution was to use a Lambda expression within the network to resize the image, but this led to problems with saving/loading models (due to Tensorflow being necessary).
+
+                Therefore, the final solution was to implement a custom generator to manually load images and preprocess them on the fly. This required extending the Sequence class within Keras to produce a Numpy array of data (with the size being the batch size specified). With this new generator, it wasn't necessary to follow this size constraint within the preprocess function. 
 
 
     \subsection{3D Face Reconstruction Liveness Test}
@@ -926,9 +885,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
         The solution proposed is to use a classifier, pretrained with the results yielded from the previous liveness tests. After training, this consolidation classifier would be able to spot patterns
         between each liveness test, and hopefully yield a better result by fusing the results of each individual test together. 
-
-        \todo{Implementation DETAIL NEEDED!}
-
 
   
 \section{Results}

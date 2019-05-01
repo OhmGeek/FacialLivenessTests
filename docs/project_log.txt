@@ -1,0 +1,1829 @@
+commit d649647a1d7f5616e94c240e00ea1f2008701664
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed May 1 15:27:00 2019 +0100
+
+    Just finished cross database approach, need to do general 2d image classificaiton next
+
+commit 57e7f1a5fb6709d285a23e6a96e83628489b6e9a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed May 1 15:11:16 2019 +0100
+
+    Done quality tests
+
+commit 808c4d47df91bbf5cf01acd0cc3c05a54e7b5774
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed May 1 14:54:57 2019 +0100
+
+    Video based attacks done
+
+commit dab6bd78bd95d26f2f8cc9d19c77bbe983608190
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed May 1 13:50:33 2019 +0100
+
+    Formalise abstract
+
+commit 7cc13d3fa9e209f310aa591d217fe16c70247afa
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed May 1 13:04:13 2019 +0100
+
+    Reword
+
+commit ee6cb27605ee28654f1e232aad78a007b7b41e2c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed May 1 12:52:45 2019 +0100
+
+    More poster content
+
+commit 2709ecac7a007a4775b46190906ffcce6e26674b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed May 1 11:40:15 2019 +0100
+
+    Poster almost done, just needs some more formatting.
+
+commit 59a57bff9c61d11c5f87ff927131f18824b6e9e4
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 30 21:52:25 2019 +0100
+
+    resized diagram, need to reformat and get this completed...
+
+commit acd5758f7ede56ca8dd89adbe20650aa33d1608a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 30 20:54:59 2019 +0100
+
+    Reference spec points
+
+commit eaf2329b9f22ba391b159b53e2a07792e98ba7f8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 30 16:42:55 2019 +0100
+
+    VoxNet diagram included; abstract improved and rewritten
+
+commit 100dcbf5eb27819ca1afdd4cb8bd6cddbee44a44
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Apr 29 12:09:40 2019 +0100
+
+    Spellcheck
+
+commit abfcfed939b136de65ce4bfd6704a98566528580
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Apr 28 22:24:20 2019 +0100
+
+    More TODOS, consolidation layer added
+
+commit 46b5ee166bedb8e740d649ed58d00e8990e855f9
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Apr 28 19:41:13 2019 +0100
+
+    Webcam demo from file. Also, retrieved screenshots to add
+
+commit a09ba541554fc7f1ef40a9ac47006bc9bd4d9883
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Apr 28 19:21:23 2019 +0100
+
+    Residual block in, along with info about each metric. There's a lot of content
+
+commit 9f69052dbfd1434cb516c1e067a2c767d039c80b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Apr 28 14:39:11 2019 +0100
+
+    Some more work on the poster, but need to focus more on the paper
+
+commit 762b46688dffaa790ec5c26c4a63235724fb3818
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Apr 27 21:01:09 2019 +0100
+
+    Demo works with correct labels too
+
+commit 8326128f10ca8340372db70f2b042d49292b9ed7
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Apr 27 20:55:22 2019 +0100
+
+    Model works in live demo format
+
+commit 2d6102900d6be2e06829fa484384cacd6cf9bbb5
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Apr 27 17:42:48 2019 +0100
+
+    Sort of a working demo, but one of the metrics is acting up
+
+commit 47be990649c36623437ed0ef38234bdab8d59fa2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 26 16:58:47 2019 +0100
+
+    A very bad poster has been created. More content needed, need to change things up and add images
+
+commit 5be19b1e0f59c542d09c4859120065967aa3b1e4
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 26 16:13:58 2019 +0100
+
+    Consolidation layer testing, accuracy 0.75
+
+commit 5d809e2e082812276da8e3e144a2590c195f6466
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 18:19:48 2019 +0100
+
+    For some reason git decided to screw up
+
+commit 07e5be98df3b25545bdaeabd4f1708215d68e3bf
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 17:43:17 2019 +0100
+
+    Create README
+
+commit a1b423086fee34067c9e3ec7c44a6d849d98240b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 17:32:30 2019 +0100
+
+    more refactoring, deletion of some code, and readme
+
+commit 4f3c429176c3f14f937e3a9d27e1125fd0a800ca
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 16:49:44 2019 +0100
+
+    Refactor code, and hopefully not broken anything
+
+commit 683cf6deee4a4097759b6a633138ddc750a82b05
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 16:13:46 2019 +0100
+
+    Time taken to reconstruct added
+
+commit 0ce96f341b58c0415e51b95369eb12cc0958d270
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 16:03:15 2019 +0100
+
+    Formatting and results table
+
+commit 952ea188ad0c18e810d280534e0e444522d900b0
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 15:54:18 2019 +0100
+
+    Times for predictions added to results
+
+commit 28afdd9fde03e412614d8b87fb3964a6f24b7e55
+Merge: e4cbd9d 31b01f1
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Wed Apr 24 15:08:34 2019 +0100
+
+    Merge pull request #10 from OhmGeek/docs/paper
+    
+    WIP: Add project paper
+
+commit 31b01f1a125f0c87139b54c0905140fcfc87cb46
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 15:07:33 2019 +0100
+
+    Adjustments done, ready to merge for finishing touches
+
+commit 49be398a7363c913a80facbd3b174912f4698bcd
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 24 12:02:52 2019 +0100
+
+    Abstract and Introduction adjustments
+
+commit 8d6054b6e4de0039898cbb80ad3676ecc2ddad74
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 23 19:15:11 2019 +0100
+
+    Reformatting, rewriting, and making citations look proper
+
+commit 6918314b95d930463da176d518fb6c56661a33a1
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 23 13:49:49 2019 +0100
+
+    Updated paper, with much better content
+
+commit e4cbd9d13ca4b231af3434c67768516f7b1f3ee7
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 23 10:35:19 2019 +0100
+
+    Plot to see whether consolidation layer works
+
+commit a67baf8a64c4eb0ad890555fa04ae5e8a9fcddbf
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Apr 22 15:00:01 2019 +0100
+
+    Pretty much completed results, bar a couple of minor things
+
+commit 52fa0b93316bb5bc76f091e6bbc6f723d1d83ea7
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Apr 21 20:45:18 2019 +0100
+
+    Working on a bit, still need to finish this though
+
+commit 521916fe71fba6360cc40e5c150c907ef6cc72a9
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 19 17:05:10 2019 +0100
+
+    Rewritten the resnet section solution
+
+commit 186d33dbd6be817150d446d980e761c0f67d52ea
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 19 14:19:30 2019 +0100
+
+    ImageQualityMetric section done
+
+commit 1fb79111ee745b33d98e236f21a0cf2e166a5cb2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 19 12:09:42 2019 +0100
+
+    Attempted spellcheck
+
+commit cafb0a1081c14826432c8ea47ed820a13d551af8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 18 12:53:28 2019 +0100
+
+    More results
+
+commit 939870cb57beafc968e2379e4cbbca05ef917033
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 17 19:15:13 2019 +0000
+
+    Updated and working cnn, hopefully one of the last ones
+
+commit 75ea173f8e6f0002225304d8938b4484f34c3955
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 17 20:11:38 2019 +0100
+
+    Ok, I have something now, but it's not ideal. However it'll work
+
+commit a849922bb8aacb655dd1382f40844d7880248e42
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 17 18:55:41 2019 +0100
+
+    Some basic (and probably not correct) results relating to the model
+
+commit a268f814e28a2f61f40426a6107063a93d24c2cf
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 17 16:16:43 2019 +0100
+
+    Update train
+
+commit b4a0f22e997036f3eb7c025dc7e41073bdb63c5a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 17 15:10:14 2019 +0000
+
+    Updated code
+
+commit 5014ee6101d5e93dfa4fec123a1a15626b71ee6f
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 17 10:57:12 2019 +0000
+
+    Ok, we're in a better position now
+
+commit e325b1b0593464ea0d66cfa0120d2ff90492b7aa
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 17 10:30:44 2019 +0100
+
+    Updated minor details
+
+commit 6b438661cf4dbd64c586b7d7ee39b049b513fd12
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 20:33:16 2019 +0000
+
+    Updated model
+
+commit 7096186a03720214b9553db8e3d2a9be44d72bca
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 19:45:18 2019 +0100
+
+    Some adjustments using a custom generator2
+
+commit 7b5189c3b1acce64f72e266eaee473b90a231af8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 18:37:56 2019 +0000
+
+    We're in a fucking awful position. I hate this so so much
+
+commit 7e5f20d82e359635fb7ab0ee450bf31c5df32296
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 15:26:36 2019 +0000
+
+    updated CNN model to not use lambdas because of errors
+
+commit d0137aeb674cffa60a9e21ee68b2e34447c7c466
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 13:28:44 2019 +0100
+
+    This might work
+
+commit 33319a22eb5948125ef4fc53c155a5c17fbcb164
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 13:27:15 2019 +0100
+
+    Lets try this, this should work
+
+commit 2a601cf35c522ff284358b8603d6e25133e63b5c
+Merge: af338be 569cf61
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 13:11:47 2019 +0100
+
+    Merge branch 'master' of https://github.com/OhmGeek/LivenessTests
+
+commit af338bef8002e89fb34929887213a69cfe57e9bb
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 13:11:34 2019 +0100
+
+    Test cnn
+
+commit 569cf61232574ef2f5fa591fcf574bfa8ab5269d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Apr 16 12:11:04 2019 +0000
+
+    new model, new problems
+
+commit 7e79eecd8ab60fa040a41b591c60bfa47d7ffae4
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Apr 15 22:29:02 2019 +0100
+
+    Add first results to the paper
+
+commit 60ddd9e1bcce2c864fae628cd0671684cd6fcf50
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Apr 15 21:22:02 2019 +0100
+
+    done
+
+commit cda0c3c17c557bf542d9c52f3894690e215e10bd
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Apr 15 20:06:40 2019 +0100
+
+    Working with new LDA type
+
+commit dc49f666b227e2a7eeac961449e39410d443a528
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Apr 15 08:44:58 2019 +0100
+
+    updates
+
+commit e1cacfaf529e6a03583164412f45cc87d8217e96
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Apr 13 14:37:36 2019 +0100
+
+    Add SourceQuality details
+
+commit 3978f67f229ad7b8c3553143728e1d92aa756033
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 12 15:13:56 2019 +0100
+
+    updated some citations
+
+commit 6f5593bf078042d060b5e72c282b0ded54b406dc
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 12 14:12:46 2019 +0100
+
+    Inception, and performance comparisons for each of the ImageNet classifiers
+
+commit 60abbf99c7740be6b4cef7be8d9dc37ff3a4865e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 12 11:52:07 2019 +0100
+
+    More citing of imagenet performance and operational deployability
+
+commit d06a51501ffcd68da5c31c60c2d46d529b442947
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 12 11:42:10 2019 +0100
+
+    Add basic context (this will be changed probably
+
+commit bef7e840b598bc25bec7bb709d8ae7e2b91ef38a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 12 11:03:07 2019 +0100
+
+    More info about custom libraries, and more todos added
+
+commit 13e808bb0cb9601d2b42e66c6afb0ee19c0cad8d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 11 15:39:38 2019 +0100
+
+    Add some more info about training, updated diagrams, and mentions to library writings
+
+commit 62bdb7db8b46830da0c567888b601a3688f13cab
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 11 13:04:39 2019 +0100
+
+    Updated code for training and testing the quality metric
+
+commit ead52af25d28bbb877242a66edf9387e57a2eda5
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 11 09:36:51 2019 +0100
+
+    Add pickled LDA model
+
+commit 4bf0d0204c962166164f433d261c9cd3e6f12ab6
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 10 16:11:06 2019 +0100
+
+    Use parallel
+
+commit 14db3e72bf9cc1d043b538e142563362acb5ed51
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 10 15:13:20 2019 +0100
+
+    Add pretrained model, update gitignore accordingly
+
+commit 070c30d45a2f8a5a97983a091fb179a45b3c32bb
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 10 13:43:09 2019 +0000
+
+    Final Model
+
+commit b6d76e4dcb95ca6708d754786e1147d62f6127ab
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 10 14:32:58 2019 +0100
+
+    Further content
+
+commit 1c4134fba273d83723ec9093eac29739027506be
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 10 13:36:36 2019 +0100
+
+    Basic abstract done
+
+commit 79a24651a652dce104b24363fbdb2f577a2e7f05
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 10 13:25:58 2019 +0100
+
+    Add 2D CNN architecture diagram
+
+commit 93d9c1c744ff3e00ebb6f91475d86a628399a222
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 5 14:17:45 2019 +0000
+
+    Three gneerators, each for validation, train and test
+
+commit f0a1abbe7b14f0d45866d6bbd823b14fb5550700
+Merge: 7061c20 b49dbc3
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 5 14:14:38 2019 +0000
+
+    Merge branch 'master' of https://github.com/OhmGeek/LivenessTests
+
+commit 7061c202fdd624173720b092eb55bf3a4f489e55
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 5 14:14:28 2019 +0000
+
+    Adjust generators and stuff
+
+commit b49dbc37cd3e6b1e241f0001d8dc9a1e5523d00b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Apr 5 13:57:27 2019 +0100
+
+    Allow loading of different modes within replay-attack e.g. devel, test
+
+commit dfa68350d1dee1984f635dfa5515b36b8e3fe21c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 18:12:09 2019 +0000
+
+    It works, and actually works well
+
+commit 5ba2f98bd2243fd1f306652c5a2b3a8062741e43
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 17:04:34 2019 +0100
+
+    Findings with Adam, and more info about datasets that needs to be filled in
+
+commit 4390a278c3dd2e3b11c58cb913fd37b36ca52612
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 15:57:29 2019 +0100
+
+    update
+
+commit 486eb82c83c910584ec0f7aae73c69c6d4c7017e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 15:55:31 2019 +0100
+
+    Try this.
+
+commit 9b72e54e28fc8707c14d09713697924e1f712c42
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 14:49:59 2019 +0000
+
+    Not quite as good, but might work with more training
+
+commit 406c69bf0e24a2a7d9b7a02fce4a3355455fcbc0
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 15:20:09 2019 +0100
+
+    updated further info
+
+commit c689fb2a7b979ee51e944f351669a518e9073ebf
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 13:52:18 2019 +0100
+
+    Improved performance due to SGD mentioned
+
+commit 830b2efe4934aad7c9031e82555c9f546a403f9a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 11:52:40 2019 +0000
+
+    First try, which does sort of work but needs lower training rate
+
+commit 59192f32ea5fe740580defcf1ae0d96cd7f55539
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 11:37:40 2019 +0100
+
+    Try this on a bigger machine
+
+commit 2c319f80a35864f72d6fb03590bab6a4f3c25910
+Merge: 7626c29 dacda11
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 11:12:51 2019 +0100
+
+    Merge branch 'master' of https://github.com/OhmGeek/LivenessTests
+
+commit 7626c29331ef0dbab00e2671e6f4987308834db6
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Apr 4 11:12:40 2019 +0100
+
+    Rename
+
+commit 97176b88e83188e2e07001875aaced93a99b1a84
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 3 16:55:54 2019 +0100
+
+    Diagram of the quality liveness test
+
+commit f230614c820895368288ff565b98bc52a3c84dd9
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 3 16:34:29 2019 +0100
+
+    VoxNet diagram
+
+commit 8186e849db49af49f854efc3387ea678603fba79
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 3 15:48:05 2019 +0100
+
+    Update paper
+
+commit fada585dd314b7faac8268ed337b860d1d300e27
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Apr 3 11:24:39 2019 +0100
+
+    Add more content to related work
+
+commit dacda11031f624adf4c2623463c19100689aaa99
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Apr 1 09:29:31 2019 +0000
+
+    Failed experiment
+
+commit cc9031160acb440b7c2d8e2043cf418332d8613a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Mar 30 16:23:34 2019 +0000
+
+    Try new architecture
+
+commit 3a2d14a3a779d154596bdaddc02e0c6a94af5711
+Merge: 8e6390c aa79c1a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Mar 30 11:22:47 2019 +0000
+
+    Merge branch 'master' of https://github.com/OhmGeek/LivenessTests
+
+commit 8e6390c90208c2169d45fc5b21078220377d4b8c
+Merge: 7b013f1 c1b50b5
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Mar 30 11:22:37 2019 +0000
+
+    Finish merge and adjust model
+
+commit aa79c1a918db01a0a0cf43281df5525c80727517
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Mar 30 11:22:16 2019 +0000
+
+    Error meaning facial recognition isn't being completed
+
+commit 7b013f1acf7ae3964f6ff12f0cc18388d1ac089e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Mar 30 10:24:42 2019 +0000
+
+    some adjustments
+
+commit c1b50b5cb5d726a81152a710276272c1a8506d8a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Mar 30 10:22:37 2019 +0000
+
+    Adjust model slightly
+
+commit 0ce2abd8e5ad94483f06414cb5b82368d62997f6
+Merge: aef20c7 886d913
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Mar 29 15:52:36 2019 +0000
+
+    Merge branch 'master' of https://github.com/OhmGeek/LivenessTests
+
+commit aef20c7e8cd274daab3680b21e3e5c16d18a4e9b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Mar 29 15:52:25 2019 +0000
+
+    Subjects needs to be saved to state
+
+commit 886d9139a56c10850d044f6152557e477bf59144
+Merge: 7156692 401efc2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Mar 29 15:51:28 2019 +0000
+
+    Merge branch 'master' of https://github.com/OhmGeek/LivenessTests
+
+commit 7156692e164f6c4856472685482a663653488662
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Mar 29 15:51:19 2019 +0000
+
+    change batch size
+
+commit 401efc2401146e2f41649d67197f1735e007313e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Mar 29 15:50:48 2019 +0000
+
+    Subjects updated
+
+commit bb69cb045ccd9c4500a680ffca05a04694b0af1b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Mar 29 15:19:04 2019 +0000
+
+    Updated method, using one instead of two outputs
+
+commit 71274aa2a2d8b38d3f501d5b43b709c2f75f8b28
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Mar 29 15:07:20 2019 +0000
+
+    Further refine paper
+
+commit 525f1958394c3dd591e3f5d7aff37a934dd84cfe
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Mar 28 18:54:33 2019 +0000
+
+    Voxnet works
+
+commit 7f5e9af313b92cedaba13527a310be71c731b18e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Mar 28 16:42:41 2019 +0000
+
+    Start the lit review style
+
+commit ab14925f95b66b3628fcbb4b97903cf40edb7b65
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Mar 27 14:15:19 2019 +0000
+
+    Train
+
+commit 658fb0e912179b99c563286916055343ef583a07
+Merge: 7072f03 505a7e0
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Wed Mar 27 14:05:02 2019 +0000
+
+    Merge pull request #20 from OhmGeek/feature/mad_dataset
+    
+    Feature/mad dataset
+
+commit 505a7e050bd81b53580884e3f96b8f2a53725bff
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Mar 27 13:56:00 2019 +0000
+
+    Now we return it back to how it was before
+
+commit 032e22474e809a085ebd89e564ce30c04acf5dd0
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Mar 27 13:55:22 2019 +0000
+
+    MAD works and we've removed some test code from train_quality
+
+commit bf4d601baef03390471901a37a87282b2fd95b4d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Mar 27 13:53:59 2019 +0000
+
+    MAD works, but we need to now add transformation in the preprocessing
+
+commit 3516fe938cb0dfb8aee03c80e8bcc019c5017829
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Mar 27 10:49:08 2019 +0000
+
+    Created MAD dataset file
+
+commit 7072f0385e34d463624c3e5695e9d8d4eb5dda2a
+Merge: 22a19ea 104a02c
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Wed Mar 27 10:40:03 2019 +0000
+
+    Merge pull request #17 from OhmGeek/feature/3d_classifier
+    
+    WIP: 3D liveness approach
+
+commit 104a02c9f78657595c8712490a486a09788741d4
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Mar 26 16:19:10 2019 +0000
+
+    Voxnet works, but needs tweaking to work with appropriate memory usage/etc
+
+commit 12fbe69ae07dd4b882e2e8f7875a4d0645418534
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Mar 26 16:08:19 2019 +0000
+
+    Fixed by using result from a github issue
+
+commit b4425d1011a9efa4201912fc2152c42f023a21b8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Mar 26 15:52:07 2019 +0000
+
+    Generator works, but something somewhere very much doesn't
+
+commit 22a19ea2ee3be70e52b043a8f5fa85c7407fc851
+Merge: 3c8a727 ff24dfd
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Tue Feb 26 15:53:24 2019 +0000
+
+    Merge pull request #19 from OhmGeek/refactor/quality_model_preprocessing_included
+    
+    Refactor/quality model preprocessing included
+
+commit ff24dfd37c1b797cf0a306073a917dba319488a0
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Feb 26 15:52:51 2019 +0000
+
+    Adjust train_quality
+
+commit 22b46143c9bcc8e4b5a5720bff9bc4b8947b8181
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Feb 26 15:51:23 2019 +0000
+
+    Fix the bug that we've been fixing for a while
+
+commit 907a8f77ab85745b4243ddd47fd31d302cf38997
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 14 14:11:04 2019 +0000
+
+    update paper
+
+commit 0b9b20e584fbc2dbc7928566882f80017b33ccd6
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 14 12:47:12 2019 +0000
+
+    Update model so that it works
+
+commit 6b9dacdeefaf41f10a1be6eefcc70985cc05063a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 14 00:01:07 2019 +0000
+
+    Fix error causing mismatch in numbers of inputs and outputs
+
+commit 772fec00480d68ff18b8afa67240cd8e875d2fd7
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 13 16:11:57 2019 +0000
+
+    Refactor is better
+
+commit ebd9f2bffe24622498620b62e2da1608c2f1fb56
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 13 16:05:52 2019 +0000
+
+    Adjustments to the quality model
+
+commit d855ca5e40b52c48e66857c80bbc629d1510b2d4
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 13 14:19:42 2019 +0000
+
+    Updated paper with new voxnet info
+
+commit d6c588229ae6e413a058eb033deae053f2b250f8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Feb 11 21:27:47 2019 +0000
+
+    Tuning voxnet on the suod dataset
+
+commit 7683d3d627609bdd873e9c9cc7d9672dfcec23fb
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Feb 11 20:30:44 2019 +0000
+
+    Voxnet trains now, just need to test
+
+commit ad9728d7f16b44d3cd821f23c1f8a69985c5dd39
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Feb 8 10:06:00 2019 +0000
+
+    Add in the compilation part
+
+commit c2f91214a136bd99fdba2772d0c4285cbc38d721
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Feb 8 10:03:04 2019 +0000
+
+    Create VoxNet
+
+commit 64fe67dd861babd31f0ba08f7d8a1e27902ac6aa
+Merge: f714c9d 3c8a727
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Feb 8 09:56:18 2019 +0000
+
+    Merge branch 'master' of https://github.com/OhmGeek/LivenessTests into feature/3d_classifier
+
+commit 3c8a72756027364baad99e5fe18b4ab43e6891fd
+Merge: 1af461a d266788
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Thu Feb 7 20:45:50 2019 +0000
+
+    Merge pull request #18 from OhmGeek/refactor/abstract_model
+    
+    Refactor/abstract model
+
+commit d26678877efb258476a4ec02710fffd7bbcfdab1
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 7 20:45:12 2019 +0000
+
+    CNN abstract class implemented fully
+
+commit 2a1f01542191a334579cbe7691ced967f1950153
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 7 20:42:19 2019 +0000
+
+    CNN resnet model
+
+commit 3f898f647a199006019c110f5f96f1b6fb3de4ca
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 7 19:45:12 2019 +0000
+
+    Old LDA stuff works again
+
+commit 76f28710c7b520dddc732f8f35f3c88b797c9384
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 7 19:28:27 2019 +0000
+
+    Create folders and ensure they work, also fix LDA import
+
+commit 93206a0b2db935c495230b8e1aa4420758b28939
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 7 19:21:01 2019 +0000
+
+    AbstractModel with comments
+
+commit 1af461a8081231f003ae474c0422f19bd8740e09
+Merge: e0509f7 526a033
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Thu Feb 7 13:47:53 2019 +0000
+
+    Merge pull request #16 from OhmGeek/feature/residual_network_for_2d
+    
+    WIP: Create basic residual network structure
+
+commit 526a0336d23ba204b4e4126b76fe25a2c4e47efe
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 7 13:29:17 2019 +0000
+
+    Looking good
+
+commit 5eb9dafee1b132c9ba4f7f2c735f19c711cedcfb
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Feb 7 11:19:09 2019 +0000
+
+    Slow down learning rate
+
+commit 049dc6431f3d6a3f17321b7539c97372412b139b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 6 23:16:10 2019 +0000
+
+    Final
+
+commit 6f8a91f745d4ce7cc7b9c2aadf3856495625ddb8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 6 19:43:24 2019 +0000
+
+    Fixed it, it seems to generalise now
+
+commit e7f23f9263d1e887dfb3a3361e29853216a3f38c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 6 13:17:11 2019 +0000
+
+    Slight adjustment
+
+commit e6ad3444496baa336181c0aa5d330458174fc268
+Merge: 0420f74 3dd870a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 6 10:17:16 2019 +0000
+
+    Merge branch 'feature/residual_network_for_2d' of https://github.com/OhmGeek/LivenessTests into feature/residual_network_for_2d
+
+commit 0420f7499682d06b6ea6e68ee96de61af1180cef
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 6 10:17:05 2019 +0000
+
+    sgd
+
+commit 3dd870adb5939925dff6c380c177e3624780221e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 6 10:04:20 2019 +0000
+
+    Try this now
+
+commit 3e82064750ea19632494e2ff926508ed58ad7b07
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Feb 6 09:46:09 2019 +0000
+
+    Add preprocessing lambda
+
+commit bf94ce64e908ad30b91ab7d7937a73547cc9a622
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Feb 4 15:57:48 2019 +0000
+
+    Add some citations; write more
+
+commit e0509f7efcc529b930ae7f30cd0d92e2214f3a05
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Mon Feb 4 14:09:14 2019 +0000
+
+    Rename because I got the month wrong.
+
+commit c42b5f1658e068d3a0640c7a84ff557a75b4740e
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Mon Feb 4 14:08:52 2019 +0000
+
+    Create 04.01.2019.md
+
+commit b7cb502df90f0046e308b36b5e9387d83d0f6a2b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Feb 4 13:58:58 2019 +0000
+
+    Add h5py
+
+commit 79982444f43d6e66eada6e2ca58be05010de21df
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Feb 4 12:13:33 2019 +0000
+
+    Fixed the reason why the model is bad (it's actually good, just using the wrong metric
+
+commit ca82b5f2d9ee1c978b870f9c761388394088071a
+Merge: bc8c280 bc1cdc3
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Feb 1 11:25:09 2019 +0000
+
+    Merge branch 'feature/residual_network_for_2d' of https://github.com/OhmGeek/LivenessTests into feature/residual_network_for_2d
+
+commit bc8c280e0742b029aae04f27c5b284314be01262
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Feb 1 11:24:53 2019 +0000
+
+    Reduce data slightly, import pickle, and slightly adjust training
+
+commit bc1cdc30ca2d814cb4cb569c7b31400ec07f59fc
+Merge: 9b2d6bc c85953c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 31 10:38:46 2019 +0000
+
+    Merge branch 'feature/residual_network_for_2d' of https://github.com/OhmGeek/LivenessTests into feature/residual_network_for_2d
+
+commit 9b2d6bc43e3e14841bf9b7542ca4dc796480d875
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 31 10:38:37 2019 +0000
+
+    Adjust model
+
+commit c85953cc2f42178fd2a1218b392a3492af7e912c
+Merge: 83a93e7 bc202fa
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 31 10:36:04 2019 +0000
+
+    Merge branch 'feature/residual_network_for_2d' of https://github.com/OhmGeek/LivenessTests into feature/residual_network_for_2d
+
+commit 83a93e7c183cfaa5328a62e01cec7594220a2672
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 31 10:35:42 2019 +0000
+
+    Kfold now implemented with augmentation on data
+
+commit bc202fa7d0833aa3715448128abc01d56b17d96f
+Merge: e25a898 b10f0f5
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 22:48:41 2019 +0000
+
+    Fix merge
+
+commit e25a898b66c0de50604db5c84f8c41bc1da46aaa
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 22:47:49 2019 +0000
+
+    Server
+
+commit b10f0f506a2c8d6677117e13d1c8d92eede7dbbe
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 22:44:59 2019 +0000
+
+    Save
+
+commit 8ca61cefdac004a7a6d784bb337a1a2526e63481
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 22:07:24 2019 +0000
+
+    Use pretrained resnet mode as a basel; shuffle data
+
+commit bb6a75690e1f227d6daef0a7e64058f8dae422a7
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:54:14 2019 +0000
+
+    add several citations
+
+commit f714c9d5f1711f1756faf2b6777b963446b4bc33
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:36:58 2019 +0000
+
+    Delete the old vrn folder that we used in testing
+
+commit 28a9eed59df953e6b91d21f2c2bb449df8891a71
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:28:12 2019 +0000
+
+    Add comments, tidy up
+
+commit e8ef94c9d57ae0059483aa08fede97f2901bd467
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:24:50 2019 +0000
+
+    Model 3D reconstruction helper works, and loads preset model
+
+commit 72f052c219cd79a8efae17de270c31f318d9a754
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:19:17 2019 +0000
+
+    Force add the vrn unguided model
+
+commit ab392a23bc614a738a66828f67d1398c72745a30
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:18:16 2019 +0000
+
+    Refactor old wild experiment code to use our helper
+
+commit c5eaecc00e0d3f736ab9968f5d950b30ebaef9f5
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:12:48 2019 +0000
+
+    vol_rgb conversion now implemented
+
+commit a4147762b024629d566bb7ca5ea3aa4f5fa57524
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:10:30 2019 +0000
+
+    Add custom layers, start creating model
+
+commit a33019b13cc776d953cf5d98b5400b66360e4f56
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 10:02:33 2019 +0000
+
+    Add preprocessing function
+
+commit 60e794e178c96169e1f95207f271668101db63b4
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 30 09:51:35 2019 +0000
+
+    Create basic structure to build around
+
+commit b48424d6973db6b8ff993d51e65092f47fa5e0b2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 29 15:40:47 2019 +0000
+
+    Fix typos in comments
+
+commit 9bef8678e877169d1b6913e4aa34502faac9d023
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 29 15:39:38 2019 +0000
+
+    Lit review of roughly how things work
+
+commit 17893780c807dcf82bfe8d04b9474f0c37e2bc26
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 29 15:30:04 2019 +0000
+
+    add more info about 3d reconstruction now we know what we're doing
+
+commit 6a15833748814737de84e6a11d72d427e228cf28
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 29 12:38:17 2019 +0000
+
+    Resnet
+
+commit 5b6c45347f0e01ccdbc9cf429249549dbf1cdf06
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 24 19:47:11 2019 +0000
+
+    Updated residual model class
+
+commit bfe1c481f5f78f4f201da5876290589012b154d6
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 24 14:18:19 2019 +0000
+
+    Create basic residual network structure
+
+commit 040d42bb932e3c2ec0f97a4c00510324cf41b10d
+Merge: 77dedac ed75350
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Thu Jan 24 14:01:33 2019 +0000
+
+    Merge pull request #5 from OhmGeek/feature/add_cnn_model
+    
+    WIP: Feature/add cnn model
+
+commit ed75350b4e92fe5a6ebe0f8aacbc0afc58a8cce5
+Merge: c43872d 77dedac
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Thu Jan 24 14:00:59 2019 +0000
+
+    Merge branch 'master' into feature/add_cnn_model
+
+commit 77dedac664ce05f579fcca8acba7283b74f7bc12
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 23 16:20:07 2019 +0000
+
+    LDA and fix a few code things
+
+commit cc582cafbc201ce50a08790c6f50f0241d874d5f
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 23 11:06:13 2019 +0000
+
+    splitting helper class
+
+commit 95a4035653a7f99f863722576018a9a428f9b0d9
+Merge: 5065d1f eadb4fc
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Wed Jan 23 10:31:12 2019 +0000
+
+    Merge pull request #15 from OhmGeek/feature/load_models_for_testing
+    
+    Test script to load models and test.
+
+commit 5065d1f6d431988f2bff64cf6c61ce3d741d1468
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 23 09:40:52 2019 +0000
+
+    add results
+
+commit eadb4fcb0cb5ce967d7076d3da6bea4515c04c54
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Jan 21 17:36:47 2019 +0000
+
+    Testing
+
+commit c43872db836ac8381babfaf7b6eaa576e6d9a0de
+Merge: 34b0213 f4b6ae6
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Mon Jan 21 16:11:00 2019 +0000
+
+    Merge branch 'master' into feature/add_cnn_model
+
+commit f4b6ae6a440f09f5921bf6c85e54abe35450888f
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Jan 21 16:08:53 2019 +0000
+
+    Save code
+
+commit 34b02130aea0160ed7a8c2980c94eb4c17ed272b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Jan 18 16:27:52 2019 +0000
+
+    More wild experiment things
+
+commit 3e5559983195963ebad649b7da48d4f0d3a09216
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 16 19:43:41 2019 +0000
+
+    Print evaluation
+
+commit 3381906c2d86454c2c8f1f276bbdee27af3fcff9
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 16 16:12:17 2019 +0000
+
+    Add wild experiment for 3d reconstruction from single image
+
+commit ee06c400b038cdfdc279a417548de6d4bf64b7bc
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 16 14:34:33 2019 +0000
+
+    Updated report
+
+commit 0de5625d85eb0a7e0fe09ca596bc4d41fce17cf8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 16 10:33:57 2019 +0000
+
+    Add a basic introduction
+
+commit f35618f876b0fdfb8d6f58d92aa9ff13708e0ed5
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 16 10:22:38 2019 +0000
+
+    Add bibliography
+
+commit 0dd2d37cde62eb7a10e5c201f87de4428628358f
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 16 10:22:17 2019 +0000
+
+    Basic structure created based off RawFlash
+
+commit d3803bb0cb7f084ab7727e1204b6db32d9bc165c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Jan 16 10:07:47 2019 +0000
+
+    Add project paper
+
+commit 657939df5dda10e46ba5bb11a0ee8babd0a1e24d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 15 12:38:38 2019 +0000
+
+    Add blank files to fill in with modules
+
+commit 2c50145ce06df093178309df13ee6e78e349a42a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Jan 14 14:49:32 2019 +0000
+
+    Replay attack dataset reader works well now
+
+commit 60503bb7ef430b22504e2ec0df7b46fdc48c017b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Jan 14 14:20:05 2019 +0000
+
+    Update dataset structures to work properly, efficiently and with a new dataset
+
+commit 58a0f6e307c1dca5fe25aa9ddb94174ce753654a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 20:41:07 2019 +0000
+
+    Close the file at the end
+
+commit 758cff6356a5e8d34d430edcafc544fcabcd4c9c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 20:40:35 2019 +0000
+
+    Load all data in thanks to h5py
+
+commit a438fb4df0eb3ee66c7dc6ef34359fbcf3e802f1
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 20:22:33 2019 +0000
+
+    Remove whitespace
+
+commit 4a43285b8a35d36e715a9e1d0a9e4b663581d2f6
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 15:52:13 2019 +0000
+
+    Remove limits
+
+commit 2a7983d2f0ef68a6c6cbc4845780feb41d994408
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 15:26:16 2019 +0000
+
+    Add notes relating to the current CNN model
+
+commit 4ff1e7a1f5eae314c8fb642f318b89702561b8d8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 15:21:18 2019 +0000
+
+    Alexnet works and trains reasonably well
+
+commit 654323362cae89ae907f20764b07bd251e701ac3
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 11:14:36 2019 +0000
+
+    Merge the two datasets into one
+
+commit 7fb8d2a00c9dd99efcd7e3af6b25a10eb5518b2b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 11:04:03 2019 +0000
+
+    Add dataset to training process
+
+commit 4c7e98c49db3a44a2fd46465262e953372a7e874
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jan 13 10:55:07 2019 +0000
+
+    Add image resize layer
+
+commit 46a413f58ee24a632022abd47b08044d09a5f57b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 10 18:48:30 2019 +0000
+
+    Reseat files, refactor, allow classification
+
+commit 6cf53d2683766ac595ac36c720776bfea3124c29
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 10 12:07:52 2019 +0000
+
+    Initial commit, using keras and alexnet style stuff
+
+commit 5d609a0264e5c1b341ae394ec2c3311718972325
+Merge: 5fef098 fc3b9ae
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Thu Jan 10 11:41:37 2019 +0000
+
+    Merge pull request #4 from OhmGeek/feature/quality_metric_classifier
+    
+    WIP: Feature/quality metric classifier
+
+commit fc3b9aef3c718ce1af73372b6b68ed3c10159221
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 8 14:46:12 2019 +0000
+
+    SVM training works
+
+commit 34ed4b8f2ed0d04eebf926fb87c90e24fcf60c32
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 8 11:34:52 2019 +0000
+
+    Sklearn basic structure for SVM model
+
+commit 5fef09880389cacd55be326de86785771a867e6a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Jan 8 11:22:57 2019 +0000
+
+    Rred basic code, but still nowhere near implemented yet
+
+commit 2de2650ca44912c8800ef63e39c20c7efe140a1f
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Jan 5 23:00:00 2019 +0000
+
+    Factory works, but one metric not implemented
+
+commit 6910d672f7e810f8e8095817557b6886528039a7
+Merge: 74b11fe 9211ba1
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Sat Jan 5 13:21:47 2019 +0000
+
+    Merge pull request #3 from OhmGeek/feature/liveness_quality
+    
+    Add liveness quality metrics
+
+commit 9211ba140630a66331a6fa3ca0f406f2a2032893
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Jan 5 13:20:23 2019 +0000
+
+    Remove whitespace
+
+commit 2ffa1c882786f62ffa39fbaddff08172a5112b6c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 3 14:08:32 2019 +0000
+
+    BIQI works, but needs some minor adjustments
+
+commit 55bba3244dac177e767a09280330b914fb919879
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Jan 3 11:18:01 2019 +0000
+
+    Basic BIQI implementation, not yet tested
+
+commit 7efe5948e82abcb4977d115c600cfd60f80ca620
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Dec 17 16:39:21 2018 +0000
+
+    Completed niqe
+
+commit 1223ff2e5b6fdcada06fa6f03e0b34832533a1b8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Nov 30 00:52:11 2018 +0000
+
+    Done hlfi
+
+commit 78d1fd0e92f836d6a312143e894f7e9fe88cc953
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 11:22:43 2018 +0000
+
+    Create stub for hlfi
+
+commit e9335da1840d163bf47df1d79c8ecd7ce5c56d96
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 11:14:36 2018 +0000
+
+    Add vifd
+
+commit bb8a2ccde111ce609f3d8907196047773a7cc053
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 11:00:51 2018 +0000
+
+    Add SSIM
+
+commit a40fc291b9aec3a78aec6054d3a7346179d32bc0
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 10:52:47 2018 +0000
+
+    Updated code, and fixed python errors
+
+commit 924ee542e5b63237f7d4a75b7a6634ec4426a769
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 10:12:33 2018 +0000
+
+    Write but not test JPEG metric
+
+commit 80076fbb62cc87d0fe4c4ef851e431608e9ae0ce
+Merge: bf5145c 5078193
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 09:32:17 2018 +0000
+
+     Fix merge conflicts
+
+commit bf5145cee4fd27d942f1fcabfbe5e016ccfab9b7
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 09:30:23 2018 +0000
+
+    2Merge
+
+commit 1aba6347c0fcea0ae63a6fd0a02a57d337399139
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 21 09:29:17 2018 +0000
+
+    updated metrics
+
+commit 5078193cbffb79472a0b08a5132782fe4cc54c48
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 22:03:51 2018 +0000
+
+    Add mams, remove un-necessary stuff
+
+commit 4b7c118818132039c274cfd61e764f751b6b212b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 21:55:55 2018 +0000
+
+    Completed MAS
+
+commit 1d93890f2f20dce8d704288ec3179d7560f26284
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 21:07:31 2018 +0000
+
+    Fix TED, complete RAMD
+
+commit e4c7a9f165052b6dff4f4ed27bbc98cde0cdf16b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 16:44:45 2018 +0000
+
+    have you met TED? or his friend TCD/Marshall?
+
+commit b5d05aa11f1ba8af5f3d575b9acccf6171b35720
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 16:19:59 2018 +0000
+
+    Add SPE
+
+commit 90a101455a62b2c1e7d1e44276fea17e0b01e944
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 11:34:33 2018 +0000
+
+    Add Spectral Magnitude Error
+
+commit 2a0d9cbc670d331f1e45e3159fb4752347011112
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 11:16:01 2018 +0000
+
+    Phase
+
+commit ceca597e8689a17cfe9a909c1ae9defe5766a5d2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 10:50:25 2018 +0000
+
+    Added gme
+
+commit 776b900ca1dff966513dbe641827df2b8ec855b2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 14 10:34:40 2018 +0000
+
+    Add AD and LMSE
+
+commit 90bf224448e3f24789749b2cad5b430e615b0163
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 7 22:28:29 2018 +0000
+
+    Fixed NCC
+
+commit 083bb1731fbde4456b56d109c704c0402237b349
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 7 22:23:21 2018 +0000
+
+    Fixed all, apart from 1
+
+commit 31465efbb0e39dcd0d1a02d58e02f6c9fd577c9f
+Merge: 9368c2e 698a5e3
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 7 22:04:59 2018 +0000
+
+    Merge branch 'feature/liveness_quality' of https://github.com/OhmGeek/LivenessTests into feature/liveness_quality
+
+commit 9368c2ebef6dcf0493552062e4840eb62c045677
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 7 22:04:50 2018 +0000
+
+    Create metric_vector tools
+
+commit 698a5e398073390b426ba81e9808e451ab89a9fa
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Nov 7 22:03:52 2018 +0000
+
+    Add RAMD
+
+commit 425ecc4ee20245328f370db1ab429fe51cbefcd2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Nov 4 21:48:37 2018 +0000
+
+    Add signal to noise ratio
+
+commit 3106c5db34e6e2bf44d422fa3a3e1a73b8f3efb2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Nov 4 21:42:50 2018 +0000
+
+    Added structural content
+
+commit 94740150f2bc32fac333c8e355be91454ea0c304
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Nov 4 21:40:52 2018 +0000
+
+    Add peak signal to noise ratio
+
+commit a32c2fe2fd0f2ea292279659da7ef79d9c11792a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Nov 4 21:36:12 2018 +0000
+
+    Implement Normalised cross correlation metric
+
+commit dc5aaf7db6b477d7dbae1ded628035f38bc18d7d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Nov 4 21:32:06 2018 +0000
+
+    Add nae, throw not implemented for laplacian
+
+commit f87f731bd8f14aad6b103b489daca181962dc847
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Nov 4 16:23:46 2018 +0000
+
+    Add image blurrer
+
+commit 184565222ed55ec6811a8cdc25d5053e7ba6286d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Nov 4 16:15:58 2018 +0000
+
+    Created files; implemented md and mse
+
+commit 74b11fea12e69d9c918faf7ad81006171e881265
+Merge: 0c90cde a8a3595
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Sun Nov 4 15:55:04 2018 +0000
+
+    Merge pull request #2 from OhmGeek/feature/dummy_test_case
+    
+    Feature/dummy test case
+
+commit a8a3595765dc6cc727c1b46ae6d83e078e79035d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 30 20:53:15 2018 +0000
+
+    Fixed inheritance issue with dummy model; reordered code; used mock data to run without requiring excess resources
+
+commit 2baf5444b2663a0e4049aca8e76d0d38471b4885
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 30 20:41:50 2018 +0000
+
+    Fix initialisation; fix incorrect ordering in tests.py file
+
+commit 9adc452087f0c7dc6b464be7ca581275f22655d8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 30 20:33:42 2018 +0000
+
+    Moved code from generic case to more specific case, with abstract method change
+
+commit 1936d016d2a2c0b84c6e7c17aaccc14a0838e783
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 30 20:28:20 2018 +0000
+
+    Tests
+
+commit cdd68fc924dc700d02f86557ae812ca54c0da2b3
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 30 20:18:12 2018 +0000
+
+    Generic case of a test
+
+commit 0c90cdee1a9cd783bb52f03d6eae9d759c64aac9
+Merge: 4e27009 c63b744
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Tue Oct 30 16:05:36 2018 +0000
+
+    Merge pull request #1 from OhmGeek/feature/generic_and_nuaa_datasets
+    
+    Feature/generic and nuaa datasets
+
+commit 4e27009f3f06873c94d84501f98d0e847ba6ab4b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Oct 26 14:41:28 2018 +0100
+
+    Add notes from first project lecture
+
+commit 55e824ef5179098bbf6a749f6fb2c03dc84a0163
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Oct 26 14:04:07 2018 +0100
+
+    Add a gitignore for python
+
+commit f83014a6948cd8b826cb5e62b1debdcc6bcb6062
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Oct 26 11:43:23 2018 +0100
+
+    Restate the project plan again
+
+commit 5a9bde7ec950e88a236d7cfeae831bd823c09e0f
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Oct 26 11:36:42 2018 +0100
+
+    Updated gantt chart, and hopefully the final spec adjustments
+
+commit c63b744d69056861bee14d1215db47f3d8c941b2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 24 21:27:23 2018 +0100
+
+    Add optimisation, add logging, add exception handling
+
+commit f3b46c9922a2d8e0d6cd2d706a225516be49c496
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 24 13:49:01 2018 +0100
+
+    Allow distinct labels (based on files)
+
+commit 852ad94e8c6097bce59a813096692f02950876ee
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 24 12:12:33 2018 +0100
+
+    Ignore all h5 files (they are just data and generated automatically)
+
+commit 1583dc23b6262cd4059545cc93a2ac7fbb99cf4e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 24 12:11:59 2018 +0100
+
+    Add code that reads NUAA dataset
+
+commit 803e8b89cf739f29b73cad6a052425bdc1c2483a
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 24 10:24:27 2018 +0100
+
+    Reformat code; add super class calls
+
+commit f67ace143bc300af68ec4daf5d61cef3c54be7be
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 24 10:17:05 2018 +0100
+
+    Refactor and improve code quality
+
+commit 209b674947ff28e8509ee555e8d1168b50f33bd8
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Oct 20 14:59:46 2018 +0100
+
+    updated gantt chart to more reflect updated spec
+
+commit 58d96f42ca72c65df8c3c43ad4dbe92285d5a878
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Oct 20 14:54:27 2018 +0100
+
+    More explicit with the comparison
+
+commit 02c149dc1d8790619a1299fd84e4c981dfc541ca
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Oct 20 14:40:50 2018 +0100
+
+    Add sample opencv reader for NUAA, and fix gitignore2
+
+commit 106954d2b69c30b061f3e2cf711707e2c234e90b
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Fri Oct 19 11:24:05 2018 +0100
+
+    More explicit
+
+commit bfbf2fa25914d4504b71bc4426bbc5eccbff7488
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Oct 18 13:10:08 2018 +0100
+
+    Create readme defining what we need to do, and started creating stub methods
+
+commit 1b1af56440a824ecce8aa2e358774d4af978b55e
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Oct 18 12:43:21 2018 +0100
+
+    Add version sent off to supervisor
+
+commit 8090d3f5703bbe7ec0ed21a74b18a5fb18dd8dc6
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 17 21:43:09 2018 +0100
+
+    Add further details about liveness methods
+
+commit ccb9c56dc01cac0e5463dc2b8041f54c819c56f2
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 17 11:40:44 2018 +0100
+
+    Start creating a basic test framework
+
+commit 9bc55daff13b1fd2979b4eb124b4803fc876fb56
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 17 11:24:45 2018 +0100
+
+    Start writing basic framework
+
+commit 06054d5a9f27d2dcb36ebfebeb169bce098d1c65
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 17 10:29:20 2018 +0100
+
+    Added dataset details
+
+commit fcfa37f2e2af8d8716eaceb58fcd342b34c9153d
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 16 11:09:26 2018 +0100
+
+    Add furhter liveness test documentation
+    asdf
+
+commit b4d49ce230fa00055399c7d879c2791c73d7eee0
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Oct 15 21:00:23 2018 +0100
+
+    Added further source to notes made today
+
+commit 55cc520c2a1ca7b7eb69f115904fc58e4a6205c0
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Mon Oct 15 20:53:47 2018 +0100
+
+    Delete all the stuff that doesn't matter anymore
+
+commit 08e0c8a01d0f4861318c31220142663601e4dab5
+Author: ryan <ryan@Lexo.home>
+Date:   Mon Oct 15 16:49:09 2018 +0100
+
+    Sources, adjustments
+
+commit cef20b9fcf0efa33ecf8cde7eb5316934fd1c834
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Thu Oct 11 22:04:12 2018 +0100
+
+    Ready for the meeting tomorrow
+
+commit ac1c16489807420c1a39c84c88f61825add99bc1
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 10 20:59:42 2018 +0100
+
+    Update design report and add autoencoder
+
+commit d1641e116eaf5f876acd8821a0692d279774c495
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 10 17:16:14 2018 +0100
+
+    Adjust spec
+
+commit f7e71cd5222a8fef3d320a17d0a305cda7622450
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 10 13:07:34 2018 +0100
+
+    Add new lit review sources and content
+
+commit e16337df05061cac390a80e830300f8202187500
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 10 11:16:18 2018 +0100
+
+    Started creating the basic pages to be displayed
+
+commit f368ddbdab2a155ce87f2fdcf120f0ea8ec1e7a4
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Wed Oct 10 10:02:49 2018 +0100
+
+    Add Main Server with dotnetcore
+
+commit 4d30b02d42ee077658044299c4f32e1acd620a64
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 9 16:47:00 2018 +0100
+
+    Update lit review, add folder strucutre for app
+
+commit 6848431b38b5920b12a838b3640a702937a32ad1
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 9 15:45:45 2018 +0100
+
+    Add ideas and furhter content to lit review
+
+commit 68fcb4dcdb185c5bfb8d2a8938fa19fca2df2796
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 9 11:28:34 2018 +0100
+
+    Further content to LIt Review
+
+commit 1577d5d18c7d988725c288a04b79c49b6e40035f
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Tue Oct 9 10:36:24 2018 +0100
+
+    Add some content to lit review
+
+commit 3f152e94e8f9088d1d682cfb6772fe9ea71a2069
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Aug 4 13:14:35 2018 +0100
+
+    Create literature review
+
+commit c630df1b26860b6becb6259e42b340102ca1a75c
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sat Aug 4 13:09:24 2018 +0100
+
+    Created start of the spec for our new project
+
+commit eadad82b1974dfc37f91ed445ae8a1cce01b24e7
+Author: Ryan Collins <ryan@ohmgeek.co.uk>
+Date:   Sun Jun 17 14:27:11 2018 +0100
+
+    Add basic info
+
+commit 02f6e67c1e8ba545c6da0a55d52d6e2574c14209
+Author: Ryan Collins <OhmGeek@users.noreply.github.com>
+Date:   Sun Jun 17 14:12:43 2018 +0100
+
+    Initial commit

@@ -1,4 +1,1 @@
 \select@language {english}
-\contentsline {paragraph}{Quality Test}
-\contentsline {paragraph}{2D CNN}
-\contentsline {paragraph}{3D VoxNet Liveness Test}

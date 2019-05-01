@@ -7,18 +7,16 @@
 %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for examples
   \usetheme{Durham} %% This points to the theme cooked up by the final year tutor
 }
-
-
+% \usepackage{beamerthemeDurham}
+% \usepackage{titlesec}
 \usepackage[english]{babel} 
+% \usepackage{durhamtheme}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym}
-\usepackage{subfigure}
-\usepackage{todonotes}
-\usepackage{savetrees}
   \usefonttheme[onlymath]{serif}
   \boldmath
-  \usepackage[orientation=landscape,size=a3,scale=1.4,debug]{beamerposter}                       
-
+  \usepackage[orientation=landscape,size=a3,scale=1.1,debug]{beamerposter}                       
+  \usepackage{wrapfig}
   % e.g. for DIN-A0 poster
   % \usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}
   % e.g. for DIN-A1 poster, with optional grid and debug output
@@ -38,116 +36,122 @@
   \vfill
     \begin{columns}[t]
       \begin{column}{.48\linewidth}
-        \begin{block}{Introduction}
-         
-            The goal of this project was to investigate facial liveness tests, and propose a small set of liveness tests to include in a facial liveness system. This project aimed to investigate
-            existing literature and produce liveness tests that are more designed for existing real-life applications, therefore not requiring any extra hardware (aside from what's available within
-            a modern day smartphone or computer). Furthermore, the liveness tests must also be fairly fast to compute, since a real world web system would be limited by users' attention spans.
-            It's important to explain the difference between recognition and liveness: recognition is the process of identifying whether someone is who they say they are, but liveness is
-            about detecting potential acts of spoofing within a given input (i.e. is the person alive, or are they simply a screen/piece of paper).
-
-            The first, and most common type of attack, is a 2D presentation attack. This occurs where an image, or video, is displayed in front of the camera (using either a screen or a piece of paper).
-            To combat these types of attacks, two different methods were developed: the first being an image quality based method called WIQA, and another being a Residual Network based classifier
-            to classify realness based on facial structure.
-
-            The other type of attack is a 3D based mask attack. This occurs where a mask is created and presented as input. Masks might have eye cutouts, and mouth cutouts. 
-            A new 3D-based liveness test was proposed based on a two part approach: (i) VRN based 3D reconstruction (ii) VoxNet based 3D classification. However, results with
-            this method weren't within desired parameters, and it therefore wasn't suitable for a production grade system.
-
+        \begin{block}{What are Facial Liveness Tests?}
+            Liveness tests are a method of testing whether an input image has been spoofed for malicious intent.
+            Methods such as holding a piece of paper in front of a camera, holding a video of a subject in front of a camera,
+            or wearing a mask of the subject are a few ways that existing facial recognition systems can be fooled into unlocking
+            a device/system for a malicious third party. Facial liveness tests are the answer, aimed at detecting these attacks, based on
+            a variety of different methods including analysis of quality, texture, or facial structure.  
+        \end{block}
+        \begin{block}{Why are Facial Liveness Tests important?}
+          One of the common arguments against facial recognition systems is that while a password can be changed, your face cannot.
+          This implies that someone could steal the facial likeness, and use it to break into accounts/systems. Providing a facial liveness system does a good enough job,
+          this argument is massively reduced by preventing spoofing attacks from happening, thus reducing the risk of someone stealing another person's likeness.
         \end{block}
 
-        \begin{block}{Image Quality Assessment}
-          \begin{figure}
-            \includegraphics[width=.5\linewidth]{ImageQualityLivenessTest.pdf}
+        \begin{block}{What does facial spoofing look like?}
+          Here is an example. The aim here is to obtain a realness factor from our liveness tests that considers a mixture of
+          the image quality differences between real fake images (specifically in the more detailed high frequencies within an image),
+          analysis of facial stucture differences.
+          \begin{figure}[!tbp]
+            \centering
+            \begin{minipage}[b]{0.3\textwidth}
+              \centering
+              \includegraphics[width=100px]{RealImage.jpg}
+              \caption{A real image of a person. Image from the NUAA dataset.}
+            \end{minipage}
+            \begin{minipage}[b]{0.3\textwidth}
+              \centering
+              \includegraphics[width=100px]{SpoofedImage.jpg}
+            \caption{A spoofed image with a paper based replay attack. Image from the NUAA dataset.}
+            \end{minipage}
           \end{figure}
-    
+        
         \end{block}
-       
-        \begin{block}{Residual Networks for Facial Liveness}
-          
+        \begin{block}{Method 1: CNN based liveness detector}
+          \begin{wrapfigure}{l}{100px}
+            \includegraphics[width=100px]{2DCNNArchitecture.pdf}
+          \end{wrapfigure}
+          % TODO redo this making it more left-right compared to down. This way it'll fit properly and wrap ideally.
+          Recently, Convolutional Neural Networks have played a major part in image classification. Specifically,
+          Residual Networks have performed very well on the ImageNet dataset, classifying types of objects based on a
+          2D photo. Since facial liveness detection is also an image classification problem, an ImageNet based classifier could
+          be adapted to the role of liveness detection. This model can be used to analyse facial structure and textural information
+          to classify liveness. The architecture of our model can be seen on the left.
+
+          Within the preprocessing step, a CNN based face detector is used to produce the bounding box of the face. This is then cropped
+          into a square image (224x224), which contains just the facial area. This image is what's used to be classified. The ResNet50 model
+          is mostly pretrained, with the last layer being trainable, since image classification features between ImageNet and facial liveness will
+          likely be similar. Then, a standard feed forward network is used to produce the final output of realness (either 0 or 1), using the softmax
+          activation function. 
 
           \begin{figure}
-            \includegraphics[height=450px]{2DCNNArchitecture.pdf}
+            \centering
+            \includegraphics[width=100px]{FaceExtraction.png}
+            \caption{The result of the preprocessing step, yielding a cropped face.}
           \end{figure}
-    
+
+          Accuracy yielded was adequate, with a 71\% accuracy on the Replay Attack test dataset. 
+          However, the model had a very low false positive rate,
+          with most errors being caused by false negatives (which is annoying for a user but not a security threat).
+
         \end{block}
-
-        \begin{block}{Facial reconstruction with classification from a 2D image}
-          This was a proposed model that wasn't too effective based on the expected running times. Instead of the Replay-Attack or NUAA datasets,
-          the Mask Attack Dataset was used since the goal of this classifier was to detect 3D based attacks.
-
-          Given a 2D image, one can use pretrained neural network models to reconstruct the face in 3D. From here, this 3D representation could be
-          classified.
-
-          The reconstruction method used was VRN. This method produces a voxel representation which can then be classified. However, the time taken to
-          reconstruct a single face with this model is 5 seconds, which is quite excessive for a production system for the web.
-
-          The 3D classifier to use was VoxNet, since it performed adequately on the SUOD dataset. However, one major problem with dimensions occured: since the 3D reconstruction
-          is of size 192x192, and this dimensionality is required, a large number of filters is needed for each convolution (192 filters to be precise). This led to a large
-          memory complexity, meaning training was problematic. Decreasing the number of filters led to a model which wouldn't learn.
-
-          While this model seemed like an interesting concept, and with more filters might perform adequately, in practice for production purposes it's not the most ideal solution.
-          Therefore, this model isn't a suitable method to be included in such a system. However, future work could utilise 2D based CNN models (such as ResNet) to classify any 2D remnants of
-          masks.
-          
-        \end{block}
-
-        \begin{block}{Bringing several metrics together}
-          Each individual liveness test produces some error in liveness classification. In order for a production system to be viable, this error needs to be reduced. Therefore, the solution is
-          liveness test fusion: merging the results of different liveness tests together.
-
-          Each liveness test has the option of producing a realness class (0 for fake, 1 for real), but using these integers as part of a sensor fusion system isn't ideal, since there's no measure
-          of certainty. However, the probability of a classification can also be obtained, which ideally would yield a figure of 1 for real, or 0 for fake, or some number in between. However, the variance
-          of each test isn't guaranteed, and specifically in the case of the WIQA method a fake image yields an output of 0.49, while a real image yields an output of 0.51. A fusion method should therefore be designed
-          to take this into consideration.
-
-          Initially, a perceptron was considered. For the two working metrics from above, the probabilities were plotted on a 2D chart. The probabilities themselves could be considered as linearly seperable, but
-          when adding more and more nodes this might not be ideal (since it might be difficult for the classifier to learn a non-linearly seperable function space). As a result, an LDA was used.
-
-          The LDA consolidation layer produced an accuracy of 0.75 which is improved over the individual metrics accuracy. However, it's hard to test the scalability here with only 2 livneess tests, so more work is needed to
-          see how this scales.
-        \end{block}
-
       \end{column}
 
-
       \begin{column}{.48\linewidth}
+        \begin{block}{Method 2: Whole Image Quality Assessment}
+          \begin{wrapfigure}{r}{200px}
+            \includegraphics[width=200px]{ImageQualityLivenessTest.pdf}
+          \end{wrapfigure}
+          This method considers the whole image quality, as a spoofed image is likely to have less details than a non-spoofed image.
+          This liveness test uses 24 different methods of measuring image quality. Some metrics are full reference, which require the use of a Gaussian Blurred
+          version of the image to compare to, which analyse the overall pixel based error, image noise, and frequency ranges. Other quality metrics use pretrained classifiers
+          to analyse quality.
+        
+          The results of these quality metrics are then fed through a classifier. The classifier used was Linear Discriminant Analysis, with an eigenvector solver.
+          Below, a diagram of how this system works can be seen.
 
-        \begin{block}{Evaluation}
-          % TODO rewrite this
-          \paragraph{Quality Test}
-          The Quality Test performed well, and is suitable for a web based liveness service due to the high 87\% accuracy achieved.
-          True positives and true negatives (that is, correct predictions for both real and fake) were high which means that the classifier
-          is classifying correctly. However, the high false positive rate shows a slight cause for concern, since the model in 12.5\% of cases
-          classified a fake image as real, which isn't ideal for our security focused solution. This could potentially be solved by adjusting output
-          variable of the classifier (using a figure representing 'fakeness' rather than realness). This would hopefully lead to more false negatives,
-          which are inconvenient but more secure for the system.
+          Overall, this method led to 87\% accuracy when classifying liveness on the ReplayAttack test dataset. 
+          A high number of true negatives and positives were yielded, but when an error occured, the classifier was more likely to class
+          spoofed images as real, compared to the other way around, which isn't ideal for security conscious applications.
 
-          In terms of computational performance, a 1.40 second time for classifying a single image is within the limits of the expected 2 seconds, and could be improved further
-          with parallel based methods, and not relying on libsvm for the BIQI metric.
-      \paragraph{2D CNN}
-          The 2D CNN Test performed adequately. While the accuracy was lower than expected (at 71\%), the classifier itself still performed better than random.
-          Furthermore, the model was very good at classifying true negatives, with a total percentage of 71.5\% being true negatives. While the model itself had
-          a higher than expected false negative percentage, this is just inconvenient for the user rather than a security problem. The model showed it could classify true
-          positives, but this figure was fairly low. This could be improved by improving the training process: ensuring each input image has a correctly identified face (as
-          some images without a detectable face would have been left to classify the entire image, just resized to the input size). The less noise in the input data, the better the potential
-          results in the future. Furthermore, using a larger ResNet model, such as ResNet-101 could lead to better results.
+          The current method does have drawbacks, as the training data led to an expected resolution, and with images of different resolutions
+          the prediction is often erroneous. One solution is to include resolution as it's own image quality metric within the classifier. For the demo,
+          the solution was to resize an input image down to (640x480), which solves the problem temporarily, but future improvements should be able to predict
+          liveness without this resize step.
 
-          In terms of performance, classifying an image is very quick, but the time taken to load the model is what took the most time (due to memory needing to be allocated and written to).
-          In production, providing a model was preloaded and ready to accept input, the computation time of this metric would be very fast, and therefore be ideal for inclusion in a liveness web service.
-      \paragraph{3D VoxNet Liveness Test}
-          As seen from the results, this method of liveness test isn't feasible. With extra training, while the accuracy of the model could be improved, the
-          real time memory requirements don't seem feasible. Based on the VoxNet paper, the accuracy achieved with a 32x32 VoxNet classifier on the SUOD dataset (a 3D dataset of objects)
-          is 69\%. While this accuracy could be justified with reasonable computational and memory characteristics, this further proves that this method isn't feasible in the current state. In the future, a new approach of detecting 3D attacks is necessary.
+          Furthermore, while the time to predict a single image is fairly fast, it could be improved further by migrating to a sklearn based classifier for the BIQI image quality metric.
+          Currently, a libsvm based classifier is used, which is called by accessing the file system. This is very slow.
 
         \end{block}
-        
-        \begin{block}{Conclusion}
-          % TODO this needs to probably be reworded.
-          This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks, with adequate accuracy and computational requirements.
-          The image quality liveness test is accurate and fast, while the ResNet based method is a feasible idea and performs adequately, and could be improved further to improve the accuracy. For 3D attacks however, the
-          proposed VoxNet based model performed badly and is not recommended for inclusion in a liveness test web service.
+     
 
+
+        \begin{block}{Real-time Liveness System - a proof of concept}
+          The liveness methods above were brought together into a real-time liveness detection system, utilising an OpenCV based GUI.
+          While simple, this could be furhter improved in the future to allow for liveness as a service platform, allowing developers to calculate liveness on the cloud,
+          rather than relying on built-in features. For the screenshots below, videos from the Replay-Attack dataset were used, but this system also allows for webcam access in real time.
+          This is a proof of concept of a future liveness system that could be put into production.
+
+          \begin{figure}[!tbp]
+            \centering
+            \begin{minipage}[b]{0.3\textwidth}
+              \centering
+              \includegraphics[width=100px]{FakeOutputAndCorrect.png}
+              \caption{A spoofed image being correctly classified as fake by both liveness tests. Frames obtained from the Replay-Attack test dataset.}
+            \end{minipage}
+            \begin{minipage}[b]{0.3\textwidth}
+              \centering
+              \includegraphics[width=100px]{BothRealAndCorrect.png}
+            \caption{A real image being correctly classified as real. Frames obtained from the Replay-Attack test dataset.}
+            \end{minipage}
+          \end{figure}
+          
+          One additional finding by testing in real time was that the CNN based liveness test was often correct in it's prediction, but occasionally would
+          switch to a prediction of 'fake' for a single frame. Therefore, the liveness test could be improved by analysing several frames, and determine the modal liveness from that set of frames.
+          
+          Furthermore, and improvement that can be made to this is to speed the calculation of each liveness test up a bit. Currently, each liveness test is called and executed individually, in series. This could be parallelised,
+          either on one machine or by using distributed computing technologies.
         \end{block}
       \end{column}
     \end{columns}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  28 APR 2019 14:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.23)  1 MAY 2019 11:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -535,198 +535,34 @@ Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
-) (/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
-Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip57
-\subfigcapskip=\skip58
-\subfigcaptopadj=\dimen189
-\subfigbottomskip=\skip59
-\subfigcapmargin=\dimen190
-\subfiglabelskip=\skip60
-\c@subfigure=\count155
-\c@lofdepth=\count156
-\c@subtable=\count157
-\c@lotdepth=\count158
-
-****************************************
-* Local config file subfigure.cfg used *
-****************************************
-(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
-\subfig@top=\skip61
-\subfig@bottom=\skip62
-) (/usr/share/texlive/texmf-dist/tex/latex/todonotes/todonotes.sty
-Package: todonotes 2015/07/09 .dtx Todonotes source and documentation.
-Package: todonotes 2012/07/25
- (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemeserif.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamerposter/beamerposter.sty
+Package: beamerposter 2015/04/21 v.1.12 latex-beamer poster extension
+ (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
  (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks45
 \XKV@tempa@toks=\toks46
 )
-\XKV@depth=\count159
+\XKV@depth=\count155
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box53
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
-) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen191
-\pgf@nodesepend=\dimen192
-) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
-)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen193
-\pgffor@skip=\dimen194
-\pgffor@stack=\toks47
-\pgffor@toks=\toks48
-)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count160
-\pgfplotmarksize=\dimen195
-)
-\tikz@lastx=\dimen196
-\tikz@lasty=\dimen197
-\tikz@lastxsaved=\dimen198
-\tikz@lastysaved=\dimen199
-\tikzleveldistance=\dimen256
-\tikzsiblingdistance=\dimen257
-\tikz@figbox=\box54
-\tikz@figbox@bg=\box55
-\tikz@tempbox=\box56
-\tikz@tempbox@bg=\box57
-\tikztreelevel=\count161
-\tikznumberofchildren=\count162
-\tikznumberofcurrentchild=\count163
-\tikz@fig@count=\count164
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count165
-\pgfmatrixcurrentcolumn=\count166
-\pgf@matrix@numberofcolumns=\count167
-)
-\tikz@expandcount=\count168
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
-))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count169
-\calc@Bcount=\count170
-\calc@Adimen=\dimen258
-\calc@Bdimen=\dimen259
-\calc@Askip=\skip63
-\calc@Bskip=\skip64
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count171
-\calc@Cskip=\skip65
-)
-\c@@todonotes@numberoftodonotes=\count172
-) (/usr/share/texlive/texmf-dist/tex/latex/savetrees/savetrees.sty
-Package: savetrees 2016/04/13 v2.4 Pack as much text as possible onto each page
-\everypar=\toks49
-) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box58
-\beforetitleunit=\skip66
-\aftertitleunit=\skip67
-\ttl@plus=\dimen260
-\ttl@minus=\dimen261
-\ttl@toksa=\toks50
-\titlewidth=\dimen262
-\titlewidthlast=\dimen263
-\titlewidthfirst=\dimen264
-
-
-Package titlesec Warning: Non standard sectioning command detected
-(titlesec)                Using default spacing and no format.
-
-
-Package titlesec Warning: Non standard sectioning command detected
-(titlesec)                Using default spacing and no format.
-
-
-Package titlesec Warning: Non standard sectioning command detected
-(titlesec)                Using default spacing and no format.
-
-/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty:1290: Undefined control sequence.
-<argument> \paragraph 
-                      
-l.1290 \ttl@extract\paragraph
-                             
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Package titlesec Warning: Non standard sectioning command detected
-(titlesec)                Using default spacing and no format.
-
-/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty:1291: Undefined control sequence.
-<argument> \subparagraph 
-                         
-l.1291 \ttl@extract\subparagraph
-                                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Package titlesec Warning: Non standard sectioning command detected
-(titlesec)                Using default spacing and no format.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2016/05/14 v2.6a Micro-typographical refinements (RS)
-\MT@toks=\toks51
-\MT@count=\count173
-LaTeX Info: Redefining \textls on input line 774.
-\MT@outer@kern=\dimen265
-LaTeX Info: Redefining \textmicrotypecontext on input line 1310.
-\MT@listname@count=\count174
- (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
-File: microtype-pdftex.def 2016/05/14 v2.6a Definitions specific to pdftex (RS)
-LaTeX Info: Redefining \lsstyle on input line 916.
-LaTeX Info: Redefining \lslig on input line 916.
-\MT@outer@space=\skip68
-)
-Package microtype Info: Loading configuration file microtype.cfg.
- (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2016/05/14 v2.6a microtype main configuration file (RS)
-)) (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemeserif.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamerposter/beamerposter.sty
-Package: beamerposter 2015/04/21 v.1.12 latex-beamer poster extension
- (/usr/share/texlive/texmf-dist/tex/latex/type1cm/type1cm.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/type1cm/type1cm.sty
 Package: type1cm 2002/09/05 v0.04 BlueSky/Y&Y Type1 CM font definitions (DPC, patched RF)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
  `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich (/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count175
+\actioncount=\count156
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count176
-\FP@xia=\count177
-\FP@xib=\count178
-\FP@xfa=\count179
-\FP@xfb=\count180
-\FP@rega=\count181
-\FP@regb=\count182
-\FP@regs=\count183
-\FP@times=\count184
+\FP@xs=\count157
+\FP@xia=\count158
+\FP@xib=\count159
+\FP@xfa=\count160
+\FP@xfb=\count161
+\FP@rega=\count162
+\FP@regb=\count163
+\FP@regs=\count164
+\FP@times=\count165
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-snap.sty
@@ -739,7 +575,7 @@ Package: fp-trigo 1995/04/14
 Package: fp-pas 1994/08/29
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count185
+\FPseed=\count166
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-upn.sty
@@ -757,524 +593,531 @@ Package beamerposter Info: finished orientation check. on input line 129.
 Package beamerposter Info: checking size input, please wait. on input line 129.
 Package beamerposter Info: the input a3\ 4\ was correct, we proceed. on input line 129.
 Package beamerposter Info: finished size input check. on input line 129.
-Package beamerposter Info: myfontscale=1.4 on input line 129.
+Package beamerposter Info: myfontscale=1.1 on input line 129.
 Package beamerposter Info: enabled debug mode on input line 129.
  ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontscale * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "1.4"
+FP debug: upn: result      "1.1"
 FP debug: upn: calculating "fontscale"
 FP debug: upn: result      "0.35355339"
-FP debug: upn: calculating "0.35355339 mul 1.4"
+FP debug: upn: calculating "0.35355339 mul 1.1"
 ( FP-MUL )
-FP debug: upn: result      "0.494974746000000000"
+FP debug: upn: result      "0.388908729000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(0.494974746000000000:2)"
+FP debug: upn: calculating "round(0.388908729000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "0.49"
-FP debug: upn: +++ result of upn-expression is "(0.49)"
+FP debug: upn: result      "0.39"
+FP debug: upn: +++ result of upn-expression is "(0.39)"
 )
 Package beamerposter Info: paperwidth=1194.44656pt, paperheight=845.04675pt on input line 172.
 Package beamerposter Info: textwidth=1165.9938pt, textwidth=816.594pt on input line 173.
-Package beamerposter Info: fontscale=0.35355339, myfontscale=0.49 on input line 174.
+Package beamerposter Info: fontscale=0.35355339, myfontscale=0.39 on input line 174.
  ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "12"
-FP debug: upn: calculating "12 mul 0.49"
+FP debug: upn: calculating "12 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "5.880000000000000000"
+FP debug: upn: result      "4.680000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(5.880000000000000000:2)"
+FP debug: upn: calculating "round(4.680000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "5.88"
-FP debug: upn: +++ result of upn-expression is "(5.88)"
+FP debug: upn: result      "4.68"
+FP debug: upn: +++ result of upn-expression is "(4.68)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "14"
-FP debug: upn: calculating "14 mul 0.49"
+FP debug: upn: calculating "14 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "6.860000000000000000"
+FP debug: upn: result      "5.460000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(6.860000000000000000:2)"
+FP debug: upn: calculating "round(5.460000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "6.86"
-FP debug: upn: +++ result of upn-expression is "(6.86)"
+FP debug: upn: result      "5.46"
+FP debug: upn: +++ result of upn-expression is "(5.46)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "14.4"
-FP debug: upn: calculating "14.4 mul 0.49"
+FP debug: upn: calculating "14.4 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "7.056000000000000000"
+FP debug: upn: result      "5.616000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(7.056000000000000000:2)"
+FP debug: upn: calculating "round(5.616000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "7.06"
-FP debug: upn: +++ result of upn-expression is "(7.06)"
+FP debug: upn: result      "5.62"
+FP debug: upn: +++ result of upn-expression is "(5.62)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "18"
-FP debug: upn: calculating "18 mul 0.49"
+FP debug: upn: calculating "18 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "8.820000000000000000"
+FP debug: upn: result      "7.020000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(8.820000000000000000:2)"
+FP debug: upn: calculating "round(7.020000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "8.82"
-FP debug: upn: +++ result of upn-expression is "(8.82)"
+FP debug: upn: result      "7.02"
+FP debug: upn: +++ result of upn-expression is "(7.02)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "17.28"
-FP debug: upn: calculating "17.28 mul 0.49"
+FP debug: upn: calculating "17.28 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "8.467200000000000000"
+FP debug: upn: result      "6.739200000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(8.467200000000000000:2)"
+FP debug: upn: calculating "round(6.739200000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "8.47"
-FP debug: upn: +++ result of upn-expression is "(8.47)"
+FP debug: upn: result      "6.74"
+FP debug: upn: +++ result of upn-expression is "(6.74)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "22"
-FP debug: upn: calculating "22 mul 0.49"
+FP debug: upn: calculating "22 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "10.780000000000000000"
+FP debug: upn: result      "8.580000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(10.780000000000000000:2)"
+FP debug: upn: calculating "round(8.580000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "10.78"
-FP debug: upn: +++ result of upn-expression is "(10.78)"
+FP debug: upn: result      "8.58"
+FP debug: upn: +++ result of upn-expression is "(8.58)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "20.74"
-FP debug: upn: calculating "20.74 mul 0.49"
+FP debug: upn: calculating "20.74 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "10.162600000000000000"
+FP debug: upn: result      "8.088600000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(10.162600000000000000:2)"
+FP debug: upn: calculating "round(8.088600000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "10.16"
-FP debug: upn: +++ result of upn-expression is "(10.16)"
+FP debug: upn: result      "8.09"
+FP debug: upn: +++ result of upn-expression is "(8.09)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "25"
-FP debug: upn: calculating "25 mul 0.49"
+FP debug: upn: calculating "25 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "12.250000000000000000"
+FP debug: upn: result      "9.750000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(12.250000000000000000:2)"
+FP debug: upn: calculating "round(9.750000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "12.25"
-FP debug: upn: +++ result of upn-expression is "(12.25)"
+FP debug: upn: result      "9.75"
+FP debug: upn: +++ result of upn-expression is "(9.75)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "24.88"
-FP debug: upn: calculating "24.88 mul 0.49"
+FP debug: upn: calculating "24.88 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "12.191200000000000000"
+FP debug: upn: result      "9.703200000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(12.191200000000000000:2)"
+FP debug: upn: calculating "round(9.703200000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "12.19"
-FP debug: upn: +++ result of upn-expression is "(12.19)"
+FP debug: upn: result      "9.70"
+FP debug: upn: +++ result of upn-expression is "(9.70)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "30"
-FP debug: upn: calculating "30 mul 0.49"
+FP debug: upn: calculating "30 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "14.700000000000000000"
+FP debug: upn: result      "11.700000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(14.700000000000000000:2)"
+FP debug: upn: calculating "round(11.700000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "14.70"
-FP debug: upn: +++ result of upn-expression is "(14.70)"
+FP debug: upn: result      "11.70"
+FP debug: upn: +++ result of upn-expression is "(11.70)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "29.86"
-FP debug: upn: calculating "29.86 mul 0.49"
+FP debug: upn: calculating "29.86 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "14.631400000000000000"
+FP debug: upn: result      "11.645400000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(14.631400000000000000:2)"
+FP debug: upn: calculating "round(11.645400000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "14.63"
-FP debug: upn: +++ result of upn-expression is "(14.63)"
+FP debug: upn: result      "11.65"
+FP debug: upn: +++ result of upn-expression is "(11.65)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "37"
-FP debug: upn: calculating "37 mul 0.49"
+FP debug: upn: calculating "37 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "18.130000000000000000"
+FP debug: upn: result      "14.430000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(18.130000000000000000:2)"
+FP debug: upn: calculating "round(14.430000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "18.13"
-FP debug: upn: +++ result of upn-expression is "(18.13)"
+FP debug: upn: result      "14.43"
+FP debug: upn: +++ result of upn-expression is "(14.43)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "35.83"
-FP debug: upn: calculating "35.83 mul 0.49"
+FP debug: upn: calculating "35.83 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "17.556700000000000000"
+FP debug: upn: result      "13.973700000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(17.556700000000000000:2)"
+FP debug: upn: calculating "round(13.973700000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "17.56"
-FP debug: upn: +++ result of upn-expression is "(17.56)"
+FP debug: upn: result      "13.97"
+FP debug: upn: +++ result of upn-expression is "(13.97)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "45"
-FP debug: upn: calculating "45 mul 0.49"
+FP debug: upn: calculating "45 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "22.050000000000000000"
+FP debug: upn: result      "17.550000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(22.050000000000000000:2)"
+FP debug: upn: calculating "round(17.550000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "22.05"
-FP debug: upn: +++ result of upn-expression is "(22.05)"
+FP debug: upn: result      "17.55"
+FP debug: upn: +++ result of upn-expression is "(17.55)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "43"
-FP debug: upn: calculating "43 mul 0.49"
+FP debug: upn: calculating "43 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "21.070000000000000000"
+FP debug: upn: result      "16.770000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(21.070000000000000000:2)"
+FP debug: upn: calculating "round(16.770000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "21.07"
-FP debug: upn: +++ result of upn-expression is "(21.07)"
+FP debug: upn: result      "16.77"
+FP debug: upn: +++ result of upn-expression is "(16.77)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "54"
-FP debug: upn: calculating "54 mul 0.49"
+FP debug: upn: calculating "54 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "26.460000000000000000"
+FP debug: upn: result      "21.060000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(26.460000000000000000:2)"
+FP debug: upn: calculating "round(21.060000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "26.46"
-FP debug: upn: +++ result of upn-expression is "(26.46)"
+FP debug: upn: result      "21.06"
+FP debug: upn: +++ result of upn-expression is "(21.06)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "51.6"
-FP debug: upn: calculating "51.6 mul 0.49"
+FP debug: upn: calculating "51.6 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "25.284000000000000000"
+FP debug: upn: result      "20.124000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(25.284000000000000000:2)"
+FP debug: upn: calculating "round(20.124000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "25.28"
-FP debug: upn: +++ result of upn-expression is "(25.28)"
+FP debug: upn: result      "20.12"
+FP debug: upn: +++ result of upn-expression is "(20.12)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "64"
-FP debug: upn: calculating "64 mul 0.49"
+FP debug: upn: calculating "64 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "31.360000000000000000"
+FP debug: upn: result      "24.960000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(31.360000000000000000:2)"
+FP debug: upn: calculating "round(24.960000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "31.36"
-FP debug: upn: +++ result of upn-expression is "(31.36)"
+FP debug: upn: result      "24.96"
+FP debug: upn: +++ result of upn-expression is "(24.96)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "61.92"
-FP debug: upn: calculating "61.92 mul 0.49"
+FP debug: upn: calculating "61.92 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "30.340800000000000000"
+FP debug: upn: result      "24.148800000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(30.340800000000000000:2)"
+FP debug: upn: calculating "round(24.148800000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "30.34"
-FP debug: upn: +++ result of upn-expression is "(30.34)"
+FP debug: upn: result      "24.15"
+FP debug: upn: +++ result of upn-expression is "(24.15)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "77"
-FP debug: upn: calculating "77 mul 0.49"
+FP debug: upn: calculating "77 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "37.730000000000000000"
+FP debug: upn: result      "30.030000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(37.730000000000000000:2)"
+FP debug: upn: calculating "round(30.030000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "37.73"
-FP debug: upn: +++ result of upn-expression is "(37.73)"
+FP debug: upn: result      "30.03"
+FP debug: upn: +++ result of upn-expression is "(30.03)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "74.3"
-FP debug: upn: calculating "74.3 mul 0.49"
+FP debug: upn: calculating "74.3 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "36.407000000000000000"
+FP debug: upn: result      "28.977000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(36.407000000000000000:2)"
+FP debug: upn: calculating "round(28.977000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "36.41"
-FP debug: upn: +++ result of upn-expression is "(36.41)"
+FP debug: upn: result      "28.98"
+FP debug: upn: +++ result of upn-expression is "(28.98)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "93"
-FP debug: upn: calculating "93 mul 0.49"
+FP debug: upn: calculating "93 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "45.570000000000000000"
+FP debug: upn: result      "36.270000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(45.570000000000000000:2)"
+FP debug: upn: calculating "round(36.270000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "45.57"
-FP debug: upn: +++ result of upn-expression is "(45.57)"
+FP debug: upn: result      "36.27"
+FP debug: upn: +++ result of upn-expression is "(36.27)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "89.16"
-FP debug: upn: calculating "89.16 mul 0.49"
+FP debug: upn: calculating "89.16 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "43.688400000000000000"
+FP debug: upn: result      "34.772400000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(43.688400000000000000:2)"
+FP debug: upn: calculating "round(34.772400000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "43.69"
-FP debug: upn: +++ result of upn-expression is "(43.69)"
+FP debug: upn: result      "34.77"
+FP debug: upn: +++ result of upn-expression is "(34.77)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "112"
-FP debug: upn: calculating "112 mul 0.49"
+FP debug: upn: calculating "112 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "54.880000000000000000"
+FP debug: upn: result      "43.680000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(54.880000000000000000:2)"
+FP debug: upn: calculating "round(43.680000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "54.88"
-FP debug: upn: +++ result of upn-expression is "(54.88)"
+FP debug: upn: result      "43.68"
+FP debug: upn: +++ result of upn-expression is "(43.68)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeX * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeX"
 FP debug: upn: result      "107"
-FP debug: upn: calculating "107 mul 0.49"
+FP debug: upn: calculating "107 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "52.430000000000000000"
+FP debug: upn: result      "41.730000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(52.430000000000000000:2)"
+FP debug: upn: calculating "round(41.730000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "52.43"
-FP debug: upn: +++ result of upn-expression is "(52.43)"
+FP debug: upn: result      "41.73"
+FP debug: upn: +++ result of upn-expression is "(41.73)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "myfontscale fontSizeY * 2 round"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
+FP debug: upn: result      "0.39"
 FP debug: upn: calculating "fontSizeY"
 FP debug: upn: result      "134"
-FP debug: upn: calculating "134 mul 0.49"
+FP debug: upn: calculating "134 mul 0.39"
 ( FP-MUL )
-FP debug: upn: result      "65.660000000000000000"
+FP debug: upn: result      "52.260000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(65.660000000000000000:2)"
+FP debug: upn: calculating "round(52.260000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "65.66"
-FP debug: upn: +++ result of upn-expression is "(65.66)"
+FP debug: upn: result      "52.26"
+FP debug: upn: +++ result of upn-expression is "(52.26)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "labelWidthValue myfontscale * 2 round"
 FP debug: upn: calculating "labelWidthValue"
 FP debug: upn: result      "1"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
-FP debug: upn: calculating "0.49 mul 1"
+FP debug: upn: result      "0.39"
+FP debug: upn: calculating "0.39 mul 1"
 ( FP-MUL )
-FP debug: upn: result      "0.490000000000000000"
+FP debug: upn: result      "0.390000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(0.490000000000000000:2)"
+FP debug: upn: calculating "round(0.390000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "0.49"
-FP debug: upn: +++ result of upn-expression is "(0.49)"
+FP debug: upn: result      "0.39"
+FP debug: upn: +++ result of upn-expression is "(0.39)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "labelSepValue myfontscale * 2 round"
 FP debug: upn: calculating "labelSepValue"
 FP debug: upn: result      "1"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
-FP debug: upn: calculating "0.49 mul 1"
+FP debug: upn: result      "0.39"
+FP debug: upn: calculating "0.39 mul 1"
 ( FP-MUL )
-FP debug: upn: result      "0.490000000000000000"
+FP debug: upn: result      "0.390000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(0.490000000000000000:2)"
+FP debug: upn: calculating "round(0.390000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "0.49"
-FP debug: upn: +++ result of upn-expression is "(0.49)"
+FP debug: upn: result      "0.39"
+FP debug: upn: +++ result of upn-expression is "(0.39)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "indentionLevelValuei myfontscale * 2 round"
 FP debug: upn: calculating "indentionLevelValuei"
 FP debug: upn: result      "4"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
-FP debug: upn: calculating "0.49 mul 4"
+FP debug: upn: result      "0.39"
+FP debug: upn: calculating "0.39 mul 4"
 ( FP-MUL )
-FP debug: upn: result      "1.960000000000000000"
+FP debug: upn: result      "1.560000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(1.960000000000000000:2)"
+FP debug: upn: calculating "round(1.560000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "1.96"
-FP debug: upn: +++ result of upn-expression is "(1.96)"
+FP debug: upn: result      "1.56"
+FP debug: upn: +++ result of upn-expression is "(1.56)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "indentionLevelValueii myfontscale * 2 round"
 FP debug: upn: calculating "indentionLevelValueii"
 FP debug: upn: result      "2.2"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
-FP debug: upn: calculating "0.49 mul 2.2"
+FP debug: upn: result      "0.39"
+FP debug: upn: calculating "0.39 mul 2.2"
 ( FP-MUL )
-FP debug: upn: result      "1.078000000000000000"
+FP debug: upn: result      "0.858000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(1.078000000000000000:2)"
+FP debug: upn: calculating "round(0.858000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "1.08"
-FP debug: upn: +++ result of upn-expression is "(1.08)"
+FP debug: upn: result      "0.86"
+FP debug: upn: +++ result of upn-expression is "(0.86)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "indentionLevelValueiii myfontscale * 2 round"
 FP debug: upn: calculating "indentionLevelValueiii"
 FP debug: upn: result      "1.87"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
-FP debug: upn: calculating "0.49 mul 1.87"
+FP debug: upn: result      "0.39"
+FP debug: upn: calculating "0.39 mul 1.87"
 ( FP-MUL )
-FP debug: upn: result      "0.916300000000000000"
+FP debug: upn: result      "0.729300000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(0.916300000000000000:2)"
+FP debug: upn: calculating "round(0.729300000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "0.92"
-FP debug: upn: +++ result of upn-expression is "(0.92)"
+FP debug: upn: result      "0.73"
+FP debug: upn: +++ result of upn-expression is "(0.73)"
 ) ( FP-UPN
 FP debug: upn: +++ computing upn-expression "bibIconScaleValue myfontscale * 2 round"
 FP debug: upn: calculating "bibIconScaleValue"
 FP debug: upn: result      "2"
 FP debug: upn: calculating "myfontscale"
-FP debug: upn: result      "0.49"
-FP debug: upn: calculating "0.49 mul 2"
+FP debug: upn: result      "0.39"
+FP debug: upn: calculating "0.39 mul 2"
 ( FP-MUL )
-FP debug: upn: result      "0.980000000000000000"
+FP debug: upn: result      "0.780000000000000000"
 FP debug: upn: calculating "2"
 FP debug: upn: result      "2"
-FP debug: upn: calculating "round(0.980000000000000000:2)"
+FP debug: upn: calculating "round(0.780000000000000000:2)"
 ( FP-ROUND )
-FP debug: upn: result      "0.98"
-FP debug: upn: +++ result of upn-expression is "(0.98)"
-)) (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux)
+FP debug: upn: result      "0.78"
+FP debug: upn: +++ result of upn-expression is "(0.78)"
+)) (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen189
+\WF@size=\dimen190
+\c@WF@wrappedlines=\count167
+\WF@box=\box53
+\WF@everypar=\toks47
+Package: wrapfig 2003/01/31  v 3.6
+) (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux)
 \openout1 = `poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1312,17 +1155,17 @@ LaTeX Font Info:    ... okay on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count186
-\scratchdimen=\dimen266
-\scratchbox=\box59
-\nofMPsegments=\count187
-\nofMParguments=\count188
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count189
-\MPscratchDim=\dimen267
-\MPnumerator=\count190
-\makeMPintoPDFobject=\count191
-\everyMPtoPDFconversion=\toks53
+\scratchcounter=\count168
+\scratchdimen=\dimen191
+\scratchbox=\box54
+\nofMPsegments=\count169
+\nofMParguments=\count170
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count171
+\MPscratchDim=\dimen192
+\MPnumerator=\count172
+\makeMPintoPDFobject=\count173
+\everyMPtoPDFconversion=\toks49
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
  (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -1335,18 +1178,19 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box60
-Package hyperref Info: Link coloring OFF on input line 35.
+\AtBeginShipoutBox=\box55
+Package hyperref Info: Link coloring OFF on input line 33.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count192
+\c@section@level=\count174
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
+ (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.out) (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.out)
 \@outlinefile=\write5
 \openout5 = `poster.out'.
 
@@ -1363,186 +1207,60 @@ Dictionary: translator-numbers-dictionary, Language: English
 ) (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-theorem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 35.
-LaTeX Info: Redefining \microtypecontext on input line 35.
-Package microtype Info: Generating PDF output.
-Package microtype Info: Character protrusion enabled (level 2).
-Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 0, shrink: 50, step: 1, non-selected.
-Package microtype Info: Using default expansion set `basictext'.
-Package microtype Info: Tracking enabled.
-Package microtype Info: Using tracking set `all'.
-Package microtype Info: No adjustment of interword spacing.
-Package microtype Info: No adjustment of character kerning.
-Package microtype Info: Loading generic settings for font family
-(microtype)             `cmss' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
- (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.nav)
-Package microtype Info: Loading generic settings for font family
-(microtype)             `cmtt' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
- <logo.png, id=13, 788.86267pt x 344.04591pt>
+LaTeX Info: Redefining \includegraphics on input line 33.
+ (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.nav) <logo.png, id=13, 788.86267pt x 344.04591pt>
 File: logo.png Graphic file (type png)
  <use logo.png>
-Package pdftex.def Info: logo.png used on input line 35.
-(pdftex.def)             Requested size: 209.02722pt x 91.16122pt.
- <ImageQualityLivenessTest.pdf, id=14, 470.7186pt x 451.6875pt>
-File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
- <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 171.
-(pdftex.def)             Requested size: 273.00742pt x 261.98581pt.
- <2DCNNArchitecture.pdf, id=15, 305.22029pt x 741.73106pt>
+Package pdftex.def Info: logo.png used on input line 33.
+(pdftex.def)             Requested size: 89.5844pt x 39.06834pt.
+ <RealImage.jpg, id=14, 642.4pt x 481.8pt>
+File: RealImage.jpg Graphic file (type jpg)
+ <use RealImage.jpg>
+Package pdftex.def Info: RealImage.jpg used on input line 175.
+(pdftex.def)             Requested size: 100.37537pt x 75.28105pt.
+ <SpoofedImage.jpg, id=15, 642.4pt x 481.8pt>
+File: SpoofedImage.jpg Graphic file (type jpg)
+ <use SpoofedImage.jpg>
+Package pdftex.def Info: SpoofedImage.jpg used on input line 175.
+(pdftex.def)             Requested size: 100.37537pt x 75.28105pt.
+ <2DCNNArchitecture.pdf, id=16, 305.22029pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 171.
-(pdftex.def)             Requested size: 185.8674pt x 451.68915pt.
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.tex:171: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.171   \end{frame}
-                   
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-
-Overfull \vbox (931.87685pt too high) detected at line 171
- []
-
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 175.
+(pdftex.def)             Requested size: 100.37537pt x 243.92316pt.
+ <FaceExtraction.png, id=17, 371.3875pt x 310.15875pt>
+File: FaceExtraction.png Graphic file (type png)
+ <use FaceExtraction.png>
+Package pdftex.def Info: FaceExtraction.png used on input line 175.
+(pdftex.def)             Requested size: 100.37537pt x 83.82443pt.
+ <ImageQualityLivenessTest.pdf, id=19, 470.7186pt x 451.6875pt>
+File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
+ <use ImageQualityLivenessTest.pdf>
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 175.
+(pdftex.def)             Requested size: 200.75073pt x 192.63663pt.
+ <FakeOutputAndCorrect.png, id=20, 371.3875pt x 326.21875pt>
+File: FakeOutputAndCorrect.png Graphic file (type png)
+ <use FakeOutputAndCorrect.png>
+Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 175.
+(pdftex.def)             Requested size: 100.37537pt x 88.16486pt.
+ <BothRealAndCorrect.png, id=21, 371.3875pt x 326.21875pt>
+File: BothRealAndCorrect.png Graphic file (type png)
+ <use BothRealAndCorrect.png>
+Package pdftex.def Info: BothRealAndCorrect.png used on input line 175.
+(pdftex.def)             Requested size: 100.37537pt x 88.16486pt.
 File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png used on input line 171.
-(pdftex.def)             Requested size: 209.02722pt x 91.16122pt.
+ <use logo.png>
+Package pdftex.def Info: logo.png used on input line 175.
+(pdftex.def)             Requested size: 89.5844pt x 39.06834pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- </home/ryan/Documents/dev/LivenessTests/docs/poster/logo.png> </home/ryan/Documents/dev/LivenessTests/docs/poster/ImageQualityLivenessTest.pdf
-
-pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/poster/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
-> </home/ryan/Documents/dev/LivenessTests/docs/poster/2DCNNArchitecture.pdf
+ </home/ryan/Documents/dev/LivenessTests/docs/poster/logo.png> </home/ryan/Documents/dev/LivenessTests/docs/poster/RealImage.jpg> </home/ryan/Documents/dev/LivenessTests/docs/poster/SpoofedImage.jpg> </home/ryan/Documents/dev/LivenessTests/docs/poster/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/poster/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->]
+> </home/ryan/Documents/dev/LivenessTests/docs/poster/FaceExtraction.png> </home/ryan/Documents/dev/LivenessTests/docs/poster/ImageQualityLivenessTest.pdf
+
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/poster/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+> </home/ryan/Documents/dev/LivenessTests/docs/poster/FakeOutputAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/poster/BothRealAndCorrect.png>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -1552,34 +1270,27 @@ pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/poste
 \tf@snm=\write8
 \openout8 = `poster.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 172.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 172.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
  (/home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 172.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 172.
-
-
-Package rerunfilecheck Warning: File `poster.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `poster.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
+Package rerunfilecheck Info: File `poster.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23490 strings out of 493013
- 450784 string characters out of 6135681
- 835577 words of memory out of 5000000
- 26487 multiletter control sequences out of 15000+600000
- 8775 words of font info for 32 fonts, out of 8000000 for 9000
+ 18322 strings out of 493013
+ 340737 string characters out of 6135682
+ 510646 words of memory out of 5000000
+ 21404 multiletter control sequences out of 15000+600000
+ 6805 words of font info for 25 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,20n,68p,823b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.pdf (1 page, 165689 bytes).
+ 56i,20n,68p,823b,994s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.pdf (1 page, 640764 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  3 named destinations out of 1000 (max. 500000)
- 4154 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -148,8 +148,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         
         Overall, there is a benefit of fusing results together using a classifier. This same method could be adapted to combine the results of multiple liveness tests together.
 
-        \subsubsection{Deep Learning Liveness Tests}
-        \todo{Fill in.}
         % Several different existing networks exist.
         % However, work in this space could be improved, and to do this an understanding of the models is required.
 
@@ -610,8 +608,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 A function called $GetNumberOfCorners(I)$ was created, which counts the number of corners found in an input image. This function applies a corner Harris detector,
                 and counts the number of corners yielded from this detector. The Harris Detector used was the OpenCV \emph{cornerHarris} detector. 
 
-                \todo{More about how we used Corner Harris to make it work (because this function is weird)}
-
                 Using this function, we can define the final metric as: 
                 $$TCD(I, I') = \frac{|GetNumberOfCorners(I) - GetNumberOfCorners(I')|}{max({GetNumberOfCorners(I), GetNumberOfCorners(I')})}$$
 
@@ -626,7 +622,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             \paragraph{Visual Information Fidelity (VIFD)}
                 VIFD is a full reference based metric that considers the quality at 5 different scales. The number of scales can be variable, but in our instance 5 was chosen.
-                \todo{Explain why we chose 5 vs others. e.g. look at the Matlab implementation of this}
 
                 The overall definition of this metric is:
 

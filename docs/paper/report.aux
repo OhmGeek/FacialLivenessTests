@@ -30,17 +30,12 @@
 \citation{DeepNeuralNetworkDeployability}
 \citation{DeepNeuralNetworkDeployability}
 \citation{GoogLeNet}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Deep Learning Liveness Tests}{3}}
-\@writefile{tdo}{\contentsline {todo}{Fill in.}{3}}
-\pgfsyspdfmark {pgfid1}{3818850}{50870829}
-\pgfsyspdfmark {pgfid4}{38844054}{50868536}
-\pgfsyspdfmark {pgfid5}{40695445}{50649646}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.4}Neural Networks, and their structure}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Neural Networks, and their structure}{3}}
 \@writefile{toc}{\contentsline {paragraph}{Fully connected layers}{3}}
 \@writefile{toc}{\contentsline {paragraph}{Convolutional layers}{3}}
 \@writefile{toc}{\contentsline {paragraph}{A note about parameters}{3}}
 \@writefile{toc}{\contentsline {paragraph}{Cross-Database Approach}{3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.5}General 2D image classification models}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.4}General 2D image classification models}{3}}
 \@writefile{toc}{\contentsline {paragraph}{AlexNet}{3}}
 \@writefile{toc}{\contentsline {paragraph}{VGG16 Network}{3}}
 \@writefile{toc}{\contentsline {paragraph}{GoogLeNet Inception}{3}}
@@ -62,10 +57,11 @@
 \newlabel{sub@Top1AccuracyOverNetwork}{{a}{4}}
 \newlabel{Top1AccuracyOverOperations}{{2b}{4}}
 \newlabel{sub@Top1AccuracyOverOperations}{{b}{4}}
-\newlabel{ComparisonsOfDifferentModels}{{\caption@xref {ComparisonsOfDifferentModels}{ on input line 247}}{4}}
+\newlabel{ComparisonsOfDifferentModels}{{\caption@xref {ComparisonsOfDifferentModels}{ on input line 245}}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces These two charts, from \cite  {DeepNeuralNetworkDeployability}, show the accuracy and computational requirements of each type of classifier.\relax }}{4}}
 \@writefile{toc}{\contentsline {paragraph}{Residual Networks}{4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.6}Datasets}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.5}Datasets}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}3D Spoofing Attacks}{4}}
 \citation{3DMadDataset}
 \citation{VRNTorchToKeras}
 \citation{VRNTorchToKeras}
@@ -75,7 +71,6 @@
 \citation{VoxNetModel}
 \citation{VoxNetModel}
 \citation{VoxNetModel}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}3D Spoofing Attacks}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}Dataset}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}Obtaining 3D data from 2D images/video}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A screenshot from the VRN Torch to Keras version (a conversion of the VRN model to Keras). This screenshot is from \cite  {VRNTorchToKeras}\relax }}{5}}
@@ -89,13 +84,13 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Specification, and design requirements}{5}}
 \newlabel{SpecPoint1}{{1}{5}}
 \newlabel{SpecPoint2}{{2}{5}}
+\newlabel{SpecPoint3}{{3}{5}}
+\newlabel{SpecPoint4}{{4}{5}}
+\newlabel{SpecPoint5}{{5}{5}}
+\newlabel{SpecPoint6}{{6}{5}}
+\newlabel{SpecPoint7}{{7}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The original VoxNet architecture. While point cloud input is available, voxel based representation can also be used. Diagram obtained from \cite  {VoxNetModel}\relax }}{6}}
 \newlabel{OriginalVoxNetArchitecture}{{4}{6}}
-\newlabel{SpecPoint3}{{3}{6}}
-\newlabel{SpecPoint4}{{4}{6}}
-\newlabel{SpecPoint5}{{5}{6}}
-\newlabel{SpecPoint6}{{6}{6}}
-\newlabel{SpecPoint7}{{7}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Shared Services}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Dataset Managers}{6}}
 \citation{ImageQualityAssessmentTest}
@@ -110,31 +105,31 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}Overview}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}The Metrics}{7}}
 \@writefile{toc}{\contentsline {paragraph}{PyVideoQuality Library}{7}}
+\@writefile{toc}{\contentsline {paragraph}{Absolute Difference (AD)}{7}}
 \citation{BIQIImplementation}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The architecture of the image quality liveness test. (A) The greyscale copy of the image, and a blurred copy of the image are input into each of the metrics. (B) The metrics are individually calculated, and a single value output from them. (C) These values build a 1D vector. (D) They are classified using an LDA classifier. (E) The realness value is 1.0 for real, and 0.0 for fake, or in between.\relax }}{8}}
 \newlabel{ImageQualityLivenessTestDiagram}{{5}{8}}
-\@writefile{toc}{\contentsline {paragraph}{Absolute Difference (AD)}{8}}
 \@writefile{toc}{\contentsline {paragraph}{Blind Image Quality Index (BIQI)}{8}}
 \@writefile{toc}{\contentsline {paragraph}{Gradient Magnitude Error (GME)}{8}}
 \@writefile{toc}{\contentsline {paragraph}{Gradient Phase Error (GPE)}{8}}
 \@writefile{toc}{\contentsline {paragraph}{High Low Frequency Index (HLFI)}{8}}
+\@writefile{toc}{\contentsline {paragraph}{JPEG Quality Index (JQI)}{8}}
 \citation{JQIPaper}
 \citation{LMSEPaper}
 \citation{LMSEPaper}
 \citation{LMSEPaper}
 \citation{LMSEPaper}
 \citation{ImageQualityAssessmentTest}
-\@writefile{toc}{\contentsline {paragraph}{JPEG Quality Index (JQI)}{9}}
+\citation{ImageQualityAssessmentTest}
 \@writefile{toc}{\contentsline {paragraph}{Laplacian Mean Squared Metric (LMSE)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Mean Angle Magnitude Similarity (MAMS)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Mean Angle Similarity (MAS)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Maximum Difference (MD)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Mean Squared Error (MSE)}{9}}
 \@writefile{toc}{\contentsline {paragraph}{Normalized Absolute Error (NAE)}{9}}
-\citation{ImageQualityAssessmentTest}
+\@writefile{toc}{\contentsline {paragraph}{Naturalness Estimator (NIQE)}{9}}
 \citation{ImageQualityAssessmentTest}
 \citation{SSIMPaper}
-\@writefile{toc}{\contentsline {paragraph}{Naturalness Estimator (NIQE)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Normalized Cross Correlation (NXC)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Peak Signal to Noise Ratio (PSNR)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{R-Averaged Metric (RAMD)}{10}}
@@ -142,21 +137,13 @@
 \@writefile{toc}{\contentsline {paragraph}{Spectral Magnitude Error (SME)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Signal to Noise Ratio (SNR)}{10}}
 \@writefile{toc}{\contentsline {paragraph}{Spectral Phase Error (SPE)}{10}}
+\@writefile{toc}{\contentsline {paragraph}{Structural Similarity (SIM)}{10}}
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
 \citation{ImageQualityAssessmentTest}
-\@writefile{toc}{\contentsline {paragraph}{Structural Similarity (SIM)}{11}}
 \@writefile{toc}{\contentsline {paragraph}{Total Corner Difference (TCD)}{11}}
-\@writefile{tdo}{\contentsline {todo}{More about how we used Corner Harris to make it work (because this function is weird)}{11}}
-\pgfsyspdfmark {pgfid6}{4474211}{43630763}
-\pgfsyspdfmark {pgfid9}{38844054}{43628470}
-\pgfsyspdfmark {pgfid10}{40695445}{43409580}
 \@writefile{toc}{\contentsline {paragraph}{Total Edge Difference (TED)}{11}}
 \@writefile{toc}{\contentsline {paragraph}{Visual Information Fidelity (VIFD)}{11}}
-\@writefile{tdo}{\contentsline {todo}{Explain why we chose 5 vs others. e.g. look at the Matlab implementation of this}{11}}
-\pgfsyspdfmark {pgfid11}{20621296}{32715950}
-\pgfsyspdfmark {pgfid14}{38844054}{32713657}
-\pgfsyspdfmark {pgfid15}{40695445}{32494767}
 \@writefile{toc}{\contentsline {paragraph}{The RRED Problem}{11}}
 \@writefile{toc}{\contentsline {paragraph}{Testing these metrics}{11}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}Classifier}{12}}

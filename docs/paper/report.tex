@@ -146,16 +146,14 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         By adding background information, it might be possible to detect further quality differences elsewhere. 
         
         Overall, there is a benefit of fusing results together using a classifier. This same method could be adapted to combine the results of multiple liveness tests together.
-        
+
         \subsubsection{Deep Learning Liveness Tests}
         \todo{Fill in.}
+        % Several different existing networks exist.
+        % However, work in this space could be improved, and to do this an understanding of the models is required.
 
         \subsubsection{Neural Networks, and their structure}
-        Deep learning approaches are focused around the concept of neural networks. Neural networks consist of several layers, each of which are linked by weights.
-        Traditional neural networks have very few layers (shallow), but recently the trend of using a large number of layers (deep) has become popular, yielding
-        better performing classifiers as a result.
-
-        There are many types of layers, but the two most commonly used are outlined below:
+        Developing a custom deep learning model requires an understanding of deep neural networks. These consist of many different layers, each linked by weights. Deeper neural networks have recently allowed for more accurate models. Therefore, an understanding of layers is vital.
 
         \paragraph{Fully connected layers} Fully connected (or dense) layers consist of neurones. Given two layers $l_1$ and $l_2$, each
         neuron $n_i$ in $l_1$ is linked to each neuron $n_j$ in $l_2$ with a weight $w_{i, j}$. For each neuron in the previous layer, the output of that neuron is multiplied by a weight, the total is summed,
@@ -163,19 +161,17 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         $$n_j = t(\sum_{i \in PrevLayer}(n_i * w_{i, j}))$$
 
         \paragraph{Convolutional layers} Designed primarily for images, these convolve over an image with a kernel. For each location over an image, the weights are multiplied by the image input at that particular location. These are then fed through an activation function.
-        The overall output of a convolutional layer would be a 2D image (in the case of images). While 2D images will be primarily used for image input, 3D convolutional layers follow this same process for 3D representations. 
-        Convolutional layers are better used for images compared to fully connected layers, since fewer weights (also known as parameters) are required, thus reducing the required computation and storage. 
+        The output of a convolutional layer would be a multidimensional tensor. While 2D images are primarily used for input, 3D convolutional layers follow this same process for 3D representations. 
+        Convolutional layers are better suited for images compared to fully connected layers, since fewer weights (also known as parameters) are required, thus reducing the required computation and storage. I believe CNNs provide a key approach to facial liveness since they can be used to learn a variety of features including face structure,
+        texture, and other potentially suspicious visual glitches which would be obtained with face spoofing.
 
-        \paragraph{A note about performance metrics}
-            Throughout this paper, the number of parameters acts as a metric of performance. The more parameters (weights) that a model contains, the more computation that needs to be completed, thus requiring more time/better performing hardware.
-            While operations per second is possibly the best metric, number of parameters gives a good indication without the requirement to count the number of operations that occur. Furthermore, counting the number of operations per second also depends on the hardware
-            being used, and as such it's more difficult to compare unless benchmarking is conducted on a single type of machine.
-        
-        I believe Convolutional Neural Networks are a key approach to facial liveness, since they can be used to learn a variety of features including face structure,
-        texture, and other potential suspicious visual glitches which would be obtained with face spoofing. Convolutional Neural Networks 
-        The method proposed in \cite{Patel2016CrossDatabaseFA} uses Caffe-Net, inputting both the full image along with the isolated face.
-        The output yielded general texture differences, as well as specific facial texture differences. Another interesting idea proposed
-        in this paper is the fusion of two algorithms together to produce an outcome, therefore reducing the false reject rate.
+        \paragraph{A note about parameters}
+        Parameters are a measure for how complex a network is, and therefore how difficult training and prediction is. It's an indication of how large the model needs to be. Parameters define how many connections exist within the neural network.
+
+        \paragraph{Cross-Database Approach}
+        While using one dataset can be suitable, using multiple datasets can allow a model to be better at predictions on unseen data (better at generalising). This is the method used in \cite{Patel2016CrossDatabaseFA}, which utilises multiple datasets to improve the amount of training data available, and to provide a completely independent test dataset.
+        This method also fuses mulitple methods together, to further analyse quality using a CNN, ensuring the features can be
+        more easily learned. The drawback with this method however is the large amount of convolutional layers that are required. 
         
         \subsubsection{General 2D image classification models}
         One major problem with training CNNs in the past has been the risk of over-fitting due to lack of data when training from scratch, but utilizing pretrained models would help reduce this risk.

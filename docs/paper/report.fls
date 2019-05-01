@@ -148,6 +148,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty

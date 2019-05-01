@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  1 MAY 2019 22:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  1 MAY 2019 23:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -313,16 +313,23 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Cskip=\skip47
 )
 \c@@todonotes@numberoftodonotes=\count118
+) (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen168
+\WF@size=\dimen169
+\c@WF@wrappedlines=\count119
+\WF@box=\box37
+\WF@everypar=\toks30
+Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 Package: glossaries 2017/01/19 v4.29 (NLCT)
  (/usr/share/texlive/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
 Package: mfirstuc 2016/07/31 v2.04 (NLCT)
  (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count119
+\etb@tempcnta=\count120
 )
-\@glsmfirst=\toks30
-\@glsmrest=\toks31
+\@glsmfirst=\toks31
+\@glsmrest=\toks32
 ) (/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 ) (/usr/share/texlive/texmf-dist/tex/latex/xfor/xfor.sty
@@ -338,72 +345,72 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2000/06/29 v2.01 AMS text
  (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks32
-\ex@=\dimen168
+\@emptytoks=\toks33
+\ex@=\dimen170
 )) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen169
+\pmbraise@=\dimen171
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count120
+\inf@bad=\count121
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count121
-\leftroot@=\count122
+\uproot@=\count122
+\leftroot@=\count123
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count123
-\DOTSCASE@=\count124
+\classnum@=\count124
+\DOTSCASE@=\count125
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box37
-\strutbox@=\box38
-\big@size=\dimen170
+\Mathstrutbox@=\box38
+\strutbox@=\box39
+\big@size=\dimen172
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count125
-\c@MaxMatrixCols=\count126
+\macc@depth=\count126
+\c@MaxMatrixCols=\count127
 \dotsspace@=\muskip10
-\c@parentequation=\count127
-\dspbrk@lvl=\count128
-\tag@help=\toks33
-\row@=\count129
-\column@=\count130
-\maxfields@=\count131
-\andhelp@=\toks34
-\eqnshift@=\dimen171
-\alignsep@=\dimen172
-\tagshift@=\dimen173
-\tagwidth@=\dimen174
-\totwidth@=\dimen175
-\lineht@=\dimen176
-\@envbody=\toks35
+\c@parentequation=\count128
+\dspbrk@lvl=\count129
+\tag@help=\toks34
+\row@=\count130
+\column@=\count131
+\maxfields@=\count132
+\andhelp@=\toks35
+\eqnshift@=\dimen173
+\alignsep@=\dimen174
+\tagshift@=\dimen175
+\tagwidth@=\dimen176
+\totwidth@=\dimen177
+\lineht@=\dimen178
+\@envbody=\toks36
 \multlinegap=\skip49
 \multlinetaggap=\skip50
-\mathdisplay@stack=\toks36
+\mathdisplay@stack=\toks37
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 ) (/usr/share/texlive/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
-\c@su@anzahl=\count132
+\c@su@anzahl=\count133
 ) (/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-fp.sty
 Package: datatool-fp 2016/07/28 v2.27 (NLCT)
  (/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
  `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich (/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count133
+\actioncount=\count134
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count134
-\FP@xia=\count135
-\FP@xib=\count136
-\FP@xfa=\count137
-\FP@xfb=\count138
-\FP@rega=\count139
-\FP@regb=\count140
-\FP@regs=\count141
-\FP@times=\count142
+\FP@xs=\count135
+\FP@xia=\count136
+\FP@xib=\count137
+\FP@xfa=\count138
+\FP@xfb=\count139
+\FP@rega=\count140
+\FP@regb=\count141
+\FP@regs=\count142
+\FP@times=\count143
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-snap.sty
@@ -416,7 +423,7 @@ Package: fp-trigo 1995/04/14
 Package: fp-pas 1994/08/29
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count143
+\FPseed=\count144
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-upn.sty
@@ -424,25 +431,25 @@ Package: fp-upn 1996/10/21
 ) (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 )))
-\@dtl@toks=\toks37
-\@dtl@tmpcount=\count144
+\@dtl@toks=\toks38
+\@dtl@tmpcount=\count145
 \dtl@tmplength=\skip51
-\dtl@sortresult=\count145
-\@dtl@numgrpsepcount=\count146
-\@dtl@datatype=\count147
-\dtl@codeA=\count148
-\dtl@codeB=\count149
-\@dtl@foreach@level=\count150
+\dtl@sortresult=\count146
+\@dtl@numgrpsepcount=\count147
+\@dtl@datatype=\count148
+\dtl@codeA=\count149
+\dtl@codeB=\count150
+\@dtl@foreach@level=\count151
 ) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-307.sty
 Package: glossaries-compatible-307 2017/01/19 v4.29 (NLCT)
 )
-\gls@level=\count151
-\@gls@tmpb=\toks38
+\gls@level=\count152
+\@gls@tmpb=\toks39
 \gls@tmplen=\skip52
-\glskeylisttok=\toks39
-\glslabeltok=\toks40
-\glsshorttok=\toks41
-\glslongtok=\toks42
+\glskeylisttok=\toks40
+\glslabeltok=\toks41
+\glsshorttok=\toks42
+\glslongtok=\toks43
  (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty
 Package: glossary-hypernav 2017/01/19 v4.29 (NLCT)
 ) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
@@ -456,17 +463,17 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTright=\skip55
 \LTpre=\skip56
 \LTpost=\skip57
-\LTchunksize=\count152
-\LTcapwidth=\dimen177
-\LT@head=\box39
-\LT@firsthead=\box40
-\LT@foot=\box41
-\LT@lastfoot=\box42
-\LT@cols=\count153
-\LT@rows=\count154
-\c@LT@tables=\count155
-\c@LT@chunks=\count156
-\LT@p@ftn=\toks43
+\LTchunksize=\count153
+\LTcapwidth=\dimen179
+\LT@head=\box40
+\LT@firsthead=\box41
+\LT@foot=\box42
+\LT@lastfoot=\box43
+\LT@cols=\count154
+\LT@rows=\count155
+\c@LT@tables=\count156
+\c@LT@chunks=\count157
+\LT@p@ftn=\toks44
 )
 \glsdescwidth=\skip58
 \glspagelistwidth=\skip59
@@ -474,59 +481,59 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 Package: glossary-super 2017/01/19 v4.29 (NLCT)
  (/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
-\c@tracingst=\count157
-\ST@wd=\dimen178
+\c@tracingst=\count158
+\ST@wd=\dimen180
 \ST@rightskip=\skip60
 \ST@leftskip=\skip61
 \ST@parfillskip=\skip62
-\ST@pageleft=\dimen179
-\ST@headht=\dimen180
-\ST@tailht=\dimen181
-\ST@pagesofar=\dimen182
-\ST@pboxht=\dimen183
-\ST@lineht=\dimen184
-\ST@stretchht=\dimen185
-\ST@prevht=\dimen186
-\ST@toadd=\dimen187
-\ST@dimen=\dimen188
-\ST@pbox=\box43
+\ST@pageleft=\dimen181
+\ST@headht=\dimen182
+\ST@tailht=\dimen183
+\ST@pagesofar=\dimen184
+\ST@pboxht=\dimen185
+\ST@lineht=\dimen186
+\ST@stretchht=\dimen187
+\ST@prevht=\dimen188
+\ST@toadd=\dimen189
+\ST@dimen=\dimen190
+\ST@pbox=\box44
 )) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
 Package: glossary-tree 2017/01/19 v4.29 (NLCT)
 \glstreeindent=\skip63
 )) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen189
-\lightrulewidth=\dimen190
-\cmidrulewidth=\dimen191
-\belowrulesep=\dimen192
-\belowbottomsep=\dimen193
-\aboverulesep=\dimen194
-\abovetopsep=\dimen195
-\cmidrulesep=\dimen196
-\cmidrulekern=\dimen197
-\defaultaddspace=\dimen198
-\@cmidla=\count158
-\@cmidlb=\count159
-\@aboverulesep=\dimen199
-\@belowrulesep=\dimen256
-\@thisruleclass=\count160
-\@lastruleclass=\count161
-\@thisrulewidth=\dimen257
+\heavyrulewidth=\dimen191
+\lightrulewidth=\dimen192
+\cmidrulewidth=\dimen193
+\belowrulesep=\dimen194
+\belowbottomsep=\dimen195
+\aboverulesep=\dimen196
+\abovetopsep=\dimen197
+\cmidrulesep=\dimen198
+\cmidrulekern=\dimen199
+\defaultaddspace=\dimen256
+\@cmidla=\count159
+\@cmidlb=\count160
+\@aboverulesep=\dimen257
+\@belowrulesep=\dimen258
+\@thisruleclass=\count161
+\@lastruleclass=\count162
+\@thisrulewidth=\dimen259
 ) (/usr/share/texlive/texmf-dist/tex/latex/savetrees/savetrees.sty
 Package: savetrees 2016/04/13 v2.4 Pack as much text as possible onto each page
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-\everypar=\toks44
+\everypar=\toks45
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2016/05/14 v2.6a Micro-typographical refinements (RS)
-\MT@toks=\toks45
-\MT@count=\count162
+\MT@toks=\toks46
+\MT@count=\count163
 LaTeX Info: Redefining \textls on input line 774.
-\MT@outer@kern=\dimen258
+\MT@outer@kern=\dimen260
 LaTeX Info: Redefining \textmicrotypecontext on input line 1310.
-\MT@listname@count=\count163
+\MT@listname@count=\count164
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2016/05/14 v2.6a Definitions specific to pdftex (RS)
 LaTeX Info: Redefining \lsstyle on input line 916.
@@ -544,23 +551,23 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \glo@main@file=\write5
 \openout5 = `report.glo'.
 
-Package glossaries Info: Writing glossary file report.glo on input line 19.
+Package glossaries Info: Writing glossary file report.glo on input line 20.
  (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 30.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -600,17 +607,17 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count164
-\scratchdimen=\dimen259
-\scratchbox=\box44
-\nofMPsegments=\count165
-\nofMParguments=\count166
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count167
-\MPscratchDim=\dimen260
-\MPnumerator=\count168
-\makeMPintoPDFobject=\count169
-\everyMPtoPDFconversion=\toks47
+\scratchcounter=\count165
+\scratchdimen=\dimen261
+\scratchbox=\box45
+\nofMPsegments=\count166
+\nofMParguments=\count167
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count168
+\MPscratchDim=\dimen262
+\MPnumerator=\count169
+\makeMPintoPDFobject=\count170
+\everyMPtoPDFconversion=\toks48
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: LuaTeX not detected.
@@ -647,9 +654,10 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
+Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.glsdefs)
-LaTeX Info: Redefining \microtypecontext on input line 29.
+LaTeX Info: Redefining \microtypecontext on input line 30.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -664,19 +672,19 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 31.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 31.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 32.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 47.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 48.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 90.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 91.
  [1
 
 \openout4 = `report.ist'.
@@ -686,90 +694,90 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 ) [3] <ResidualBlock.png, id=27, 998.73125pt x 555.07375pt>
 File: ResidualBlock.png Graphic file (type png)
  <use ResidualBlock.png>
-Package pdftex.def Info: ResidualBlock.png used on input line 226.
-(pdftex.def)             Requested size: 346.63303pt x 192.65253pt.
+Package pdftex.def Info: ResidualBlock.png used on input line 227.
+(pdftex.def)             Requested size: 247.5961pt x 137.60773pt.
  <Top1AccuracyOverNetwork.png, id=29, 676.5275pt x 494.84875pt>
 File: Top1AccuracyOverNetwork.png Graphic file (type png)
  <use Top1AccuracyOverNetwork.png>
-Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 235.
-(pdftex.def)             Requested size: 138.65108pt x 101.41444pt.
+Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 236.
+(pdftex.def)             Requested size: 198.07385pt x 144.8767pt.
  <Top1AccuracyOverOperations.png, id=30, 667.49374pt x 460.72125pt>
 File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
-Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 242.
-(pdftex.def)             Requested size: 138.65108pt x 95.69981pt.
+Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 243.
+(pdftex.def)             Requested size: 198.07385pt x 136.71301pt.
  [4 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=37, 794.97pt x 748.7975pt>
 File: 3DReconstructionFromSource.png Graphic file (type png)
  <use 3DReconstructionFromSource.png>
-Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 291.
-(pdftex.def)             Requested size: 247.5961pt x 233.21027pt.
- [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>]
+Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 281.
+(pdftex.def)             Requested size: 175.65689pt x 165.45578pt.
+
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 312.
 
-<VoxNetArchitecture.png, id=42, 152.2488pt x 157.0668pt>
+<VoxNetArchitecture.png, id=38, 152.2488pt x 157.0668pt>
 File: VoxNetArchitecture.png Graphic file (type png)
  <use VoxNetArchitecture.png>
 Package pdftex.def Info: VoxNetArchitecture.png used on input line 314.
 (pdftex.def)             Requested size: 247.5961pt x 255.4534pt.
- [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/VoxNetArchitecture.png>] <ImageQualityLivenessTest.pdf, id=47, 470.7186pt x 451.6875pt>
+ [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>] [6 </home/ryan/Documents/dev/LivenessTests/docs/paper/VoxNetArchitecture.png>] <ImageQualityLivenessTest.pdf, id=47, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
 Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 397.
-(pdftex.def)             Requested size: 495.19221pt x 475.19563pt.
+(pdftex.def)             Requested size: 247.5961pt x 237.58748pt.
  [7] [8 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 644--645
+>] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 641--642
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 657--658
+Underfull \hbox (badness 10000) in paragraph at lines 654--655
 
  []
 
-[12] <FaceExtraction.png, id=90, 371.3875pt x 310.15875pt>
+[11] <FaceExtraction.png, id=87, 371.3875pt x 310.15875pt>
 File: FaceExtraction.png Graphic file (type png)
  <use FaceExtraction.png>
-Package pdftex.def Info: FaceExtraction.png used on input line 719.
-(pdftex.def)             Requested size: 247.5961pt x 206.77829pt.
- <2DCNNArchitecture.pdf, id=91, 305.22029pt x 741.73106pt>
+Package pdftex.def Info: FaceExtraction.png used on input line 694.
+(pdftex.def)             Requested size: 100.37537pt x 83.82443pt.
+ <2DCNNArchitecture.pdf, id=88, 305.22029pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 728.
-(pdftex.def)             Requested size: 148.55917pt x 361.01805pt.
- [13 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 726.
+(pdftex.def)             Requested size: 180.67566pt x 439.06622pt.
+ [12 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [15] <voxnet.pdf, id=122, 626.34pt x 210.7875pt>
+>] [13] <voxnet.pdf, id=116, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 843.
-(pdftex.def)             Requested size: 495.19221pt x 166.65538pt.
- [16 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
-
-pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <BothRealAndCorrect.png, id=145, 371.3875pt x 326.21875pt>
+Package pdftex.def Info: voxnet.pdf used on input line 840.
+(pdftex.def)             Requested size: 346.63303pt x 116.65717pt.
+ [14] <BothRealAndCorrect.png, id=120, 371.3875pt x 326.21875pt>
 File: BothRealAndCorrect.png Graphic file (type png)
  <use BothRealAndCorrect.png>
-Package pdftex.def Info: BothRealAndCorrect.png used on input line 935.
-(pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
- <FakeOutputAndCorrect.png, id=146, 371.3875pt x 326.21875pt>
+Package pdftex.def Info: BothRealAndCorrect.png used on input line 924.
+(pdftex.def)             Requested size: 99.03693pt x 86.99011pt.
+ <FakeOutputAndCorrect.png, id=121, 371.3875pt x 326.21875pt>
 File: FakeOutputAndCorrect.png Graphic file (type png)
  <use FakeOutputAndCorrect.png>
-Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 942.
-(pdftex.def)             Requested size: 198.07385pt x 173.98521pt.
- [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] [18] <LinearlySeparable.png, id=155, 500.8311pt x 346.896pt>
+Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 931.
+(pdftex.def)             Requested size: 99.03693pt x 86.99011pt.
+ [15 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+
+pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>] [16 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] <LinearlySeparable.png, id=149, 500.8311pt x 346.896pt>
 File: LinearlySeparable.png Graphic file (type png)
  <use LinearlySeparable.png>
-Package pdftex.def Info: LinearlySeparable.png used on input line 1033.
+Package pdftex.def Info: LinearlySeparable.png used on input line 1015.
 (pdftex.def)             Requested size: 247.5961pt x 171.49437pt.
- [19 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>]
+ [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>] [18]
 No file report.gls.
-(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl [20]
+(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 22.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -778,11 +786,6 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \hbox (badness 4366) in paragraph at lines 54--58
-[]\OT1/ptm/m/n/10/-25ls A. Izvorski.  aizvorski/video-quality: Video qual-ity met-rics, ref-er-ence im-ple-men-ta-tion in python.  $\OT1/pcr/m/n/10/-25ls https :
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 71--77
 []\OT1/ptm/m/n/10/-25ls A. Khalid.  Fa-cial recog-ni-tion may boost air-port se-cu-rity but raises pri-vacy wor-ries.
@@ -798,25 +801,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--77
 \OT1/pcr/m/n/10/-25ls facial-[]recognition-[]may-[]boost-[]airport-[]security-[]but-[]raises-[]privacy-[]worries ? t =
  []
 
-
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 91--96
 []\OT1/ptm/m/n/10/-25ls D. Liu and D. Liu.  A prac-ti-cal guide to relu.  $\OT1/pcr/m/n/10/-25ls https : / / medium . com / tinymind /
  []
 
-) [21] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+) [20] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 20955 strings out of 493013
- 388222 string characters out of 6135681
- 529383 words of memory out of 5000000
- 23655 multiletter control sequences out of 15000+600000
- 49544 words of font info for 348 fonts, out of 8000000 for 9000
+ 21025 strings out of 493013
+ 388969 string characters out of 6135681
+ 531079 words of memory out of 5000000
+ 23693 multiletter control sequences out of 15000+600000
+ 51546 words of font info for 369 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,78p,1990b,737s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,78p,1990b,739s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (21 pages, 1561661 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (20 pages, 1559492 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
+ 221 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  35401 words of extra memory for PDF output out of 35830 (max. 10000000)
 

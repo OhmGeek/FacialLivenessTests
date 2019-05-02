@@ -85,7 +85,7 @@
      
           The facial area was obtained using a pre-trained CNN, which returned a bounding box containing the face. The 224x224 size image obtained was used to classify the liveness.
 
-          Training a 50 layer ResNet would take a very long time, and therefore a pre-trained model was used to improve results and reduce training time. The first 49 layers were left frozen, while the last layer was allowed to be modified. Attached to the ResNet 50 model was a feed-forward neural network, used to obtain a metric of 'realness': how real the subject in the image is.
+          Training a 50 layer ResNet would take a very long time, and therefore a pre-trained model was used to improve results and reduce training time. The first 49 layers were left frozen, while the last layer was allowed to be modified. Attached to the ResNet 50 model was a feedforward neural network, used to obtain a metric of 'realness': how real the subject in the image is.
 
 
           \begin{figure}
@@ -108,14 +108,14 @@
           \end{wrapfigure}
           This method considers the whole image quality, as a spoofed image is likely to have less details than a non-spoofed image.
           This liveness test uses 24 different methods of measuring image quality. Some metrics are full reference, which require the use of a Gaussian Blurred
-          version of the image to compare to, which analyze the overall pixel based error, image noise, and frequency ranges. Other quality metrics use pretrained classifiers
-          to analyze quality.
+          version of the image to compare to, which analyse the overall pixel based error, image noise, and frequency ranges. Other quality metrics use pretrained classifiers
+          to analyse quality.
         
           The results of these quality metrics are then fed through a classifier. The classifier used was Linear Discriminant Analysis, with an eigenvector solver.
           Below, a diagram of how this system works can be seen.
 
-          Overall, this method led to 87\% accuracy when classifying liveness on the Replay-Attack test dataset. 
-          A high number of true negatives and positives were yielded, but when an error occurred, the classifier was more likely to class
+          Overall, this method led to 87\% accuracy when classifying liveness on the ReplayAttack test dataset. 
+          A high number of true negatives and positives were yielded, but when an error occured, the classifier was more likely to class
           spoofed images as real, compared to the other way around, which isn't ideal for security conscious applications.
 
           The current method does have drawbacks, as the training data led to an expected resolution, and with images of different resolutions
@@ -148,8 +148,8 @@
 
 
         \begin{block}{Real-time Liveness System - a proof of concept}
-          The liveness methods above were brought together into a real-time liveness detection system, utilizing an OpenCV based GUI.
-          While simple, this could be further improved in the future to allow for liveness as a service platform, allowing developers to calculate liveness on the cloud,
+          The liveness methods above were brought together into a real-time liveness detection system, utilising an OpenCV based GUI.
+          While simple, this could be furhter improved in the future to allow for liveness as a service platform, allowing developers to calculate liveness on the cloud,
           rather than relying on built-in features. For the screenshots below, videos from the Replay-Attack dataset were used, but this system also allows for webcam access in real time.
           This is a proof of concept of a future liveness system that could be put into production.
 
@@ -168,7 +168,7 @@
           \end{figure}
           
           One additional finding by testing in real time was that the CNN based liveness test was often correct in it's prediction, but occasionally would
-          switch to a prediction of 'fake' for a single frame. Therefore, the liveness test could be improved by analyzing several frames, and determine the modal liveness from that set of frames.
+          switch to a prediction of 'fake' for a single frame. Therefore, the liveness test could be improved by analysing several frames, and determine the modal liveness from that set of frames.
           
           Furthermore, and improvement that can be made to this is to speed the calculation of each liveness test up a bit. Currently, each liveness test is called and executed individually, in series. This could be parallelised,
           either on one machine or by using distributed computing technologies.

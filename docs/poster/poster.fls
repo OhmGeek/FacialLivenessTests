@@ -279,7 +279,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux
 OUTPUT /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.aux
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss9.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -314,7 +314,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.nav
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.nav
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
@@ -356,6 +356,5 @@ INPUT /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.out
 INPUT /home/ryan/Documents/dev/LivenessTests/docs/poster/poster.out
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb

@@ -48,53 +48,49 @@
 % However, with facial recognition comes face spoofing: methods to fool the algorithms into thinking one is someone different to who they are.
 % The abstract must be a Structured Abstract with the headings {\bf Context/Background}, {\bf Aims}, {\bf Method}, {\bf Results}, and {\bf Conclusions}.  This section should not be longer than half of a page, and having no more than one or two sentences under each heading is advised.
 \paragraph{Context}
-With password-based authentication methods being subject to many attacks, facial recognition is an alternative, relying on biometrics rather than remembering an easily stolen string of characters.
-Existing facial recognition systems remain vulnerable to spoofing attacks, which compromise the security of the system. The solution is to use liveness tests, to determine whether the person behind the camera is real, and not an image or video. The future of face recognition is dependent upon facial liveness tests, to detect impersonation. 
+    Existing password-based authentication systems are insecure, being suscepitable to many different types of attacks. One proposed solution has been face recognition, but with this new authentication method comes a problem:
+    how can spoofing be stopped. Liveness tests, a method for detecting when spoofing has occured within the image, are the solution. With newer, real-time liveness tests, face recognition systems can become more secure and
+    hopefully more mainstream. The liveness tests of the future require a standardized input, which can use existing hardware. Furthermore, these liveness tests need to be fast to execute. In addition, a module is needed to allow multiple liveness tests to work together to yield a single liveness value.
 
-The liveness tests of the future require a standardized input, which can use existing hardware. Furthermore, these liveness tests need to be fast to execute.
-
-In addition, a module is needed to allow multiple liveness tests to work together to yield a single liveness value.
-
-This project developed several new liveness tests to meet these requirements. A module to fuse liveness tests together is also produced, with more testing on more liveness tests required.
+    This project developed several new liveness tests to meet these requirements. A module to fuse liveness tests together is also produced, with more testing on more liveness tests required.
 
 \paragraph{Aims}
     % This might belong more in the method.
     The aim was to develop three liveness tests: one to predict liveness based on image quality, one to use facial structure and texture as a liveness measure,
     and a final one to predict 3D liveness attacks (specifically mask attacks). Each of these metrics were required to classify liveness for a single image within a maximum of 2 seconds.
     Furthermore, no special hardware was allowed, to ensure these liveness tests can be used by as many people as possible through mobile devices/laptop computers.
- 
+    The aim was also to combine the results of these liveness tests together in some consolidation layer, providing a single definitive liveness value.
 \paragraph{Method}
-    This project involved the design, training, and testing of three different innovative liveness tests. 
-    The NUAA and Replay-Attack devel datasets were used for training, with the Replay-Attack test dataset being used for testing.
+    This project involved the design, training, and testing of three different innovative liveness tests. The NUAA and Replay-Attack devel datasets were used for training, with the Replay-Attack test dataset being used for testing.
     
-    The first test developed was the Whole Image Quality Assessment (W-IQA) liveness test. This analysed image quality across the entire image, using
-    a combination of 24 different image quality metrics with a Linear Discriminant Analysis classifier (LDA) to predict liveness.
+    The first test developed was the Whole Image Quality Assessment (W-IQA) liveness test which analysed image quality across the entire image, using a combination of 24 different image quality metrics with a Linear Discriminant Analysis classifier (LDA) to predict liveness.
 
-    The second test developed was the Convolutional Neural Network (CNN) based 2D liveness test. This model used a CNN-based face extraction process to obtain the input face, before feeding this through a ResNet50 based model to classify whether a specific face was real or spoofed.
+    The second test developed was the Convolutional Neural Network (CNN) based 2D liveness test, which utilised a pre-existing image classification model and adapted it to the role of facial liveness testing.
 
     The third was a 3D based liveness test to detect mask attacks. This process combined existing techniques for reconstructing a face in 3D from a 2D image, and fed this reconstruction through a VoxNet classifier to detect whether the 3D data contained spoofed input or real input.
 
-    Using the classification probabilities from liveness tests, an LDA based classifier was then trained to fuse the results of the above metrics together, to improve accuracy and allow for future expansion with further liveness tests. this layer also would allow easier access by external systems, dealing with a single definitive liveness metric, rather than many.
+    Using the classification probabilities from liveness tests, an LDA based classifier was then trained to fuse the results of the above metrics together, to improve accuracy and allow for future expansion with further liveness tests.
   
 \paragraph{Results}
-2D attacks were tested using the Replay Attack test dataset. Top-1 accuracy was measured to determine overall performance. 
+    2D attacks were tested using the Replay Attack test dataset. Top-1 accuracy was measured to determine overall performance. 
 
-The W-IQA test performed admirably, producing an 87\% accuracy. When this test produced errors, false positives were more common. As a result, spoofed images were classed as real.
+    The W-IQA test performed admirably, producing an 87\% accuracy. When this test produced errors, false positives were more common which led to spoofed images being classed as real.
 
-The CNN based 2D liveness test performed adequately, yielding a 71\% top-1 accuracy. When this test produced errors, false negatives were far more common. As a result, fewer security concerns were generated by incorrect predictions.
+    The CNN based 2D liveness test performed adequately, yielding a 71\% top-1 accuracy. When this test produced errors, false negatives were far more common which yielded fewer security concerns.
 
-The 3D based liveness test performed poorly. Real-time performance of the model far exceeded the 2-second requirement. The model also required large amounts of memory, leading to training problems. This liveness test is not feasible for use in a real-time liveness system.
+    The 3D based liveness test performed poorly due to a long reconstruction time (5 seconds), coupled with incredibly high memory usage.
 
-A consolidation layer was designed, based on the LDA classifier. Liveness tests yielded linearly separable properties when combined, resulting in improved LDA performance. Future work is needed to test this consolidation layer on more liveness tests, as two metrics isn't enough to justify the benefits of an LDA.
-
+    A consolidation layer was designed, based on the LDA classifier, and this yielded similar accuracy statistics to the above liveness tests.
 \paragraph{Conclusions}
-W-IQA and 2D CNN liveness tests showed promising results for inclusion in a real-time liveness system. Prediction time for both tests was within a 2-second limit. Both tests required no special hardware.
+    W-IQA and 2D CNN liveness tests showed promising results for inclusion in a real-time liveness system. Prediction time for both tests was within a 2-second limit. Both tests required no special hardware.
 
-The W-IQA test produced excellent accuracy scores but was let down by false classification of spoofed images as real. Resolution differences also led to performance problems. This model would be improved by utilizing data with different resolutions.
+    The W-IQA test produced excellent accuracy scores but was let down by false classification of spoofed images as real. Resolution differences also led to performance problems. This model would be improved by utilizing data with different resolutions.
 
-The 2D CNN test produced satisfactory accuracy scores but showed impressive caution at classifying faces correctly. Future work should improve the datasets used, to guarantee each image has a detectable face.
+    The 2D CNN test produced satisfactory accuracy scores but showed impressive caution at classifying faces correctly. Future work should improve the datasets used, to guarantee each image has a detectable face.
 
-The 3D mask attack detection test performed poorly due to tremendous memory requirements. 2D to 3D reconstruction time also took longer than the required time for a single prediction. This liveness test is not suitable for real-time liveness prediction.
+    The 3D mask attack detection test performed poorly due to tremendous memory requirements. 2D to 3D reconstruction time also took longer than the required time for a single prediction. This liveness test is not suitable for real-time liveness prediction.
+
+    The consolidation layer produced worked well, but needs to be tested with a larger number of liveness tests to confirm it's the most ideal solution to the problem.
 \end{abstract}
 
 \begin{keywords}
@@ -281,6 +277,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             
     \subsection{3D Spoofing Attacks}
+       
         Mask Attacks are a 3D spoofing attack, which involves creating a 3D mask of someone and wearing it. \cite{FaceSpoofingAttacksStudy}
         While these are currently much less prevalent, the improvement in 3D printing technologies could lead to this becoming more common in the future.
 
@@ -300,15 +297,16 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             However, when presented with a small amount of motion, depth information would be harder to obtain. Furthermore, since this requires a video input, this would not work as a single image liveness test. Therefore, SFM isn't as useful for this project.
             
             \paragraph{Single Image 3D Face Reconstruction (VRN)}
+            \begin{wrapfigure}{r}{150px}
+                \centering
+                \includegraphics[width=150px]{VoxNetArchitecture.png}
+                \caption{The original VoxNet architecture. While point cloud input is available, voxel based representation can also be used. Diagram obtained from \cite{VoxNetModel}}
+                \label{OriginalVoxNetArchitecture}
+            \end{wrapfigure}
             The method proposed in \cite{3DReconstructionMethod} produces a 3D model from a single 2D image. The model utilizes a pre-trained neural network, implemented in Torch, which turns a 192x192 sized image into a voxel-based representation.
             This model appears suitable for our purposes since it requires only a 2D image rather than a video. Another benefit is the reduced amount of input required from the user. Figure \ref{3DReconstructionScreenshot} shows an example of a 3D facial reconstruction. 
             This screenshot was obtained from the Keras port (since this is more suitable for our project).
-            \begin{wrapfigure}{r}{125px}
-                \centering
-                \includegraphics[width=125px]{3DReconstructionFromSource}
-                \caption{A screenshot from the VRN Torch to Keras version (a conversion of the VRN model to Keras). This screenshot is from \cite{VRNTorchToKeras}}
-                \label{3DReconstructionScreenshot}
-            \end{wrapfigure}
+            
 
         \subsubsection{3D Classifiers}
             
@@ -323,12 +321,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             
            
             \paragraph{VoxNet}
-            \begin{wrapfigure}{r}{150px}
-                \centering
-                \includegraphics[width=150px]{VoxNetArchitecture.png}
-                \caption{The original VoxNet architecture. While point cloud input is available, voxel based representation can also be used. Diagram obtained from \cite{VoxNetModel}}
-                \label{OriginalVoxNetArchitecture}
-            \end{wrapfigure}
+            
             VoxNet requires a voxel representation as input. While point clouds and voxels are equivalent, utilizing this model with the VRN reconstruction method would require less data augmentation. Accuracy of this model isn't that great, yielding 72\% accuracy on the SUOD dataset. \cite{VoxNetModel} However, when investigating this model personally, an accuracy of 68\% was obtained, using the SUOD dataset. 
 
             The model itself was developed to identify objects based on their 3D representation, which is fairly similar to the ImageNet models from before, only in 3D instead of 2D. 
@@ -633,6 +626,12 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
                 While training a model from scratch might have advantages for some applications, a pre-trained ResNet50 model from the Keras standard library was used. This was done due to work with the small amount of training data available, and also to save time learning the basic features that are present in all generic image classification models. Furthermore, training the entire ResNet50 model would require a large number of parameters to be adjusted, so to further reduce the complexity of the training process, only the last layer was set to trainable, with the other layers remaining static. This method also reduced the risk of overfitting, since there were fewer parameters that required training. This was beneficial due to the small amount of data available from liveness datasets.
 
+                \paragraph{Feed Forward Classifier}
+                While a CNN is ideal for processing images, a fully convolutional approach to classification didn't seem appropriate. The output from the ResNet 50 model was flattened and fed directly into a feed-forward neural network.
+                While pooling layers were considered, these only take the maximum/minimum/average of specific sections, reducing the dimensionality, and the loss of data means the feed-forward layer has less information to act upon. Therefore,
+                it was instead decided to use no pooling layers. The output from the ResNet is flattened and fed into an 8 layer feed forward neural network directly. The first layer of this network has a very large number of nodes,
+                while the number of nodes is reduced towards the network output.
+                
                 \begin{wrapfigure}{r}{180px}
                     \centering
                     \includegraphics[width=180px]{2DCNNArchitecture.pdf}
@@ -641,11 +640,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                     liveness score as before).}
                     \label{2DCNNArchitecture}
                 \end{wrapfigure}
-                \paragraph{Feed Forward Classifier}
-                While a CNN is ideal for processing images, a fully convolutional approach to classification didn't seem appropriate. The output from the ResNet 50 model was flattened and fed directly into a feed-forward neural network.
-                While pooling layers were considered, these only take the maximum/minimum/average of specific sections, reducing the dimensionality, and the loss of data means the feed-forward layer has less information to act upon. Therefore,
-                it was instead decided to use no pooling layers. The output from the ResNet is flattened and fed into an 8 layer feed forward neural network directly. The first layer of this network has a very large number of nodes,
-                while the number of nodes is reduced towards the network output.
                 
                 With the initial experiment, the output layer consisted of a single node, with a sigmoid activation function. The entire network was trained using a binary cross-entropy loss function. The network accuracy yielded was fairly reasonable,
                 but the confusion matrix showed that the model was outputting \emph{0.0} (fake) for each value, no matter the input. This was a problem, as the network wasn't suitably learning the dataset. As a result, three changes were made to solve the problem, which are outlined below.

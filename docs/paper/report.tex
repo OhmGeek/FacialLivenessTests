@@ -3,19 +3,23 @@
 \usepackage{times}
 \usepackage{graphics}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[sort&compress]{natbib}
 \usepackage{durhampaper}
 \usepackage{subcaption}
 \usepackage{caption}
 \usepackage{todonotes}
+\usepackage{times} 
 \usepackage{wrapfig}
 \usepackage{glossaries}
+\usepackage{setspace}
 \usepackage{booktabs}
 \usepackage{enumerate}
+\usepackage[compact]{titlesec}
 \usepackage[font=small,labelfont=bf, textfont=it]{caption}
 % \usepackage{harvard}
 \usepackage[moderate]{savetrees}
 \usepackage{url}
+\usepackage{microtype}
 \usepackage{amsmath}
 \usepackage{multicol}
 
@@ -26,9 +30,16 @@
 \supervisor{Prof A. Krokhin}
 \degree{MEng Computer Science}
 \def\bibfont{\footnotesize}
-
+\setlength{\bibsep}{0.4ex}
+% \renewcommand{\baselinestretch}{0.87}
+\setlength{\textfloatsep}{2pt}
 \date{\today}
-
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
 % Now the main body of the document.
 \begin{document}
 \maketitle
@@ -410,8 +421,6 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             The classifier used for our implementation was Linear Discriminant Analysis (LDA).
 
             A visual explanation of the method used is shown in Figure \ref{ImageQualityLivenessTestDiagram}.
-
-         
     
             \subsubsection{The Metrics}
             The original paper proposed that 25 metrics be used to measure quality. However, our implementation used only 24, due to some implementation problems (explained later).
@@ -463,27 +472,10 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 The JQI quality index is used to understand the nature of JPEG compression in an image, specifically with regards to JPEG images being blocky (caused by DCT based compression),
                 and blurring components (due to high-frequency DCT coefficients being lost).
 
-                First, the blockiness features $B$ were calculated as average differences across block boundaries. 
-                
-                Two metrics were then used to define the activity of the image signal. The first is $A$, which calculates the average absolute difference between in block image samples.
-                Then, $Z$ is the zero crossing rate, where a signal changes from positive to negative.
-
-                As these above features were calculated individually for horizontal and vertical features, they can now be fused together. This was done simply by averaging them:
-
-                $$B = \frac{B_h + B_v}{2}$$
-                $$A = \frac{A_h + A_v}{2}$$
-                $$Z = \frac{Z_h + Z_v}{2}$$
-
-                The final calculation used a number of constants which can be defined as:
-                $\alpha = -245.8909$, $\beta = 261.9373$, $\gamma_1 = -239.8886$, $\gamma_2 = 160.1664$, $\gamma_3 = 64.2859$.
-
-                Bringing the constants, and the above calculations together, this yields the overall definition of the metric:
-
-                $$JQI(I, I') = \alpha + \beta \cdot B ^{\frac{\gamma_1}{10000}} \cdot A^{\frac{\gamma_2}{10000}} \cdot Z^{\frac{\gamma_3}{10000}}$$
-
-                While other definitions of this can be utilized, this yielded good prediction performance in the paper \cite{JQIPaper}. In our implementation, this was implemented using 
-                Numpy.
-            \paragraph{Laplacian Mean Squared Metric (LMSE)}
+                This measures blockiness features (average differences across boundaries), average absolute difference between block samples, and zero crossing rate (where signal changes from positive to negative). 
+                These features are combined together to yield an index measuring JPEG quality. The implementation guide followed can be found in the paper \cite{JQIPaper}.
+            
+                \paragraph{Laplacian Mean Squared Metric (LMSE)}
                 LMSE is a full reference metric that considers the edge differences to measure quality. A high LMSE value implies that the input image is of poor quality. 
                     
                 This requires a Laplacian function, which is defined in \cite{LMSEPaper} as:
@@ -531,87 +523,34 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             \paragraph{Spectral Magnitude Error (SME)}
                 SME metric is a full reference metric that utilizes Discrete Fourier Transform (DFT) to analyze the frequency.
-                We define a function $FourierMag(img)$ which calculates the DFT of the image $img$, shifts it, and produces the magnitude of the transform. The magnitude image produced
-                is a 2D array of shape (X, Y), where X represents the real plane and Y represents the complex plane.
+                Implementation was achieved using OpenCV and Numpy.
 
-                For image $I$ and $I'$ respectively, the transformed magnitude $M$, and $M'$ is calculated, such that:
-                $M = 20*\log(FourierMag(I))$, and $M' = 20 * \log(FourierMag(I'))$.
+                For image $I$ and $I'$ respectively, a transformed magnitude $M$ and $M'$ is generated using Fourier transform shifts.
+                The x component is the real plane, while the y component is the complex plane.
 
-                Using this newly defined variable, the function definition can be easily defined as:
-
-                $$SME(I, I') = Mean((M - M')^2)$$
-
-                In the implementation, OpenCV was used to conduct the DFT process, with Numpy providing additional fourier transform functionality to calculate the magnitude. In addition, Numpy
-                was utilized to easily conduct the remaining matrix operations (such as $Mean$, $log$, and subtractions).
-          
+                The metric then follows: $SME(I, I') = Mean((M - M')^2)$.
+             
             \paragraph{Spectral Phase Error (SPE)}
                 The SPE metric utilizes DFT based transformations which were implemented using OpenCV, with Numpy being used to provide the fourier transform shift functionality.
 
-                While the SME metric defined above uses magnitude, this metric utilizes the phase. We define a function $FFTShift(I, plane)$. When carrying out the DFT transform,
-                two planes are produced: the real plane, and the complex plane. The real plane is the x component of the image, while the complex plane is the y component of the image.
-                As such, we carry out 4 different calculations:
-
-                $I_{shiftX} = FFTShift(I, real)$
-                $I_{shiftY} = FFTShift(I, complex)$
-
-                $I'_{shiftX} = FFTShift(I', real)$
-                $I'_{shiftY} = FFTShift(I', complex)$.
-
-                These shift components can be used to produce the magnitude for both $I$ and $I'$. This can be considered a function $Magnitude(I)$, which yields the magnitude based on the
-                x and y components for each element in the matrix.
-
-                Using this function, the metric can be easily defined as:
-
-                $$SPE(I, I') = Mean((Magnitude(I) - Magnitude(I'))^2)$$
+                This aims to measure the error within the phase difference between the real and complex planes. Spectral magnitude is calculated using shifts in Fourier transforms,
+                for both $I$ and $I'$. Then, the metric follows: $SPE(I, I') = Mean((Magnitude(I) - Magnitude(I'))^2)$.
 
 
             \paragraph{Total Corner Difference (TCD)}
-                TCD is a full reference based metric. 
+                TCD is a full reference based metric. An OpenCV based Harris Detector is used to count the number of corners within each image,
+                to yield two values $CornersInI$, and $CornersInI'$. The max number of corners between these images is also found and stored in $MaxCorners$.
+                Then, $TCD(I,I') = |CornersInI - CornersInI'| / MaxCorners$.
                 
-                A function called $GetNumberOfCorners(I)$ was created, which counts the number of corners found in an input image. This function applies a corner Harris detector,
-                and counts the number of corners yielded from this detector. The Harris Detector used was the OpenCV \emph{cornerHarris} detector. 
-
-                Using this function, we can define the final metric as: 
-                $$TCD(I, I') = \frac{|GetNumberOfCorners(I) - GetNumberOfCorners(I')|}{max({GetNumberOfCorners(I), GetNumberOfCorners(I')})}$$
-
             \paragraph{Total Edge Difference (TED)}
-                TED is a full reference based metric. It's similar to the TCD metric, but instead considers the total edges.
-                Since edges aren't easily countable, it's easier to consider the edges which exist in $I$ but not in $I'$. 
-                Edges are isolated using a Sobel function as previously used. This yields the following definition for the metric:
-
+                TED is a full reference based metric. A sobel filter (using OpenCV) is calculated for both $I$ and $I'$. The absolute difference of this edge map is taken,
+                and the mean value is yielded.
                 $$TED(I, I') = Mean(|Sobel(I) - Sobel(I')|)$$
-
-                The Sobel filter is calculated using an OpenCV function, with the remaining operations using Numpy backed calculations.
 
             \paragraph{Visual Information Fidelity (VIFD)}
                 VIFD is a full reference based metric that considers the quality at 5 different scales. The number of scales can be variable, but in our instance 5 was chosen.
-
-                The overall definition of this metric is:
-
-                $$VIFD(I, I') = \sum_{s = 1}^{s=5} \frac{
-                        \log_{10} 
-                        \frac{1 + g^2 * \sigma_{1}^2}
-                        {sv_{sq} + \sigma_{nsq}}
-                    }{
-                        \log_{10}
-                        \frac{1 + \sigma_{1}^2}
-                        {\sigma_{nsq}}
-                    }$$
-
-                Here, $s$ is the scale with $s=1$ being the input images, while $s=2$ means that each image has been Gaussian blurred $s-1$ times before having this calculation being done.
-                When this compounding Gaussian process is carried out on $I$, the result at a specific time step is called $ref$. With $I'$, it's called $dist$.
-                A few other values are necessary:
-
-                $$g = \frac{\sigma_{12}}{\sigma_{1}^2 + \epsilon}$$
-                $$sv_{sq} = \sigma_{2}^2 - g*\sigma_{12}$$
-                $$\sigma_{1}^2 = Gaussian(ref * ref) - (GaussianBlur(ref))^2$$
-                $$\sigma_{2}^2 = Gaussian(dist * dist) - (GaussianBlur(dist))^2$$
-                $$\sigma_{12} = Gaussian(ref * dist) - (GaussianBlur(ref) * GaussianBlur(dist))$$
-
-                There are also several constants, which are:
-
-                $$\epsilon = 1 \times 10^{-10}$$
-                $$\sigma_{nsq} = 2$$
+                This method is based on natural scene statistics and is a better indication of how the human visual system measures quality.
+                This was implemented into our system using the custom \emph{PyVideoQuality} library outlined above.
 
             \paragraph{The other metrics used}
                 In addition to the above metrics, Absolute Difference (AD), Maximum Difference (MD), Mean Squared Error (MSE), Normalized Absolute Error NAE), Structural Content (SC),
@@ -843,12 +782,13 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
     For both liveness tests, cross-dataset validation/testing was conducted. Each model was trained using the entire NUAA dataset, and the Replay-Attack test set
     was used to measure the results shown below. In order to visualize the result as a demonstration, a script was written using OpenCV to produce an overlay on top of the image.
     The results of these models in a faux-production environment can be seen in Figure \ref{SystemWorkingScreenshots}. 
-
-    \begin{table}[ht]
+    \setlength{\tabcolsep}{2pt}
+    \begin{table}[h]
+    \begin{subtable}[h]{0.4\textwidth}
         \centering
         \begin{tabular}[t]{lcc}
             \toprule
-             & \textbf{Image Quality Liveness Test} & \textbf{2D CNN Liveness Test}\\
+             & \textbf{W-IQA Test} & \textbf{2D CNN Test}\\
              \midrule
             \textbf{Accuracy (\%)} & 87.0 & 71.2\\
             \midrule
@@ -860,21 +800,24 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         \end{tabular}
         \caption{Table of results, showing test accuracy with the percentage of test results falling into the specific category defined in the confusion matrix (obtained using sklearn).}
         \label{ResultsTable}
-    \end{table}
-
-    \begin{table}[ht]
+    \end{subtable}
+    \hfill
+    \begin{subtable}[h]{0.5\textwidth}
         \centering
         \begin{tabular}[t]{lcc}
             \toprule
-             & \textbf{Image Quality Liveness Test} & \textbf{2D CNN Liveness Test}\\
+             & \textbf{W-IQA Test} & \textbf{2D CNN Test}\\
              \midrule
-            \textbf{Time to load (s)} & 0.00104 & 7.44\\
+            \textbf{Load time (s)} & 0.00104 & 7.44\\
             \textbf{Time to classify 1 image (s)} & 1.40 & 1.04\\
             \bottomrule
         \end{tabular}
         \caption{Table of results, showing the wall clock time for the load and predict phases of both liveness tests.}
         \label{WallClockResultsTime}
-    \end{table}
+    \end{subtable}
+    \caption{Tables showing all numerical results recorded for the two liveness tests.}
+    \label{TableOfResultsAll}
+\end{table}
 
     \begin{figure}
         \centering

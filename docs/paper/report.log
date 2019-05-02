@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  2 MAY 2019 14:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.10.18)  2 MAY 2019 15:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -500,7 +500,9 @@ Package: supertabular 2004/02/20 v4.1e the supertabular environment
 )) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
 Package: glossary-tree 2017/01/19 v4.29 (NLCT)
 \glstreeindent=\skip63
-)) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \heavyrulewidth=\dimen191
 \lightrulewidth=\dimen192
@@ -522,26 +524,37 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks45
+) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box45
+\beforetitleunit=\skip64
+\aftertitleunit=\skip65
+\ttl@plus=\dimen260
+\ttl@minus=\dimen261
+\ttl@toksa=\toks46
+\titlewidth=\dimen262
+\titlewidthlast=\dimen263
+\titlewidthfirst=\dimen264
 ) (/usr/share/texlive/texmf-dist/tex/latex/savetrees/savetrees.sty
 Package: savetrees 2016/04/13 v2.4 Pack as much text as possible onto each page
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-\everypar=\toks46
+\everypar=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2016/05/14 v2.6a Micro-typographical refinements (RS)
-\MT@toks=\toks47
+\MT@toks=\toks48
 \MT@count=\count163
 LaTeX Info: Redefining \textls on input line 774.
-\MT@outer@kern=\dimen260
+\MT@outer@kern=\dimen265
 LaTeX Info: Redefining \textmicrotypecontext on input line 1310.
 \MT@listname@count=\count164
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2016/05/14 v2.6a Definitions specific to pdftex (RS)
 LaTeX Info: Redefining \lsstyle on input line 916.
 LaTeX Info: Redefining \lslig on input line 916.
-\MT@outer@space=\skip64
+\MT@outer@space=\skip66
 )
 Package microtype Info: Loading configuration file microtype.cfg.
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
@@ -552,27 +565,26 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \c@tracingmulticols=\count165
-\mult@box=\box45
-\multicol@leftmargin=\dimen261
+\mult@box=\box46
+\multicol@leftmargin=\dimen266
 \c@unbalance=\count166
 \c@collectmore=\count167
 \doublecol@number=\count168
 \multicoltolerance=\count169
 \multicolpretolerance=\count170
-\full@width=\dimen262
-\page@free=\dimen263
-\premulticols=\dimen264
-\postmulticols=\dimen265
-\multicolsep=\skip65
-\multicolbaselineskip=\skip66
-\partial@page=\box46
-\last@line=\box47
-\maxbalancingoverflow=\dimen266
-\mult@rightbox=\box48
-\mult@grightbox=\box49
-\mult@gfirstbox=\box50
-\mult@firstbox=\box51
-\@tempa=\box52
+\full@width=\dimen267
+\page@free=\dimen268
+\premulticols=\dimen269
+\postmulticols=\dimen270
+\multicolsep=\skip67
+\multicolbaselineskip=\skip68
+\partial@page=\box47
+\last@line=\box48
+\maxbalancingoverflow=\dimen271
+\mult@rightbox=\box49
+\mult@grightbox=\box50
+\mult@gfirstbox=\box51
+\mult@firstbox=\box52
 \@tempa=\box53
 \@tempa=\box54
 \@tempa=\box55
@@ -589,36 +601,37 @@ Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \@tempa=\box66
 \@tempa=\box67
 \@tempa=\box68
+\@tempa=\box69
 \c@columnbadness=\count171
 \c@finalcolumnbadness=\count172
-\last@try=\dimen267
-\multicolovershoot=\dimen268
-\multicolundershoot=\dimen269
-\mult@nat@firstbox=\box69
-\colbreak@box=\box70
+\last@try=\dimen272
+\multicolovershoot=\dimen273
+\multicolundershoot=\dimen274
+\mult@nat@firstbox=\box70
+\colbreak@box=\box71
 \mc@col@check@num=\count173
 )
 \glswrite=\write4
 \glo@main@file=\write5
 \openout5 = `report.glo'.
 
-Package glossaries Info: Writing glossary file report.glo on input line 22.
+Package glossaries Info: Writing glossary file report.glo on input line 26.
  (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 44.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -659,16 +672,16 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count174
-\scratchdimen=\dimen270
-\scratchbox=\box71
+\scratchdimen=\dimen275
+\scratchbox=\box72
 \nofMPsegments=\count175
 \nofMParguments=\count176
-\everyMPshowfont=\toks48
+\everyMPshowfont=\toks49
 \MPscratchCnt=\count177
-\MPscratchDim=\dimen271
+\MPscratchDim=\dimen276
 \MPnumerator=\count178
 \makeMPintoPDFobject=\count179
-\everyMPtoPDFconversion=\toks49
+\everyMPtoPDFconversion=\toks50
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: LuaTeX not detected.
@@ -708,7 +721,7 @@ Package caption Info: supertabular package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.glsdefs)
-LaTeX Info: Redefining \microtypecontext on input line 33.
+LaTeX Info: Redefining \microtypecontext on input line 44.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -723,109 +736,123 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 46.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
  [1
 
 \openout4 = `report.ist'.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 89.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 100.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 104.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 134.
  [2] (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) [3] <ResidualBlock.png, id=26, 998.73125pt x 555.07375pt>
 File: ResidualBlock.png Graphic file (type png)
  <use ResidualBlock.png>
-Package pdftex.def Info: ResidualBlock.png used on input line 222.
+Package pdftex.def Info: ResidualBlock.png used on input line 233.
 (pdftex.def)             Requested size: 200.75073pt x 111.57178pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--225
+Underfull \hbox (badness 10000) in paragraph at lines 227--236
 \OT1/ptm/m/n/12/-25ls pro-vide a bet-ter bal-ance be-tween ac-cu-racy and com-pu-ta-tional re-quire-ments.
  []
 
-[4] <Top1AccuracyOverNetwork.png, id=31, 676.5275pt x 494.84875pt>
+[4 </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png>] <Top1AccuracyOverNetwork.png, id=32, 676.5275pt x 494.84875pt>
 File: Top1AccuracyOverNetwork.png Graphic file (type png)
  <use Top1AccuracyOverNetwork.png>
-Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 242.
+Package pdftex.def Info: Top1AccuracyOverNetwork.png used on input line 253.
 (pdftex.def)             Requested size: 198.07385pt x 144.8767pt.
- <Top1AccuracyOverOperations.png, id=32, 667.49374pt x 460.72125pt>
+ <Top1AccuracyOverOperations.png, id=33, 667.49374pt x 460.72125pt>
 File: Top1AccuracyOverOperations.png Graphic file (type png)
  <use Top1AccuracyOverOperations.png>
-Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 249.
+Package pdftex.def Info: Top1AccuracyOverOperations.png used on input line 260.
 (pdftex.def)             Requested size: 198.07385pt x 136.71301pt.
- [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/ResidualBlock.png>] <3DReconstructionFromSource.png, id=39, 794.97pt x 748.7975pt>
+ [5 </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverNetwork.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/Top1AccuracyOverOperations.png>] <3DReconstructionFromSource.png, id=39, 794.97pt x 748.7975pt>
 File: 3DReconstructionFromSource.png Graphic file (type png)
  <use 3DReconstructionFromSource.png>
-Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 297.
+Package pdftex.def Info: 3DReconstructionFromSource.png used on input line 308.
 (pdftex.def)             Requested size: 125.46921pt x 118.17616pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--300
+Underfull \hbox (badness 10000) in paragraph at lines 303--311
 \OT1/ptm/m/n/12/-25ls our project).
  []
 
 
-Package wrapfig Warning: Collision between wrapping environments on input line 315.
+Package wrapfig Warning: Collision between wrapping environments on input line 326.
 
 <VoxNetArchitecture.png, id=40, 152.2488pt x 157.0668pt>
 File: VoxNetArchitecture.png Graphic file (type png)
  <use VoxNetArchitecture.png>
-Package pdftex.def Info: VoxNetArchitecture.png used on input line 317.
+Package pdftex.def Info: VoxNetArchitecture.png used on input line 328.
 (pdftex.def)             Requested size: 150.56305pt x 155.34082pt.
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 321.
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 332.
 
-[6 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png>] [7 </home/ryan/Documents/dev/LivenessTests/docs/paper/VoxNetArchitecture.png>] [8] <ImageQualityLivenessTest.pdf, id=53, 470.7186pt x 451.6875pt>
+[6 </home/ryan/Documents/dev/LivenessTests/docs/paper/3DReconstructionFromSource.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/VoxNetArchitecture.png>] [7] <ImageQualityLivenessTest.pdf, id=50, 470.7186pt x 451.6875pt>
 File: ImageQualityLivenessTest.pdf Graphic file (type pdf)
  <use ImageQualityLivenessTest.pdf>
-Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 395.
+Package pdftex.def Info: ImageQualityLivenessTest.pdf used on input line 406.
 (pdftex.def)             Requested size: 301.1261pt x 288.96873pt.
- [9 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
+ [8 </home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/ImageQualityLivenessTest.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [10] [11] [12] [13] <FaceExtraction.png, id=93, 371.3875pt x 310.15875pt>
+>] [9] [10] [11] <FaceExtraction.png, id=86, 371.3875pt x 310.15875pt>
 File: FaceExtraction.png Graphic file (type png)
  <use FaceExtraction.png>
-Package pdftex.def Info: FaceExtraction.png used on input line 656.
+Package pdftex.def Info: FaceExtraction.png used on input line 595.
 (pdftex.def)             Requested size: 100.37537pt x 83.82443pt.
- [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] <2DCNNArchitecture.pdf, id=98, 305.22029pt x 741.73106pt>
+ [12 </home/ryan/Documents/dev/LivenessTests/docs/paper/FaceExtraction.png>] <2DCNNArchitecture.pdf, id=91, 305.22029pt x 741.73106pt>
 File: 2DCNNArchitecture.pdf Graphic file (type pdf)
  <use 2DCNNArchitecture.pdf>
-Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 699.
+Package pdftex.def Info: 2DCNNArchitecture.pdf used on input line 638.
 (pdftex.def)             Requested size: 180.67566pt x 439.06622pt.
- [15 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
+ [13 </home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/2DCNNArchitecture.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [16] <voxnet.pdf, id=124, 626.34pt x 210.7875pt>
+>] <voxnet.pdf, id=115, 626.34pt x 210.7875pt>
 File: voxnet.pdf Graphic file (type pdf)
  <use voxnet.pdf>
-Package pdftex.def Info: voxnet.pdf used on input line 785.
+Package pdftex.def Info: voxnet.pdf used on input line 724.
 (pdftex.def)             Requested size: 301.1261pt x 101.3441pt.
- [17 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
+ [14 </home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf
 
 pdfTeX warning: pdflatex (file /home/ryan/Documents/dev/LivenessTests/docs/paper/voxnet.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <BothRealAndCorrect.png, id=147, 371.3875pt x 326.21875pt>
+>] [15]
+Overfull \hbox (34.14574pt too wide) in paragraph at lines 789--801
+ [][] 
+ []
+
+
+Overfull \hbox (19.25807pt too wide) in paragraph at lines 807--815
+ [][] 
+ []
+
+<BothRealAndCorrect.png, id=141, 371.3875pt x 326.21875pt>
 File: BothRealAndCorrect.png Graphic file (type png)
  <use BothRealAndCorrect.png>
-Package pdftex.def Info: BothRealAndCorrect.png used on input line 885.
+Package pdftex.def Info: BothRealAndCorrect.png used on input line 828.
 (pdftex.def)             Requested size: 99.03693pt x 86.99011pt.
- <FakeOutputAndCorrect.png, id=148, 371.3875pt x 326.21875pt>
+ <FakeOutputAndCorrect.png, id=142, 371.3875pt x 326.21875pt>
 File: FakeOutputAndCorrect.png Graphic file (type png)
  <use FakeOutputAndCorrect.png>
-Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 892.
+Package pdftex.def Info: FakeOutputAndCorrect.png used on input line 835.
 (pdftex.def)             Requested size: 99.03693pt x 86.99011pt.
- [18] [19 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] <LinearlySeparable.png, id=158, 500.8311pt x 346.896pt>
+ [16 </home/ryan/Documents/dev/LivenessTests/docs/paper/BothRealAndCorrect.png> </home/ryan/Documents/dev/LivenessTests/docs/paper/FakeOutputAndCorrect.png>] [17] <LinearlySeparable.png, id=151, 500.8311pt x 346.896pt>
 File: LinearlySeparable.png Graphic file (type png)
  <use LinearlySeparable.png>
-Package pdftex.def Info: LinearlySeparable.png used on input line 977.
+Package pdftex.def Info: LinearlySeparable.png used on input line 920.
 (pdftex.def)             Requested size: 230.86334pt x 159.90227pt.
- [20 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>] [21]
+ [18 </home/ryan/Documents/dev/LivenessTests/docs/paper/LinearlySeparable.png>] [19]
 No file report.gls.
-(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl [22]
+(/home/ryan/Documents/dev/LivenessTests/docs/paper/report.bbl
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 22.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -854,20 +881,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--96
 []\OT1/ptm/m/n/10/-25ls D. Liu and D. Liu.  A prac-ti-cal guide to relu.  $\OT1/pcr/m/n/10/-25ls https : / / medium . com / tinymind /
  []
 
-) [23] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
+[20]) [21] (/home/ryan/Documents/dev/LivenessTests/docs/paper/report.aux) ) 
 Here is how much of TeX's memory you used:
- 21202 strings out of 493013
- 391031 string characters out of 6135681
- 522823 words of memory out of 5000000
- 23775 multiletter control sequences out of 15000+600000
- 65393 words of font info for 447 fonts, out of 8000000 for 9000
+ 21565 strings out of 493013
+ 396150 string characters out of 6135681
+ 525089 words of memory out of 5000000
+ 24108 multiletter control sequences out of 15000+600000
+ 72561 words of font info for 468 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,78p,1990b,614s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,78p,1990b,621s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (23 pages, 1548305 bytes).
+Output written on /home/ryan/Documents/dev/LivenessTests/docs/paper/report.pdf (21 pages, 1530856 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 220 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 53321 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 58953 words of extra memory for PDF output out of 61914 (max. 10000000)
 

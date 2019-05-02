@@ -142,12 +142,6 @@ Z.~Wang, H.~R. Sheikh, and A.~C. Bovik.
 \newblock In {\em Proceedings. International Conference on Image Processing},
   volume~1, pages I--I. IEEE, 2002.
 
-\bibitem{SSIMPaper}
-Z.~Wang, E.~P. Simoncelli, and A.~C. Bovik.
-\newblock Multi-scale structural similarity for image quality assessment.
-\newblock In {\em in Proc. IEEE Asilomar Conf. on Signals, Systems, and
-  Computers, (Asilomar}, pages 1398--1402, 2003.
-
 \bibitem{SGDBetterThanAdamForImageClassification}
 A.~C. Wilson, R.~Roelofs, M.~Stern, N.~Srebro, and B.~Recht.
 \newblock The marginal value of adaptive gradient methods in machine learning.

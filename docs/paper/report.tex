@@ -48,8 +48,8 @@
 % However, with facial recognition comes face spoofing: methods to fool the algorithms into thinking one is someone different to who they are.
 % The abstract must be a Structured Abstract with the headings {\bf Context/Background}, {\bf Aims}, {\bf Method}, {\bf Results}, and {\bf Conclusions}.  This section should not be longer than half of a page, and having no more than one or two sentences under each heading is advised.
 \paragraph{Context}
-    Existing password-based authentication systems are insecure, being suscepitable to many different types of attacks. One proposed solution has been face recognition, but with this new authentication method comes a problem:
-    how can spoofing be stopped. Liveness tests, a method for detecting when spoofing has occured within the image, are the solution. With newer, real-time liveness tests, face recognition systems can become more secure and
+    Existing password-based authentication systems are insecure, being susceptible to many different types of attacks. One proposed solution has been face recognition, but with this new authentication method comes a problem:
+    how can spoofing be stopped. Liveness tests, a method for detecting when spoofing has occurred within the image, are the solution. With newer, real-time liveness tests, face recognition systems can become more secure and
     hopefully more mainstream. The liveness tests of the future require a standardized input, which can use existing hardware. Furthermore, these liveness tests need to be fast to execute. In addition, a module is needed to allow multiple liveness tests to work together to yield a single liveness value.
 
     This project developed several new liveness tests to meet these requirements. A module to fuse liveness tests together is also produced, with more testing on more liveness tests required.
@@ -184,7 +184,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
         \paragraph{Cross-Database Approach}
         While using one dataset can be suitable, using multiple datasets can allow a model to be better at predictions on unseen data (better at generalising). This is the method used in \cite{Patel2016CrossDatabaseFA}, which utilises multiple datasets to improve the amount of training data available, and to provide a completely independent test dataset.
-        This method also fuses mulitple methods together, to further analyse quality using a CNN, ensuring the features can be
+        This method also fuses multiple methods together, to further analyse quality using a CNN, ensuring the features can be
         more easily learned. The drawback with this method however is the large amount of convolutional layers that are required. 
         
         \subsubsection{General 2D image classification models}
@@ -387,7 +387,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             GPUs are expensive, and therefore if such a system were deployed the cost of GPUs would provide expensive to run. Therefore, a CPU-only implementation for the testing was followed, using an Intel i7-7700K (at 4.2 GHz), with 16GB RAM, and a SATA SSD. Performance metrics were yielded using this hardware to emulate the expected performance and understand which metrics performed best and whether they performed adequately.
 
         \subsubsection{Image Processing and Computation Management}
-            OpenCV was used to manage the processing of images, including the image loading components. This library was chosen for the wide support available, and for the large feature set that it provides (including Gaussian Blurring, some image metrics, and some fourier analysis).
+            OpenCV was used to manage the processing of images, including the image loading components. This library was chosen for the wide support available, and for the large feature set that it provides (including Gaussian Blurring, some image metrics, and some Fourier analysis).
             For the rare occasions where OpenCV didn't have the required functionality, scikit-image provided some operations that were necessary.
             
             Numpy was instrumental in most other computation operations (including image preprocessing, mathematical calculations), due to the large speed improvements provided by the C implementation (compared to Python's slower math libraries).
@@ -430,7 +430,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             \paragraph{Blind Image Quality Index (BIQI)}
                 BIQI is a no-reference metric. BIQI consists of two steps: the first is to assess image distortion, and the second is to analyze the quality.  Rather like NIQE, there was no existing BIQI library implementation. The metric takes various different features using wavelet functions and fed them into a classifier component. This element itself would be hard to replicate without the correct processing or training data. The training set used for this quality metric was the LIVE IQA dataset. While this dataset is in the public domain, it required permission to access. This would have taken far too long, for such a small piece of the system.
 
-                As such, it was easier to adapt an existing implementation. A version was found on Github that utilised Python 2 focused code. This was manually ported to Python 3. \cite{BIQIImplementation} This ported version is available as part of the project implementation.
+                As such, it was easier to adapt an existing implementation. A version was found on GitHub that utilised Python 2 focused code. This was manually ported to Python 3. \cite{BIQIImplementation} This ported version is available as part of the project implementation.
 
             \paragraph{Gradient Magnitude Error (GME)}
             GME is a full reference metric, and it calculates the error corresponding to the gradient magnitude between the two images. The gradients $\Delta I$ and $\Delta I'$
@@ -524,7 +524,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 The metric then follows: $SME(I, I') = Mean((M - M')^2)$.
              
             \paragraph{Spectral Phase Error (SPE)}
-                The SPE metric utilizes DFT based transformations which were implemented using OpenCV, with Numpy being used to provide the fourier transform shift functionality.
+                The SPE metric utilizes DFT based transformations which were implemented using OpenCV, with Numpy being used to provide the Fourier transform shift functionality.
 
                 This aims to measure the error within the phase difference between the real and complex planes. Spectral magnitude is calculated using shifts in Fourier transforms,
                 for both $I$ and $I'$. Then, the metric follows: $SPE(I, I') = Mean((Magnitude(I) - Magnitude(I'))^2)$.
@@ -536,7 +536,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
                 Then, $TCD(I,I') = |CornersInI - CornersInI'| / MaxCorners$.
                 
             \paragraph{Total Edge Difference (TED)}
-                TED is a full reference based metric. A sobel filter (using OpenCV) is calculated for both $I$ and $I'$. The absolute difference of this edge map is taken,
+                TED is a full reference based metric. A Sobel filter (using OpenCV) is calculated for both $I$ and $I'$. The absolute difference of this edge map is taken,
                 and the mean value is yielded.
                 $$TED(I, I') = Mean(|Sobel(I) - Sobel(I')|)$$
 
@@ -547,7 +547,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
 
             \paragraph{The other metrics used}
                 In addition to the above metrics, Absolute Difference (AD), Maximum Difference (MD), Mean Squared Error (MSE), Normalized Absolute Error NAE), Structural Content (SC),
-                Peak Signal to Noise Ratio (PSNR) and Signal to Noise Ratio (SNR) were also used. These are full refererence metrics, implemented using
+                Peak Signal to Noise Ratio (PSNR) and Signal to Noise Ratio (SNR) were also used. These are full reference metrics, implemented using
                 Numpy functionality. The process followed for each metric was defined in \cite{ImageQualityAssessmentTest}.
 
                 The Structural Similarity Metric (SSIM) is a full-reference human perception based model. This was calculated using a \emph{skimage} library function called \emph{compare\_ssim}. 
@@ -593,7 +593,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             As this liveness test concerned itself with facial structure, it became necessary to isolate the face from the input image. Furthermore, as part of the CNN model, a required input size was needed to be specified. 
             The preprocessing step, therefore, needed to produce a facial image that had fixed dimensions.
 
-            This was achieved using the \emph{face\_recongition} package. Using this package, a set of bounding boxes of faces is yielded. The largest bounding box (by area) is found, which is taken as the location of the face. Initially, the bounding box was simply cropped and resized to be a square, regardless of its shape. This yielded very poor results  since the dimensions might have been rectangular, yielding the model to incorrectly learn spatial data. As a result, a new method of face isolation based on bounding boxes was designed:
+            This was achieved using the \emph{face\_recognition} package. Using this package, a set of bounding boxes of faces is yielded. The largest bounding box (by area) is found, which is taken as the location of the face. Initially, the bounding box was simply cropped and resized to be a square, regardless of its shape. This yielded very poor results  since the dimensions might have been rectangular, yielding the model to incorrectly learn spatial data. As a result, a new method of face isolation based on bounding boxes was designed:
             
             Given a bounding box $B = (top, bottom, left, right)$, a new bounding box $B'$ which has square dimensions can be created by finding the square
             side width $s$. Mathematically, this is defined as:
@@ -982,7 +982,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
             with parallel based methods, and not relying on libsvm for the BIQI metric.
         \paragraph{2D CNN}
             The 2D CNN Test performed adequately. While the accuracy was lower than expected (at 71\%), the classifier still performed similarly to the accuracy expected on
-            ImageNet (since 76\% was yielded with ResNet50 on the ImageNet dataset). This is shown in Figure \ref{Top1AccuracyOverNetwork}
+            ImageNet (since 76\% was yielded with ResNet50 on the ImageNet dataset). This is shown in Figure \ref{Top1AccuracyOverNetwork}.
 
             True negative classification was high, with a total percentage of 71.5\% of all classifications being true negatives. While the number of false negatives also being fairly high,
             this is preferred to errors being false positives (since in this case, the model yielded a result that doesn't cause a security problem).
@@ -1005,11 +1005,11 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
         A ResNet based model could be used to detect 3D based attacks, using a similar approach to the 2D CNN used within this project.
 
         \paragraph{More Liveness Tests}
-        While the consolitation layer proposed functioned for 2 liveness tests, introducing more liveness tests within this structure would allow
+        While the consolidation layer proposed functioned for 2 liveness tests, introducing more liveness tests within this structure would allow
         analysis of the performance of the proposed LDA consolidation layer at scale.
 
         \paragraph{Existing BIQI implementation}
-            The existing BIQI implementation could be reimplemented using \emph{sklearn} to provide the SVM implementation, rather than the existing \emph{libsvm} executables.
+            The existing BIQI implementation could be re-implemented using \emph{sklearn} to provide the SVM implementation, rather than the existing \emph{libsvm} executables.
             Porting the existing SVM should be possible.
 
         \paragraph{Replacing ResNet50 with a larger ResNet model}
@@ -1020,7 +1020,7 @@ Facial liveness, convolutional neural networks, image quality metrics, residual 
     % overall, what did the project show?
     % TODO this needs to probably be reworded.
     This project showed that creating a facial liveness service for the web is a feasible idea, and performs fairly well for 2D attacks, with adequate accuracy and computational requirements.
-    The image quality liveness test is accurate and fast, while the ResNet based method is a feasible idea and performs adequately, and could be improved further to improve the accuracy. For 3D attacks however, the
+    The image quality liveness test is accurate and fast, while the ResNet based method is a feasible idea and performs adequately, and could be adjusted further to improve the accuracy. For 3D attacks however, the
     proposed VoxNet based model performed badly and is not recommended for inclusion in a liveness test web service.
 
     % In addition, the improvements to the existing system were shown, and potential GDPR considerations were shown on how to implement such a system to better comply with the regulation. In building of a system for commercial use, it's important

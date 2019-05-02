@@ -21,8 +21,8 @@ def main():
                                   mode='test')
     dataset.pre_process()
 
-    imposter_set = dataset.read_dataset("attack")
-    client_set = dataset.read_dataset("real")
+    imposter_set = dataset.read_dataset("attack")[:2000]
+    client_set = dataset.read_dataset("real")[:2000]
     output_imposter = [0.0 for x in range(imposter_set.shape[0])]
     output_client = [1.0 for x in range(client_set.shape[0])]
 

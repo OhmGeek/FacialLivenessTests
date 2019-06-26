@@ -1,5 +1,5 @@
 # LivenessTests
-Liveness Tests For Facial Recognition
+Liveness Tests For Facial Recognition. 4th year project for M.Eng Computer Science at Durham University. Supervised by Andrei Krokhin.
 
 ## Introduction
 The aim of this project is to understand the realm of facial liveness tests, and produce an investigation into the ease of creating a liveness as a service platform.
